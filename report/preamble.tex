@@ -3,8 +3,9 @@
 %  Deles af main.tex (hele rapporten) og de enkelte sektionsfiler,
 %  som via \ifdefined\mainfile også kan kompileres alene.
 %  Ret kun pakker/stil her ét sted.
+%  NB: \documentclass er IKKE her -- den står i main.tex (og i sektionernes
+%  standalone-guard), så Overleaf ikke forveksler preamble.tex med hoveddokumentet.
 % ============================================================
-\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[danish]{babel}
@@ -67,5 +68,6 @@
 \author{Gruppe \textbf{XX} -- 62768}
 \date{Juni 2026}
 
-\newcommand{\mainfile}{}
+% \mainfile defineres i main.tex (IKKE her) -- ellers tror standalone-sektioner
+% også at de er i hoveddokumentet og springer deres \end{document} over.
 \newcommand{\doubleunderline}[1]{\underline{\underline{#1}}}

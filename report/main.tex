@@ -3,8 +3,11 @@
 %  Fælles præambel: preamble.tex
 %  Hver sektionsfil kan også kompileres alene (se \ifdefined\mainfile).
 %  Kompiler:  latexmk -pdf main.tex     (eller pdflatex main, 2x)
+%  NB: \documentclass står her, så Overleaf vælger main.tex som hoveddokument.
 % ============================================================
+\documentclass{article}
 \input{preamble}
+\newcommand{\mainfile}{}   % markerer at sektionerne inkluderes -> spring standalone-guard over
 
 \begin{document}
 
