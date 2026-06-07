@@ -1,8 +1,9 @@
 /*
- * pid.cpp - PID-regulator implementation
+ * pid.c - PID-regulator implementation
  *
- * Se pid.h. Bruger anti-windup ved at clampe integralet, så
- * outputtet holdes inden for [outMin, outMax].
+ * Se pid.h. Anti-windup ved at clampe integralet, så outputtet
+ * holdes inden for [outMin, outMax]. Ren C (ingen hardware) — kan
+ * senere erstattes af Simulink/Embedded Coder-genereret kode.
  */
 
 /* ============ INCLUDES ============ */
@@ -38,7 +39,7 @@ float pid_compute(pid_t *pid, float setpoint, float measured, float dt) {
 
     float error = setpoint - measured;
 
-    // Integral-led med anti-windup: clamp så det alene ikke kan mætte
+    // Integral-led med anti-windup
     pid->integral += pid->ki * error * dt;
     pid->integral = pid_clamp(pid->integral, pid->outMin, pid->outMax);
 

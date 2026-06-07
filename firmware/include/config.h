@@ -1,29 +1,27 @@
 /*
  * config.h - Central konfiguration for 62768 energisystem-firmware
  *
- * Samler alle pins, kalibreringskonstanter, setpoints og styre-
- * parametre ét sted, så hardware-tilpasning kun sker her.
+ * Samler alle ADC-kanaler, kalibreringskonstanter, setpoints og
+ * styre-parametre ét sted, så hardware-tilpasning kun sker her.
+ * Bare-metal AVR (ingen Arduino-framework).
  *
- * Afhængigheder: Arduino.h
+ * Afhængigheder: ingen
  */
 #ifndef CONFIG_H
 #define CONFIG_H
 
 /* ============ INCLUDES ============ */
-#include <Arduino.h>
 #include <stdint.h>
 
-/* ============ PINS ============ */
-// Motor-PWM. VIGTIGT: undgå Uno D9/D10 (Timer1) — Timer1 bruges til
-// styre-loopets interrupt. D3 er Timer2 (Uno) / Timer3 (Mega) = OK.
-#define PIN_MOTOR_PWM     3
-#define PIN_STATUS_LED    LED_BUILTIN
+/* ============ HARDWARE ============ */
+// Motor-PWM ligger på Timer2 OC2B (Uno: PD3/D3, Mega: PH6/D9) — sættes i main.c.
+// Timer1 er reserveret til styre-loopets interrupt, så rør ikke OC1A/OC1B.
 
-// ADC-kanaler. Spændinger via spændingsdelere, strøm fra diskret måling.
-#define ADC_CH_V1         A0    // Ensretter-bus, mål 15 V   (Krav 1)
-#define ADC_CH_V2         A1    // Pulserende last, mål 10 V (Krav 4)
-#define ADC_CH_V3         A2    // Energilager, mål 5 V      (Krav 7)
-#define ADC_CH_ILOAD      A3    // Laststrøm fra diskret strømmåling (Krav 10)
+/* ============ ADC-KANALER ============ */
+#define ADC_CH_V1         0    // A0: ensretter-bus, mål 15 V   (Krav 1)
+#define ADC_CH_V2         1    // A1: pulserende last, mål 10 V (Krav 4)
+#define ADC_CH_V3         2    // A2: energilager, mål 5 V      (Krav 7)
+#define ADC_CH_ILOAD      3    // A3: laststrøm fra diskret måling (Krav 10)
 
 /* ============ ADC / KALIBRERING ============ */
 #define ADC_VREF          5.0f      // AVcc reference [V]
@@ -45,11 +43,11 @@
 #define PID_KP            8.0f
 #define PID_KI            40.0f
 #define PID_KD            0.0f
-#define DUTY_MIN          0         // analogWrite min
-#define DUTY_MAX          255       // analogWrite max (8-bit)
+#define DUTY_MIN          0         // PWM min (OCR2B)
+#define DUTY_MAX          255       // PWM max (8-bit)
 
 /* ============ MONITOR ============ */
-#define SERIAL_BAUD       115200
+#define SERIAL_BAUD       115200UL
 #define MONITOR_HZ        1         // PC-overvågning opdatering [Hz] (Krav 14)
 
 #endif /* CONFIG_H */
