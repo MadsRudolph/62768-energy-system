@@ -1,0 +1,6 @@
+# QSPICE generated output (regenerated from the .qsch on simulate)
+*.qraw
+*.cir
+*.net
+*.fft
+*.log
