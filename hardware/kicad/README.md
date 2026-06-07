@@ -12,6 +12,9 @@ exact 9.0 format (if it mentions an older version on open, that's expected — j
 | `energy_system.kicad_pro` | Project file (open this) |
 | `energy_system.kicad_sch` | Schematic (empty) |
 | `energy_system.kicad_pcb` | PCB layout (empty, 2-layer to start) |
+| `energy_system.kicad_sym` | Project symbol library (custom parts) |
+| `energy_system.pretty/` | Project footprint library (custom footprints) |
+| `sym-lib-table` / `fp-lib-table` | Register the two project libraries |
 
 ## Workflow
 1. Draw the schematic (Eeschema) → annotate → assign footprints.
@@ -21,8 +24,10 @@ exact 9.0 format (if it mentions an older version on open, that's expected — j
 ## Notes
 - Backups, autosave, and per-user settings (`*-backups/`, `_autosave-*`, `*.kicad_prl`)
   are gitignored — only the real project/sch/pcb (and any project libraries) are tracked.
-- For shared parts, add a project footprint library `energy_system.pretty/` and a custom
-  `energy_system.kicad_sym`, then register them in the project's library tables.
+- A project symbol library (`energy_system.kicad_sym`) and footprint library
+  (`energy_system.pretty/`) are already set up and registered (`sym-lib-table` /
+  `fp-lib-table`) under the nickname **energy_system** — put custom parts there so the
+  whole team gets them.
 - Commit `.kicad_sch` / `.kicad_pcb` after saving so teammates get your changes (KiCad
   files are text/S-expression and diff/merge reasonably, but coordinate big edits to
   avoid conflicts).
