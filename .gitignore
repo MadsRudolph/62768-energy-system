@@ -37,6 +37,7 @@ fp-info-cache
 Thumbs.db
 desktop.ini
 .vscode/
+.obsidian/
 *.swp
 *~
 
