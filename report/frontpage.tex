@@ -7,28 +7,40 @@
   \includegraphics[scale=0.5]{images/frontpage/dtu_logo.png}
 \end{textblock*}
 
+% --- Hjælpekommandoer til medlemskort ---
+% Kort med foto:        \photocard{billedsti}{Navn}{Studienr.}
+% Pladsholder (intet foto): \placeholdercard{Navn}{Studienr.}
+\newcommand{\photocard}[3]{%
+  \begin{tabular}{c}
+    \fbox{\includegraphics[height=3cm]{#1}}\\[4pt]
+    \textbf{#2}\\ #3
+  \end{tabular}}
+\newcommand{\placeholdercard}[2]{%
+  \begin{tabular}{c}
+    \fbox{\parbox[c][3cm][c]{2.6cm}{\centering\Huge ?}}\\[4pt]
+    \emph{#1}\\ \emph{#2}
+  \end{tabular}}
+
 \vspace*{3cm}
 \begin{center}
     {\Huge \textbf{Elektrisk Energisystem}}\\[0.6cm]
-    {\large Projektrapport}\\[1.5cm]
+    {\large Projektrapport}\\[1.0cm]
     \textbf{Kursus 62768 -- Electrical Energy Systems (projekt)}\\[0.3cm]
     Danmarks Tekniske Universitet \\
     Juni 2026
 \end{center}
 
-\vspace{2.5cm}
+\vspace{1.5cm}
 
 \begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{l l}
-    \textbf{Navn} & \textbf{Studienr.} \\
-    \hline
-    Mads Rudolph        & s246132 \\
-    \emph{Navn 2}       & \emph{sXXXXXX} \\
-    \emph{Navn 3}       & \emph{sXXXXXX} \\
-    \emph{Navn 4}       & \emph{sXXXXXX} \\
-    \emph{Navn 5}       & \emph{sXXXXXX} \\
-    \emph{Navn 6}       & \emph{sXXXXXX} \\
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccc}
+    \photocard{images/frontpage/Mads.png}{Mads Rudolph}{s246132} &
+    \photocard{images/frontpage/dtu_jonas.png}{Jonas Beck Jensen}{s240324} &
+    \photocard{images/frontpage/dtu_andreas.png}{Andreas Skånning}{s241123} \\[1.0cm]
+    \placeholdercard{Navn 4}{sXXXXXX} &
+    \placeholdercard{Navn 5}{sXXXXXX} &
+    \placeholdercard{Navn 6}{sXXXXXX} \\
 \end{tabular}
 \end{center}
 
