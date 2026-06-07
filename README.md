@@ -4,6 +4,9 @@ Team project for **62768 Electrical Energy Systems** (DTU, June 2026, 3-week cou
 We design and build a complete electrical energy system per the course requirement spec
 (*Kravspecifikation*), from idea to a working functional model (CDIO).
 
+> 📋 **Start here:** [`docs/project-overview.md`](docs/project-overview.md) — what to build,
+> targets, subsystem plan, deadlines, and division of labour (synthesised from the course material).
+
 ## Team
 
 | Name | GitHub | Role / area |
