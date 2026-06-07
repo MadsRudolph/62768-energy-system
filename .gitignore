@@ -1,0 +1,43 @@
+# --- MATLAB / Simulink ---
+*.asv
+*.m~
+*.autosave
+*.slxc
+slprj/
+sccprj/
+codegen/
+*.mex*
+*.slx.r20*
+*.slx.original
+octave-workspace
+
+# --- Arduino / PlatformIO ---
+build/
+.build/
+.pio/
+*.hex
+*.elf
+*.bin
+*.o
+*.d
+
+# --- KiCad / EDA backups ---
+*-backups/
+*.bak
+*.kicad_pcb-bak
+fp-info-cache
+*.000
+*.net~
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.swp
+*~
+
+# --- Large binaries: prefer linking, keep repo light ---
+# (uncomment if these get heavy)
+# *.mp4
+# *.mov
