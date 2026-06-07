@@ -6,6 +6,8 @@ We design and build a complete electrical energy system per the course requireme
 
 > 📋 **Start here:** [`docs/project-overview.md`](docs/project-overview.md) — what to build,
 > targets, subsystem plan, deadlines, and division of labour (synthesised from the course material).
+> 🗂️ **Kickoff:** [`docs/project-plan.md`](docs/project-plan.md) — the 9-section project plan
+> (Lecture 1 structure) to fill in on day 1: tasks/owners, budget, Gantt.
 
 ## Team
 
