@@ -49,13 +49,15 @@ Full requirement list lives in the course spec (see `docs/`).
 | `simulation/` | Simulink models (`.slx`) + parameter scripts (`.m`) |
 | `hardware/schematics/` | Circuit schematics |
 | `hardware/bom/` | Bill of materials |
-| `docs/` | Report, design notes; `docs/datasheets/` for component PDFs |
+| `report/` | LaTeX project report — compile `report/main.tex` (`latexmk -pdf main.tex`) |
+| `docs/` | Spec, lab guides, design notes; `docs/datasheets/` for component PDFs |
 | `measurements/` | Lab/test data (csv, xlsx) |
 
 ## Getting started
 
 - **Firmware:** Arduino IDE (or PlatformIO). Boards used: Arduino + (optionally) TI LAUNCHXL-F28027.
 - **Simulation:** MATLAB/Simulink — open `.slx` models in `simulation/`, run the `Parameters*.m` scripts first to load workspace variables.
+- **Report:** LaTeX in `report/`. Compile with `latexmk -pdf main.tex` (or `pdflatex main` twice). Each `sections/*.tex` can also be compiled standalone. Fill in the frontpage group members and the kravsporing table.
 
 ## Workflow (6-person team)
 

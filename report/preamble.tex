@@ -1,0 +1,71 @@
+% ============================================================
+%  FÆLLES PRÆAMBEL
+%  Deles af main.tex (hele rapporten) og de enkelte sektionsfiler,
+%  som via \ifdefined\mainfile også kan kompileres alene.
+%  Ret kun pakker/stil her ét sted.
+% ============================================================
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish]{babel}
+\usepackage{subcaption}
+\usepackage{graphicx}              % Indsættelse af billeder
+\usepackage[absolute,overlay]{textpos}
+\usepackage{float}                 % H-placering
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}               % \SI{15}{\volt} m.m. -- praktisk til måleresultater
+\usepackage{booktabs}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{listings}              % Kildekode-listings
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, shapes.geometric}
+\tikzset{
+    >=stealth,
+    shorten >=2pt, shorten <=2pt,
+    node distance=2.8cm,
+    block/.style={draw, very thick, rectangle, minimum height=1cm, minimum width=2cm, fill=blue!10},
+}
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            citecolor=blue,
+            urlcolor=blue]{hyperref}
+
+% ------------------------------------------------------------
+%  Listing-stil til C / Arduino-firmware
+% ------------------------------------------------------------
+\lstdefinestyle{c}{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black}\itshape,
+    stringstyle=\color{red},
+    numbers=left, numberstyle=\tiny\color{gray}, stepnumber=1, numbersep=8pt,
+    showspaces=false, showstringspaces=false, showtabs=false,
+    frame=single, rulecolor=\color{black}, tabsize=4, captionpos=b,
+    breaklines=true, breakatwhitespace=false,
+    literate=%
+        {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\aa}}1
+        {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\AA}}1,
+}
+
+% ------------------------------------------------------------
+%  Listing-stil til MATLAB
+% ------------------------------------------------------------
+\lstdefinestyle{matlab}{
+    language=Matlab,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black}\itshape,
+    stringstyle=\color{magenta},
+    numbers=left, numberstyle=\tiny\color{gray}, numbersep=8pt,
+    showstringspaces=false, frame=single, tabsize=4, captionpos=b, breaklines=true,
+}
+
+\title{Elektrisk Energisystem}
+\author{Gruppe \textbf{XX} -- 62768}
+\date{Juni 2026}
+
+\newcommand{\mainfile}{}
+\newcommand{\doubleunderline}[1]{\underline{\underline{#1}}}

@@ -1,0 +1,51 @@
+% ============================================================
+%  SAMLET RAPPORT -- Elektrisk Energisystem (62768)
+%  Fælles præambel: preamble.tex
+%  Hver sektionsfil kan også kompileres alene (se \ifdefined\mainfile).
+%  Kompiler:  latexmk -pdf main.tex     (eller pdflatex main, 2x)
+% ============================================================
+\input{preamble}
+
+\begin{document}
+
+\input{frontpage}
+
+% ============================================================
+%  INDHOLD
+% ============================================================
+\newpage
+\tableofcontents
+\newpage
+
+% ============================================================
+%  RAPPORT
+% ============================================================
+\input{sections/introduktion}
+\input{sections/systemoverblik}
+
+\clearpage
+\section{Delsystemer}
+\input{sections/generator-transformer}   % AC-generator, 3x transformer, ensretter -> V1
+\input{sections/buck}                     % Buck-konverter (Vout = 4.8 V)
+\input{sections/boost}                    % Boost-konverter -> pulserende last (V2 = 10 V)
+\input{sections/solcelle-mppt}            % Solcelle + MPPT + lineær regulator -> V3
+\input{sections/stroemmaaling}            % Strømmåling med diskrete komponenter
+\input{sections/styring}                  % Arduino: PID, ADC, timer, PWM, overvågning
+
+\clearpage
+\input{sections/integration}              % Systemintegration + energikilde-prioritering
+\input{sections/test}                     % Test og resultater (100 W LED-test)
+\input{sections/diskussion}
+\input{sections/konklusion}
+
+% ============================================================
+%  APPENDIKS
+% ============================================================
+\clearpage
+\appendix
+\part{Appendiks}
+\input{sections/kravsporing}              % Kravsporing: 18 krav -> ansvarlig / status
+\clearpage
+\input{sections/appendix-kildekode}       % Firmware-kildekode (\lstinputlisting)
+
+\end{document}

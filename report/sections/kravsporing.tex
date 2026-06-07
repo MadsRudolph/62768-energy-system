@@ -1,0 +1,38 @@
+\ifdefined\mainfile\else\input{../preamble}\begin{document}\fi
+
+\section{Kravsporing}
+\label{sec:kravsporing}
+% Sporing af kravspecifikationens 18 krav -> ansvarlig / delsystem / status.
+% Hold synkront med GitHub-issues.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c l c l c}
+        \toprule
+        \textbf{\#} & \textbf{Krav} & \textbf{Pri.} & \textbf{Delsystem} & \textbf{Status} \\
+        \midrule
+        1  & AC-generator spænding (V1)   & 1 & Generator   & \\
+        2  & AC-generator strøm           & 1 & Generator   & \\
+        3  & V1 under belastning          & 1 & Generator   & \\
+        4  & Belastningsspænding (V2)     & 1 & Boost       & \\
+        5  & Belastningsstrøm (V2)        & 1 & Boost       & \\
+        6  & V2 under belastning          & 1 & Boost       & \\
+        7  & Energilager strøm (V3)       & 1 & Solcelle    & \\
+        8  & Spændingskonvertering        & 1 & Buck/Boost  & \\
+        9  & Diskrete komponenter         & 1 & Buck/Boost  & \\
+        10 & Strømmåling (diskret)        & 1 & Strømmåling & \\
+        11 & Energikilde-prioritering     & 1 & Integration & \\
+        12 & Buck og Boost realiseret     & 1 & Buck/Boost  & \\
+        13 & Systemovervågning            & 2 & Software    & \\
+        14 & Overvågning hver 1.0\,s      & 2 & Software    & \\
+        15 & Software design (Arduino)    & 2 & Software    & \\
+        16 & Systemtest (100\,W LED)      & 1 & Test        & \\
+        17 & Lineær regulator             & 2 & Solcelle    & \\
+        18 & Databehandlingsplatform      & 2 & Software    & \\
+        \bottomrule
+    \end{tabular}
+    \caption{Kravsporing. Pri. 1 = skal designes og implementeres; Pri. 2 = frivilligt.}
+    \label{tab:kravsporing}
+\end{table}
+
+\ifdefined\mainfile\else\end{document}\fi

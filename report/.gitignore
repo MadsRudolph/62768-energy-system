@@ -1,0 +1,19 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# Built PDF — compile locally (figure PDFs in images/ are still tracked)
+/main.pdf

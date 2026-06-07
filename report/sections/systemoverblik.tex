@@ -1,0 +1,40 @@
+\ifdefined\mainfile\else\input{../preamble}\begin{document}\fi
+
+\section{Systemoverblik og krav}
+\label{sec:systemoverblik}
+% Overordnet blokdiagram (se TikZ-skabelon nedenfor) + de vigtigste krav (V1/V2/V3).
+% Forklar energistrømmen: AC-generator -> transformer -> ensretter -> buck;
+% solcelle -> MPPT -> lineær reg -> energilager; boost -> pulserende last.
+
+% --- Skabelon til blokdiagram (udfyld/erstat) ---
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=2.2cm and 1.6cm]
+        \node[block] (gen)  {AC-generator};
+        \node[block, right=of gen] (tr) {3$\times$ transformer};
+        \node[block, right=of tr] (rec) {Ensretter};
+        \node[block, right=of rec] (buck) {Buck 4.8\,V};
+        \draw[->] (gen) -- (tr);
+        \draw[->] (tr) -- (rec);
+        \draw[->] (rec) -- node[above]{V1=15\,V} (buck);
+    \end{tikzpicture}
+    \caption{Forenklet blokdiagram af energisystemet (udvid med solcelle/MPPT, energilager, boost og last).}
+    \label{fig:blokdiagram}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c l l}
+        \toprule
+        \textbf{Knude} & \textbf{Spænding} & \textbf{Krav} \\
+        \midrule
+        V1 & 15\,V $\pm$1\,V  & ved 100--300\,mA, hold inden for 1.0\,s \\
+        V2 & 10\,V $\pm$1\,V  & lever $\geq$150\,mA, last-step 50--150\,mA \\
+        V3 & 5\,V $\pm$0.5\,V & for strømme $>$20\,mA \\
+        \bottomrule
+    \end{tabular}
+    \caption{Centrale spændingskrav. Fuld liste i appendiks~\ref{sec:kravsporing}.}
+    \label{tab:krav-overblik}
+\end{table}
+
+\ifdefined\mainfile\else\end{document}\fi
