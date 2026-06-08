@@ -17,7 +17,7 @@ We design and build a complete electrical energy system per the course requireme
 | Jonas Beck Jensen | | |
 | Andreas Skånning | | |
 | Bjørn Bjarnason | | |
-| Nikolas Skånning | | |
+| Nikolas Jacobsen | @nikolas-jacobsen | |
 | _teammate 6_ | | |
 
 ## System overview
