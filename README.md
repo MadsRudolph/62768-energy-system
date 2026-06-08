@@ -14,11 +14,11 @@ We design and build a complete electrical energy system per the course requireme
 | Name | GitHub | Role / area |
 |------|--------|-------------|
 | Mads Rudolph | @MadsRudolph | |
-| Jonas Beck Jensen | | |
-| Andreas Skånning | | |
-| Bjørn Bjarnason | | |
+| Jonas Beck Jensen | @MotherFrogher | |
+| Andreas Skånning | @AndreasSJacobsen | |
+| Bjørn Bjarnason | @Ask-ham | |
 | Nikolas Jacobsen | @nikolas-jacobsen | |
-| _teammate 6_ | | |
+| Nikolas Primdahl Lund | @s235080 | |
 
 ## System overview
 
