@@ -10,6 +10,7 @@ Structure per Lecture 1. Pre-filled from the spec + [`project-overview.md`](proj
 | Project title | Elektrisk Energisystem |
 | Project-ID | [TBD] |
 | Group no. | [TBD] |
+| Project leader | Bjørn Bjarnason |
 | Members | Mads Rudolph (s246132), Jonas Beck Jensen (s240324), Andreas Skånning (s241123), Bjørn Bjarnason (s233928), Nikolas Skånning (s245428), [member 6] |
 | Date | [TBD] |
 
@@ -73,24 +74,27 @@ CDIO. Flow: **model** (MATLAB/Simulink) → **circuit-simulate** (QSPICE) → **
 Equipment via **EIS (eis.dtu.dk), kit MCA-143** — contact Dan Burer.
 
 ## 8. Activities plan
-```mermaid
-gantt
-    dateFormat YYYY-MM-DD
-    title 62768 — 3-week plan
-    section Week 1
-    Kickoff, plan, components      :2026-06-08, 1d
-    Simulink modeling + codegen    :2026-06-09, 3d
-    Converter design + QSPICE      :2026-06-10, 3d
-    section Week 2
-    Build subsystems               :2026-06-15, 4d
-    Firmware (PID, MPPT, monitor)  :2026-06-15, 4d
-    PCB design (KiCad)             :2026-06-16, 4d
-    section Week 3
-    Integration                    :2026-06-22, 2d
-    System test (100 W LED)        :2026-06-24, 1d
-    Report + poster                :2026-06-22, 4d
-    Hand-in (DTU Learn)            :milestone, 2026-06-26, 0d
-```
+**Authoritative schedule — [Gantt (Google Sheets)](https://docs.google.com/spreadsheets/d/19ZzGKzBEv2S9PaVvXlEKpNqkHAYsdZk_XWM64Xs1Ixg/edit?gid=1115838130)**,
+maintained by Bjørn (project leader). WBS across 3 phases, which map to the 3 course weeks
+(≈ 8–12 / 15–19 / 22–26 June — confirm the exact phase→date mapping in the sheet).
+
+| WBS | Task | Phase |
+|---|---|---|
+| 1.2 | Undersøgelser | 1 |
+| 1.3 | Planlægning | 1 |
+| 2.1 | Buck converter | 1–2 |
+| 2.2 | Buck converter 2 | 1–2 |
+| 2.3 | Rectifier | 1–2 |
+| 2.4 | Boost converter | 2 |
+| 3.1 | Opto coupler | 2–3 |
+| 3.1 | PWM driver | 2–3 |
+| 4.1 | PID 1 | 3 |
+| 4.2 | PID 2 | 3 |
+| 4.3 | MPPT | 3 |
+| 4.4 | UI / monitoring | 3 |
+
+> The Google Sheet is the **source of truth** for the schedule — keep owners, dates, and
+> % completion there; this table is just an offline snapshot.
 
 ## 9. References
 - Kravspecifikation (`Project Specifications.pdf`)
