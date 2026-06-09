@@ -1,0 +1,16 @@
+.title Boost 5V to 15V - 62768 energy system
+S1 sw 0 gate 0 MYSW
+.model MYSW SW(Ron=20m Roff=1Meg Vt=2.5 Vh=0.1)
+.tran 0 25m 0 1u
+.meas TRAN Vout_avg AVG V(out) FROM 24m TO 25m
+.meas TRAN Vout_pp  PP  V(out) FROM 24m TO 25m
+.meas TRAN IL_pp    PP  I(L1)  FROM 24m TO 25m
+
+Vin in 0 5.0V
+Vgate gate 0 DC 0V PULSE(0V 5V 0s 10ns 10ns 1.3333333333333337e-05s 2e-05s)
+L1 in sw 0.00047H
+D1 sw out MYDIODE
+C1 out 0 4.7e-05
+Rload out 0 100.0Ohm
+.model MYDIODE D (IS=1e-09 N=1 RS=0.02)
+.end

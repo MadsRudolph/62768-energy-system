@@ -1,0 +1,9 @@
+# LTspice simulation output (regenerate by running the .net in LTspice)
+*.raw
+*.log
+*.op.raw
+*.fft
+*.db
+# Python
+__pycache__/
+*.pyc
