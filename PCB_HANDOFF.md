@@ -92,7 +92,9 @@ per board. Flag — don't silently substitute — any part with no shop equivale
 ## 3. Component sourcing — TWO sources
 
 ### A) The component shop CSV (passives + generics)
-`C:\Users\mads2\Downloads\Documents\dtu_component_shop.csv` — 1464 parts the team can buy.
+`C:\Users\Mads2\Downloads\Misc\dtu_component_shop.csv` — 1464 parts the team can buy.
+*(Path verified on the work PC. If absent, search for `dtu_component_shop.csv` — it moves
+between machines.)*
 Columns: `Category, Subcategory, Part_Number, Value, Description`. **Everything is
 through-hole (THT)** — good for a single-layer board. Categories: Resistor (673, E96 1/4W
 THT), IC (357), Capacitor (138, ceramic/film/electrolytic), Transistor (93), Diode (91),
@@ -185,6 +187,10 @@ remaining blocks are:
    into the store (Krav: PV consumed first). Theory: Lecture 1 Modeling.
 3. **Current sensing** — discrete, **op-amps allowed, no other ICs** (Krav) — for the
    control loops + monitoring. Likely shunt + op-amp difference amp per branch.
+   *(`docs/datasheets/` + the course `Literature\Datasheets\` also hold ACS712 and INA219
+   current-sensor datasheets — but those are ICs, so the "discrete, no other ICs" Krav
+   likely rules them out. Confirm against the spec before using them; default to a shunt +
+   op-amp design.)*
 4. **(maybe) transformer interface + Arduino I/O / monitoring connector.**
 
 Build these with the same sexpdata pattern (or KiCad GUI), real symbols, net-label
