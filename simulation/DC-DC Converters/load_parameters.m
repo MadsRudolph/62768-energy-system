@@ -29,6 +29,10 @@ Kp = 1;
 Ki = 10;
 Kd = 0;
 
+% Begyndelsesbetingelse for kondensatoren (dcdc120_cl bruger denne i sine
+% RLC-grene som 'InitialVoltage = C0'). Uden den fejler dcdc120_cl ved Run.
+C0 = 0;           % start-spænding på udgangskondensatoren [V]
+
 %% ============== Konverter-specifikke komponenter ==============
 % (vælges/justeres pr. konverter — dimensionér L og C efter ønsket ripple)
 switch lower(converter)
