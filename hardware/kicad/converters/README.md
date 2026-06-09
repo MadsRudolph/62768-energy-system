@@ -4,20 +4,27 @@ KiCad 9 schematics of the two self-built DC/DC converters (Krav 8/9), generated
 programmatically and matching the LTspice design models in
 [`../../../simulation/ltspice/`](../../../simulation/ltspice).
 
-| File | What it is |
-|---|---|
-| `buck.kicad_sch` / `boost.kicad_sch` | The KiCad 9 design schematics (open directly in KiCad 9) |
-| `buck_sim.kicad_sch` / `boost_sim.kicad_sch` | Simulation copies (opto excluded, gate driven by a PULSE source, ngspice models assigned) — open and Run in the KiCad simulator |
-| `models/` | ngspice device models loaded by the sim sheets: `IRF530N.lib` (VDMOS), `1N5819.lib` (Schottky) |
-| `buck_preview.pdf` / `boost_preview.pdf` | Rendered figures (for the report) |
-| `buck_build.py` | Builds the wired buck (rotation-aware, V_in source + GND rail) |
-| `add_optocoupler.py` | Injects the isolated optocoupler gate-drive block (`GND`- or `SW`-referenced) |
-| `generate_kicad.py` | Original from-scratch generator (label-stub style, pre-rework) |
+```
+converters/
+├── design/   real (PCB-bound) schematics + the generator scripts
+│   ├── buck.kicad_sch  boost.kicad_sch        the converters
+│   ├── buck_preview.pdf  boost_preview.pdf    rendered figures (report)
+│   └── buck_build.py  generate_kicad.py  add_optocoupler.py   generators
+├── sim/      simulation copies (one standalone project each)
+│   └── buck_sim.kicad_sch  boost_sim.kicad_sch
+└── models/   ngspice device models (shared by both)
+    └── IRF530N.lib (VDMOS)   1N5819.lib (Schottky)
+```
 
-> **Simulating:** the `*_sim.kicad_sch` sheets drive the gate with a PULSE source
-> (the opto is excluded — its isolated grounds break ngspice). Open one, set a
-> transient (`5m`/`1u` for buck, `25m`/`1u` for boost), Run, and probe `V(VOUT_*)`.
-> Models are referenced relatively as `models/*.lib`.
+**design/** vs **sim/**: the design sheets are the real circuits (opto + everything,
+destined for the PCB). The sim sheets are simplified copies — opto excluded, gate
+driven by a PULSE source — because each must be its **own standalone project** so the
+KiCad simulator nets only that one converter (it flattens a whole project into one
+circuit). Both reference the shared models via the relative path `..\models\*.lib`.
+
+> **Simulating:** open a `sim/*.kicad_sch`, set a transient (`5m`/`1u` for buck,
+> `25m`/`1u` for boost), Run, probe `V(VOUT_*)`. The gate is a PULSE source (the opto's
+> isolated grounds break ngspice, so it's left out of the sim).
 
 ## How these were generated
 
