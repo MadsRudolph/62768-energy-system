@@ -64,7 +64,7 @@ CDIO. Flow: **model** (MATLAB/Simulink) → **circuit-simulate** (QSPICE) → **
 | DC motor (Motraxx SR555) + Hacker A20-L22 generator | 1 | EIS kit MCA-143 | — |
 | 3× ring-core transformer (1:8) | 1 set | EIS kit | — |
 | PV panel (Phaesun Sun Plus 10) + halogen "sun" | 1 | EIS kit | — |
-| MOSFET IRF540N, gate driver IR2110 | [qty] | [src] | [TBD] |
+| MOSFET IRF530N, gate driver IR2110 | [qty] | [src] | [TBD] |
 | Opto ILD74 / IL300, op-amp MCP601, diode 1N4007 | [qty] | [src] | [TBD] |
 | Inductors / capacitors (per L/C sizing) | [qty] | [src] | [TBD] |
 | Arduino (×~4) + NI USB-6008 DAQ | 4 + 1 | EIS / dept | — |

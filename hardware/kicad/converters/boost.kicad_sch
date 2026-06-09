@@ -2032,7 +2032,7 @@
 				)
 			)
 		)
-		(property "Value" "IRF540N"
+		(property "Value" "IRF530N"
 			(at 116.84 119.38 0)
 			(effects
 				(font

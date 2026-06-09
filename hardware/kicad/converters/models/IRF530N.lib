@@ -1,0 +1,22 @@
+* IRF530N - N-channel power MOSFET (Infineon / International Rectifier, TO-220)
+* ngspice-native VDMOS model, parameterised from the IRF530N datasheet.
+* For KiCad: M1 -> Simulation Model -> "SPICE model from file" -> pick this file.
+*
+* Datasheet values used:
+*   V(BR)DSS = 100 V      Rds(on) = 90 mOhm @ Vgs=10V
+*   Vgs(th)  = 2-4 V      gfs = 8 S
+*   Qg = 34 nC (Qgs 7.6 nC, Qgd 14 nC)
+*   Ciss = 920 pF, Coss = 180 pF, Crss = 53 pF
+*   Body diode: Vsd ~1.3 V, trr ~180 ns
+*
+* (This is a datasheet-derived VDMOS model - the ngspice-recommended way to model
+*  a power MOSFET. For the bit-exact vendor model, Infineon's PSpice .lib can be
+*  loaded instead via '.include' - ngspice reads PSpice libs in compatibility mode.)
+*
+.MODEL IRF530N VDMOS(
++ Vto=3.5 Kp=6 Lambda=0
++ Rd=45m Rs=25m Rg=2
++ Cgs=850p Cgdmax=1n Cgdmin=50p a=0.3
++ Cjo=150p M=0.5 Vj=0.8
++ Is=1n N=1.1 Rb=15m
++ )

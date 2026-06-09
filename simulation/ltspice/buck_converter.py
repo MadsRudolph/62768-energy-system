@@ -13,7 +13,7 @@ Design (see README.md), from the Lec 2 / Lec 5 converter formulas:
     Rload= 10 ohm  (~0.5 A bench load)
 
 The switch + diode are ideal-ish SPICE models for this first design pass.
-The real, discrete build uses an IRF540N MOSFET + high-side gate driver
+The real, discrete build uses an IRF530N MOSFET + high-side gate driver
 (IR2110, see Exp 3A) and a Schottky freewheel diode -- swap those in later.
 
 Run:   py -3.13 buck_converter.py

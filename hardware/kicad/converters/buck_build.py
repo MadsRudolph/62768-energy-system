@@ -121,7 +121,7 @@ root = uid()
 #   L1: 90deg horizontal (SW -> OUT)
 comps = [
     ("Simulation_SPICE:VDC", "V_in", "15", 81.28, 116.84, 0, ["1", "2"]),
-    ("Device:Q_NMOS", "M1", "IRF540N", 101.6, 109.22, 0, ["G", "D", "S"]),
+    ("Device:Q_NMOS", "M1", "IRF530N", 101.6, 109.22, 0, ["G", "D", "S"]),
     ("Device:D_Schottky", "D1", "1N5819", 104.14, 118.11, 270, ["1", "2"]),
     ("Device:L", "L1", "470u", 116.84, 114.3, 90, ["1", "2"]),
     ("Device:C_Polarized", "C1", "47u", 132.08, 118.11, 0, ["1", "2"]),

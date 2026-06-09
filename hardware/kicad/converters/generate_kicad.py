@@ -7,7 +7,7 @@ proven kicad-skip / sexpdata pattern (KiCad 9.0, version 20250114). Components
 are placed on an explicit left-to-right grid; connectivity is by local net
 labels placed exactly on each pin endpoint (no fragile wire routing).
 
-The switch is a real N-MOSFET symbol (Q_NMOS -> IRF540N), the freewheel/output
+The switch is a real N-MOSFET symbol (Q_NMOS -> IRF530N), the freewheel/output
 diode a Schottky (D_Schottky -> 1N5819) -- matching the discrete build (Krav 9).
 
 Run:   py -3.13 generate_kicad.py
@@ -185,7 +185,7 @@ def build(title, comps, out_path):
 # ======================= BUCK 15V -> 5V =======================
 # All origins on a 2.54 mm grid so every pin lands on KiCad's 1.27 mm grid.
 buck = [
-    {"lib": "Device:Q_NMOS", "ref": "M1", "val": "IRF540N", "x": 88.9, "y": 88.9,
+    {"lib": "Device:Q_NMOS", "ref": "M1", "val": "IRF530N", "x": 88.9, "y": 88.9,
      "nets": {"D": "VIN_15V", "S": "SW", "G": "GATE"}},
     {"lib": "Device:D_Schottky", "ref": "D1", "val": "1N5819", "x": 101.6, "y": 104.14,
      "nets": {"1": "SW", "2": "GND"}},                       # K=SW, A=GND (freewheel)
@@ -201,7 +201,7 @@ buck = [
 boost = [
     {"lib": "Device:L", "ref": "L1", "val": "470u", "x": 88.9, "y": 88.9,
      "nets": {"1": "VIN_5V", "2": "SW"}},
-    {"lib": "Device:Q_NMOS", "ref": "M1", "val": "IRF540N", "x": 114.3, "y": 88.9,
+    {"lib": "Device:Q_NMOS", "ref": "M1", "val": "IRF530N", "x": 114.3, "y": 88.9,
      "nets": {"D": "SW", "S": "GND", "G": "GATE"}},          # low-side switch
     {"lib": "Device:D_Schottky", "ref": "D1", "val": "1N5819", "x": 139.7, "y": 88.9,
      "nets": {"1": "VOUT_15V", "2": "SW"}},                  # K=OUT, A=SW (output)

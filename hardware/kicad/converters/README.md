@@ -20,7 +20,7 @@ overlapping cluster. So these follow the **proven kicad-skip / sexpdata pattern*
 (per the DTU Multimeter project): components placed on an explicit 2.54 mm grid,
 connectivity by net labels dropped exactly on each pin, with short wire stubs.
 
-- **Switch** = real N-MOSFET symbol (`Q_NMOS`, valued **IRF540N**) — maps to the kit part.
+- **Switch** = real N-MOSFET symbol (`Q_NMOS`, valued **IRF530N**) — maps to the kit part.
 - **Diode** = `D_Schottky`, valued **1N5819** (freewheel on the buck, output on the boost).
 - Internal nets (`SW`, `VOUT_*`, `GND`) are local labels; external interface nets
   (`VIN_*`, `GATE`) are **global-label ports** — they connect to the rest of the system
@@ -52,9 +52,10 @@ R2 10k: gate pulldown -> reference
   referenced to the MOSFET **source = SW node** (not GND), since V_gs is measured against
   the source. The opto's isolation is what lets this side float on SW.
 
-> ⚠️ **Drive strength:** a 4N25 phototransistor gives isolation but only ~2 mA of drive —
-> too slow to switch the IRF540N gate (~70 nC) at 50 kHz. For real switching, add a
-> **BJT totem-pole buffer** (BD139 + PNP) after the opto, or lower the switching frequency.
+> ⚠️ **Drive strength:** a 4N25 phototransistor gives isolation but only ~2 mA of drive.
+> The IRF530N's gate charge (~34 nC) charges in ~17 µs at 2 mA — workable at **10 kHz**
+> but still marginal at 50 kHz. For fast, clean switching add a **BJT totem-pole buffer**
+> (BD139 + PNP) after the opto, and/or keep the switching frequency low.
 
 ## ERC
 

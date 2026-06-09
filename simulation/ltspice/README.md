@@ -69,13 +69,13 @@ actual board (Krav 9: **discrete components, no converter ICs**) maps them to:
 
 | Model element | Real part |
 |---|---|
-| `S1` (SW switch) | **IRF540N** power MOSFET (in the kit) |
+| `S1` (SW switch) | **IRF530N** power MOSFET (in the kit) |
 | gate `PULSE` source | Arduino PWM → **gate driver** (IR2110, high-side for the buck — see Exp 3A) |
 | `MYDIODE` | Schottky freewheel/output diode (e.g. 1N5819) |
 | — | + current sense (discrete + op-amp, Krav 10) |
 
 ## Next steps
-- Swap the ideal `SW` for a real IRF540N SPICE model and the diode for a Schottky model.
+- Swap the ideal `SW` for a real IRF530N SPICE model and the diode for a Schottky model.
 - Close the loop (op-amp PI feedback) and re-check the step-response specs
   (V1 100→300 mA, V2 50→150 mA in ≤1 s).
 - Optionally draw the graphical `.asc` schematics for the report figures.

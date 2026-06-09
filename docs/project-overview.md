@@ -45,7 +45,7 @@ Two branches feed a shared **1 F** super-capacitor store → boost → pulsing l
 | **Buck converter** (discrete) | feed V2; with `k=D`: `ΔI=V_s·k(1−k)/(2fL)`, `ΔV_c=V_s·k(1−k)/(16LCf²)` (amplitude, about the mean); worst-case ripple at k=0.5 ≈ `V_s/(4fL)` | **Lec 2** (Erickson) + **Lec 5** (Rashid chopper) |
 | **Boost converter** (discrete) | store → pulsing load; `V_a=V_s/(1−k)`, `ΔI=V_s·k/(2fL)`, `ΔV_c=(V_a/R)·k/(2fC)` | **Lec 2** + **Lec 5** |
 | **PV + MPPT** | Sun Plus 10 under 4×400 W halogen → **discrete MPPT (Perturb & Observe)** → buck + linear-reg → 1 F store at V3 = 5 V | **Lec 1 Modeling** (P&O flowchart) |
-| **Gate drive + current sense** | the **Exp 3A** circuit: ILD74 opto → IR2110 → IRF540N + 1N4007 freewheel; isolated feedback via IL300 + MCP601 op-amps | Exp 3A lab |
+| **Gate drive + current sense** | the **Exp 3A** circuit: ILD74 opto → IR2110 → IRF530N + 1N4007 freewheel; isolated feedback via IL300 + MCP601 op-amps | Exp 3A lab |
 | **Arduino control** | motor PID + MPPT + monitoring (see below) | **Lec 1 Modeling** (digital PID in C, Ziegler-Nichols) |
 
 ## The Arduino's role (important)

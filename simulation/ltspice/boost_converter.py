@@ -13,7 +13,7 @@ Design (see README.md), from the Lec 2 / Lec 5 converter formulas:
     Rload= 100 ohm (150 mA at 15 V)
 
 The switch + diode are ideal-ish SPICE models for this first design pass.
-The real, discrete build uses an IRF540N MOSFET + gate driver (low-side here,
+The real, discrete build uses an IRF530N MOSFET + gate driver (low-side here,
 simpler than the buck) and a Schottky output diode -- swap those in later.
 
 Run:   py -3.13 boost_converter.py
