@@ -32,24 +32,33 @@ Two branches feed a shared **1 F** super-capacitor store → boost → pulsing l
 > Priority 1 = must design + implement. Priority 2 = optional.
 
 ## Subsystems + which lecture drives each
+> ✅ **All mappings below are verified against the slide PDFs** (read 9 June). Lecture
+> sequence: **Lec 1** = Project Description/Plan; **Lec 1 Modeling** = motor/gen model +
+> PID + MPPT (Per Lynggaard companion); **Lec 2** = buck/boost (Erickson);
+> **Lec 3** = PMSM; **Lec 4** = diode rectifiers; **Lec 5** = DC/DC choppers (Rashid).
+> (Note: the 2024 `Lec 2.pdf` is an old *DC-Motor* deck, superseded by
+> `Lec 2_PowerElectronics.pdf` — ignore the old one.)
+
 | Subsystem | What to do | Theory source |
 |---|---|---|
-| **Generator stage** | PWM-drive DC motor → 3-phase PMSM generator → 3× transformer (**1:8, Y-Δ** — avoids 3rd-harmonic issues), 20–400 Hz → **6-diode rectifier + 15 mF** → V1 = 15 V | Lec 1 (PMDC 2-state model), Lec 2 (motor+gen transfer functions), Lec 3 (PMSM), Lec 4 (3φ rectifier: V_dc = 1.654·V_m, diode rating, L/C filter) |
-| **Buck converter** (discrete) | feed V2; `k=V_a/V_s`, `ΔI=V_s·k(1−k)/(fL)`, `ΔV_c=V_s·k(1−k)/(8LCf²)`, `L_c=(1−k)R/2f`, `C_c=(1−k)/16Lf²` | Lec 5 |
-| **Boost converter** (discrete) | store → pulsing load; `V_a=V_s/(1−k)`, `L_c=k(1−k)R/2f`, `C_c=k/2fR` | Lec 5 |
-| **PV + MPPT** | Sun Plus 10 under 4×400 W halogen → **discrete MPPT (Perturb & Observe)** → linear-reg/buck → 1 F store at V3 = 5 V | Lec 2 (P&O flowchart) |
+| **Generator stage** | PWM-drive DC motor → 3-phase PMSM generator → 3× transformer (**1:8, Y-Δ** — avoids 3rd-harmonic issues), 20–400 Hz → **6-diode rectifier + 15 mF** → V1 = 15 V | **Lec 1 Modeling** (motor+gen TF), **Lec 3** (PMSM), **Lec 4** (3φ rectifier: `V_dc=1.654·V_m`, FF/RF, L/C/LC filter) |
+| **Buck converter** (discrete) | feed V2; with `k=D`: `ΔI=V_s·k(1−k)/(2fL)`, `ΔV_c=V_s·k(1−k)/(16LCf²)` (amplitude, about the mean); worst-case ripple at k=0.5 ≈ `V_s/(4fL)` | **Lec 2** (Erickson) + **Lec 5** (Rashid chopper) |
+| **Boost converter** (discrete) | store → pulsing load; `V_a=V_s/(1−k)`, `ΔI=V_s·k/(2fL)`, `ΔV_c=(V_a/R)·k/(2fC)` | **Lec 2** + **Lec 5** |
+| **PV + MPPT** | Sun Plus 10 under 4×400 W halogen → **discrete MPPT (Perturb & Observe)** → buck + linear-reg → 1 F store at V3 = 5 V | **Lec 1 Modeling** (P&O flowchart) |
 | **Gate drive + current sense** | the **Exp 3A** circuit: ILD74 opto → IR2110 → IRF540N + 1N4007 freewheel; isolated feedback via IL300 + MCP601 op-amps | Exp 3A lab |
-| **Arduino control** | motor PID + MPPT + monitoring (see below) | Lec 2 (digital PID in C) |
+| **Arduino control** | motor PID + MPPT + monitoring (see below) | **Lec 1 Modeling** (digital PID in C, Ziegler-Nichols) |
 
 ## The Arduino's role (important)
 - The Arduino's **PID regulates V1 by driving the motor's PWM** (closed loop on the
   generator output) — **not** the converters. The buck/boost are **discrete/analog**.
 - So the Arduino does: **motor PID + MPPT + (optional) PC monitoring**.
-- Lec 2 shows **proportional-only control fails** (≈3 V steady-state error, or ringing if
-  gain is pushed) → **full PID required**.
-- **For the PID C-code:** build the controller model from **Lec 2's motor+generator
-  transfer functions** (this is the loop the Arduino runs). `dcdc120_cl.slx` is the
-  *converter* model — a separate thing, not the Arduino's deployed controller.
+- **Lec 1 Modeling** shows a P-only loop leaves **≈3 V steady-state error** (or rings if
+  you push the gain) → a **full PID** is required. The plant ≈ 1st-order,
+  `H(s)=22.83/((s+7.4)(s+37.17))`, settles ~9.6 V.
+- **For the PID C-code:** Lec 1 Modeling gives the digital PID directly as a few lines of
+  C (integral = running sum `y=y+x; yi=y*Ki/fs`; derivative = difference
+  `y=x-xold; yd=Kd*y*fs`), tuned with Ziegler-Nichols. `dcdc120_cl.slx` is the *converter*
+  model — a separate thing, not the Arduino's deployed controller.
 
 ## How the repo maps to this
 | Repo | Role |

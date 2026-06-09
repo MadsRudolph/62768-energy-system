@@ -55,20 +55,23 @@ switch lower(converter)
 end
 
 %% ===================== Afledte værdier (sanity-check) =====================
+% Ripple-formler følger Lec 2 (Erickson). Bemærk: dIL/dVc er AMPLITUDEN
+% (ripple omkring middelværdien = halvdelen af peak-to-peak), så de kan
+% sammenlignes direkte med en ±-tolerance i Kravspecifikationen.
 T = 1/f;                         % switch-periode [s]
 switch lower(converter)
     case 'buck'
         Vout = d * Vin;                          % udgangsspænding [V]
-        dIL  = Vin*d*(1-d)/(f*L);                % spole-ripple [A]
-        dVc  = Vin*d*(1-d)/(8*f^2*L*C);          % udgangs-ripple [V]
+        dIL  = Vin*d*(1-d)/(2*f*L);              % spole-ripple [A]  (Lec 2 slide 5)
+        dVc  = Vin*d*(1-d)/(16*f^2*L*C);         % udgangs-ripple [V] (Lec 2 slide 5)
     case 'boost'
         Vout = Vin/(1-d);
-        dIL  = Vin*d/(f*L);
-        dVc  = (Vout/R)*d/(f*C);
+        dIL  = Vin*d/(2*f*L);                    % (Lec 2 slide 8)
+        dVc  = (Vout/R)*d/(2*f*C);               % (Lec 2 slide 8)
     case 'buckboost'
         Vout = Vin*d/(1-d);
-        dIL  = Vin*d/(f*L);
-        dVc  = (Vout/R)*d/(f*C);
+        dIL  = Vin*d/(2*f*L);                    % analog til boost (ikke udledt i Lec 2)
+        dVc  = (Vout/R)*d/(2*f*C);
 end
 Iout = Vout / R;                 % udgangsstrøm [A]
 
