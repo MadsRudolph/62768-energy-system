@@ -1438,6 +1438,183 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Simulation_SPICE:VPULSE"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.0254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "V"
+				(at 2.54 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "VPULSE"
+				(at 2.54 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Voltage source, pulse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=+ 2=-"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Type" "PULSE"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Sim.Params" "y1=0 y2=1 td=2n tr=2n tf=2n tw=50n per=100n"
+				(at 2.54 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "simulation"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VPULSE_0_0"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy -1.397 -0.762) (xy -1.143 0.762) (xy -0.127 0.762) (xy 0.127 -0.762) (xy 1.143 -0.762)
+						(xy 1.397 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "+"
+					(at 0 1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "VPULSE_0_1"
+				(circle
+					(center 0 0)
+					(radius 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "VPULSE_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "Boost converter  5V -> 15V   (62768, Krav 8/9)"
 		(exclude_from_sim no)
@@ -1710,6 +1887,16 @@
 		)
 		(uuid "1be9eeb4-78f7-43b3-894c-c257e38896d5")
 	)
+	(label "VOUT_15V"
+		(at 149.86 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aaa0f973-157f-41b8-9548-1877c817881d")
+	)
 	(global_label "GATE"
 		(shape input)
 		(at 101.6 116.84 180)
@@ -1742,6 +1929,26 @@
 		(uuid "5958aff4-f147-41bf-aa20-471bc458a45e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 274.32 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE"
+		(shape input)
+		(at 48.26 91.44 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "647e942f-14b6-456a-a5dd-18898e4cb2f6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -40.64 198.12 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1810,6 +2017,26 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape input)
+		(at 48.26 101.6 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d1c0bc3c-fa0d-48ee-b015-b47e116a6cb2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 195.58 -17.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GND_MCU"
 		(shape input)
 		(at 93.98 147.32 180)
@@ -1860,7 +2087,7 @@
 		(dnp no)
 		(uuid "1ce61838-78f5-4630-91e9-d5dba4c992ea")
 		(property "Reference" "L1"
-			(at 87.63 99.14 0)
+			(at 86.36 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1868,7 +2095,7 @@
 			)
 		)
 		(property "Value" "470u"
-			(at 92.71 99.14 0)
+			(at 91.44 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1927,7 +2154,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3db012e4-934b-4f8c-8082-1e737ad63dc3")
-		(property "Reference" "V_in"
+		(property "Reference" "V_in1"
 			(at 85.09 115.4401 0)
 			(effects
 				(font
@@ -2009,7 +2236,7 @@
 		(instances
 			(project ""
 				(path "/833076c1-5953-4317-ac25-379fff831288"
-					(reference "V_in")
+					(reference "V_in1")
 					(unit 1)
 				)
 			)
@@ -2207,7 +2434,7 @@
 		(dnp no)
 		(uuid "7ab20495-8455-40ed-a80e-9dd00f272337")
 		(property "Reference" "D1"
-			(at 116.92 106.68 0)
+			(at 121.92 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2215,7 +2442,7 @@
 			)
 		)
 		(property "Value" "1N5819"
-			(at 116.92 101.6 0)
+			(at 121.92 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2249,6 +2476,42 @@
 				(hide yes)
 			)
 		)
+		(property "Sim.Library" "C:\\Users\\Mads2\\DTU\\4. Semester\\Electrical Energy Systems\\team\\hardware\\kicad\\converters\\models\\1N5819.lib"
+			(at 121.92 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "1N5819"
+			(at 121.92 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 121.92 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 121.92 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "40465d61-534d-46d4-8981-83331eb2285d")
 		)
@@ -2268,7 +2531,7 @@
 		(lib_id "Device:R")
 		(at 97.79 142.24 90)
 		(unit 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
@@ -2340,7 +2603,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bd6972eb-3aec-4702-a802-d71d324d3fdf")
-		(property "Reference" "Rload"
+		(property "Reference" "Rload1"
 			(at 154.86 115.57 0)
 			(effects
 				(font
@@ -2349,7 +2612,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 154.86 120.65 0)
+			(at 154.94 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2392,7 +2655,7 @@
 		(instances
 			(project "energy_system"
 				(path "/833076c1-5953-4317-ac25-379fff831288"
-					(reference "Rload")
+					(reference "Rload1")
 					(unit 1)
 				)
 			)
@@ -2402,7 +2665,7 @@
 		(lib_id "Isolator:4N25")
 		(at 109.22 144.78 0)
 		(unit 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
@@ -2472,6 +2735,113 @@
 			(project "energy_system"
 				(path "/833076c1-5953-4317-ac25-379fff831288"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Simulation_SPICE:VPULSE")
+		(at 48.26 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fba746f9-c1f3-4b39-a6fb-3698c17919e3")
+		(property "Reference" "V1"
+			(at 52.07 93.8501 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "VPULSE"
+			(at 52.07 96.3901 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage source, pulse"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "PULSE"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "y1=0 y2=12 td=0 tr=10n tf=10n tw=13.3u per=20u"
+			(at 52.07 98.9301 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "f95591e7-1551-4829-a105-711c9ba0dac0")
+		)
+		(pin "2"
+			(uuid "1c3064e6-76a7-434a-bc95-8425f1031c2c")
+		)
+		(instances
+			(project ""
+				(path "/833076c1-5953-4317-ac25-379fff831288"
+					(reference "V1")
 					(unit 1)
 				)
 			)

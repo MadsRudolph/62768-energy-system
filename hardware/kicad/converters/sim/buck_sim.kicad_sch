@@ -1995,7 +1995,7 @@
 		(uuid "38c99098-21a3-4645-9027-d1fcdcc42184")
 	)
 	(label "SW"
-		(at 165.1 129.54 0)
+		(at 58.42 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2015,7 +2015,7 @@
 		(uuid "51a2abdc-3eef-4eba-a9f3-3931043d0411")
 	)
 	(label "GATE"
-		(at 165.1 119.38 0)
+		(at 58.42 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2174,7 +2174,7 @@
 		(dnp no)
 		(uuid "2426a0fe-c7b1-4734-a713-2c008b6b469b")
 		(property "Reference" "D1"
-			(at 106.68 111.76 0)
+			(at 101.6 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2182,7 +2182,7 @@
 			)
 		)
 		(property "Value" "1N5819"
-			(at 106.68 121.92 0)
+			(at 106.68 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2225,7 +2225,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Pins" "1=A 2=K"
+		(property "Sim.Pins" "1=K 2=A"
 			(at 104.14 118.11 0)
 			(effects
 				(font
@@ -2509,7 +2509,7 @@
 		(lib_id "Device:R")
 		(at 90.17 142.24 90)
 		(unit 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
@@ -2574,7 +2574,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:VPULSE")
-		(at 165.1 124.46 0)
+		(at 58.42 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2583,7 +2583,7 @@
 		(fields_autoplaced yes)
 		(uuid "9ff688c1-37d8-4aa9-8393-a47245050aa0")
 		(property "Reference" "V1"
-			(at 168.91 121.7901 0)
+			(at 62.23 93.8501 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2592,7 +2592,7 @@
 			)
 		)
 		(property "Value" "VPULSE"
-			(at 168.91 124.3301 0)
+			(at 62.23 96.3901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2601,7 +2601,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2610,7 +2610,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2619,7 +2619,7 @@
 			)
 		)
 		(property "Description" "Voltage source, pulse"
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2628,7 +2628,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2637,7 +2637,7 @@
 			)
 		)
 		(property "Sim.Type" "PULSE"
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2646,7 +2646,7 @@
 			)
 		)
 		(property "Sim.Device" "V"
-			(at 165.1 124.46 0)
+			(at 58.42 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2656,7 +2656,7 @@
 			)
 		)
 		(property "Sim.Params" "y1=0 y2=12 td=0 tr=10n tf=10n tw=6.67u per=20u"
-			(at 168.91 126.8701 0)
+			(at 62.23 98.9301 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2756,7 +2756,7 @@
 		(dnp no)
 		(uuid "cd06e7c3-3fc3-44c6-b512-116f132959d8")
 		(property "Reference" "C1"
-			(at 134.62 111.76 0)
+			(at 134.62 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2902,7 +2902,7 @@
 		(dnp no)
 		(uuid "d32d1758-37be-4fb6-a0eb-ff1769c477c9")
 		(property "Reference" "L1"
-			(at 120.65 107.95 0)
+			(at 119.38 111.76 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2910,7 +2910,7 @@
 			)
 		)
 		(property "Value" "470u"
-			(at 120.65 118.11 0)
+			(at 119.38 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2969,7 +2969,7 @@
 		(dnp no)
 		(uuid "effff558-d264-4899-b24b-45709800e7fa")
 		(property "Reference" "Rload1"
-			(at 152.4 111.76 0)
+			(at 152.4 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)

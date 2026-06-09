@@ -16,3 +16,4 @@ __pycache__/
 *_opto.pdf
 *.kicad_prl
 *-backups/
+*.cir
