@@ -1,25 +1,37 @@
 ** Drc report for feedback_circuit.kicad_pcb **
-** Created on 2026-06-10T00:48:15+0200 **
+** Created on 2026-06-10T01:11:06+0200 **
 
 ** Found 0 DRC violations **
 
-** Found 4 unconnected pads **
+** Found 7 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(61.6950 mm, 49.7350 mm): PTH pad 2 [/IN_P] of R1
-    @(71.8450 mm, 49.7350 mm): PTH pad 1 [/IN_P] of R2
+    @(54.4750 mm, 34.0450 mm): PTH pad 1 [/LED] of U1
+    @(61.6950 mm, 57.7850 mm): PTH pad 2 [/LED] of R4
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(66.7724 mm, 57.7850 mm): Track [/OUT_PD] on B.Cu, length 5.0726 mm
+    @(91.6150 mm, 36.5850 mm): PTH pad 2 [/OUT_PD] of U4
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(89.6150 mm, 49.7350 mm): PTH pad 1 [/SERVO] of R3
+    @(72.9853 mm, 36.5850 mm): Track [/SERVO] on B.Cu, length 0.0597 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(54.4750 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
+    @(62.0950 mm, 41.6650 mm): PTH pad 5 [GND] of U1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(79.4650 mm, 49.7350 mm): Track [GND] on B.Cu, length 5.5413 mm
+    @(91.6150 mm, 41.6650 mm): PTH pad 4 [GND] of U4
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(91.6150 mm, 39.1250 mm): PTH pad 3 [GND] of U4
+    @(91.6150 mm, 41.6650 mm): PTH pad 4 [GND] of U4
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(91.6150 mm, 41.6650 mm): PTH pad 4 [GND] of U4
+    @(106.2400 mm, 49.7350 mm): Track [GND] on B.Cu, length 9.0050 mm
 
 ** Found 0 Footprint errors **
 

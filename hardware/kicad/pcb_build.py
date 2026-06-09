@@ -14,11 +14,14 @@ import json, sys, math
 import pcbnew
 from pcbnew import VECTOR2I, FromMM
 
+import os
 FPLIB = r"C:\Program Files\KiCad\9.0\share\kicad\footprints"
+PRJLIB = os.path.join(os.path.dirname(os.path.abspath(__file__)))   # energy_system.pretty
 
 def load_fp(fpid):
     lib, name = fpid.split(":")
-    fp = pcbnew.FootprintLoad(rf"{FPLIB}\{lib}.pretty", name)
+    base = PRJLIB if lib == "energy_system" else FPLIB
+    fp = pcbnew.FootprintLoad(rf"{base}\{lib}.pretty", name)
     if fp is None:
         raise SystemExit(f"footprint ikke fundet: {fpid}")
     return fp
@@ -46,11 +49,20 @@ def main(jsonf, outf):
         fp.SetReference(c["ref"])
         fp.SetValue(c["value"] or "")
         board.Add(fp)
+        # Device:Q_NMOS o.l. har bogstav-pinnumre (G/D/S) mens TO-220-pads
+        # hedder 1/2/3 - uden denne mapping faar MOSFET'ens pads INTET net.
+        GDS = {"1": "G", "2": "D", "3": "S"}
         for pad in fp.Pads():
-            net = c["pads"].get(pad.GetNumber())
+            num = pad.GetNumber()
+            net = c["pads"].get(num) or c["pads"].get(GDS.get(num, ""))
             if net:
                 pad.SetNet(netmap[net])
         fps[c["ref"]] = fp
+    # ingen pad maa ende uden net hvis komponenten har net i netlisten
+    for c in data["components"]:
+        fp = fps[c["ref"]]
+        if c["pads"] and all(p.GetNetCode() == 0 for p in fp.Pads()):
+            raise SystemExit(f"{c['ref']}: ingen pads fik net - pinnummer-mismatch?")
 
     # --- placering ---------------------------------------------------------
     left  = sorted([r for r in fps if (r.startswith("J") and int(r[1:]) % 2 == 1)])
@@ -115,10 +127,11 @@ def main(jsonf, outf):
 
     # --- enkeltsidet opsaetning ---------------------------------------------
     ds.SetCopperLayerCount(2)            # KiCad kraever min. 2; vi router kun B.Cu
-    ds.m_TrackMinWidth = FromMM(0.5)
+    ds.m_TrackMinWidth = FromMM(0.8)
+    # DTU-PCB-prototyping-guiden (fiberlaser): clearance >= 0.8, bane >= 0.8 (1.0 foretrukket)
     nc = board.GetAllNetClasses()["Default"]
-    nc.SetTrackWidth(FromMM(1.0))        # THT/hobby: brede baner
-    nc.SetClearance(FromMM(0.4))
+    nc.SetTrackWidth(FromMM(1.0))
+    nc.SetClearance(FromMM(0.8))
 
     pcbnew.SaveBoard(outf, board)
     print(f"wrote {outf}  ({len(fps)} footprints, {W:.0f}x{H:.0f} mm)")

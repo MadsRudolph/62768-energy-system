@@ -1,53 +1,61 @@
 ** Drc report for current_sense.kicad_pcb **
-** Created on 2026-06-10T00:49:10+0200 **
+** Created on 2026-06-10T01:12:13+0200 **
 
 ** Found 0 DRC violations **
 
-** Found 11 unconnected pads **
+** Found 13 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(54.0850 mm, 36.5850 mm): PTH pad 2 [/FB1] of U1
-    @(71.8450 mm, 49.7350 mm): Track [/FB1] on B.Cu, length 2.4098 mm
+    @(115.1800 mm, 46.6700 mm): Track [+5V] on B.Cu, length 12.4663 mm
+    @(87.4050 mm, 34.0450 mm): Track [+5V] on B.Cu, length 5.3882 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(71.8650 mm, 36.5850 mm): PTH pad 2 [/FB3] of U2
-    @(55.7894 mm, 67.5494 mm): Track [/FB3] on B.Cu, length 2.4245 mm
+    @(62.0950 mm, 39.1250 mm): PTH pad 6 [/FB2] of U1
+    @(56.2237 mm, 59.9337 mm): Track [/FB2] on B.Cu, length 3.0387 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(68.6942 mm, 48.1542 mm): Track [/RET3] on B.Cu, length 3.2558 mm
-    @(37.5400 mm, 51.7500 mm): PTH pad 1 [/RET3] of J3
+    @(138.0800 mm, 49.2100 mm): PTH pad 2 [/I_SENSE1] of J4
+    @(100.2001 mm, 46.7699 mm): Track [/I_SENSE1] on B.Cu, length 10.5451 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(79.4850 mm, 36.5850 mm): PTH pad 7 [/U2B_FB] of U2
-    @(79.4850 mm, 39.1250 mm): PTH pad 6 [/U2B_FB] of U2
+    @(62.0950 mm, 36.5850 mm): PTH pad 7 [/I_SENSE2] of U1
+    @(79.4650 mm, 57.7850 mm): PTH pad 2 [/I_SENSE2] of R23
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(79.4650 mm, 57.7850 mm): PTH pad 2 [/I_SENSE2] of R23
+    @(138.0800 mm, 51.7500 mm): PTH pad 3 [/I_SENSE2] of J4
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(73.0450 mm, 34.0450 mm): PTH pad 1 [/I_SENSE3] of U2
+    @(94.2390 mm, 65.8350 mm): Track [/I_SENSE3] on B.Cu, length 32.5440 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(80.6650 mm, 36.5850 mm): PTH pad 7 [/U2B_FB] of U2
+    @(80.6650 mm, 39.1250 mm): PTH pad 6 [/U2B_FB] of U2
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(32.4600 mm, 32.0000 mm): PTH pad 2 [GND] of J1
+    @(32.4600 mm, 51.7500 mm): PTH pad 2 [GND] of J3
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(32.4600 mm, 32.0000 mm): PTH pad 2 [GND] of J1
+    @(54.4750 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(56.9767 mm, 45.0167 mm): Track [GND] on B.Cu, length 6.6727 mm
+    @(80.6650 mm, 41.6650 mm): Track [GND] on B.Cu, length 7.6200 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(61.6950 mm, 57.7850 mm): PTH pad 2 [GND] of R22
+    @(56.9767 mm, 45.0167 mm): Track [GND] on B.Cu, length 6.6727 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(92.4050 mm, 41.6650 mm): Track [GND] on B.Cu, length 11.7400 mm
+    @(82.5878 mm, 52.8578 mm): Track [GND] on B.Cu, length 4.4163 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(115.0050 mm, 49.7350 mm): Track [GND] on B.Cu, length 3.1228 mm
+    @(134.7650 mm, 37.8550 mm): Track [GND] on B.Cu, length 23.4000 mm
 
 ** Found 0 Footprint errors **
 

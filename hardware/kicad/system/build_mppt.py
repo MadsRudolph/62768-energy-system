@@ -26,8 +26,8 @@ FP_CP18  = "Capacitor_THT:CP_Radial_D18.0mm_P7.50mm"
 FP_CP8   = "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 FP_CDISC = "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 FP_R     = "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-FP_DIP8  = "Package_DIP:DIP-8_W7.62mm"
-FP_TO126 = "Package_TO_SOT_THT:TO-126-3_Vertical"
+FP_DIP8  = "Package_DIP:DIP-8_W7.62mm_LongPads"
+FP_TO220 = "energy_system:TO-220-3_Vertical_LaserPads"
 FP_HDR3  = "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 
 comps = [
@@ -60,9 +60,10 @@ comps = [
    "x":170,"y":85,"unit":1,"nets":{"3":"VREF","2":"V3_OUT","1":"U1A_OUT"}},
   {"lib":"Device:R","ref":"R4","val":"1k00","fp":FP_R,"x":185,"y":85,"ang":90,
    "nets":{"1":"U1A_OUT","2":"Q1_B"}},
-  # Q_NPN_ECB: 1=E 2=C 3=B  (BD139 TO-126: 1=E 2=C 3=B)
-  {"lib":"Transistor_BJT:BD139","ref":"Q1","val":"BD139","fp":FP_TO126,"x":200,"y":85,
-   "nets":{"3":"Q1_B","2":"PV_BUS","1":"V3_OUT"}},
+  # TIP41A TO-220: 1=B 2=C 3=E (BD139/TO-126 droppet - 2.28mm pitch kan ikke
+  # overholde laser-guidens 0.8mm clearance; TIP41A er ogsaa bedre termisk)
+  {"lib":"Transistor_BJT:TIP41A","ref":"Q1","val":"TIP41A","fp":FP_TO220,"x":200,"y":85,
+   "nets":{"1":"Q1_B","2":"PV_BUS","3":"V3_OUT"}},
   {"lib":"Device:C_Polarized","ref":"C5","val":"47u","fp":FP_CP8,"x":215,"y":95,
    "nets":{"1":"V3_OUT","2":"GND"}},
   # lavside stroemshunt 2x1R00 parallel = 0.5 ohm (2x for effekt: 0.6A -> 0.36W)

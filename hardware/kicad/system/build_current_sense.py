@@ -19,7 +19,7 @@ from schbuild import build
 FP_TERM2 = "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
 FP_CDISC = "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 FP_R     = "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-FP_DIP8  = "Package_DIP:DIP-8_W7.62mm"
+FP_DIP8  = "Package_DIP:DIP-8_W7.62mm_LongPads"
 FP_HDR5  = "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 
 def channel(k, y, opamp_ref, unit, pin_out, pin_minus, pin_plus):

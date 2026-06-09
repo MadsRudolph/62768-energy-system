@@ -1,41 +1,53 @@
 ** Drc report for mppt.kicad_pcb **
-** Created on 2026-06-10T00:48:50+0200 **
+** Created on 2026-06-10T01:14:08+0200 **
 
 ** Found 0 DRC violations **
 
-** Found 8 unconnected pads **
+** Found 11 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(84.0363 mm, 67.4526 mm): Track [/PV_BUS] on B.Cu, length 22.8393 mm
-    @(33.2475 mm, 60.2975 mm): Track [/PV_BUS] on B.Cu, length 29.4545 mm
+    @(59.0694 mm, 65.3250 mm): PTH pad 1 [/PV_BUS] of C2
+    @(56.2119 mm, 78.9881 mm): Track [/PV_BUS] on B.Cu, length 31.2662 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(120.7450 mm, 41.7750 mm): Track [/PV_BUS] on B.Cu, length 5.3882 mm
-    @(95.9550 mm, 43.9861 mm): Track [/PV_BUS] on B.Cu, length 1.8361 mm
+    @(87.4781 mm, 78.9881 mm): Track [/PV_BUS] on B.Cu, length 3.0220 mm
+    @(86.1639 mm, 65.3250 mm): PTH pad 1 [/PV_BUS] of C3
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(98.2350 mm, 42.1500 mm): PTH pad 3 [/Q1_B] of Q1
-    @(115.0050 mm, 81.1250 mm): PTH pad 2 [/Q1_B] of R4
+    @(112.8595 mm, 60.7294 mm): Track [/PV_BUS] on B.Cu, length 6.4992 mm
+    @(86.1639 mm, 65.3250 mm): PTH pad 1 [/PV_BUS] of C3
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(97.2350 mm, 85.7525 mm): Track [/PV_I] on B.Cu, length 22.6898 mm
+    @(119.3250 mm, 40.5050 mm): PTH pad 7 [/PV_I] of U1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(35.0000 mm, 49.2100 mm): PTH pad 1 [/PV_V] of J3
+    @(61.6950 mm, 81.1250 mm): Track [/PV_V] on B.Cu, length 10.1500 mm
 [unconnected_items]: Missing connection between items
     Local override; error
     @(107.3850 mm, 81.1250 mm): PTH pad 1 [/U1A_OUT] of R4
-    @(109.3150 mm, 37.9650 mm): PTH pad 1 [/U1A_OUT] of U1
+    @(111.7050 mm, 37.9650 mm): PTH pad 1 [/U1A_OUT] of U1
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(89.6150 mm, 89.1750 mm): PTH pad 1 [/U1B_FB] of R8
+    @(119.3250 mm, 43.0450 mm): PTH pad 6 [/U1B_FB] of U1
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(111.7050 mm, 40.5050 mm): PTH pad 2 [/V3_OUT] of U1
+    @(99.4950 mm, 42.7250 mm): PTH pad 3 [/V3_OUT] of Q1
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(122.9318 mm, 67.4518 mm): Track [/V3_OUT] on B.Cu, length 3.0077 mm
+    @(167.3544 mm, 32.0000 mm): PTH pad 1 [/V3_OUT] of J2
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
-    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(66.5694 mm, 65.3250 mm): Track [GND] on B.Cu, length 3.5894 mm
+    @(65.7200 mm, 85.1500 mm): Track [GND] on B.Cu, length 9.7200 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(84.2427 mm, 29.1701 mm): Track [GND] on B.Cu, length 24.9938 mm
+    @(85.7849 mm, 38.5951 mm): Track [GND] on B.Cu, length 15.3343 mm
 
 ** Found 0 Footprint errors **
 
