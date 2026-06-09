@@ -1,0 +1,9 @@
+* 1N5819 - 1 A / 40 V Schottky barrier rectifier
+* ngspice diode model for KiCad. For D1: Simulation Model -> "SPICE model from
+* file" -> pick this file -> select 1N5819 -> map A->anode, K->cathode.
+*
+* Datasheet values:
+*   Vrrm = 40 V    If(av) = 1 A    Vf ~ 0.45 V @ 1 A (low, Schottky)
+*   Ir ~ tens of uA    Cj ~ 160 pF    trr ~ ns (Schottky, negligible)
+*
+.MODEL 1N5819 D(Is=31.7u Rs=0.051 N=1.7 Cjo=160p M=0.38 Eg=0.69 Xti=2 Bv=40 Ibv=1m)

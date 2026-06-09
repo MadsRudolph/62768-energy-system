@@ -6,11 +6,18 @@ programmatically and matching the LTspice design models in
 
 | File | What it is |
 |---|---|
-| `buck.kicad_sch` / `boost.kicad_sch` | The KiCad 9 schematics (open directly in KiCad 9) |
+| `buck.kicad_sch` / `boost.kicad_sch` | The KiCad 9 design schematics (open directly in KiCad 9) |
+| `buck_sim.kicad_sch` / `boost_sim.kicad_sch` | Simulation copies (opto excluded, gate driven by a PULSE source, ngspice models assigned) — open and Run in the KiCad simulator |
+| `models/` | ngspice device models loaded by the sim sheets: `IRF530N.lib` (VDMOS), `1N5819.lib` (Schottky) |
 | `buck_preview.pdf` / `boost_preview.pdf` | Rendered figures (for the report) |
 | `buck_build.py` | Builds the wired buck (rotation-aware, V_in source + GND rail) |
 | `add_optocoupler.py` | Injects the isolated optocoupler gate-drive block (`GND`- or `SW`-referenced) |
 | `generate_kicad.py` | Original from-scratch generator (label-stub style, pre-rework) |
+
+> **Simulating:** the `*_sim.kicad_sch` sheets drive the gate with a PULSE source
+> (the opto is excluded — its isolated grounds break ngspice). Open one, set a
+> transient (`5m`/`1u` for buck, `25m`/`1u` for boost), Run, and probe `V(VOUT_*)`.
+> Models are referenced relatively as `models/*.lib`.
 
 ## How these were generated
 

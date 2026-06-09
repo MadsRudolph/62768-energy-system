@@ -14,3 +14,5 @@ __pycache__/
 *.userbak
 *.genbak
 *_opto.pdf
+*.kicad_prl
+*-backups/
