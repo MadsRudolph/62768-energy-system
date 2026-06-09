@@ -3,6 +3,9 @@
 Synthesis of the course material (7 lecture decks, Exp 3A, Three-Phase Transformer
 lab, the Kravspecifikation, and the intro slides). Shared reference for the team.
 
+> 📐 **How the circuits fit together** (motor drive vs buck vs boost vs feedback — they're
+> separate stages, don't cross-wire them): see [**system-architecture.md**](system-architecture.md).
+
 ## What this project is
 A 6-person **CDIO** project: build a **two-source electrical energy system**.
 - **Deliverables:** group **report** + **poster** → upload to **DTU Learn by 26 June**.
