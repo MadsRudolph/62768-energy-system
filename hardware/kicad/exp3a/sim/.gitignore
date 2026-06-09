@@ -3,3 +3,4 @@
 *.kicad_prl
 *-backups/
 __pycache__/
+fb_sweep.txt
