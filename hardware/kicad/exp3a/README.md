@@ -35,7 +35,9 @@ Same caveat — built from the image, using the standard IL300 servo topology. C
 - **Input:** INPUT → R1 (10 k) → U3 +in; R2 (2 k) to GND (input divider). Confirm scaling.
 - **Servo loop:** IL300 servo photodiode (pin 3) → U3 −in (`SERVO`), pin 4 → GND, R3 (33 k)
   on that node. This is what linearises the opto — confirm pins 3/4 vs the slide.
-- **LED drive:** U3 out → R4 (200 Ω) → IL300 LED cathode (pin 2); LED anode (pin 1) → +5 V.
+- **LED drive (sim-corrected):** U3 out → R4 (200 Ω) → IL300 LED **anode (pin 1)**; cathode
+  (pin 2) → **GND**. This is the *negative-feedback* polarity the behavioral sim validated —
+  the original anode→+5 V / cathode-sunk wiring was positive feedback and latched. See [`sim/`](sim/).
 - **Output:** IL300 output photodiode (pin 6) → U4 −in (`OUT_PD`), pin 5 → GND; R5 (33 k)
   transimpedance feedback (U4 −in → out); U4 +in → GND; U4 out = `FB_OUT`.
 

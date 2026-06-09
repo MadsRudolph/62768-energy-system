@@ -138,8 +138,9 @@ fb=[
   {"lib":OA,"ref":"U3","val":"MCP601","x":70,"y":92,"nets":{"3":"IN_P","2":"SERVO","6":"U3_OUT","7":"+5V","4":"GND"}},
   {"lib":"Device:R","ref":"R3","val":"33k","x":58,"y":112,"nets":{"1":"SERVO","2":"GND"}},
   {"lib":"Device:R","ref":"R4","val":"200","x":92,"y":92,"nets":{"1":"U3_OUT","2":"LED"}},
+  # LED driven anode-side by U3 (R4 -> pin1 anode), cathode -> GND : negative-feedback servo (sim-validated)
   {"lib":"Isolator_Analog:IL300","ref":"U1","val":"IL300","x":116,"y":92,
-     "nets":{"1":"+5V","2":"LED","3":"SERVO","4":"GND","5":"GND","6":"OUT_PD"}},
+     "nets":{"1":"LED","2":"GND","3":"SERVO","4":"GND","5":"GND","6":"OUT_PD"}},
   {"lib":OA,"ref":"U4","val":"MCP601","x":150,"y":92,"nets":{"2":"OUT_PD","3":"GND","6":"FB_OUT","7":"+5V","4":"GND"}},
   {"lib":"Device:R","ref":"R5","val":"33k","x":150,"y":74,"nets":{"1":"OUT_PD","2":"FB_OUT"}},
 ]
