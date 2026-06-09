@@ -1,29 +1,29 @@
 ** Drc report for drive_circuit.kicad_pcb **
-** Created on 2026-06-10T01:10:49+0200 **
+** Created on 2026-06-10T01:35:36+0200 **
 
 ** Found 0 DRC violations **
 
 ** Found 5 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
+    @(87.7797 mm, 56.7050 mm): Track [+15V] on B.Cu, length 7.1842 mm
+    @(66.4692 mm, 41.8923 mm): Track [+15V] on B.Cu, length 29.2099 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
     @(135.5400 mm, 46.0500 mm): PTH pad 1 [+20V] of M1
     @(133.0000 mm, 32.0000 mm): Track [+20V] on B.Cu, length 2.8017 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(80.6650 mm, 54.1650 mm): PTH pad 10 [GND] of U2
-    @(80.6650 mm, 51.6250 mm): Track [GND] on B.Cu, length 2.5017 mm
-[unconnected_items]: Missing connection between items
-    Local override; error
+    @(96.3597 mm, 51.6250 mm): Track [GND] on B.Cu, length 2.9745 mm
     @(97.2350 mm, 67.3250 mm): PTH pad 2 [GND] of R3
-    @(94.2181 mm, 49.4834 mm): Track [GND] on B.Cu, length 3.0287 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(102.6350 mm, 35.9250 mm): Track [GND] on B.Cu, length 2.1517 mm
-    @(85.3083 mm, 49.4834 mm): Track [GND] on B.Cu, length 8.9098 mm
+    @(123.3731 mm, 67.3250 mm): Track [GND] on B.Cu, length 8.3681 mm
+    @(98.4630 mm, 53.7283 mm): Track [GND] on B.Cu, length 12.3934 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(112.9597 mm, 51.6250 mm): PTH pad 2 [GND] of C2
-    @(123.3500 mm, 67.3250 mm): Track [GND] on B.Cu, length 8.3450 mm
+    @(94.7655 mm, 38.4308 mm): Track [Net-(D2-K)] on B.Cu, length 16.0247 mm
+    @(73.0450 mm, 44.0050 mm): PTH pad 1 [Net-(D2-K)] of U2
 
 ** Found 0 Footprint errors **
 

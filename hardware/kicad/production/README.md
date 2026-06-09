@@ -17,7 +17,25 @@ Alle 7 boards overholder guidens designregler og **DRC = 0 fejl**:
 ## Filer pr. board
 
 `production/<board>/<board>.dxf` ← **denne fil importeres i xTool Creative Space**
+`production/<board>/<board>_silk_top.dxf` ← *valgfri* topside-tekst (se nedenfor)
 `production/<board>/gerbers/` ← komplet Gerber-sæt + Excellon-drill (dokumentation/alternativ fab)
+
+## Komponentnavne på printet
+
+Reference-navnene (R1, C2, U1 …) er lagt som **kobber-tekst på B.Cu** ved siden af
+hver komponent — de graveres automatisk med i samme kørsel som banerne og kan
+læses fra loddesiden (spejlvendt i KiCad, så de vender rigtigt på det færdige
+print). Placeringen er kollisions-checket mod baner/pads; i de tætteste områder
+er enkelte navne droppet (buck: L1 · boost: M1 · drive: C1, R3 · feedback: R3 ·
+current_sense: C1, R12, R13, R21, U1) — de fremgår af bestykningstegningen
+(`gerbers/<board>-F_Fab.gbr`) og af KiCad-filen.
+
+**Valgfrit — navne på OVERSIDEN (komponentsiden):** `<board>_silk_top.dxf`
+indeholder F.Silkscreen (ALLE refdes) + omrids. Den kan graveres let på
+oversiden FØR kobberkørslen: gravér toppen, vend pladen, kør kobber-DXF'en.
+OBS: silk-top-filen må **IKKE spejlvendes** (den køres direkte fra toppen), og
+flip-justeringen er manuel — spring den over hvis tiden er knap; B.Cu-navnene
+er nok til bestykning.
 
 ## Udskæringsmål (board + 2 mm jf. guiden — skær GERNE større, juster hellere efter)
 
@@ -35,13 +53,13 @@ Alle 7 boards overholder guidens designregler og **DRC = 0 fejl**:
 
 | Board | Antal | Net |
 |---|---|---|
-| buck | 3 | GND ×1, SW ×1, R1-opto ×1 |
-| boost | 1 | GND ×1 |
-| drive_circuit | 5 | +20V ×1, GND ×4 |
-| feedback_circuit | 7 | LED, OUT_PD, SERVO, GND ×4 |
-| rectifier | 2 | GND ×1, V1 ×1 |
-| mppt | 11 | PV_BUS ×3, V3_OUT ×2, GND ×2, PV_I, PV_V, U1A_OUT, U1B_FB |
-| current_sense | 13 | GND ×6, I_SENSE2 ×2, +5V, FB2, I_SENSE1, I_SENSE3, U2B_FB |
+| buck | 2 | VIN_15V ×1, VOUT_5V ×1 |
+| boost | 4 | VOUT_V2, GATE, GND_MCU, R1-opto |
+| drive_circuit | 5 | +15V, +20V, GND ×2, D2-K |
+| feedback_circuit | 7 | +5V, IN_P, OUT_PD, GND ×4 |
+| rectifier | 5 | PH_B, GND ×1, V1 ×3 |
+| mppt | 10 | PV_BUS ×3, GND ×4, Q1_B, U1A_OUT, U1B_FB |
+| current_sense | 15 | GND ×8, +5V, FB1, I_SENSE1, I_SENSE2, I_SENSE3, RET3, U2B_FB |
 
 Åbn boardet i KiCad og se ratsnest-linjerne for præcis placering. GND-jumperne kan
 oftest samles som én bus-tråd. mppt/current_sense har mange — overvej 20–30 min

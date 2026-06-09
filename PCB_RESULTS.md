@@ -36,15 +36,19 @@ DIP **LongPads**, TO-220 med 1.7 mm pads (`energy_system:*_LaserPads`, luft 0.84
 **Laser-filer (DXF) + Gerbers + udskæringsmål + jumperliste + xTool-tjekliste:**
 → `hardware/kicad/production/` (README dér er køreplanen).
 
+Komponentnavnene (refdes) er graveret med som **kobber-tekst på B.Cu** ved hver
+komponent (læsbare fra loddesiden); en valgfri topside-tekst-DXF ligger også i
+`production/` pr. board.
+
 | Board | Fil | Str. (mm) | Jumpere |
 |---|---|---|---|
-| Buck | `converters/design/pcb/buck.kicad_pcb` | 121×56 | 3 |
-| Boost | `converters/design/pcb/boost.kicad_pcb` | 121×56 | 1 |
+| Buck | `converters/design/pcb/buck.kicad_pcb` | 121×56 | 2 |
+| Boost | `converters/design/pcb/boost.kicad_pcb` | 121×56 | 4 |
 | Motor-drive | `exp3a/pcb/drive_circuit.kicad_pcb` | 134×60 | 5 |
 | Feedback | `exp3a/pcb/feedback_circuit.kicad_pcb` | 118×50 | 7 |
-| Rectifier | `system/pcb/rectifier.kicad_pcb` | 146×74 | 2 |
-| MPPT/PV | `system/pcb/mppt.kicad_pcb` | 165×82 | 11 |
-| Current sense | `system/pcb/current_sense.kicad_pcb` | 134×58 | 13 |
+| Rectifier | `system/pcb/rectifier.kicad_pcb` | 146×74 | 5 |
+| MPPT/PV | `system/pcb/mppt.kicad_pcb` | 165×82 | 10 |
+| Current sense | `system/pcb/current_sense.kicad_pcb` | 134×58 | 15 |
 
 **Ærlig status:** alle boards overholder laser-designreglerne med DRC 0 fejl, og
 ALLE net er enten routet eller på jumperlisten (`production/README.md`). 0.8 mm

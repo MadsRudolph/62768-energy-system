@@ -21,6 +21,10 @@ foreach ($b in $map.Keys | Sort-Object) {
     & $kc pcb export dxf --mode-single -l "B.Cu,Edge.Cuts" --ou mm --drill-shape-opt 1 `
         -o "$out\$b.dxf" $pcb | Out-Null
     if (Test-Path "$out\$b.dxf") { Write-Host "  dxf ok" } else { Write-Host "  DXF FEJLEDE" }
+    # valgfri topside-tekst (F.Silkscreen): graveres paa OVERSIDEN foer kobbersiden.
+    # Maa IKKE spejlvendes i xTool (den koeres direkte fra toppen).
+    & $kc pcb export dxf --mode-single -l "F.Silkscreen,Edge.Cuts" --ou mm --drill-shape-opt 0 `
+        -o "$out\${b}_silk_top.dxf" $pcb | Out-Null
     # Gerbers (enkeltsidet saet) + drill
     & $kc pcb export gerbers -l "B.Cu,Edge.Cuts,B.Mask,F.Silkscreen,F.Fab" `
         -o "$out\gerbers\" $pcb | Out-Null
