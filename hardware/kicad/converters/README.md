@@ -6,9 +6,11 @@ programmatically and matching the LTspice design models in
 
 | File | What it is |
 |---|---|
-| `generate_kicad.py` | Generator (sexpdata) — edit the component tables, re-run to rebuild |
 | `buck.kicad_sch` / `boost.kicad_sch` | The KiCad 9 schematics (open directly in KiCad 9) |
 | `buck_preview.pdf` / `boost_preview.pdf` | Rendered figures (for the report) |
+| `buck_build.py` | Builds the wired buck (rotation-aware, V_in source + GND rail) |
+| `add_optocoupler.py` | Injects the isolated optocoupler gate-drive block (`GND`- or `SW`-referenced) |
+| `generate_kicad.py` | Original from-scratch generator (label-stub style, pre-rework) |
 
 ## How these were generated
 
@@ -34,17 +36,33 @@ connectivity by net labels dropped exactly on each pin, with short wire stubs.
 py -3.13 generate_kicad.py
 ```
 
+## Isolated gate drive (optocoupler)
+
+Each converter's MOSFET gate is driven through a **4N25 optocoupler** for galvanic
+isolation between the Arduino and the power stage (non-inverting):
+
+```
+PWM (Arduino) -> R1 330 -> 4N25 LED -> GND_MCU        (isolated logic side)
+4N25 transistor: collector -> +12V supply, emitter -> GATE
+R2 10k: gate pulldown -> reference
+```
+
+- **Boost** (low-side switch): pulldown -> `GND`, supply `+12V`.
+- **Buck** (high-side switch): pulldown -> `SW`, floating supply `+12V_SW`. The gate is
+  referenced to the MOSFET **source = SW node** (not GND), since V_gs is measured against
+  the source. The opto's isolation is what lets this side float on SW.
+
+> ⚠️ **Drive strength:** a 4N25 phototransistor gives isolation but only ~2 mA of drive —
+> too slow to switch the IRF540N gate (~70 nC) at 50 kHz. For real switching, add a
+> **BJT totem-pole buffer** (BD139 + PNP) after the opto, or lower the switching frequency.
+
 ## ERC
 
-`kicad-cli sch erc buck.kicad_sch` reports **3 expected notes**, all external-interface:
-- `global_label_dangling` ×2 — `VIN_*` and `GATE` "connect elsewhere" (the rectifier
-  stage / Arduino). Normal for a standalone sub-circuit sheet.
-- `pin_not_driven` ×1 — the MOSFET gate is driven by the external Arduino PWM.
-
-All **internal** nets (SW, VOUT, GND) are clean — the converter itself is fully connected.
+Both report **3 expected notes**, all external-interface `global_label_dangling`:
+`PWM`, `GND_MCU`, and the `+12V*` gate-drive rail — they connect to the rest of the
+system on other sheets. All **internal** nets (SW, VOUT, GND, GATE) are clean.
 
 ## Next steps
-- Assign **footprints** (THT/SMD) so the schematic can drive a PCB layout.
-- Swap the generic `Q_NMOS` for an IRF540N library symbol + add the **gate driver**
-  (IR2110, high-side for the buck — see Exp 3A) and current sense (Krav 10).
-- Optionally merge into the main `energy_system.kicad_sch` as sub-sheets.
+- Add the **BJT gate-drive buffer** after each optocoupler (see drive-strength note).
+- Assign **footprints** (THT) so the schematic can drive a PCB layout.
+- Add current sense (Krav 10); optionally merge into `energy_system.kicad_sch` as sub-sheets.

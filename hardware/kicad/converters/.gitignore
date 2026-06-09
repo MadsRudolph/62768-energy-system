@@ -11,3 +11,6 @@ __pycache__/
 *.kicad_pro
 *.lck
 ~*
+*.userbak
+*.genbak
+*_opto.pdf
