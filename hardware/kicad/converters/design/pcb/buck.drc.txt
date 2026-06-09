@@ -1,0 +1,14 @@
+** Drc report for buck.kicad_pcb **
+** Created on 2026-06-10T00:47:25+0200 **
+
+** Found 0 DRC violations **
+
+** Found 1 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(55.7197 mm, 52.3250 mm): PTH pad 1 [/VOUT_5V] of C1
+    @(81.6850 mm, 37.7750 mm): PTH pad 2 [/VOUT_5V] of L1
+
+** Found 0 Footprint errors **
+
+** End of Report **

@@ -1,0 +1,22 @@
+** Drc report for drive_circuit.kicad_pcb **
+** Created on 2026-06-10T00:47:58+0200 **
+
+** Found 0 DRC violations **
+
+** Found 3 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(135.5400 mm, 46.0500 mm): PTH pad 1 [+20V] of M1
+    @(57.3500 mm, 32.0000 mm): Track [+20V] on B.Cu, length 75.6500 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(91.4048 mm, 70.4724 mm): Track [Net-(D2-A)] on B.Cu, length 6.8577 mm
+    @(97.5550 mm, 35.9250 mm): Track [Net-(D2-A)] on B.Cu, length 1.9525 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(71.8650 mm, 44.0050 mm): Track [Net-(D2-K)] on B.Cu, length 10.7711 mm
+    @(75.2850 mm, 34.9750 mm): PTH pad 1 [Net-(D2-K)] of D2
+
+** Found 0 Footprint errors **
+
+** End of Report **

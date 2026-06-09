@@ -1,0 +1,26 @@
+** Drc report for feedback_circuit.kicad_pcb **
+** Created on 2026-06-10T00:48:15+0200 **
+
+** Found 0 DRC violations **
+
+** Found 4 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(61.6950 mm, 49.7350 mm): PTH pad 2 [/IN_P] of R1
+    @(71.8450 mm, 49.7350 mm): PTH pad 1 [/IN_P] of R2
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+    @(19.9500 mm, 19.9500 mm): Zone [GND] on B.Cu, priority 0
+
+** Found 0 Footprint errors **
+
+** End of Report **
