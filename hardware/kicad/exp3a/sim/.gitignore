@@ -1,0 +1,5 @@
+*.erc.txt
+*.kicad_pro
+*.kicad_prl
+*-backups/
+__pycache__/

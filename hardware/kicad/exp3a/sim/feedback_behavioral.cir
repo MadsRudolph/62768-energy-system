@@ -1,0 +1,48 @@
+* Exp 3A Feedback Circuit -- behavioral functional simulation
+* Goal: show the IL300 servo loop gives a LINEAR, isolated transfer.
+* Ideal transfer:  FB_OUT = INPUT * (R2/(R1+R2)) * (K2/K1) * (R5/R3)
+*                         = INPUT * (1/6) * 1 * 1  =  INPUT/6
+*
+* IL300 K3 = K2/K1 ~ 1 (matched photodiodes). Absolute K cancels in the loop.
+.param K1=0.007 K2=0.007
+
+* ---- single-supply behavioral op-amp (rails 0..5 V): inp inm out ----
+* smooth tanh soft-rail: out in (0,5), high gain (1e5) near balance, converges well
+.subckt OPAMP inp inm out
+Bout out 0 V=2.5+2.5*tanh(40000*(V(inp)-V(inm)))
+Rout out 0 10
+.ends
+
+* ---- IL300 behavioral model ----
+*   la lc  = LED anode/cathode
+*   p1c p1a = servo (input-side) photodiode  -> SOURCES K1*Iled into p1c
+*   p2c p2a = output-side photodiode         -> SINKS  K2*Iled from p2c
+.subckt IL300 la lc p1c p1a p2a p2c
+Dled la mid DLED
+Vs   mid lc 0
+Fpd1 p1a p1c Vs {K1}
+Fpd2 p2c p2a Vs {K2}
+.ends
+.model DLED D(Is=1e-15 N=1.8 Rs=2)
+
+* ---- supplies / stimulus ----
+V5  p5    0 DC 5
+Vin INPUT 0 DC 0
+
+* ---- input attenuator: IN_P = INPUT * 2k/(10k+2k) = INPUT/6 ----
+R1 INPUT IN_P 10k
+R2 IN_P  0    2k
+
+* ---- U3 servo amp: drives LED so the servo photodiode balances IN_P ----
+XU3  IN_P SERVO U3OUT OPAMP
+R3   SERVO 0 33k
+R4   U3OUT LEDA 200          ; U3 SOURCES into the LED anode (negative-feedback polarity)
+
+* ---- IL300:  LED A=LEDA C=GND ; PD1 c=SERVO a=GND ; PD2 a=GND c=OUT_PD ----
+XOPTO LEDA 0 SERVO 0 0 OUT_PD IL300
+
+* ---- U4 transimpedance: output photodiode current -> FB_OUT ----
+XU4 0 OUT_PD FB_OUT OPAMP
+R5  OUT_PD FB_OUT 33k
+
+.end
