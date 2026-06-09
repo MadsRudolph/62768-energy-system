@@ -1,0 +1,28 @@
+* Exp 3A Drive Circuit -- behavioral transient sim
+* The opto + IR2110 are idealised as a gate PULSE (no ngspice model for them).
+* Real parts kept: IRF540N (VDMOS), DC motor (Ra+La+back-EMF), 1N4007 freewheel.
+* Verifies: MOSFET PWM-chops the motor; freewheel diode carries the inductive
+* current in the off-time and clamps the switch node.
+
+* ---- IRF540N power MOSFET (VDMOS) ----
+.model IRF540N VDMOS(Vto=3.8 Kp=20 Lambda=0 Rd=44m Rs=15m Rg=2
++ Cgs=1.6n Cgdmax=2n Cgdmin=50p a=0.5 Cjo=1.4n Is=56p Rb=12m)
+
+* ---- 1N4007 rectifier/freewheel diode ----
+.model D1N4007 D(Is=14.1n N=1.98 Rs=33m Cjo=27p M=0.44 Bv=1000 Ibv=5u)
+
+* ---- supplies + idealised gate drive (IR2110 output) ----
+Vmot p20  0 DC 20
+* gate: 0 -> 12 V, 10 kHz, 50% duty, 100 ns edges
+Vg   gate 0 PULSE(0 12 0 100n 100n 49.8u 100u)
+
+* ---- DC motor:  Ra + La + back-EMF (running, ~8 V) ----
+Ra   p20 mm 3
+La   mm  me 2m
+Vemf me  sw 8
+
+* ---- low-side switch + freewheel ----
+M1   sw gate 0 0 IRF540N
+D2   sw p20 D1N4007         ; anode=SW, cathode=+20V : clamps SW when MOSFET opens
+
+.end

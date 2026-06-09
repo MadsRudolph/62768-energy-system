@@ -31,3 +31,23 @@ feedback** — the loop latches to a rail instead of regulating. Two equivalent 
 - **(b)** swap U3's inputs (+in = SERVO, −in = IN_P).
 
 Check the slide to see which it intends, then apply the matching fix.
+**Applied:** fix (a) is now in `feedback_circuit.kicad_sch`.
+
+## `drive_behavioral.cir` — PWM motor drive ✅
+
+The opto + IR2110 have no ngspice model, so they're idealised as a **gate PULSE**
+(0→12 V, 10 kHz, 50%). The rest is real: **IRF540N** (VDMOS), **DC motor** (Ra=3 Ω +
+La=2 mH + 8 V back-EMF), **1N4007** freewheel. Run: `py -3.13 run_drive.py`.
+
+**Result** (steady state, see `drive_waveforms.png`):
+
+| Quantity | Value | Meaning |
+|---|---|---|
+| SW node, on | ~0.02 V | MOSFET fully enhanced, motor current to GND |
+| SW node, off | ~21 V | **freewheel diode clamps the inductive kick** (not a spike) |
+| Motor current | ~0.49 A avg, 0.27 A p-p | winding inductance smooths PWM into near-DC |
+
+The current ramps up while the gate is high (motor sees +20 V) and decays through D2
+while the gate is low — classic chopper behaviour. This validates the **power stage +
+freewheel**; the opto/IR2110 timing itself is trusted from the datasheets.
+
