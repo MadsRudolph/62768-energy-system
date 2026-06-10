@@ -6,4 +6,204 @@
 
 % TODO: design, beregninger, simulering, implementering og måleresultater.
 
+\subsection*{DC-motor / AC-generator}
+
+The system uses a Motraxx SR555SHP-3247S-75 brushed DC motor to drive an A20-22 L EVO kv924 three-phase generator. The DC motor has a rated voltage of \(12~\text{V}\) and a no-load speed of \(5887~\text{rpm}\). When the motor is loaded, the speed decreases to \(5024~\text{rpm}\), which shows that the connected generator and electrical load affect the motor speed. This is expected, since the motor must deliver mechanical torque to rotate the generator while the generator supplies electrical power to the rest of the system.
+
+\noindent The speed drop of the DC motor can be calculated as:
+
+\[
+\Delta n = n_{\text{no-load}} - n_{\text{load}}
+\]
+
+\[
+\Delta n = 5887 - 5024 = 863~\text{rpm}
+\]
+
+\noindent This corresponds to a percentage speed decrease of:
+
+\[
+\frac{863}{5887} \cdot 100 \approx 14.7\%
+\]
+
+\noindent This means that the motor speed decreases by approximately \(14.7\%\) when it is loaded.
+
+\noindent The motor current also increases when the motor is loaded. The no-load current is \(0.25~\text{A}\), while the load current is \(1.46~\text{A}\). The current increase is therefore:
+
+\[
+\Delta I = I_{\text{load}} - I_{\text{no-load}}
+\]
+
+\[
+\Delta I = 1.46 - 0.25 = 1.21~\text{A}
+\]
+
+\noindent The approximate electrical input power to the DC motor under load can be calculated as:
+
+\[
+P_{\text{in}} = V \cdot I
+\]
+
+\[
+P_{\text{in}} = 12 \cdot 1.46 = 17.52~\text{W}
+\]
+
+\noindent So, under load, the DC motor uses approximately \(17.52~\text{W}\) of electrical input power.
+
+\noindent The behavior of the DC motor can also be explained using the theory for a DC motor. The internal generated voltage, also called back EMF, is given by:
+
+\[
+E_A = K\phi\omega_m
+\]
+
+\noindent This equation shows that the internal generated voltage depends on the magnetic flux \(\phi\) and the mechanical speed \(\omega_m\). When the motor slows down, \(\omega_m\) decreases, and therefore the internal generated voltage \(E_A\) also decreases. The armature current is given by:
+
+\[
+I_A = \frac{V_T - E_A}{R_A}
+\]
+
+\noindent This means that when \(E_A\) decreases, the armature current \(I_A\) increases. The induced torque is given by:
+
+\[
+\tau_{\text{ind}} = K\phi I_A
+\]
+
+\noindent Therefore, when the armature current increases, the induced torque also increases. The motor then reaches a new operating point where the induced torque equals the load torque, but at a lower speed. This explains why the motor slows down when the generator is loaded and why it draws more current when more electrical power is required from the generator.
+\vspace{0.5cm}
+
+\noindent The generator is an A20-22 L EVO kv924 brushless outrunner motor. It is lightweight, weighing only \(55~\text{g}\), and has an operating voltage range of \(7.2~\text{V}\) to \(12.6~\text{V}\). According to the datasheet, the generator motor can run at around \(7200~\text{rpm}\) and has a power rating between \(165~\text{W}\) and \(187~\text{W}\), depending on the setup. This means that the generator motor is suitable for producing electrical energy in a small-scale energy system. In practice, the actual output voltage and current will depend on the speed of rotation, the load connected to the system, and losses in the transformer and rectifier.
+
+\noindent Since the generator has a motor constant of \(924~\text{rpm/V}\), the approximate generated voltage at \(7200~\text{rpm}\) can be estimated as:
+
+\[
+V \approx \frac{n}{K_V}
+\]
+
+\[
+V \approx \frac{7200}{924} \approx 7.79~\text{V}
+\]
+
+\noindent This is only an approximate value, because the actual generated voltage depends on the rotation speed, the connected load, the transformer connection, and losses in the rectifier.
+\vspace{0.5cm}
+
+\noindent In our system, the generated three-phase AC voltage is first connected through a \(Y-\Delta\) transformer and then through a three-phase rectifier. The transformer is used to adapt the three-phase voltage before it reaches the rectifier. The rectifier then converts the three-phase AC voltage into the DC voltage \(V_1\), which is used by the rest of the circuit.
+
+\vspace{0.5cm}
+
+\subsection*{Transformer}
+
+Our transformer setup uses a Wye-to-Delta connection, written as \(Y-\Delta\). This means that the primary side of the transformer is connected in wye, while the secondary side is connected in delta. In our system, the transformer is placed between the three-phase generator and the three-phase rectifier. Its purpose is to adapt the generated AC voltage before it is converted into the DC voltage \(V_1\).
+\vspace{0.5cm}
+\noindent A three-phase transformer can either be made as one single three-phase transformer or as three separate single-phase transformers connected together. A single three-phase transformer is usually lighter, smaller, cheaper, and slightly more efficient. However, using three separate single-phase transformers can make maintenance easier, because one transformer can be replaced individually if there is a fault.
+
+\noindent For a wye-connected primary side, the line voltage and phase voltage are related by:
+
+\[
+V_L = \sqrt{3} \cdot V_\phi
+\]
+
+\noindent This means that each transformer winding on the primary side only receives the phase voltage, which is smaller than the line-to-line voltage. On the delta-connected secondary side, the line voltage is equal to the phase voltage:
+
+\[
+V_L = V_\phi
+\]
+
+\noindent Because of this, the final voltage ratio depends both on the transformer turns ratio and on the \(Y-\Delta\) connection. If the transformer turns ratio is written as:
+
+\[
+a = \frac{V_{\phi,\text{primary}}}{V_{\phi,\text{secondary}}}
+\]
+
+\noindent then the line voltage relationship for a \(Y-\Delta\) transformer becomes:
+
+\[
+\frac{V_{L,\text{primary}}}{V_{L,\text{secondary}}}
+=
+\sqrt{3} \cdot a
+\]
+
+\noindent This means that the voltage on the secondary side is not only determined by the winding ratio, but also by the fact that the primary is connected in wye and the secondary is connected in delta.
+\vspace{0.5cm}
+
+\noindent Another important point is that three-phase transformer calculations are often done on a per-phase basis. This means that impedance, voltage regulation, efficiency, and similar calculations can be treated almost like single-phase transformer calculations, but applied to each phase of the three-phase system.
+\vspace{0.5cm}
+
+\noindent A useful advantage of the \(Y-\Delta\) transformer connection is that it helps reduce problems caused by third-harmonic components. In a pure wye-wye transformer, third-harmonic voltages can become large, especially if the load is unbalanced. In a \(Y-\Delta\) transformer, the delta winding gives these third-harmonic currents a closed path where they can circulate instead of appearing strongly in the output voltage. This helps make the voltage supplied to the rectifier more stable and reduces unwanted distortion.
+\vspace{0.5cm}
+
+\noindent The delta side can also help if the load is slightly unbalanced, because the delta connection can partly redistribute the imbalance between the phases. This makes the \(Y-\Delta\) connection more stable compared to some other transformer connections. Therefore, the \(Y-\Delta\) transformer is useful in our system because it affects the voltage level, improves stability, reduces harmonic problems, and helps provide a better three-phase AC input for the rectifier.
+
+
+\subsection*{Rectifier}
+
+\noindent
+We use a three-phase diode rectifier consisting of six Schottky diodes. Three diodes are connected to the positive DC output, called the top diodes, and three diodes provide the return path to the negative output, called the bottom diodes. Each phase of the AC generator is connected to the rectifier input.
+
+\vspace{0.4cm}
+
+\noindent
+At any instant, the phase with the highest voltage conducts through its corresponding top diode, while the phase with the lowest voltage provides the return path through one of the bottom diodes. In this way, the rectifier converts the three-phase AC input into a pulsating DC output. According to the lecture slides, two diodes conduct at the same time in a three-phase bridge rectifier, and each diode conducts for \(120^\circ\). The conducting diode pair is the pair connected between the two supply lines with the highest instantaneous line-to-line voltage.
+
+\vspace{0.4cm}
+
+\noindent
+The line-to-line voltage is important for the rectifier, because the rectifier output depends on the voltage between two phases. For a three-phase system, the line-to-line voltage is related to the phase voltage by:
+
+\[
+V_L = \sqrt{3} \cdot V_\phi
+\]
+
+\vspace{0.2cm}
+
+\noindent
+Schottky diodes are chosen due to their low forward voltage drop, typically \(0.2~\text{V}\) to \(0.4~\text{V}\), which reduces power losses and increases the available DC voltage after rectification. This is useful because two diodes conduct at the same time, so the total diode voltage drop affects the final DC output voltage.
+
+\vspace{0.5cm}
+
+\noindent
+After the rectifier, an RC filter is used to smooth the pulsating DC voltage. The capacitor stores charge during voltage peaks and releases it during voltage drops, reducing ripple and producing a more stable DC voltage. The lecture slides also mention that DC filters are usually made as \(L\), \(C\), or \(LC\) filters, and that the filter design depends on the harmonics and ripple content in the output voltage.
+
+\vspace{0.5cm}
+
+\noindent
+The DC voltage after the rectifier is designed to operate in the range of approximately \(20\text{--}30~\text{V}\). This variation occurs due to changing load conditions in the system. When the load increases, more current is drawn, causing a voltage drop across internal resistances and components, which lowers the DC voltage. At lower load conditions, the voltage increases due to reduced current draw.
+
+\vspace{0.5cm}
+
+\noindent
+This DC voltage is then fed into a buck converter, which steps the voltage down to a stable level of approximately \(15~\text{V}\) for the final load. The buck converter therefore converts a higher, variable input voltage into a lower and regulated output voltage.
+
+\vspace{0.5cm}
+
+\noindent
+The load used during testing consists of a \(150~\Omega\) power resistor and a capacitor of \(15000~\mu\text{F}\). The resistor is implemented as a power resistor to safely dissipate the electrical power without overheating. At operating voltages between \(20~\text{V}\) and \(30~\text{V}\), the resistor draws a current between approximately \(133~\text{mA}\) and \(200~\text{mA}\).
+
+\vspace{0.5cm}
+
+\noindent
+The maximum power dissipation at \(30~\text{V}\) is:
+
+\[
+P = \frac{V^2}{R}
+\]
+
+\[
+P = \frac{30^2}{150} = 6~\text{W}
+\]
+
+\vspace{0.2cm}
+
+\noindent
+However, since the voltage is not constant and varies with load conditions, the average power dissipation is lower. A \(5~\text{W}\) power resistor can be acceptable for short or lower-voltage tests, but if the resistor is operated continuously near \(30~\text{V}\), a higher power rating such as \(10~\text{W}\) would be safer.
+
+\vspace{0.5cm}
+
+\noindent
+The power resistor is used as a controllable test load to simulate the expected input conditions of the buck converter. Since the buck converter reduces the voltage from approximately \(20\text{--}30~\text{V}\) to \(15~\text{V}\), the input current is lower than the output current. The resistor is therefore selected to approximate the expected input current drawn by the buck converter during operation.
+
+\vspace{0.5cm}
+
+\noindent
+Overall, the rectifier performance depends on values such as output voltage, output current, ripple content, diode current rating, peak current, and peak inverse voltage. These are important because the diodes must be able to handle the current and voltage stresses in the circuit.
+
 \ifdefined\mainfile\else\end{document}\fi
