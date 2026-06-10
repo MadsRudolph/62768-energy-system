@@ -1,10 +1,7 @@
 ** Drc report for boost.kicad_pcb **
-** Created on 2026-06-10T11:38:09+0200 **
+** Created on 2026-06-10T15:08:48+0200 **
 
-** Found 1 DRC violations **
-[track_dangling]: Track has unconnected end
-    Local override; warning
-    @(104.9980 mm, 78.5167 mm): Track [GATE] on B.Cu, length 3.0288 mm
+** Found 0 DRC violations **
 
 ** Found 0 unconnected pads **
 

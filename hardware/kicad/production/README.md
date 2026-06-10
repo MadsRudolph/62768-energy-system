@@ -27,13 +27,13 @@ Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsid
 
 | Board | Top-baner | Længde | Vias | Net på toppen |
 |---|---|---|---|---|
-| buck | 4 | 76 mm | 0 | SW, VOUT_5V |
-| boost | 2 | 27 mm | 0 | VOUT_V2 |
-| drive_circuit | 17 | 104 mm | 1 | +20V, GND, D2-K |
-| feedback_circuit | 11 | 72 mm | 1 | +5V, GND, U3_OUT |
-| rectifier | 2 | 27 mm | 0 | V1 |
-| mppt | 27 | 149 mm | 2 | GND, PV_BUS, Q1_B, U1B_FB, VREF |
-| current_sense | 17 | 113 mm | 0 | +5V, GND |
+| buck | 3 | 33 mm | 0 | SW |
+| boost | 4 | 79 mm | 0 | VIN_5V, VOUT_V2 |
+| drive_circuit | 3 | 27 mm | 0 | D2-A |
+| feedback_circuit | 15 | 96 mm | 0 | GND, LED, OUT_PD |
+| rectifier | 2 | 22 mm | 0 | V1 |
+| mppt | 19 | 174 mm | 0 | GND, PV_V, U1A_OUT, U1B_FB |
+| current_sense | 18 | 99 mm | 0 | +5V, FB1, GND, RET1, U2B_FB |
 
 **Mulighed A — enkeltsidet etch + trådbroer (anbefalet, hurtigst):** ets kun
 bunden (`<board>.dxf`). Byg topbanerne som trådbroer mellem THT-benene —
@@ -56,23 +56,17 @@ ved hver komponent (ikke spejlvendt). De er med i `<board>_top_cu.dxf`:
 Enkelte navne er flyttet/droppet i de tætteste klynger (fremgår af
 `gerbers/<board>-F_Fab.gbr`).
 
-## Udskæringsmål (board + 2 mm jf. guiden — skær GERNE større)
+## Udskæringsmål — positionerings-jiggen
 
-| Board | Print (mm) | Skær mindst (mm) |
-|---|---|---|
-| buck | 145×72 | **147×74** |
-| boost | 145×72 | **147×74** |
-| drive_circuit | 134×60 | **136×62** |
-| feedback_circuit | 118×50 | **120×52** |
-| rectifier | 146×74 | **148×76** |
-| mppt | 140×68 | **142×70** |
-| current_sense | 120×80 | **122×82** |
+**ALLE 7 boards har samme format:** edge cuts **104×104 mm**, skåret kobberplade
+**præcis 109×109 mm** (jiggens åbning). Det giver 2.5 mm rand hele vejen rundt
+mellem plade og print — efter gravering skæres/files ned til edge cuts-linjen.
 
 ## Tjekliste på laseren (fra guiden — læs hele guiden først!)
 
 1. Sikkerhedskursus gennemført? Ellers STOP.
-2. Skær board efter tabellen ovenfor (IKKE de blå-film-plader; IKKE dobbeltsidet plade
-   medmindre du kører Mulighed B).
+2. Skær kobberpladen til **præcis 109×109 mm** — jiggens åbning (IKKE de
+   blå-film-plader; IKKE dobbeltsidet plade medmindre du kører Mulighed B).
 3. 400-grit sandpapir, let — kun oxidlaget af.
 4. xTool Creative Space → Import image → vælg `<board>.dxf`.
 5. **FLIP designet (spejlvend!)** og gør det **compound**. (Kun bund-DXF'en!)
@@ -80,8 +74,8 @@ Enkelte navne er flyttet/droppet i de tætteste klynger (fremgår af
    (sort = fjernes).
 7. Huller: *Edit compound* → slet hver hul-markering så de bliver sorte
    (standard-importen graverer dem ikke).
-8. Board på offerpladen, så centreret som muligt. *Framing* → juster så rammen
-   IKKE går ud over kanten. For stramt? Skær et større stykke.
+8. Pladen i positionerings-jiggen (109×109-åbningen). *Framing* → juster så
+   rammen IKKE går ud over kanten — der er 2.5 mm rand til edge cuts-linjen.
 9. *Auto height adjustment*.
 10. Preset **PCB** under Engrave-fanen — tjek parametre mod opslagene/TA'erne.
 11. Sidste tjek: spejlvendt? hvide baner? parametre OK? → *Process*.

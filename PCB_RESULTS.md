@@ -45,15 +45,22 @@ PCB from Schematic*: sæt flueben i **"Re-link footprints to schematic symbols
 based on their reference designators"** (boardene er bygget scriptet, så
 UUID-links findes ikke første gang).
 
-| Board | Projekt | Str. (mm) | Top-baner (trådbroer/side 2) |
-|---|---|---|---|
-| Buck | `boards/buck/buck.kicad_pro` | 145×72 | 4 (76 mm) |
-| Boost | `boards/boost/boost.kicad_pro` | 145×72 | 2 (27 mm) |
-| Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 134×60 | 17 (104 mm) + 1 via |
-| Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 118×50 | 11 (72 mm) + 1 via |
-| Rectifier | `boards/rectifier/rectifier.kicad_pro` | 146×74 | 2 (27 mm) |
-| MPPT/PV | `boards/mppt/mppt.kicad_pro` | 140×68 | 27 (149 mm) + 2 vias |
-| Current sense | `boards/current_sense/current_sense.kicad_pro` | 120×80 | 17 (113 mm) |
+**ALLE boards er 104×104 mm** (positionerings-jiggens format: kobberplade skæres
+til præcis 109×109, edge cuts 104×104 = 2.5 mm rand). Kompakt placering (5 mm
+komponent-gab) — pladsen ud mod kanterne er bevidst tom.
+
+| Board | Projekt | Top-baner (trådbroer/side 2) |
+|---|---|---|
+| Buck | `boards/buck/buck.kicad_pro` | 3 (33 mm) |
+| Boost | `boards/boost/boost.kicad_pro` | 4 (79 mm) |
+| Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 3 (27 mm) |
+| Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 15 (96 mm) |
+| Rectifier | `boards/rectifier/rectifier.kicad_pro` | 2 (22 mm) |
+| MPPT/PV | `boards/mppt/mppt.kicad_pro` | 19 (174 mm) |
+| Current sense | `boards/current_sense/current_sense.kicad_pro` | 18 (99 mm) |
+
+Ingen vias på nogen boards længere (kvadrat-formatet + kompakt placering
+routede bedre end de gamle aflange boards).
 
 **Status:** ALLE net er routet (0 uroutede, DRC 0 fejl). To-trins-routing: bunden (B.Cu) er hoved-etchen; toppen (F.Cu) indeholder kun de kryds der er umulige enkeltsidet — byg dem som trådbroer (anbefalet) eller ets toppen som side 2. Se `hardware/kicad/production/README.md`.
 

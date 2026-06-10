@@ -1,13 +1,7 @@
 ** Drc report for feedback_circuit.kicad_pcb **
-** Created on 2026-06-10T07:56:11+0200 **
+** Created on 2026-06-10T15:11:20+0200 **
 
-** Found 2 DRC violations **
-[track_dangling]: Track has unconnected end
-    Local override; warning
-    @(83.1667 mm, 34.8797 mm): Track [+5V] on B.Cu, length 0.3759 mm
-[track_dangling]: Track has unconnected end
-    Local override; warning
-    @(91.7167 mm, 51.8924 mm): Track [GND] on B.Cu, length 0.0021 mm
+** Found 0 DRC violations **
 
 ** Found 0 unconnected pads **
 

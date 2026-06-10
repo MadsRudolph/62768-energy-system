@@ -81,6 +81,10 @@ netclass — required so GUI routing keeps the rules):
 
 - Components on top, copper routed on **B.Cu** (etch side). Board outline =
   closed RECT on Edge.Cuts (segments trigger a KiCad assert — see §5).
+- **Board size is FIXED at 104×104 mm** (`JIG_W/JIG_H` in pcb_build.py): the
+  laser positioning jig takes a 109×109 mm copper blank, edge cuts sit 2.5 mm
+  inside. Components are packed compactly (5 mm bbox gap); pcb_build fails hard
+  if a board's content doesn't fit the square.
 - Auto-placement: odd-numbered J + terminal-footprint M1 → left edge, even J →
   right edge, rest row-packed. **For dense boards add an explicit entry to the
   `PLACE` dict** (mppt and current_sense have them) — place along the signal

@@ -64,34 +64,43 @@ def main(jsonf, outf):
         if c["pads"] and all(p.GetNetCode() == 0 for p in fp.Pads()):
             raise SystemExit(f"{c['ref']}: ingen pads fik net - pinnummer-mismatch?")
 
+    # --- fast boardstoerrelse: jiggen til fiberlaseren ----------------------
+    # Jiggen tager en 109x109 mm kobberplade; edge cuts er 104x104 (2.5 mm rand
+    # hele vejen rundt). ALLE boards har samme omrids - komponenterne skal passe
+    # indenfor, ellers fejler scriptet haardt nedenfor.
+    JIG_W, JIG_H = 104, 104
+
     # --- haandlagt placering for de svaere boards --------------------------
     # Gitter-autoplaceringen spreder kanal-komponenterne og sulter routeren paa
     # enkeltsidet. Her foelger placeringen signalflowet (venstre -> hoejre).
+    # Koordinaterne er absolutte (X0/Y0 = 20, board 20..124).
     PLACE = {
-        "current_sense": {"W": 120, "H": 80, "refs": {
-            "J1": (35, 30, 180), "R11": (52, 30, 0), "R12": (66, 24, 0), "R13": (66, 36, 0),
-            "J2": (35, 56, 180), "R21": (52, 56, 0), "R22": (66, 50, 0), "R23": (66, 62, 0),
-            "J3": (35, 82, 180), "R31": (52, 82, 0), "R32": (66, 76, 0), "R33": (66, 88, 0),
-            "U1": (86, 41, 0), "U2": (86, 72, 0),
-            "C1": (99, 28, 0), "C2": (99, 56, 0),
-            "J4": (125, 54, 0),
+        "current_sense": {"refs": {
+            "J1": (35, 30, 180), "R11": (50, 30, 0), "R12": (64, 24, 0), "R13": (64, 36, 0),
+            "J2": (35, 50, 180), "R21": (50, 50, 0), "R22": (64, 44, 0), "R23": (64, 56, 0),
+            "J3": (35, 70, 180), "R31": (50, 70, 0), "R32": (64, 64, 0), "R33": (64, 76, 0),
+            "U1": (78, 38, 0), "U2": (78, 62, 0),
+            "C1": (90, 30, 0), "C2": (90, 54, 0),
+            "J4": (109, 50, 0),
         }},
-        "mppt": {"W": 140, "H": 68, "refs": {
-            "J1": (35, 28, 180), "D1": (50, 24, 0),
-            "C1": (64, 31, 0), "C2": (84, 31, 0), "C3": (104, 31, 0),
-            "R5": (46, 42, 0), "R6": (56, 42, 180),
-            "R7": (50, 56, 0), "R8": (64, 56, 0), "U1": (80, 58, 0), "C4": (93, 52, 0),
-            "R1": (50, 70, 0), "R2": (62, 70, 0),
-            "R3": (74, 70, 0), "DZ1": (86, 70, 0), "C6": (96, 70, 0),
-            "R4": (106, 52, 0), "Q1": (120, 44, 0), "C5": (133, 44, 0),
-            "J2": (145, 28, 0), "J3": (145, 62, 0),
+        "mppt": {"refs": {
+            "J1": (35, 30, 180), "D1": (52, 26, 0),
+            "C1": (70, 33, 0), "C2": (90, 33, 0), "C3": (110, 33, 0),
+            "R5": (38, 47, 0), "R6": (38, 55, 180),
+            "R7": (52, 50, 0), "R8": (64, 50, 0), "U1": (78, 52, 0), "C4": (90, 48, 0),
+            "R1": (38, 66, 0), "R2": (50, 66, 0),
+            "R3": (62, 66, 0), "DZ1": (74, 66, 0), "C6": (86, 66, 0),
+            "R4": (38, 78, 0), "Q1": (56, 76, 0), "C5": (70, 78, 0),
+            "J2": (109, 58, 0), "J3": (109, 78, 0),
         }},
     }
     import os as _os
     bname = _os.path.splitext(_os.path.basename(outf))[0]
 
     # --- placering ---------------------------------------------------------
-    PITCH = 8.0
+    # PITCH 5 mm bbox-gab: kompakt, men stadig en routing-kanal (1.0 mm bane +
+    # 2x0.8 clearance = 2.6 mm) mellem naboers pads.
+    PITCH = 5.0
     X0, Y0 = 20, 20                      # boardets overste venstre hjoerne
     EDGE = 15                            # stik-indryk fra kanten (DRC edge clearance)
 
@@ -104,9 +113,9 @@ def main(jsonf, outf):
         c = fp.GetBoundingBox(False).Centre()
         fp.SetPosition(VECTOR2I(t.x + (t.x - c.x), t.y + (t.y - c.y)))
 
+    W, H = JIG_W, JIG_H
     if bname in PLACE:
         spec = PLACE[bname]
-        W, H = spec["W"], spec["H"]
         missing = set(fps) - set(spec["refs"])
         if missing:
             raise SystemExit(f"{bname}: manuel placering mangler refs: {missing}")
@@ -119,10 +128,21 @@ def main(jsonf, outf):
         mid = [r for r in sorted(fps, key=lambda r: (r[0] not in "DLQU", r))
                if r not in left and r not in right]
 
-        # midter-komponenter pakkes i raekker med individuel bredde
-        conn_h = max((bbox_mm(fps[r])[1] for r in left + right), default=10) + 6
-        row_w_max = max(40.0, math.sqrt(
-            sum((bbox_mm(fps[r])[0] + PITCH) * (bbox_mm(fps[r])[1] + 5) for r in mid)) * 1.6)
+        # stik oeverst paa venstre/hoejre kant; midter-komponenterne pakkes
+        # KOMPAKT i et kvadratisk-agtigt blok under stik-zonen - spildplads paa
+        # det faste jig-format er OK, men korte baner er bedre routing.
+        conn_h = max((bbox_mm(fps[r])[1] for r in left + right), default=10) + 4
+        n_conn = max(len(left), len(right))
+        conn_bottom = Y0 + 12 + (n_conn - 1) * conn_h + conn_h / 2 if n_conn else Y0 + 4
+
+        for i, r in enumerate(left):
+            put(r, X0 + EDGE, Y0 + 12 + i * conn_h, 180)  # stik vender ud mod kanten
+        for i, r in enumerate(right):
+            put(r, X0 + W - EDGE, Y0 + 12 + i * conn_h, 0)
+
+        widest = max((bbox_mm(fps[r])[0] + PITCH for r in mid), default=40.0)
+        row_w_max = min(W - 16, max(40.0, widest, math.sqrt(
+            sum((bbox_mm(fps[r])[0] + PITCH) * (bbox_mm(fps[r])[1] + 3) for r in mid)) * 1.3))
         rows = [[]]; xacc = 0.0
         for r in mid:
             w = bbox_mm(fps[r])[0] + PITCH
@@ -130,24 +150,19 @@ def main(jsonf, outf):
                 rows.append([]); xacc = 0.0
             rows[-1].append(r); xacc += w
 
-        mid_w = max((sum(bbox_mm(fps[r])[0] + PITCH for r in row) for row in rows),
-                    default=0)
-        row_hs = [max((bbox_mm(fps[r])[1] for r in row), default=0) + 5 for row in rows]
-        H = max(sum(row_hs), len(left) * conn_h, len(right) * conn_h) + 18
-        W = mid_w + 2 * (EDGE + 14) + 4
-
-        for i, r in enumerate(left):
-            put(r, X0 + EDGE, Y0 + 12 + i * conn_h, 180)  # stik vender ud mod kanten
-        for i, r in enumerate(right):
-            put(r, X0 + W - EDGE, Y0 + 12 + i * conn_h, 0)
-        y = Y0 + 10
+        row_hs = [max((bbox_mm(fps[r])[1] for r in row), default=0) + 3 for row in rows]
+        y = conn_bottom + 5
         for row, rh in zip(rows, row_hs):
-            x = X0 + EDGE + 14
+            x = X0 + 8
             for r in row:
                 w = bbox_mm(fps[r])[0] + PITCH
                 put(r, x + w / 2, y + rh / 2, 0)   # centreret i raekken
                 x += w
             y += rh
+        if y > Y0 + H - 4:
+            raise SystemExit(
+                f"{bname}: komponenterne ender ved y={y - Y0:.0f} mm - "
+                f"passer ikke i jiggens {H} mm (juster PLACE/marginer)")
 
     # --- omrids (RECT = altid lukket, ingen segment-kaedning) ----------------
     W, H = math.ceil(W), math.ceil(H)
