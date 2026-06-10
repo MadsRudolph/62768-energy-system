@@ -29,7 +29,7 @@ Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsid
 |---|---|---|---|---|
 | buck | 3 | 33 mm | 0 | SW |
 | boost | 4 | 79 mm | 0 | VIN_5V, VOUT_V2 |
-| drive_circuit | 3 | 27 mm | 0 | D2-A |
+| drive_circuit | 43 | 263 mm | 1 | +15V, +20V, GND, D1-A, D2-A, D2-K, U2-LIN (manuel reroute) |
 | feedback_circuit | 15 | 96 mm | 0 | GND, LED, OUT_PD |
 | rectifier | 2 | 22 mm | 0 | V1 |
 | mppt | 19 | 174 mm | 0 | GND, PV_V, U1A_OUT, U1B_FB |
