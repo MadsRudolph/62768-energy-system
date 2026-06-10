@@ -13,7 +13,7 @@ run from `hardware/kicad/` unless noted.
 | KiCad python (pcbnew) | `& "C:\Program Files\KiCad\9.0\bin\python.exe" -c "import pcbnew"` |
 | System python + sexpdata | `py -3.13 -c "import sexpdata"` |
 | Java 21 (NOT 25-only jars) | `java -version` |
-| Freerouting **2.0.1** | download jar: github.com/freerouting/freerouting/releases/tag/v2.0.1 → pass via `-Jar`. v2.2+ needs Java 25 and will NOT run here. |
+| Freerouting **1.9.0** | `%USERPROFILE%\.freerouting\freerouting-1.9.0.jar` (download: github.com/freerouting/freerouting/releases/tag/v1.9.0). **NOT 2.0.1** — its version-check/API NPE can eat the SES save (job "hangs" forever after routing). v2.2+ needs Java 25 and will NOT run here. |
 | Component shop CSV | `C:\Users\Mads2\Downloads\Misc\dtu_component_shop.csv` (1464 parts; columns Category, Subcategory, Part_Number, Value, Description) |
 | Stock symbol/footprint libs | `C:\Program Files\KiCad\9.0\share\kicad\{symbols,footprints}` |
 
@@ -98,7 +98,7 @@ netclass — required so GUI routing keeps the rules):
 
 Run the whole thing per board (or all) with:
 ```powershell
-.\tools\pcb_make_all.ps1 -Jar <path>\freerouting-2.0.1.jar [-Boards buck,mppt]
+.\tools\pcb_make_all.ps1 [-Jar <path>\freerouting-1.9.0.jar] [-Boards buck,mppt]
 ```
 What it does per board — replicate exactly if scripting by hand:
 
@@ -152,7 +152,9 @@ table) and `PCB_RESULTS.md`. The operator checklist for the machine lives in
 |---|---|
 | Blocking dialog "wxWidgets Debug Alert … non-closed outline" during DSN export | KiCad-stable debug assert; harmless. Run this dismisser in a background job during batches: `$sh=New-Object -ComObject WScript.Shell; while($true){if($sh.AppActivate("wxWidgets Debug Alert")){Start-Sleep -m 150;$sh.SendKeys("n")};Start-Sleep -m 400}` |
 | Freerouting hangs after "Route optimization completed" | Flaky save phase — can take 1–3 min normally; >5 min = hung. Kill java, re-run that board. NEVER launch java with `-WindowStyle Hidden` (kills its GUI event pump → guaranteed hang). Run it in the console. |
-| Freerouting exits instantly, no SES | Wrong Java (2.2.x jars need Java 25). Use the 2.0.1 jar. |
+| Freerouting "File not found" on a DSN that exists / "Non-ansi character at position 0" / hangs forever burning CPU | **BOM in the DSN.** Windows PowerShell 5.1's `Set-Content -Encoding UTF8` writes a UTF-8 BOM (pwsh 7 doesn't) and Freerouting's parser chokes on it. Write the masked stage-1 DSN with `[System.IO.File]::WriteAllText(...)` (BOM-less) — `pcb_make_all.ps1` does this now. |
+| Freerouting 2.0.1 routes (CPU busy) but never writes the SES; `NullPointerException ... gson.JsonObject.get(String) is null` in the log | 2.0.1's VersionChecker/API phone-home NPEs and takes the job-completion chain with it. Use the **1.9.0 jar** (pure local CLI, same DSN/SES formats, runs on Java 21; the NPE is a harmless daemon-thread warning there). |
+| Freerouting exits instantly, no SES | Wrong Java (2.2.x jars need Java 25). Use the 1.9.0 jar. |
 | SES import wiped the stage-1 routing | Fixed wires aren't in Freerouting's SES — use `pcb_route.py ses` (merge-import), never a raw import after stage 2. |
 | MOSFET/transistor pads end up `<no net>` (and DRC stays quiet about it!) | Symbol has letter pin numbers vs numeric pads — §2 pin-letter trap. The fail-hard check in pcb_build catches whole-component cases. |
 | `power_pin_not_driven` ERC errors | Add PWR_FLAG symbols on connector-fed supply nets. |

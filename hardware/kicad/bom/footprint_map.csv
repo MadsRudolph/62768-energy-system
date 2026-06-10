@@ -5,7 +5,7 @@ buck,R1,330,332R (E96),shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_H
 buck,R2,10k,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,
 buck,C1,47u,47uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,
 buck,U1,4N25,4N25,shop,Package_DIP:DIP-6_W7.62mm_LongPads,monter i DIP6-sokkel (shop)
-buck,L1,470u,SE NOTE,shop/egen-vikling,Inductor_THT:L_Radial_D10.0mm_P5.00mm_Fastron_07P,SUBSTITUTION-FLAG: 470uH findes IKKE i shoppen. Naermeste: 270uH (ukendt maerkestroem) eller 2.7mH. Alternativ: vikl selv paa shop-toroidkerne (saa skal footprint aendres til toroid). Genberegn ripple med valgt L (Lec 2: dI=Vs*k(1-k)/(2fL))
+buck,L1,470u,toroid (egen-vikling),egen-vikling,energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads,Maalt med skydelaere paa den fysiske toroid: OD 34.5mm staaende paa kant; ben-pitch 28.2mm c-c (26.6mm indvendigt + 1.6mm ben); drill 2.0mm. Genberegn ripple med viklet L (Lec 2: dI=Vs*k(1-k)/(2fL))
 buck,J1,V1 ind (15V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
 buck,J2,5V ud,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
 buck,J3,PWM (isoleret),Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,PWM + GND_MCU (isoleret jord - maa IKKE forbindes til effekt-GND)
@@ -16,7 +16,7 @@ boost,R1,330,332R (E96),shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_
 boost,R2,10k,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,
 boost,C1,47u,47uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,
 boost,U1,4N25,4N25,shop,Package_DIP:DIP-6_W7.62mm_LongPads,DIP6-sokkel
-boost,L1,470u,SE NOTE,shop/egen-vikling,Inductor_THT:L_Radial_D10.0mm_P5.00mm_Fastron_07P,SUBSTITUTION-FLAG: som buck L1
+boost,L1,470u,toroid (egen-vikling),egen-vikling,energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads,som buck L1: maalt toroid OD 34.5mm / pitch 28.2mm / drill 2.0mm
 boost,J1,lager ind (5V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
 boost,J2,V2 ud (10V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
 boost,J3,PWM (isoleret),Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,

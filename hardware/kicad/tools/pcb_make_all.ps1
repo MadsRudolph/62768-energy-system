@@ -2,11 +2,13 @@
 # Routing: B.Cu foretraekkes (etch-siden); F.Cu er tilladt til de kryds der ikke
 # kan klares enkeltsidet (topbaner = designede traadbroer ELLER side 2 ved
 # dobbeltsidet aetsning). Maal: 0 uroutede net.
-# Kraever: KiCad 9, py -3.13 med sexpdata, java 21+ og freerouting-2.0.1.jar
-# (https://github.com/freerouting/freerouting/releases/tag/v2.0.1).
-# Koeres fra hardware\kicad: .\tools\pcb_make_all.ps1 -Jar <sti>\freerouting-2.0.1.jar [-Boards buck,...]
+# Kraever: KiCad 9, py -3.13 med sexpdata, java 21+ og freerouting-1.9.0.jar
+# (https://github.com/freerouting/freerouting/releases/tag/v1.9.0).
+# 1.9.0 og IKKE 2.0.1: 2.0.1's version-check/API-NPE kan aede SES-gemningen
+# (jobbet "haenger" efter routing). 1.9 ruter lokalt uden API-afhaengighed.
+# Koeres fra hardware\kicad: .\tools\pcb_make_all.ps1 [-Jar <sti>\freerouting-1.9.0.jar] [-Boards buck,...]
 param(
-    [string]$Jar = "$env:TEMP\freerouting\freerouting-2.0.1.jar",
+    [string]$Jar = "$env:USERPROFILE\.freerouting\freerouting-1.9.0.jar",
     [string[]]$Boards = @("buck","boost","drive_circuit","feedback_circuit","rectifier","mppt","current_sense")
 )
 $kc  = "C:\Program Files\KiCad\9.0\bin\kicad-cli.exe"
@@ -23,10 +25,13 @@ foreach ($b in $Boards) {
 
     # TRIN 1: route alt der KAN ligge paa bagsiden (F.Cu maskeret som power-lag)
     & $kpy tools\pcb_route.py dsn $pcb "$env:TEMP\$b.dsn"
-    (Get-Content "$env:TEMP\$b.dsn" -Raw) -replace '\(layer F\.Cu\s*\r?\n\s*\(type signal\)', "(layer F.Cu`n      (type power)" |
-        Set-Content "$env:TEMP\${b}_1l.dsn" -Encoding UTF8
+    # BOM-FRIT skriv (WriteAllText, ikke Set-Content): PS 5.1's -Encoding UTF8
+    # saetter en BOM som Freeroutings DSN-parser ikke taaler ("file not found"/
+    # "Non-ansi character at position 0").
+    $masked = (Get-Content "$env:TEMP\$b.dsn" -Raw) -replace '\(layer F\.Cu\s*\r?\n\s*\(type signal\)', "(layer F.Cu`n      (type power)"
+    [System.IO.File]::WriteAllText("$env:TEMP\${b}_1l.dsn", $masked)
     Remove-Item "$env:TEMP\$b.ses" -ErrorAction SilentlyContinue
-    java -jar $Jar -de "$env:TEMP\${b}_1l.dsn" -do "$env:TEMP\$b.ses" -mp 100 -mt 1 2>&1 |
+    java -jar $Jar -de "$env:TEMP\${b}_1l.dsn" -do "$env:TEMP\$b.ses" -mp 100 2>&1 |
         Select-String "completed in|Saving" | ForEach-Object { "  1: $_" }
     if (Test-Path "$env:TEMP\$b.ses") { & $kpy tools\pcb_route.py sesraw $pcb "$env:TEMP\$b.ses" }
     else { Write-Host "  trin 1: INGEN SES"; continue }
@@ -35,7 +40,7 @@ foreach ($b in $Boards) {
     # med toppen tilladt - topbaner = designede traadbroer / side 2
     & $kpy tools\pcb_route.py lockdsn $pcb "$env:TEMP\${b}_2l.dsn"
     Remove-Item "$env:TEMP\$b.ses" -ErrorAction SilentlyContinue
-    java -jar $Jar -de "$env:TEMP\${b}_2l.dsn" -do "$env:TEMP\$b.ses" -mp 100 -mt 1 2>&1 |
+    java -jar $Jar -de "$env:TEMP\${b}_2l.dsn" -do "$env:TEMP\$b.ses" -mp 100 2>&1 |
         Select-String "completed in|Saving" | ForEach-Object { "  2: $_" }
     if (Test-Path "$env:TEMP\$b.ses") { & $kpy tools\pcb_route.py ses $pcb "$env:TEMP\$b.ses" }
     else { Write-Host "  trin 2: INGEN SES - kun bagside-routing"; & $kpy tools\pcb_route.py ses $pcb "-" }

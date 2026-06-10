@@ -9,3 +9,7 @@ __pycache__/
 *.erc.txt
 *.pyc
 *-bak
+
+# Routing-scratch (pipeline-mellemfiler) og Freerouting-log
+.routing-tmp/
+logs/

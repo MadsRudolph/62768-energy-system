@@ -26,10 +26,11 @@ graveret som kobber-tekst på B.Cu.
 ## Genbyg / eksportér (køres fra denne mappe)
 
 ```powershell
-.\tools\pcb_make_all.ps1 -Jar <sti>\freerouting-2.0.1.jar [-Boards buck,mppt]
+.\tools\pcb_make_all.ps1 [-Jar <sti>\freerouting-1.9.0.jar] [-Boards buck,mppt]
 .\tools\pcb_export_production.ps1
 ```
 
-Kræver KiCad 9, `py -3.13` med sexpdata, Java 21 + freerouting-2.0.1.jar
-(https://github.com/freerouting/freerouting/releases/tag/v2.0.1).
+Kræver KiCad 9, `py -3.13` med sexpdata, Java 21 + freerouting-**1.9.0**.jar
+(https://github.com/freerouting/freerouting/releases/tag/v1.9.0 — IKKE 2.0.1,
+se gotcha-tabellen i WORKFLOW.md: BOM/NPE æder SES-gemningen).
 NB: KiCad-stable popper en harmløs debug-assert-dialog under DSN-eksport — klik **No**.

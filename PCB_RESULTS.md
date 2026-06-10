@@ -47,8 +47,8 @@ UUID-links findes ikke første gang).
 
 | Board | Projekt | Str. (mm) | Top-baner (trådbroer/side 2) |
 |---|---|---|---|
-| Buck | `boards/buck/buck.kicad_pro` | 121×56 | 4 (33 mm) |
-| Boost | `boards/boost/boost.kicad_pro` | 121×56 | 12 (144 mm) |
+| Buck | `boards/buck/buck.kicad_pro` | 145×72 | 4 (76 mm) |
+| Boost | `boards/boost/boost.kicad_pro` | 145×72 | 2 (27 mm) |
 | Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 134×60 | 17 (104 mm) + 1 via |
 | Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 118×50 | 11 (72 mm) + 1 via |
 | Rectifier | `boards/rectifier/rectifier.kicad_pro` | 146×74 | 2 (27 mm) |
@@ -74,7 +74,7 @@ UUID-links findes ikke første gang).
 | 1N4007 | **1N4006** | 800 V rigeligt ved 20 V |
 | IRF530N/IRF540N | **IRF530/IRF540** | samme die/pinout, uden N-suffix i shoppen |
 | 330 Ω / 33 k | **332R / 33k2** | E96-shop; 0.6 % afvigelse |
-| **L 470 µH** | ⚠️ **findes ikke** | nærmeste 270 µH (ukendt strøm) eller 2.7 mH, eller vikl på shop-toroid. **Genberegn ripple** (Lec 2) før valg |
+| **L 470 µH** | **egen-viklet toroid** | målt med skydelære: OD 34.5 mm stående på kant, ben-pitch 28.2 mm c-c, ben Ø1.6 → footprint `energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` (buck+boost re-routet, boards nu 145×72). **Genberegn ripple** (Lec 2) med den viklede L |
 | 15 mF | **3× 4700 µF/50 V** | = 14.1 mF |
 
 **Kit-dele uden shop-ækvivalent (flagget, IKKE substitueret):** IR2110 (DIP-14),
@@ -97,10 +97,10 @@ Brug DIP-sokler fra shoppen til alle IC'er.
 ## Værktøjskæde (reproducérbart)
 
 ```
-.\tools\pcb_make_all.ps1 -Jar <sti>\freerouting-2.0.1.jar [-Boards buck,...]
+.\tools\pcb_make_all.ps1 [-Jar <sti>\freerouting-1.9.0.jar] [-Boards buck,...]
 ```
 netliste → pcb_netlist_json.py → pcb_build.py (placering, omrids, .kicad_pro) →
-TRIN 1: DSN med F.Cu maskeret som power-lag → Freerouting 2.0.1 (Java 21) → import →
+TRIN 1: DSN med F.Cu maskeret som power-lag → Freerouting 1.9.0 (Java 21) → import →
 TRIN 2: bagside-kobberet låses (type fix) → Freerouting med toppen tilladt →
 merge-import + refdes-kobbertekst + laser-zoner (pcb_route.py) → DRC + render.
 NB: KiCad-stable popper en harmløs debug-assert-dialog under DSN-eksport

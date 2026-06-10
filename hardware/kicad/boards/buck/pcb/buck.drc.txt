@@ -1,7 +1,10 @@
 ** Drc report for buck.kicad_pcb **
-** Created on 2026-06-10T07:55:57+0200 **
+** Created on 2026-06-10T11:36:11+0200 **
 
-** Found 0 DRC violations **
+** Found 1 DRC violations **
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(105.1650 mm, 78.3497 mm): Track [GATE] on B.Cu, length 2.7926 mm
 
 ** Found 0 unconnected pads **
 

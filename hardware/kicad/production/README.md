@@ -27,8 +27,8 @@ Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsid
 
 | Board | Top-baner | Længde | Vias | Net på toppen |
 |---|---|---|---|---|
-| buck | 4 | 33 mm | 0 | GND, SW |
-| boost | 12 | 144 mm | 0 | GATE, VOUT_V2 |
+| buck | 4 | 76 mm | 0 | SW, VOUT_5V |
+| boost | 2 | 27 mm | 0 | VOUT_V2 |
 | drive_circuit | 17 | 104 mm | 1 | +20V, GND, D2-K |
 | feedback_circuit | 11 | 72 mm | 1 | +5V, GND, U3_OUT |
 | rectifier | 2 | 27 mm | 0 | V1 |
@@ -60,8 +60,8 @@ Enkelte navne er flyttet/droppet i de tætteste klynger (fremgår af
 
 | Board | Print (mm) | Skær mindst (mm) |
 |---|---|---|
-| buck | 121×56 | **123×58** |
-| boost | 121×56 | **123×58** |
+| buck | 145×72 | **147×74** |
+| boost | 145×72 | **147×74** |
 | drive_circuit | 134×60 | **136×62** |
 | feedback_circuit | 118×50 | **120×52** |
 | rectifier | 146×74 | **148×76** |
