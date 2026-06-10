@@ -40,15 +40,23 @@ Komponentnavnene (refdes) er graveret med som **kobber-tekst på B.Cu** ved hver
 komponent (læsbare fra loddesiden); en valgfri topside-tekst-DXF ligger også i
 `production/` pr. board.
 
-| Board | Fil | Str. (mm) | Jumpere |
+Hvert board er nu et **KiCad-projekt**: `.kicad_pro` + `.kicad_sch` + `.kicad_pcb`
+ligger sammen med samme basenavn — åbn `.kicad_pro`-filen, så er skema og PCB
+linket (skift editor med knappen). Projektfilen indeholder laser-netclassen
+(0.8/1.0 mm), så manuel routing i GUI'en bruger de rigtige regler. Ved *Update
+PCB from Schematic*: sæt flueben i **"Re-link footprints to schematic symbols
+based on their reference designators"** (boardene er bygget scriptet, så
+UUID-links findes ikke første gang).
+
+| Board | Projekt | Str. (mm) | Jumpere |
 |---|---|---|---|
-| Buck | `converters/design/pcb/buck.kicad_pcb` | 121×56 | 2 |
-| Boost | `converters/design/pcb/boost.kicad_pcb` | 121×56 | 4 |
-| Motor-drive | `exp3a/pcb/drive_circuit.kicad_pcb` | 134×60 | 5 |
-| Feedback | `exp3a/pcb/feedback_circuit.kicad_pcb` | 118×50 | 7 |
-| Rectifier | `system/pcb/rectifier.kicad_pcb` | 146×74 | 5 |
-| MPPT/PV | `system/pcb/mppt.kicad_pcb` | 165×82 | 10 |
-| Current sense | `system/pcb/current_sense.kicad_pcb` | 134×58 | 15 |
+| Buck | `converters/design/buck.kicad_pro` | 121×56 | 2 |
+| Boost | `converters/design/boost.kicad_pro` | 121×56 | 4 |
+| Motor-drive | `exp3a/drive_circuit.kicad_pro` | 134×60 | 5 |
+| Feedback | `exp3a/feedback_circuit.kicad_pro` | 118×50 | 7 |
+| Rectifier | `system/rectifier.kicad_pro` | 146×74 | 5 |
+| MPPT/PV | `system/mppt.kicad_pro` | 165×82 | 10 |
+| Current sense | `system/current_sense.kicad_pro` | 134×58 | 15 |
 
 **Ærlig status:** alle boards overholder laser-designreglerne med DRC 0 fejl, og
 ALLE net er enten routet eller på jumperlisten (`production/README.md`). 0.8 mm

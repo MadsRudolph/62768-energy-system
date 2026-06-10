@@ -4,13 +4,13 @@
 # Brug: .\pcb_export_production.ps1
 $kc = "C:\Program Files\KiCad\9.0\bin\kicad-cli.exe"
 $map = @{
-    buck             = "converters\design\pcb\buck.kicad_pcb"
-    boost            = "converters\design\pcb\boost.kicad_pcb"
-    drive_circuit    = "exp3a\pcb\drive_circuit.kicad_pcb"
-    feedback_circuit = "exp3a\pcb\feedback_circuit.kicad_pcb"
-    rectifier        = "system\pcb\rectifier.kicad_pcb"
-    mppt             = "system\pcb\mppt.kicad_pcb"
-    current_sense    = "system\pcb\current_sense.kicad_pcb"
+    buck             = "converters\design\buck.kicad_pcb"
+    boost            = "converters\design\boost.kicad_pcb"
+    drive_circuit    = "exp3a\drive_circuit.kicad_pcb"
+    feedback_circuit = "exp3a\feedback_circuit.kicad_pcb"
+    rectifier        = "system\rectifier.kicad_pcb"
+    mppt             = "system\mppt.kicad_pcb"
+    current_sense    = "system\current_sense.kicad_pcb"
 }
 foreach ($b in $map.Keys | Sort-Object) {
     $pcb = $map[$b]; $out = "production\$b"

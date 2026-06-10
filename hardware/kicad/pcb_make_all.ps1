@@ -18,7 +18,9 @@ $map = @{
     current_sense    = @{ sch = "system\current_sense.kicad_sch";            out = "system\pcb" }
 }
 foreach ($b in $Boards) {
-    $m = $map[$b]; $out = $m.out; $pcb = "$out\$b.kicad_pcb"
+    # boardet ligger ved siden af skemaet (samme basenavn + .kicad_pro) saa
+    # KiCad linker skema <-> PCB; rapporter/renders ryger i pcb\-undermappen
+    $m = $map[$b]; $out = $m.out; $pcb = ($m.sch -replace '\.kicad_sch$', '.kicad_pcb')
     New-Item -ItemType Directory -Force $out | Out-Null
     Write-Host "=== $b ==="
     & $kc sch export netlist --format kicadsexpr -o "$env:TEMP\$b.net" $m.sch | Out-Null

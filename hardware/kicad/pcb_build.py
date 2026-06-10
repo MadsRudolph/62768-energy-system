@@ -136,5 +136,49 @@ def main(jsonf, outf):
     pcbnew.SaveBoard(outf, board)
     print(f"wrote {outf}  ({len(fps)} footprints, {W:.0f}x{H:.0f} mm)")
 
+    # .kicad_pro ved siden af boardet, saa KiCad linker skema <-> PCB naar de
+    # ligger i samme mappe med samme basenavn. Netclass-reglerne SKAL med her -
+    # ellers falder GUI'en tilbage til 0.2 mm defaults ved manuel routing.
+    import json
+    prof = os.path.splitext(outf)[0] + ".kicad_pro"
+    if not os.path.exists(prof):
+        pro = {
+            "meta": {"filename": os.path.basename(prof), "version": 3},
+            "board": {
+                "design_settings": {
+                    "rules": {
+                        "min_clearance": 0.0,
+                        "min_track_width": 0.8,
+                        "min_copper_edge_clearance": 0.5,
+                    },
+                    "defaults": {},
+                },
+            },
+            "net_settings": {
+                "meta": {"version": 4},
+                "classes": [{
+                    "name": "Default",
+                    "clearance": 0.8,
+                    "track_width": 1.0,
+                    "via_diameter": 1.6,
+                    "via_drill": 0.8,
+                    "wire_width": 6,
+                    "bus_width": 12,
+                    "line_style": 0,
+                    "microvia_diameter": 0.3,
+                    "microvia_drill": 0.1,
+                    "diff_pair_width": 1.0,
+                    "diff_pair_gap": 0.8,
+                    "diff_pair_via_gap": 0.8,
+                    "pcb_color": "rgba(0, 0, 0, 0.000)",
+                    "schematic_color": "rgba(0, 0, 0, 0.000)",
+                }],
+            },
+            "project": {"files": []},
+        }
+        with open(prof, "w", encoding="utf-8") as f:
+            json.dump(pro, f, indent=2)
+        print(f"wrote {prof}")
+
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])

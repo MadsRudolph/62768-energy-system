@@ -1,5 +1,5 @@
 ** Drc report for feedback_circuit.kicad_pcb **
-** Created on 2026-06-10T01:35:53+0200 **
+** Created on 2026-06-10T06:19:59+0200 **
 
 ** Found 0 DRC violations **
 
@@ -10,7 +10,7 @@
     @(80.6650 mm, 36.5850 mm): PTH pad 7 [+5V] of U3
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(70.5433 mm, 48.4333 mm): Track [/IN_P] on B.Cu, length 1.8409 mm
+    @(70.5433 mm, 39.1250 mm): Track [/IN_P] on B.Cu, length 9.3083 mm
     @(61.6950 mm, 49.7350 mm): PTH pad 2 [/IN_P] of R1
 [unconnected_items]: Missing connection between items
     Local override; error
@@ -22,15 +22,15 @@
     @(54.4750 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(73.0450 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
+    @(73.0450 mm, 41.6650 mm): PTH pad 4 [GND] of U3
     @(62.0950 mm, 41.6650 mm): PTH pad 5 [GND] of U1
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(91.6150 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
+    @(91.6150 mm, 41.6650 mm): PTH pad 4 [GND] of U4
     @(91.6150 mm, 39.1250 mm): PTH pad 3 [GND] of U4
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(91.6150 mm, 41.6650 mm): Track [GND] on B.Cu, length 2.5017 mm
+    @(91.6150 mm, 41.6650 mm): PTH pad 4 [GND] of U4
     @(75.5467 mm, 45.8167 mm): Track [GND] on B.Cu, length 5.5413 mm
 
 ** Found 0 Footprint errors **

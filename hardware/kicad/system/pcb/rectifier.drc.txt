@@ -1,12 +1,12 @@
 ** Drc report for rectifier.kicad_pcb **
-** Created on 2026-06-10T01:36:08+0200 **
+** Created on 2026-06-10T06:20:00+0200 **
 
 ** Found 0 DRC violations **
 
 ** Found 5 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(54.3750 mm, 50.0250 mm): PTH pad 1 [/PH_B] of D5
+    @(54.3750 mm, 50.0250 mm): Track [/PH_B] on B.Cu, length 10.4207 mm
     @(85.4450 mm, 34.1250 mm): PTH pad 2 [/PH_B] of D2
 [unconnected_items]: Missing connection between items
     Local override; error

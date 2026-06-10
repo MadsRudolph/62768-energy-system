@@ -1,5 +1,5 @@
 ** Drc report for boost.kicad_pcb **
-** Created on 2026-06-10T01:35:20+0200 **
+** Created on 2026-06-10T06:19:58+0200 **
 
 ** Found 0 DRC violations **
 
@@ -10,7 +10,7 @@
     @(55.7197 mm, 52.3250 mm): PTH pad 1 [/VOUT_V2] of C1
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(72.4797 mm, 50.2222 mm): Track [GATE] on B.Cu, length 0.7511 mm
+    @(54.4658 mm, 50.2222 mm): Track [GATE] on B.Cu, length 18.0139 mm
     @(101.5550 mm, 40.3150 mm): PTH pad 4 [GATE] of U1
 [unconnected_items]: Missing connection between items
     Local override; error
