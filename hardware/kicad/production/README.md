@@ -26,8 +26,7 @@ Reference-navnene (R1, C2, U1 …) er lagt som **kobber-tekst på B.Cu** ved sid
 hver komponent — de graveres automatisk med i samme kørsel som banerne og kan
 læses fra loddesiden (spejlvendt i KiCad, så de vender rigtigt på det færdige
 print). Placeringen er kollisions-checket mod baner/pads; i de tætteste områder
-er enkelte navne droppet (buck: L1 · boost: M1 · drive: C1, R3 · feedback: R3 ·
-current_sense: C1, R12, R13, R21, U1) — de fremgår af bestykningstegningen
+er enkelte navne droppet (1-2 pr. board i de taetteste klynger) — de fremgår af bestykningstegningen
 (`gerbers/<board>-F_Fab.gbr`) og af KiCad-filen.
 
 **Valgfrit — navne på OVERSIDEN (komponentsiden):** `<board>_silk_top.dxf`
@@ -46,8 +45,8 @@ er nok til bestykning.
 | drive_circuit | 134×60 | **136×62** |
 | feedback_circuit | 118×50 | **120×52** |
 | rectifier | 146×74 | **148×76** |
-| mppt | 165×82 | **167×84** |
-| current_sense | 134×58 | **136×60** |
+| mppt | 140×68 | **142×70** |
+| current_sense | 120×80 | **122×82** |
 
 ## Loddejumpere pr. board (uroutede på enkeltsidet — træk som tråd på toppen)
 
@@ -58,8 +57,8 @@ er nok til bestykning.
 | drive_circuit | 5 | +15V, +20V, GND ×2, D2-K |
 | feedback_circuit | 7 | +5V, IN_P, OUT_PD, GND ×4 |
 | rectifier | 5 | PH_B, GND ×1, V1 ×3 |
-| mppt | 10 | PV_BUS ×3, GND ×4, Q1_B, U1A_OUT, U1B_FB |
-| current_sense | 15 | GND ×8, +5V, FB1, I_SENSE1, I_SENSE2, I_SENSE3, RET3, U2B_FB |
+| mppt | 7 | GND ×3, PV_BUS, Q1_B, U1B_FB, VREF |
+| current_sense | 10 | GND ×6, +5V ×3, U2B_FB |
 
 Åbn boardet i KiCad og se ratsnest-linjerne for præcis placering. GND-jumperne kan
 oftest samles som én bus-tråd. mppt/current_sense har mange — overvej 20–30 min

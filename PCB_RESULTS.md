@@ -55,8 +55,8 @@ UUID-links findes ikke første gang).
 | Motor-drive | `exp3a/drive_circuit.kicad_pro` | 134×60 | 5 |
 | Feedback | `exp3a/feedback_circuit.kicad_pro` | 118×50 | 7 |
 | Rectifier | `system/rectifier.kicad_pro` | 146×74 | 5 |
-| MPPT/PV | `system/mppt.kicad_pro` | 165×82 | 10 |
-| Current sense | `system/current_sense.kicad_pro` | 134×58 | 15 |
+| MPPT/PV | `system/mppt.kicad_pro` | 140×68 | 7 |
+| Current sense | `system/current_sense.kicad_pro` | 120×80 | 10 |
 
 **Ærlig status:** alle boards overholder laser-designreglerne med DRC 0 fejl, og
 ALLE net er enten routet eller på jumperlisten (`production/README.md`). 0.8 mm
