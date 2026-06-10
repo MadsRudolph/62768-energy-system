@@ -1,0 +1,13 @@
+** Drc report for mppt.kicad_pcb **
+** Created on 2026-06-10T07:37:19+0200 **
+
+** Found 1 DRC violations **
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(55.4128 mm, 24.9850 mm): Segment of C1 on F.Silkscreen
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **

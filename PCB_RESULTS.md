@@ -14,8 +14,7 @@ Status efter hardware/PCB-fasen (jf. `PCB_HANDOFF.md`). Alt ligger i `hardware/k
    `V_in`/`Rload` i buck/boost er erstattet af terminaler.
 3. **BOM:** `hardware/kicad/bom/footprint_map.csv` — ref → indkøbsdel (shop/kit) →
    footprint → noter. **Alle substitutioner er flagget der.**
-4. **7 enkeltsidede PCB'er** (komponenter på top, kobber + GND-plane på B.Cu),
-   autoroutet med Freerouting, **DRC: 0 fejl på alle**, render + DRC-rapport pr. board.
+4. **7 PCB'er, alle net routet** (komponenter på top; B.Cu er hoved-etchen, F.Cu kun de få nødvendige kryds = trådbroer/side 2), autoroutet med Freerouting i to trin, **DRC: 0 fejl og 0 uroutede på alle**, render + DRC-rapport pr. board.
 
 ## ⚠️ To wiring-fejl FUNDET OG RETTET i drive_circuit (GUI-redigeringen d07ce2a)
 
@@ -48,21 +47,17 @@ PCB from Schematic*: sæt flueben i **"Re-link footprints to schematic symbols
 based on their reference designators"** (boardene er bygget scriptet, så
 UUID-links findes ikke første gang).
 
-| Board | Projekt | Str. (mm) | Jumpere |
+| Board | Projekt | Str. (mm) | Top-baner (trådbroer/side 2) |
 |---|---|---|---|
-| Buck | `converters/design/buck.kicad_pro` | 121×56 | 2 |
-| Boost | `converters/design/boost.kicad_pro` | 121×56 | 4 |
-| Motor-drive | `exp3a/drive_circuit.kicad_pro` | 134×60 | 5 |
-| Feedback | `exp3a/feedback_circuit.kicad_pro` | 118×50 | 7 |
-| Rectifier | `system/rectifier.kicad_pro` | 146×74 | 5 |
-| MPPT/PV | `system/mppt.kicad_pro` | 140×68 | 7 |
-| Current sense | `system/current_sense.kicad_pro` | 120×80 | 10 |
+| Buck | `boards/buck/buck.kicad_pro` | 121×56 | 4 (33 mm) |
+| Boost | `boards/boost/boost.kicad_pro` | 121×56 | 12 (144 mm) |
+| Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 134×60 | 17 (104 mm) + 1 via |
+| Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 118×50 | 11 (72 mm) + 1 via |
+| Rectifier | `boards/rectifier/rectifier.kicad_pro` | 146×74 | 2 (27 mm) |
+| MPPT/PV | `boards/mppt/mppt.kicad_pro` | 140×68 | 27 (149 mm) + 2 vias |
+| Current sense | `boards/current_sense/current_sense.kicad_pro` | 120×80 | 17 (113 mm) |
 
-**Ærlig status:** alle boards overholder laser-designreglerne med DRC 0 fejl, og
-ALLE net er enten routet eller på jumperlisten (`production/README.md`). 0.8 mm
-clearance på enkeltsidet gør mppt/current-sense jumper-tunge — de virker med
-trådbroer (GND kan samles som én bus-tråd), men 20–30 min manuel omroute i KiCad
-gør dem pænere. Ratsnest er intakt i filerne.
+**Status:** ALLE net er routet (0 uroutede, DRC 0 fejl). To-trins-routing: bunden (B.Cu) er hoved-etchen; toppen (F.Cu) indeholder kun de kryds der er umulige enkeltsidet — byg dem som trådbroer (anbefalet) eller ets toppen som side 2. Se `hardware/kicad/production/README.md`.
 
 **To fejl mere fanget i produktions-passet:**
 - Buck/boost brugte det generiske `Device:Q_NMOS`-symbol med **bogstav-pinnumre
@@ -104,11 +99,12 @@ Brug DIP-sokler fra shoppen til alle IC'er.
 ## Værktøjskæde (reproducérbart)
 
 ```
-.\pcb_make_all.ps1 -Jar <sti>\freerouting-2.0.1.jar [-Boards buck,...]
+.\tools\pcb_make_all.ps1 -Jar <sti>\freerouting-2.0.1.jar [-Boards buck,...]
 ```
-netliste → `pcb_netlist_json.py` → `pcb_build.py` (placering, omrids, enkeltsidet)
-→ DSN (F.Cu sættes til `power` så Freerouting kun bruger bagsiden) → Freerouting
-2.0.1 (Java 21) → SES-import + GND-pour (`pcb_route.py`) → DRC + render.
+netliste → pcb_netlist_json.py → pcb_build.py (placering, omrids, .kicad_pro) →
+TRIN 1: DSN med F.Cu maskeret som power-lag → Freerouting 2.0.1 (Java 21) → import →
+TRIN 2: bagside-kobberet låses (type fix) → Freerouting med toppen tilladt →
+merge-import + refdes-kobbertekst + laser-zoner (pcb_route.py) → DRC + render.
 NB: KiCad-stable popper en harmløs debug-assert-dialog under DSN-eksport
 ("non-closed outline") — klik **No**; `pcb_make_all` kører videre.
 

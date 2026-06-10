@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "9.0.6"
     },
-    "CreationDate": "2026-06-10T06:46:31+02:00"
+    "CreationDate": "2026-06-10T07:38:54+02:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -34,6 +34,11 @@
   ],
   "FilesAttributes": [
     {
+      "Path": "mppt-F_Cu.gtl",
+      "FileFunction": "Copper,L1,Top",
+      "FilePolarity": "Positive"
+    },
+    {
       "Path": "mppt-B_Cu.gbl",
       "FileFunction": "Copper,L2,Bot",
       "FilePolarity": "Positive"
@@ -42,6 +47,11 @@
       "Path": "mppt-F_Silkscreen.gto",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
+    },
+    {
+      "Path": "mppt-F_Mask.gts",
+      "FileFunction": "SolderMask,Top",
+      "FilePolarity": "Negative"
     },
     {
       "Path": "mppt-B_Mask.gbs",

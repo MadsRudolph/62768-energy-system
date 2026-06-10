@@ -1,9 +1,0 @@
-# ERC-rapporter (genskabes med kicad-cli sch erc)
-*.erc.txt
-# KiCad backups / autosave / caches
-*.kicad_prl
-*-backups/
-fp-info-cache
-_autosave-*
-~*.lck
-__pycache__/

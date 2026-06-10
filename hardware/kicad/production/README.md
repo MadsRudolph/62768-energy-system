@@ -1,42 +1,58 @@
 # Produktion på XTool fiberlaseren — klar til kørsel
 
 Følger [SimsesLab/DTU-PCB-prototyping](https://github.com/SimsesLab/DTU-PCB-prototyping)-guiden.
-Alle 7 boards overholder guidens designregler og **DRC = 0 fejl**:
+Alle 7 boards overholder guidens designregler, **DRC = 0 fejl** og **0 uroutede net**:
 
-- Bane ≥ 1.0 mm, clearance 0.8 mm (netclass)
-- Alt kobber på **B.Cu** (komponenter på toppen, THT)
-- Solid **no-net fill zone** på B.Cu (pad-forbindelse: ingen) — laseren fjerner kun
-  isolations-kanalerne, jf. guidens "Correcting your design for the Laser"
-- DIP-footprints = **LongPads**-varianter (guidens shop-tabel)
-- TO-220 = `energy_system:TO-220-3_Vertical_LaserPads` (pads klemt til 1.7 mm så
-  ben-til-ben luften bliver 0.84 mm ≥ 0.8). MPPT'ens pass-transistor er skiftet
-  BD139→**TIP41A** (TO-126's 2.28 mm pitch kan fysisk ikke overholde 0.8 mm)
-- DXF eksporteret med guidens indstillinger: B.Cu + Edge.Cuts i én fil,
+- Bane ≥ 1.0 mm, clearance 0.8 mm (netclass — ligger i hvert boards `.kicad_pro`)
+- **To-trins-routet:** alt der kan, ligger på **B.Cu** (etch-siden); kun de kryds
+  der er umulige enkeltsidet, ligger på **F.Cu** (toppen) — se tabellen nederst
+- Solid **no-net fill zone** pr. kobberlag (pad-forbindelse: ingen) — laseren
+  fjerner kun isolations-kanalerne, jf. guidens "Correcting your design for the Laser"
+- DIP **LongPads** + `energy_system:*_LaserPads` TO-220 (luft 0.84 mm ≥ 0.8)
+- DXF eksporteret med guidens indstillinger: kobberlag + Edge.Cuts i én fil,
   drill marks **Small**, mm, ingen konturer
 
 ## Filer pr. board
 
-`production/<board>/<board>.dxf` ← **denne fil importeres i xTool Creative Space**
-`production/<board>/<board>_silk_top.dxf` ← *valgfri* topside-tekst (se nedenfor)
-`production/<board>/gerbers/` ← komplet Gerber-sæt + Excellon-drill (dokumentation/alternativ fab)
+| Fil | Hvad | Spejlvendes i xTool? |
+|---|---|---|
+| `<board>.dxf` | **BUNDEN** (B.Cu) — hoved-etch | **JA** |
+| `<board>_top_cu.dxf` | **TOPPEN** (F.Cu) — trådbro-plan ELLER side 2 ved dobbeltsidet | NEJ |
+| `<board>_silk_top.dxf` | valgfri topside-tekst (alle refdes) | NEJ |
+| `gerbers/` | komplet Gerber-sæt (begge lag) + Excellon-drill | — |
+
+## Top-laget: to måder at bygge det på
+
+Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsidet:
+
+| Board | Top-baner | Længde | Vias | Net på toppen |
+|---|---|---|---|---|
+| buck | 4 | 33 mm | 0 | GND, SW |
+| boost | 12 | 144 mm | 0 | GATE, VOUT_V2 |
+| drive_circuit | 17 | 104 mm | 1 | +20V, GND, D2-K |
+| feedback_circuit | 11 | 72 mm | 1 | +5V, GND, U3_OUT |
+| rectifier | 2 | 27 mm | 0 | V1 |
+| mppt | 27 | 149 mm | 2 | GND, PV_BUS, Q1_B, U1B_FB, VREF |
+| current_sense | 17 | 113 mm | 0 | +5V, GND |
+
+**Mulighed A — enkeltsidet etch + trådbroer (anbefalet, hurtigst):** ets kun
+bunden (`<board>.dxf`). Byg topbanerne som trådbroer mellem THT-benene —
+`<board>_top_cu.dxf` ER tegningen (åbn evt. boardet i KiCad og se F.Cu-laget).
+Vias (kun drive/feedback/mppt, 1–2 stk.) = bor hullet og lod en tråd igennem
+til begge sider.
+
+**Mulighed B — dobbeltsidet etch:** ets bunden, vend pladen, justér og ets
+toppen med `<board>_top_cu.dxf` (IKKE spejlvendt). Guiden advarer: dobbeltsidet
+er på eget ansvar/uprøvet — flip-justering er den svære del. Vias loddes som tråd.
 
 ## Komponentnavne på printet
 
-Reference-navnene (R1, C2, U1 …) er lagt som **kobber-tekst på B.Cu** ved siden af
-hver komponent — de graveres automatisk med i samme kørsel som banerne og kan
-læses fra loddesiden (spejlvendt i KiCad, så de vender rigtigt på det færdige
-print). Placeringen er kollisions-checket mod baner/pads; i de tætteste områder
-er enkelte navne droppet (1-2 pr. board i de taetteste klynger) — de fremgår af bestykningstegningen
-(`gerbers/<board>-F_Fab.gbr`) og af KiCad-filen.
+Refdes (R1, U1 …) er graveret som **kobber-tekst på B.Cu** ved hver komponent —
+læsbare fra loddesiden, med i samme kørsel. Enkelte navne er droppet i de
+tætteste klynger (fremgår af `gerbers/<board>-F_Fab.gbr`). Valgfrit kan
+`<board>_silk_top.dxf` graveres let på OVERSIDEN før kobberkørslen (alle navne).
 
-**Valgfrit — navne på OVERSIDEN (komponentsiden):** `<board>_silk_top.dxf`
-indeholder F.Silkscreen (ALLE refdes) + omrids. Den kan graveres let på
-oversiden FØR kobberkørslen: gravér toppen, vend pladen, kør kobber-DXF'en.
-OBS: silk-top-filen må **IKKE spejlvendes** (den køres direkte fra toppen), og
-flip-justeringen er manuel — spring den over hvis tiden er knap; B.Cu-navnene
-er nok til bestykning.
-
-## Udskæringsmål (board + 2 mm jf. guiden — skær GERNE større, juster hellere efter)
+## Udskæringsmål (board + 2 mm jf. guiden — skær GERNE større)
 
 | Board | Print (mm) | Skær mindst (mm) |
 |---|---|---|
@@ -48,29 +64,14 @@ er nok til bestykning.
 | mppt | 140×68 | **142×70** |
 | current_sense | 120×80 | **122×82** |
 
-## Loddejumpere pr. board (uroutede på enkeltsidet — træk som tråd på toppen)
-
-| Board | Antal | Net |
-|---|---|---|
-| buck | 2 | VIN_15V ×1, VOUT_5V ×1 |
-| boost | 4 | VOUT_V2, GATE, GND_MCU, R1-opto |
-| drive_circuit | 5 | +15V, +20V, GND ×2, D2-K |
-| feedback_circuit | 7 | +5V, IN_P, OUT_PD, GND ×4 |
-| rectifier | 5 | PH_B, GND ×1, V1 ×3 |
-| mppt | 7 | GND ×3, PV_BUS, Q1_B, U1B_FB, VREF |
-| current_sense | 10 | GND ×6, +5V ×3, U2B_FB |
-
-Åbn boardet i KiCad og se ratsnest-linjerne for præcis placering. GND-jumperne kan
-oftest samles som én bus-tråd. mppt/current_sense har mange — overvej 20–30 min
-manuel omroute i KiCad GUI før gravering, ellers virker trådbroer fint.
-
 ## Tjekliste på laseren (fra guiden — læs hele guiden først!)
 
 1. Sikkerhedskursus gennemført? Ellers STOP.
-2. Skær board efter tabellen ovenfor (IKKE de blå-film-plader; IKKE dobbeltsidet).
+2. Skær board efter tabellen ovenfor (IKKE de blå-film-plader; IKKE dobbeltsidet plade
+   medmindre du kører Mulighed B).
 3. 400-grit sandpapir, let — kun oxidlaget af.
 4. xTool Creative Space → Import image → vælg `<board>.dxf`.
-5. **FLIP designet (spejlvend!)** og gør det **compound**.
+5. **FLIP designet (spejlvend!)** og gør det **compound**. (Kun bund-DXF'en!)
 6. Engrave-mode, Output grøn. **Banerne skal være HVIDE, området omkring SORT**
    (sort = fjernes).
 7. Huller: *Edit compound* → slet hver hul-markering så de bliver sorte
@@ -81,4 +82,5 @@ manuel omroute i KiCad GUI før gravering, ellers virker trådbroer fint.
 10. Preset **PCB** under Engrave-fanen — tjek parametre mod opslagene/TA'erne.
 11. Sidste tjek: spejlvendt? hvide baner? parametre OK? → *Process*.
 12. Kig IKKE ind i brændpunktet. Bagefter: bor hullerne (drill marks er graveret
-    som små centreringsmærker), skær til endeligt mål.
+    som små centreringsmærker), skær til endeligt mål, og byg toppen
+    (trådbroer jf. Mulighed A — eller anden etch jf. Mulighed B).

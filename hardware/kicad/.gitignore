@@ -6,3 +6,6 @@ _autosave-*
 ~*.lck
 *auto_saved*
 __pycache__/
+*.erc.txt
+*.pyc
+*-bak
