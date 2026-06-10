@@ -113,8 +113,9 @@ What it does per board — replicate exactly if scripting by hand:
    again with both layers live. Only the impossible crossings end up on F.Cu.
 4. Final import `pcb_route.py ses`: **merge-import** (Freerouting does NOT
    re-emit fixed wires in its SES, so the importer snapshots the tracks and
-   re-adds whatever the import dropped), then adds **copper refdes text on B.Cu**
-   (collision-checked against B.Cu copper) and **no-net solid laser zones** on
+   re-adds whatever the import dropped), then adds **copper refdes text on F.Cu** (top/component
+   side, not mirrored; collision-checked against F.Cu copper - if a text ends up
+   clashing after manual rerouting, run `tools/fix_text_collisions.py`) and **no-net solid laser zones** on
    both copper layers (pad connection: none — the guide's engraving hack). The
    step is idempotent (removes old zones/text first).
 5. DRC + renders into `boards/<b>/pcb/`.
@@ -157,6 +158,7 @@ table) and `PCB_RESULTS.md`. The operator checklist for the machine lives in
 | `power_pin_not_driven` ERC errors | Add PWR_FLAG symbols on connector-fed supply nets. |
 | KiCad GUI routes with 0.2 mm clearance | The board was opened without its `.kicad_pro` (netclass lives there). Open the project file, not the bare .kicad_pcb. |
 | "Update PCB from Schematic" unlinks everything | Tick "Re-link footprints to schematic symbols based on their reference designators" — script-built boards have no symbol UUIDs. |
+| ZONE.Remove() via pcbnew crashes/corrupts the session (access violation, SWIG iteration breaks) | Never Remove zones in-process on loaded boards. Edit the .kicad_pcb textually with sexpdata instead (see `tools/migrate_refdes_topside.py`) and refill zones in a CLEAN session (`tools/refill_zones.py`). |
 | `import json` (or similar) inside a function | Shadows the module-level import → UnboundLocalError at the top of the function. Imports at module level. |
 | PowerShell eats inline python with quotes/braces | Write a temp .py file instead of `py -c` for anything non-trivial; `git stash drop 'stash@{0}'` needs quotes. |
 

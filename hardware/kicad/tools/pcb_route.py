@@ -28,12 +28,13 @@ elif mode == "sesraw":
     pcbnew.SaveBoard(boardf, board)
     print("sesraw:", ok)
 def add_refdes_copper(board):
-    """Komponentnavne som kobber-tekst paa B.Cu (laseren har ingen silkscreen).
-
-    Teksten lægges spejlvendt ved siden af hver komponent og graveres som en
-    fritliggende kobber-ø i zonen. Placeringen undgår baner/pads/anden tekst -
-    kobber-tekst OVER en bane ville kortslutte eller skære den. Kandidater
-    proeves over/under/venstre/hoejre; ingen plads -> tekst droppes (med log)."""
+    """Komponentnavne som kobber-tekst paa F.Cu - OVERSIDEN, komponentsiden
+    (laseren har ingen silkscreen). Navnene ligger ved siden af hver komponent,
+    ikke spejlvendt, og kommer med i <board>_top_cu.dxf: aetset i kobberet ved
+    dobbeltsidet, eller graveret i toppen sammen med traadbro-planen ved
+    enkeltsidet. Placeringen undgaar F.Cu-baner/pads/anden tekst - kobber-tekst
+    OVER en bane ville kortslutte eller skaere den. Kandidater proeves
+    over/under/venstre/hoejre; ingen plads -> tekst droppes (med log)."""
     from pcbnew import VECTOR2I, FromMM, ToMM
 
     bbox_brd = board.GetBoardEdgesBoundingBox()
@@ -42,8 +43,8 @@ def add_refdes_copper(board):
 
     obstacles = []                           # BOX2I'er, allerede inflateret
     for t in board.GetTracks():
-        # kun kobber paa B.Cu (+ vias) kolliderer med B.Cu-teksten
-        if t.GetClass() == "PCB_TRACK" and t.GetLayer() != pcbnew.B_Cu:
+        # kun kobber paa F.Cu (+ vias) kolliderer med F.Cu-teksten
+        if t.GetClass() == "PCB_TRACK" and t.GetLayer() != pcbnew.F_Cu:
             continue
         # diagonale baner har kaempe bounding box -> sampl segmentet i smaa
         # bokse, ellers kasseres tekst-positioner paa falsk grundlag
@@ -76,8 +77,8 @@ def add_refdes_copper(board):
         fbb = fp.GetBoundingBox(False)
         txt = pcbnew.PCB_TEXT(board)
         txt.SetText(ref)
-        txt.SetLayer(pcbnew.B_Cu)
-        txt.SetMirrored(True)                # laesbar set fra bagsiden
+        txt.SetLayer(pcbnew.F_Cu)
+        txt.SetMirrored(False)               # laeses fra oversiden (komponentsiden)
         txt.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5)))
         txt.SetTextThickness(FromMM(0.3))
         board.Add(txt)
@@ -112,13 +113,16 @@ def add_refdes_copper(board):
     print(f"  refdes paa B.Cu: {placed} placeret, {skipped} droppet")
 
 if mode == "ses":
-    # idempotent: fjern evt. tidligere laser-zoner og B.Cu-refdes-tekst foer
-    # de tilfoejes igen (ellers dublerer en gen-koersel dem)
+    # idempotent: fjern evt. tidligere kobber-refdes-tekst og laser-zoner foer
+    # de tilfoejes igen (ellers dublerer en gen-koersel dem).
+    # OBS raekkefoelge: tekst FOER zoner - ZONE.Remove() korrumperer SWIG-
+    # iterationen af GetDrawings() i KiCad 9.0.6.
+    for t in [d for d in board.GetDrawings()
+              if d.GetClass() == "PCB_TEXT"
+              and d.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu)]:
+        board.Remove(t)
     for z in [z for z in board.Zones() if z.GetNetCode() == 0]:
         board.Remove(z)
-    for t in [d for d in board.GetDrawings()
-              if d.GetClass() == "PCB_TEXT" and d.GetLayer() == pcbnew.B_Cu]:
-        board.Remove(t)
     # "-" som ses-sti = spring importen over (finish-only: tekst + zoner)
     if sys.argv[3] != "-":
         # Freerouting genudsender IKKE fixed wires i sin session - en raa import

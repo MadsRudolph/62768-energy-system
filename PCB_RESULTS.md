@@ -35,9 +35,7 @@ DIP **LongPads**, TO-220 med 1.7 mm pads (`energy_system:*_LaserPads`, luft 0.84
 **Laser-filer (DXF) + Gerbers + udskæringsmål + jumperliste + xTool-tjekliste:**
 → `hardware/kicad/production/` (README dér er køreplanen).
 
-Komponentnavnene (refdes) er graveret med som **kobber-tekst på B.Cu** ved hver
-komponent (læsbare fra loddesiden); en valgfri topside-tekst-DXF ligger også i
-`production/` pr. board.
+Komponentnavnene (refdes) er graveret som **kobber-tekst på OVERSIDEN (F.Cu)** ved hver komponent — de følger med i `<board>_top_cu.dxf` (ætses ved dobbeltsidet, eller graveres på toppen sammen med trådbro-planen ved enkeltsidet).
 
 Hvert board er nu et **KiCad-projekt**: `.kicad_pro` + `.kicad_sch` + `.kicad_pcb`
 ligger sammen med samme basenavn — åbn `.kicad_pro`-filen, så er skema og PCB

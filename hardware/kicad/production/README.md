@@ -47,10 +47,14 @@ er på eget ansvar/uprøvet — flip-justering er den svære del. Vias loddes so
 
 ## Komponentnavne på printet
 
-Refdes (R1, U1 …) er graveret som **kobber-tekst på B.Cu** ved hver komponent —
-læsbare fra loddesiden, med i samme kørsel. Enkelte navne er droppet i de
-tætteste klynger (fremgår af `gerbers/<board>-F_Fab.gbr`). Valgfrit kan
-`<board>_silk_top.dxf` graveres let på OVERSIDEN før kobberkørslen (alle navne).
+Refdes (R1, U1 …) ligger som **kobber-tekst på F.Cu — OVERSIDEN, komponentsiden**
+ved hver komponent (ikke spejlvendt). De er med i `<board>_top_cu.dxf`:
+- **Mulighed B (dobbeltsidet):** navnene ætses i top-kobberet — færdig.
+- **Mulighed A (enkeltsidet):** gravér `_top_cu.dxf` let på oversiden FØR
+  kobberkørslen — så får du navnene OG trådbro-planen tegnet på toppen i én
+  arbejdsgang. (Alternativt `_silk_top.dxf`, som kun har navne.)
+Enkelte navne er flyttet/droppet i de tætteste klynger (fremgår af
+`gerbers/<board>-F_Fab.gbr`).
 
 ## Udskæringsmål (board + 2 mm jf. guiden — skær GERNE større)
 
