@@ -1,6 +1,7 @@
 # Produktion på XTool fiberlaseren — klar til kørsel
 
 Følger [SimsesLab/DTU-PCB-prototyping](https://github.com/SimsesLab/DTU-PCB-prototyping)-guiden.
+*(Alternativ maskine: Roland SRM-20-fræseren — samme produktionsfiler, se [SRM20_MILL.md](SRM20_MILL.md).)*
 Alle 7 boards overholder guidens designregler, **DRC = 0 fejl** og **0 uroutede net**:
 
 - Bane ≥ 1.0 mm, clearance 0.8 mm (netclass — ligger i hvert boards `.kicad_pro`)
@@ -27,19 +28,18 @@ Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsid
 
 | Board | Top-baner | Længde | Vias | Net på toppen |
 |---|---|---|---|---|
-| buck | 3 | 33 mm | 0 | SW |
-| boost | 4 | 79 mm | 0 | VIN_5V, VOUT_V2 |
-| drive_circuit | 43 | 263 mm | 1 | +15V, +20V, GND, D1-A, D2-A, D2-K, U2-LIN (manuel reroute) |
-| feedback_circuit | 15 | 96 mm | 0 | GND, LED, OUT_PD |
-| rectifier | 2 | 22 mm | 0 | V1 |
-| mppt | 19 | 174 mm | 0 | GND, PV_V, U1A_OUT, U1B_FB |
-| current_sense | 18 | 99 mm | 0 | +5V, FB1, GND, RET1, U2B_FB |
+| buck | **0** | 0 mm | 0 | — (helt enkeltsidet!) |
+| boost | 2 | 35 mm | 0 | D1-A |
+| drive_circuit | 20 | 135 mm | 0 | GND, D2-A, PWM (manuel placering, to-trins-routet) |
+| feedback_circuit | 15 | 73 mm | 0 | GND, SERVO |
+| rectifier | 7 | 60 mm | 0 | GND, V1 |
+| mppt | 15 | 77 mm | 0 | GND, PV_BUS, U1B_FB |
+| current_sense | 8 | 68 mm | 0 | +5V, GND, RET1, U2B_FB |
 
 **Mulighed A — enkeltsidet etch + trådbroer (anbefalet, hurtigst):** ets kun
 bunden (`<board>.dxf`). Byg topbanerne som trådbroer mellem THT-benene —
 `<board>_top_cu.dxf` ER tegningen (åbn evt. boardet i KiCad og se F.Cu-laget).
-Vias (kun drive/feedback/mppt, 1–2 stk.) = bor hullet og lod en tråd igennem
-til begge sider.
+Ingen boards har vias længere — alle topbaner går pin-til-pin.
 
 **Mulighed B — dobbeltsidet etch:** ets bunden, vend pladen, justér og ets
 toppen med `<board>_top_cu.dxf` (IKKE spejlvendt). Guiden advarer: dobbeltsidet

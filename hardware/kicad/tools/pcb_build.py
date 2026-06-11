@@ -81,7 +81,7 @@ def main(jsonf, outf):
             "J3": (35, 70, 180), "R31": (50, 70, 0), "R32": (64, 64, 0), "R33": (64, 76, 0),
             "U1": (78, 38, 0), "U2": (78, 62, 0),
             "C1": (90, 30, 0), "C2": (90, 54, 0),
-            "J4": (109, 50, 0),
+            "J4": (105, 50, 0),
         }},
         "mppt": {"refs": {
             "J1": (35, 30, 180), "D1": (52, 26, 0),
@@ -128,20 +128,12 @@ def main(jsonf, outf):
         mid = [r for r in sorted(fps, key=lambda r: (r[0] not in "DLQU", r))
                if r not in left and r not in right]
 
-        # stik oeverst paa venstre/hoejre kant; midter-komponenterne pakkes
-        # KOMPAKT i et kvadratisk-agtigt blok under stik-zonen - spildplads paa
-        # det faste jig-format er OK, men korte baner er bedre routing.
+        # stik-kolonnerne KLODS op ad midter-blokken (venstre/hoejre side) -
+        # hele klyngen pakkes kompakt og centreres bagefter i jig-omridset.
         conn_h = max((bbox_mm(fps[r])[1] for r in left + right), default=10) + 4
-        n_conn = max(len(left), len(right))
-        conn_bottom = Y0 + 12 + (n_conn - 1) * conn_h + conn_h / 2 if n_conn else Y0 + 4
-
-        for i, r in enumerate(left):
-            put(r, X0 + EDGE, Y0 + 12 + i * conn_h, 180)  # stik vender ud mod kanten
-        for i, r in enumerate(right):
-            put(r, X0 + W - EDGE, Y0 + 12 + i * conn_h, 0)
 
         widest = max((bbox_mm(fps[r])[0] + PITCH for r in mid), default=40.0)
-        row_w_max = min(W - 16, max(40.0, widest, math.sqrt(
+        row_w_max = min(W - 46, max(40.0, widest, math.sqrt(
             sum((bbox_mm(fps[r])[0] + PITCH) * (bbox_mm(fps[r])[1] + 3) for r in mid)) * 1.3))
         rows = [[]]; xacc = 0.0
         for r in mid:
@@ -150,19 +142,40 @@ def main(jsonf, outf):
                 rows.append([]); xacc = 0.0
             rows[-1].append(r); xacc += w
 
+        mid_w = max((sum(bbox_mm(fps[r])[0] + PITCH for r in row) for row in rows),
+                    default=0)
         row_hs = [max((bbox_mm(fps[r])[1] for r in row), default=0) + 3 for row in rows]
-        y = conn_bottom + 5
+        mid_x0 = X0 + 30                    # vilkaarligt anker - klyngen centreres
+        y = Y0 + 12
         for row, rh in zip(rows, row_hs):
-            x = X0 + 8
+            x = mid_x0
             for r in row:
                 w = bbox_mm(fps[r])[0] + PITCH
                 put(r, x + w / 2, y + rh / 2, 0)   # centreret i raekken
                 x += w
             y += rh
-        if y > Y0 + H - 4:
-            raise SystemExit(
-                f"{bname}: komponenterne ender ved y={y - Y0:.0f} mm - "
-                f"passer ikke i jiggens {H} mm (juster PLACE/marginer)")
+        for i, r in enumerate(left):
+            put(r, mid_x0 - 13, Y0 + 12 + i * conn_h, 180)  # stik vender ud mod kanten
+        for i, r in enumerate(right):
+            put(r, mid_x0 + mid_w + 13, Y0 + 12 + i * conn_h, 0)
+
+    # --- centrer komponent-klyngen i jig-omridset ----------------------------
+    # Klyngen pakkes kompakt oppe i hjoernet; her flyttes ALT (stik inkl.) saa
+    # klyngens bbox ligger midt i 104x104-omridset - ingen komponenter klods
+    # op ad edge cuts.
+    lo_x = min(pcbnew.ToMM(fp.GetBoundingBox(False).GetLeft()) for fp in fps.values())
+    hi_x = max(pcbnew.ToMM(fp.GetBoundingBox(False).GetRight()) for fp in fps.values())
+    lo_y = min(pcbnew.ToMM(fp.GetBoundingBox(False).GetTop()) for fp in fps.values())
+    hi_y = max(pcbnew.ToMM(fp.GetBoundingBox(False).GetBottom()) for fp in fps.values())
+    if hi_x - lo_x > W - 6 or hi_y - lo_y > H - 6:
+        raise SystemExit(
+            f"{bname}: klyngen er {hi_x - lo_x:.0f}x{hi_y - lo_y:.0f} mm - "
+            f"passer ikke i jiggens {W}x{H} (juster PLACE/marginer)")
+    dx = (X0 + W / 2) - (lo_x + hi_x) / 2
+    dy = (Y0 + H / 2) - (lo_y + hi_y) / 2
+    for fp in fps.values():
+        p = fp.GetPosition()
+        fp.SetPosition(VECTOR2I(p.x + FromMM(dx), p.y + FromMM(dy)))
 
     # --- omrids (RECT = altid lukket, ingen segment-kaedning) ----------------
     W, H = math.ceil(W), math.ceil(H)
