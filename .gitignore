@@ -11,11 +11,12 @@ codegen/
 *.slx.original
 octave-workspace
 
-# --- Embedded Coder build artifacts (C2000 deploy) ---
+# --- Embedded Coder build artifacts (C2000 / Arduino deploy) ---
 *_ert_rtw/
 *.out
 *.dwo
 *.map
+*.eep
 
 # --- Arduino / PlatformIO ---
 build/

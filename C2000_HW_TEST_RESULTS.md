@@ -92,4 +92,86 @@ CCS 20.0.1 (DSS scripting), controlSUITE f2802x v230. Date: 2026-06-11.
   applied DC level across a 0.5–3.0 V sweep, matching `count ≈ V·4095/3.3`
   (1.65 V → ~2048). Linearity good, works as intended.
 
-## Test 3.4 — closed loop (`MotorControl2026.slx`) — stretch, pending
+## Test 3.4 — closed loop (`MotorControl2026.slx`) — attempted, instructive failure
+
+RC fake plant (ePWM1A/J6-1 → 10 kΩ → node → 1 µF → GND → ADCINA1/J5-5). The loop
+never regulated; the post-mortem found **three independent problems**, all worth knowing:
+
+1. **Model bug — PID saturation limits don't match the actuator scaling.** The Discrete
+   PID limits output *and* integrator to **[0, 99.9]**, but the external "Extra clamping"
+   is [0, 1] before the ×3000 → int16 → CMPA path. Consequence: the integrator legally
+   winds to ~100; CMPA = 99.9·3000 saturates int16 at 32767 > TBPRD (15000), so the ePWM
+   **never fires a compare event and the output freezes** at its last level. Unwinding
+   would need error < −5, impossible on a 3.3 V plant. Fix: PID limits [0, 1].
+2. **Lecture-rig tuning doesn't transfer.** P=20, I·Ts=2, D=0.6 (unfiltered) are for the
+   lecturer's motor rig — on a 10 ms RC they're wildly hot, and unfiltered D amplifies
+   ADC ripple into output noise.
+3. **The breadboard link (pin → 10 kΩ → node) was open the whole time.** The ADC read a
+   floating pin (~2.4 V — held *very* convincingly stable by S&H charge-injection into
+   the 1 µF cap), so every "measurement" was fiction. Lesson now baked into the workflow:
+   **verify the plant open-loop (fixed duty → expected node voltage) before closing any
+   loop.**
+
+Abandoned in favour of the ATmega2560 (the project's actual MCU) — see below.
+
+### Instrument gotcha (AD3)
+The **first capture after opening the AD3 from the SDK shows a phantom transient**
+(auto-configure relay glitch). Discard capture #1, trust capture #2 onwards.
+
+---
+
+# ATmega2560 (Arduino Mega) bring-up — the project MCU
+
+Same ladder, ported per the Obsidian note *Code Generation — ATmega2560 (Arduino Mega)
+Workflow*. Board: Mega 2560 **clone (CH340, COM9)**. Toolchain installed headlessly:
+`mpm install --release=R2025a --products Simulink_Support_Package_for_Arduino_Hardware
+MATLAB_Support_Package_for_Arduino_Hardware` (bundles AVR-GCC — no TI-style version
+matching). Date: 2026-06-11.
+
+## M1 — GPIO blink — **PASS**
+Pulse Generator (0.2 s / 50 %) → Digital Output pin 13, *Build Deploy & Start* via COM9.
+LED blinks; chain proven.
+
+## M2/M3 — PWM + ADC (folded into the plant check) — **PASS**
+- PWM block pin 11 @ 490.2 Hz default, fixed duty 128/255 → RC plant
+  (pin 11 → 10 kΩ → node X → 1 µF → GND, node → A0).
+- AD3 on node X: **2.489 V** vs 2.510 V predicted (128/255·5 V) — plant + ADC wiring
+  verified open-loop *first* this time.
+
+## M4 — closed-loop PI — **PASS** ✅
+Loop: ref → Sum → Discrete PID (P=0.1, I=10, D=0, **limits [0,1] + clamping AW**) →
+×255 → uint8 → PWM pin 11; feedback A0 → single → ×(5/1023). Ts = 1 ms.
+
+| Ref | Node X (AD3) | Error |
+|---|---|---|
+| 2.0 V | ≈ 2.0 V (user-observed in WaveForms) | ~0 |
+| 3.5 V | **3.4973 V** | **3 mV** |
+
+Ripple ±0.14 V = the 490 Hz PWM triangle through τ=10 ms at d≈0.7, as predicted.
+Integrator erases the offset; smooth ~100 ms settle (P=0.1/I=10 → ~8 Hz crossover,
+~90° PM against the 16 Hz RC pole).
+
+### Mega gotchas (read before repeating)
+1. **Use the standard `Analog Input` block** (Simulink Support Package for Arduino →
+   Common). A lookalike **"ADC Read" block (port `ADC_Ch1(A0)`)** from a bundled
+   non-standard library builds fine but feeds the loop garbage — this single block swap
+   took the loop from dead-at-0 V to regulating.
+2. **External Mode (XCP serial) never connected through the CH340 clone** — `timeout
+   expired, in response to XCP CONNECT` despite manual COM9 + 115200 baud. Workflow used
+   instead: edit → *Build Deploy & Start* (~30 s) → verify on the AD3. Try a genuine
+   Mega (16U2) before debugging this further.
+3. Capacitor code **105K = 1 µF ±10 %** (10·10⁵ pF) — not 105 kΩ-anything.
+4. PWM frequency choices on pin 11 (Timer1) are the AVR prescaler steps only (490.2 /
+   3921.16 / 31372 Hz…). Never re-clock pins 4/13 (Timer0 = Arduino timekeeping).
+5. Deploys auto-reset the board (DTR) — the pin idles low for ~2 s during flashing;
+   don't scope-diagnose mid-flash.
+
+### Division of labour that worked
+Hands/GUIs (Simulink deploys, WaveForms) = Mads; remote AD3 verification via
+`tools/ad3/ad3_check.py` (pydwf) when WaveForms is closed — only one app can own the AD3.
+
+### Next (project work proper)
+`MegaPI` is the template for the real controllers: V1 motor PID, MPPT (P&O), 1 s serial
+monitoring. Next session: pick ADC pins + divider ratios for V1/V2/V3 (`g_v,adc` =
+(5/1023)·R_low/(R_high+R_low)), assign the motor-drive PWM pin, move the model into
+`firmware/`.
