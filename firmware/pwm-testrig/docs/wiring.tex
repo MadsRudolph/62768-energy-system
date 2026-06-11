@@ -1,0 +1,79 @@
+\documentclass[border=14pt]{standalone}
+\usepackage{circuitikz}
+\begin{document}
+\begin{circuitikz}[american, font=\sffamily\small]
+
+  % ===== Arduino Nano =====
+  \draw (0,0) rectangle (3.4,7.2);
+  \node[align=center] at (1.7,6.75) {\textbf{Arduino Nano}\\[-1pt] ATmega328P};
+
+  % venstre pins
+  \node[anchor=west] at (0.05,6.4) {5V};
+  \node[anchor=west] at (0.05,5.6) {GND};
+  \node[anchor=west] at (0.05,4.4) {A0};
+  \node[anchor=west] at (0.05,3.6) {A1};
+  % hoejre pins
+  \node[anchor=east] at (3.35,5.6) {D9};
+  \node[anchor=east] at (3.35,4.6) {GND};
+  \node[anchor=east] at (3.35,2.6) {A4 (SDA)};
+  \node[anchor=east] at (3.35,1.8) {A5 (SCL)};
+
+  % ===== Potmetre =====
+  % P1: duty (oeverst) -> A0
+  \draw (-4.0,6.4) to[pR, l_=$10\,\mathrm{k\Omega}$, name=P1] (-4.0,4.0);
+  \node[anchor=south east] at (-4.4,6.45) {\textbf{P1 duty}};
+  \draw (P1.wiper) -- (-3.2,5.2) -- (-3.2,4.4) -- (0,4.4);
+
+  % P2: frekvens (nederst) -> A1
+  \draw (-6.6,3.4) to[pR, l_=$10\,\mathrm{k\Omega}$, name=P2] (-6.6,1.0);
+  \node[anchor=south east] at (-7.0,3.45) {\textbf{P2 frekvens}};
+  \draw (P2.wiper) -- (-5.8,2.2) -- (-5.8,3.6) -- (0,3.6);
+
+  % ===== 5V-skinne (venstre + op over Nano til OLED VCC) =====
+  \draw (0,6.4) -- (-4.0,6.4);                  % Nano 5V -> P1 top
+  \node[circ] at (-4.0,6.4) {};
+  \draw (-4.0,6.4) -- (-7.6,6.4) -- (-7.6,3.4) -- (-6.6,3.4);  % -> P2 top
+  \node[anchor=south east] at (-7.65,6.45) {5 V};
+
+  % ===== GND-skinne (venstre) =====
+  \draw (-4.0,4.0) -- (-4.0,0.4) -- (-1.2,0.4) -- (-1.2,5.6) -- (0,5.6);
+  \draw (-6.6,1.0) -- (-6.6,0.4) -- (-4.0,0.4);
+  \node[circ] at (-4.0,0.4) {};
+  \draw (-2.4,0.4) node[ground]{};
+  \node[circ] at (-2.4,0.4) {};
+
+  % ===== PWM-udgang (hoejre) =====
+  \draw (3.4,5.6) -- (6.0,5.6) node[ocirc]{};
+  \node[anchor=west] at (6.15,5.6) {\textbf{PWM ud} (AD3 CH1 / DUT)};
+  \draw (3.4,4.6) -- (6.0,4.6) node[ocirc]{};
+  \node[anchor=west] at (6.15,4.6) {GND (AD3 sort)};
+
+  % ===== OLED (nede til hoejre) =====
+  \draw (5.2,-0.6) rectangle (9.6,1.4);
+  \node[align=center] at (7.4,0.45) {\textbf{SSD1306 OLED}\\ $128\times64$, I2C 0x3C};
+  % pins paa modulets overkant: SCL, SDA, GND, VCC
+  \node[anchor=north, font=\scriptsize] at (5.7,1.38) {SCL};
+  \node[anchor=north, font=\scriptsize] at (6.8,1.38) {SDA};
+  \node[anchor=north, font=\scriptsize] at (7.9,1.38) {GND};
+  \node[anchor=north, font=\scriptsize] at (9.0,1.38) {VCC};
+
+  % SCL / SDA fra Nano
+  \draw (3.4,1.8) -- (5.7,1.8) -- (5.7,1.4);
+  \draw (3.4,2.6) -- (6.8,2.6) -- (6.8,1.4);
+
+  % OLED GND: gren fra GND-stikket
+  \node[circ] at (5.0,4.6) {};
+  \draw (5.0,4.6) -- (5.0,3.3) -- (7.9,3.3) -- (7.9,1.4);
+
+  % OLED VCC: op over Nano og til 5V-skinnen
+  \draw (9.0,1.4) -- (9.0,3.3);
+  \draw (9.0,3.3) -- (9.0,7.7) -- (-2.2,7.7) -- (-2.2,6.4);
+  \node[circ] at (-2.2,6.4) {};
+
+  % ===== Note =====
+  \node[anchor=north west, align=left, font=\scriptsize\itshape] at (-7.8,-0.9)
+    {OLED-moduler har pull-ups paa SDA/SCL ombord -- ingen eksterne noedvendige.\\
+     Forsyning via USB. Potmetre: top = 5 V, bund = GND, midterben = wiper.};
+
+\end{tikzpicture}
+\end{document}

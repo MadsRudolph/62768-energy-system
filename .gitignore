@@ -52,3 +52,6 @@ desktop.ini
 # (uncomment if these get heavy)
 # *.mp4
 # *.mov
+
+# --- PlatformIO ---
+.pio/
