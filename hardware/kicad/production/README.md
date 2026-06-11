@@ -35,6 +35,7 @@ Alle net er routet — toppen indeholder kun det, der ikke kunne ligge enkeltsid
 | rectifier | 7 | 60 mm | 0 | GND, V1 |
 | mppt | 15 | 77 mm | 0 | GND, PV_BUS, U1B_FB |
 | current_sense | 8 | 68 mm | 0 | +5V, GND, RET1, U2B_FB |
+| buck_v2 | 14 | 86 mm | 0 | (selvstaendig buck m. 555-PWM ombord — `boards/buck/buck_v2/`) |
 
 **Mulighed A — enkeltsidet etch + trådbroer (anbefalet, hurtigst):** ets kun
 bunden (`<board>.dxf`). Byg topbanerne som trådbroer mellem THT-benene —

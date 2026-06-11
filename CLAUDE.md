@@ -30,7 +30,7 @@ pin-letter traps) and the add-a-new-board checklist.
 | `simulation/`, `firmware/`, `report/` | Simulink models, Arduino code, LaTeX report |
 
 ## External context
-- Component shop CSV (this PC): `C:\Users\Mads2\Downloads\Misc\dtu_component_shop.csv`
+- Component shop CSV (this PC): `C:\Users\Mads2\Downloads\Documents\dtu_component_shop.csv`
 - Fiber-laser guide clone: `..\DTU-PCB-prototyping` (SimsesLab/DTU-PCB-prototyping)
 - Course material (slides/spec PDFs): umbrella repo,
   `Obsidian\Courses\62768 Electrical Energy Systems\` (drive-synced)

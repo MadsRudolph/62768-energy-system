@@ -75,6 +75,18 @@ def main(jsonf, outf):
     # enkeltsidet. Her foelger placeringen signalflowet (venstre -> hoejre).
     # Koordinaterne er absolutte (X0/Y0 = 20, board 20..124).
     PLACE = {
+        # buck_v2: signalflow venstre->hoejre: 5V-forsyning oeverst, 555-PWM,
+        # valg/opto-raekke, effekt-tog (Q1/D3/L1/C5) mod hoejre/bund.
+        "buck_v2": {"refs": {
+            "U1": (38, 32, 0), "C1": (50, 32, 0), "C2": (60, 32, 0),
+            "R2": (36, 46, 0), "R3": (48, 46, 0), "D1": (60, 46, 0),
+            "D2": (72, 46, 0), "RV1": (84, 46, 0),
+            "U3": (40, 58, 0), "C4": (54, 58, 0), "C3": (64, 58, 0), "C6": (74, 58, 0),
+            "J1": (32, 72, 0), "SW1": (46, 72, 0), "R1": (60, 72, 0),
+            "U2": (74, 72, 0), "R5": (88, 72, 0),
+            "Q1": (100, 46, 0), "D3": (100, 58, 0), "J2": (113, 72, 0),
+            "L1": (76, 92, 0), "C5": (102, 92, 0), "J3": (113, 92, 0),
+        }},
         "current_sense": {"refs": {
             "J1": (35, 30, 180), "R11": (50, 30, 0), "R12": (64, 24, 0), "R13": (64, 36, 0),
             "J2": (35, 50, 180), "R21": (50, 50, 0), "R22": (64, 44, 0), "R23": (64, 56, 0),
@@ -133,7 +145,7 @@ def main(jsonf, outf):
         conn_h = max((bbox_mm(fps[r])[1] for r in left + right), default=10) + 4
 
         widest = max((bbox_mm(fps[r])[0] + PITCH for r in mid), default=40.0)
-        row_w_max = min(W - 46, max(40.0, widest, math.sqrt(
+        row_w_max = min(W - 43, max(40.0, widest, math.sqrt(
             sum((bbox_mm(fps[r])[0] + PITCH) * (bbox_mm(fps[r])[1] + 3) for r in mid)) * 1.3))
         rows = [[]]; xacc = 0.0
         for r in mid:

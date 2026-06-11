@@ -1,0 +1,13 @@
+** Drc report for buck_v2.kicad_pcb **
+** Created on 2026-06-11T16:18:39+0200 **
+
+** Found 1 DRC violations **
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(102.5410 mm, 94.5536 mm): Track [/GND] on B.Cu, length 1.3205 mm
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **
