@@ -1492,7 +1492,7 @@
 							)
 						)
 					)
-					(number "4"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1510,7 +1510,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1902,7 +1902,7 @@
 					)
 				)
 			)
-			(property "Value" "LM555xM"
+			(property "Value" "NE555"
 				(at 13.97 3.8802 0)
 				(effects
 					(font
@@ -1910,7 +1910,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(property "Footprint" "Package_DIP:DIP-8_W7.62mm_LongPads"
 				(at 0 -24.13 0)
 				(effects
 					(font
@@ -2925,7 +2925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 			(at 77.1652 49.53 0)
 			(effects
 				(font
@@ -2995,7 +2995,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 98.7552 105.41 0)
 			(effects
 				(font
@@ -3056,7 +3056,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_NMOS"
+		(property "Value" "IRF530"
 			(at 180.34 87.6299 0)
 			(effects
 				(font
@@ -3065,7 +3065,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "energy_system:TO-220-3_Vertical_LaserPads"
 			(at 179.07 83.82 0)
 			(effects
 				(font
@@ -3138,7 +3138,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_Wire:SolderWire-0.1sqmm_1x02_P3.6mm_D0.4mm_OD1mm"
+		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
 			(at 234.95 91.44 0)
 			(effects
 				(font
@@ -3208,7 +3208,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 			(at 211.7852 99.06 0)
 			(effects
 				(font
@@ -3269,7 +3269,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4148"
 			(at 76.2 82.5499 90)
 			(effects
 				(font
@@ -3278,7 +3278,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 73.66 81.28 0)
 			(effects
 				(font
@@ -3366,7 +3366,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 154.432 90.17 90)
 			(effects
 				(font
@@ -3436,7 +3436,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_Wire:SolderWire-0.1sqmm_1x02_P3.6mm_D0.4mm_OD1mm"
+		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
 			(at 31.75 22.86 0)
 			(effects
 				(font
@@ -3504,7 +3504,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 66.04 74.168 90)
 			(effects
 				(font
@@ -3574,7 +3574,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 67.0052 107.95 0)
 			(effects
 				(font
@@ -3644,7 +3644,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 			(at 51.7652 49.53 0)
 			(effects
 				(font
@@ -3712,7 +3712,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads"
 			(at 198.12 91.44 0)
 			(effects
 				(font
@@ -3773,7 +3773,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4148"
 			(at 59.69 82.5499 90)
 			(effects
 				(font
@@ -3782,7 +3782,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 57.15 81.28 0)
 			(effects
 				(font
@@ -3859,7 +3859,7 @@
 				)
 			)
 		)
-		(property "Value" "Optocoupler"
+		(property "Value" "4N25"
 			(at 149.098 77.978 0)
 			(effects
 				(font
@@ -3867,7 +3867,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DIP:DIP-6_W7.62mm_LongPads"
 			(at 143.51 88.9 0)
 			(effects
 				(font
@@ -3897,7 +3897,7 @@
 				(hide yes)
 			)
 		)
-		(pin "3"
+		(pin "4"
 			(uuid "de37db47-6c3e-46af-8dee-243ecfc34c5d")
 		)
 		(pin "1"
@@ -3906,7 +3906,7 @@
 		(pin "2"
 			(uuid "5be268a6-23f5-4871-91e6-96d67513dfe3")
 		)
-		(pin "4"
+		(pin "5"
 			(uuid "ac5662fc-2a75-4c9b-8d6d-ee1d3d5c638c")
 		)
 		(instances
@@ -3944,7 +3944,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm"
 			(at 121.92 83.82 0)
 			(effects
 				(font
@@ -4020,7 +4020,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_Wire:SolderWire-0.1sqmm_1x02_P3.6mm_D0.4mm_OD1mm"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 114.3 63.5 0)
 			(effects
 				(font
@@ -4088,7 +4088,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical"
 			(at 66.04 91.44 0)
 			(effects
 				(font
@@ -4152,7 +4152,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N5817"
 			(at 179.07 96.5199 90)
 			(effects
 				(font
@@ -4161,7 +4161,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
 			(at 176.53 95.25 0)
 			(effects
 				(font
@@ -4249,7 +4249,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 80.772 67.31 90)
 			(effects
 				(font
@@ -4309,7 +4309,7 @@
 				)
 			)
 		)
-		(property "Value" "LF50_TO220"
+		(property "Value" "LM7805"
 			(at 64.77 34.29 0)
 			(effects
 				(font
@@ -4317,7 +4317,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
+		(property "Footprint" "energy_system:TO-220-3_Vertical_LaserPads"
 			(at 64.77 32.385 0)
 			(effects
 				(font
@@ -4381,7 +4381,7 @@
 				)
 			)
 		)
-		(property "Value" "LM555xM"
+		(property "Value" "NE555"
 			(at 107.95 79.9398 0)
 			(effects
 				(font
@@ -4389,7 +4389,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+		(property "Footprint" "Package_DIP:DIP-8_W7.62mm_LongPads"
 			(at 93.98 107.95 0)
 			(effects
 				(font
@@ -4477,7 +4477,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 108.9152 93.98 0)
 			(effects
 				(font
@@ -4545,7 +4545,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 135.89 83.058 90)
 			(effects
 				(font

@@ -6,40 +6,46 @@
 
 | Antal | Del | Pakke | Kilde |
 |---|---|---|---|
-| 10 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
+| 12 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
 | 8 | 1N4006 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
-| 7 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 8 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 7 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 7 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
+| 6 | 10k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 6 | 4700uF 50V | `CP_Radial_D18.0mm_P7.50mm` | shop |
-| 6 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
-| 5 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
 | 5 | 1R00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 4 | 10k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 4 | 1N5817 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
+| 4 | 47uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 4 | 9k09 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 3 | 1N5817 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
-| 3 | 47uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
+| 3 | 200R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 3 | 22uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
+| 3 | 4N25 | `DIP-6_W7.62mm_LongPads` | shop |
+| 3 | IRF530 | `TO-220-3_Vertical_LaserPads` | shop |
 | 3 | LM358 | `DIP-8_W7.62mm_LongPads` | shop |
-| 2 | 200R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 3 | toroid (egen-vikling) | `L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | egen-vikling |
+| 2 | 1N4148 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
 | 2 | 3 pol skrueterminal | `TerminalBlock_bornier-3_P5.08mm` | shop |
 | 2 | 332R (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 2 | 33k2 (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 2 | 4N25 | `DIP-6_W7.62mm_LongPads` | shop |
 | 2 | Header Male | `PinHeader_1x03_P2.54mm_Vertical` | shop |
-| 2 | IRF530 | `TO-220-3_Vertical_LaserPads` | shop |
 | 2 | MCP601 | `DIP-8_W7.62mm_LongPads` | kit |
-| 2 | toroid (egen-vikling) | `L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | egen-vikling |
 | 1 | 100k | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 10R0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 1 | 20K trimmer | `Potentiometer_Bourns_3296W_Vertical` | shop |
 | 1 | 22k6 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 1 | 22uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 1 | 2k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 4k75 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 1 | 8n2 keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
 | 1 | BZX55C5V1 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
+| 1 | DIP-Switch | `SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm` | shop |
 | 1 | Header Male | `PinHeader_1x05_P2.54mm_Vertical` | shop |
 | 1 | IL300 | `DIP-8_W7.62mm_LongPads` | kit |
 | 1 | ILD74 | `DIP-8_W7.62mm_LongPads` | kit |
 | 1 | IR2110 | `DIP-14_W7.62mm_LongPads` | kit |
 | 1 | IRF540 | `TO-220-3_Vertical_LaserPads` | shop |
+| 1 | LM7805 | `TO-220-3_Vertical_LaserPads` | shop |
 | 1 | Motraxx SR555 | `TerminalBlock_bornier-2_P5.08mm` | kit |
+| 1 | NE555 | `DIP-8_W7.62mm_LongPads` | shop |
 | 1 | TIP41A | `TO-220-3_Vertical_LaserPads` | shop |
 
 ## Buck-converter (`buck`)
@@ -172,4 +178,32 @@
 | J2 | kanal 2 retur | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` |  |
 | J3 | kanal 3 retur | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` |  |
 | J4 | Arduino | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical` | +5V / I1 / I2 / I3 / GND |
+
+## buck_v2 (`buck_v2`)
+
+| Ref | Værdi | Del (indkøb) | Kilde | Footprint | Noter |
+|---|---|---|---|---|---|
+| C1 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | LM7805 indgangskondensator (fra V1/Rectifier) |
+| C2 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | 5V-skinnens udgangskondensator |
+| C3 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | paa 555-udgangen (teamets valg) |
+| C4 | 8n2 | 8n2 keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | 555 timing |
+| C5 | 47u | 47uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | udgangskondensator (var 100n - rettet) |
+| C6 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | 555 CONT |
+| D1 | 1N4148 | 1N4148 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | duty-styringsdiode (555) |
+| D2 | 1N4148 | 1N4148 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | duty-styringsdiode (555) |
+| D3 | 1N5817 | 1N5817 | shop | `Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal` | friloebsdiode |
+| J1 | MCP PWM | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical` | ekstern PWM ind (pin 2 = GND) |
+| J2 | 9V batteri | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | OBS: batteriet FLYDER paa SW-knuden (gate-forsyning) |
+| J3 | 5V ud | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` |  |
+| L1 | 121u | toroid (egen-vikling) | egen-vikling | `energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | 121uH = maalt paa den viklede toroid |
+| Q1 | IRF530 | IRF530 | shop | `energy_system:TO-220-3_Vertical_LaserPads` |  |
+| R1 | 200R | 200R | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | opto-LED formodstand |
+| R2 | 10k | 10k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | 555 timing |
+| R3 | 10k | 10k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | 555 timing |
+| R5 | 1k | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | gate->source (V_GS=0 ved sluk) |
+| RV1 | 20k | 20K trimmer | shop | `Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical` | duty-justering. FOOTPRINT ANTAGET (3296W) - maal den fysiske trimmer |
+| SW1 | DIP-switch | DIP-Switch | shop | `Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm` | valg: 555-PWM eller ekstern (J1) |
+| U1 | LM7805 | LM7805 | shop | `energy_system:TO-220-3_Vertical_LaserPads` | SUBSTITUTION: LF50 ikke i shoppen - 7805 samme pinout (IN/GND/OUT) |
+| U2 | 4N25 | 4N25 | shop | `Package_DIP:DIP-6_W7.62mm_LongPads` | DIP6-sokkel. Symbolben omnummereret til DIP-6 (E=4 C=5; pad 3/6 ubrugt) |
+| U3 | NE555 | NE555 | shop | `Package_DIP:DIP-8_W7.62mm_LongPads` | DIP8-sokkel |
 
