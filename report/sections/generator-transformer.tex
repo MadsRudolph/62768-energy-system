@@ -208,6 +208,10 @@ Overall, the rectifier performance depends on values such as output voltage, out
 
 \vspace{0.5cm}
 
+\subsubsection*{Measured Input Voltage, Rectifier Output Voltage, and Input Current}
+
+\vspace{0.5cm}
+
 \noindent
 To verify the behaviour of the rectifier, measurements were performed where the input voltage to the motor was gradually increased. For each input voltage, the DC output voltage after the rectifier and the input current were measured. The measured values are shown in Table~\ref{tab:rectifier_measurements}.
 
@@ -251,17 +255,19 @@ To verify the behaviour of the rectifier, measurements were performed where the 
 \begin{figure}[H]
     \centering
 
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.46\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/Generator_Transform/Input+Output_voltage.png}
-        \caption*{(a) Input voltage and output voltage}
-    \end{minipage}
+        \includegraphics[width=\textwidth]{report/images/Generator_Transformer_Rectifier/Input_Output_voltage.png}
+        \caption{Input voltage and output voltage}
+        \label{fig:input_output_voltage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.46\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/Generator_Transform/Input+Output_voltage+current.png}
-        \caption*{(b) Input voltage, output voltage and input current}
-    \end{minipage}
+        \includegraphics[width=\textwidth]{report/images/Generator_Transformer_Rectifier/Input_Output_voltage+Current.png}
+        \caption{Input voltage, output voltage and input current}
+        \label{fig:input_output_voltage_current}
+    \end{subfigure}
 
     \caption{Measured rectifier output voltage and input current as the motor input voltage is increased.}
     \label{fig:rectifier_measurements}
