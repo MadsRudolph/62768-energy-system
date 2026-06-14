@@ -11,13 +11,18 @@ assignment, the 104×104 mm jig format, two-stage Freerouting, and DXF/Gerber ex
 Encodes every gotcha we hit (Freerouting 1.9-not-2.0.1, the PowerShell BOM bug,
 the `pcbnew` zone-removal crash, the pin-letter trap, …).
 
-### Install (each teammate, once)
+**Self-contained.** It bundles its own scripts (`scripts/`) and the laser footprint
+library (`lib/`), so it works on *anyone's* KiCad 9 project — you do **not** need
+access to our team repo to use it. Share the single `.skill` file with the whole class
+and it just works (after the one-time toolchain install below).
 
-**Option A — drag-and-drop the package.** In Claude Code / the Claude desktop app,
-install `kicad-laser-pcb.skill` (the packaged file in this folder) via the skills UI.
+### Install (each person, once)
 
-**Option B — copy the source folder** into your personal skills directory so it's
-picked up automatically:
+**Option A — the packaged file (easiest to share).** Hand someone
+`kicad-laser-pcb.skill` and they install it via the skills UI in Claude Code / the
+Claude desktop app. Nothing else needed.
+
+**Option B — copy the source folder** into your personal skills directory:
 
 ```powershell
 # Windows
@@ -29,7 +34,8 @@ cp -r skills/kicad-laser-pcb ~/.claude/skills/
 ```
 
 Restart Claude Code (or reload skills) and it'll show up. Ask something like
-"redo the buck PCB" or "review this boost schematic" and it triggers.
+"route this buck board" or "review this boost schematic" and it triggers — pointed at
+*your own* KiCad project.
 
 ### First-time toolchain setup
 

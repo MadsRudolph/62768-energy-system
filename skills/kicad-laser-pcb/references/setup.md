@@ -1,10 +1,10 @@
 # First-time setup on a new PC
 
-This skill drives the team repo's `hardware/kicad/tools/` scripts, which assume a
-specific toolchain. The scripts and board files travel with the git repo; the tools
-below are per-machine and need installing once. The pipeline is **Windows + PowerShell**
-(that's what the repo scripts are written in). Schematic review and footprint edits work
-anywhere KiCad runs, but routing/export is Windows-only as written.
+This skill bundles its own scripts (`<skill>/scripts/`) and footprint library
+(`<skill>/lib/`), so you only need the toolchain below — there's no special repo to
+clone. These tools are per-machine and install once. The pipeline is **Windows +
+PowerShell** (that's what the scripts are written in). Schematic review and footprint
+edits work anywhere KiCad runs, but routing/export is Windows-only as written.
 
 Verify each before running a routing batch:
 
@@ -26,16 +26,15 @@ Invoke-WebRequest `
 ```
 
 **1.9.0 specifically** — 2.0.1's version-check NPEs and never saves the SES (see
-`gotchas.md`), and 2.2+ needs Java 25. `pcb_make_all.ps1` defaults to
+`gotchas.md`), and 2.2+ needs Java 25. `route_board.ps1` defaults to
 `$env:USERPROFILE\.freerouting\freerouting-1.9.0.jar`; pass `-Jar <path>` if yours lives
 elsewhere.
 
 ## If your KiCad isn't at the default path
 
-The repo scripts (`pcb_make_all.ps1`, `pcb_export_production.ps1`, and the `kicad-cli` /
-`python.exe` calls in this skill) hardcode `C:\Program Files\KiCad\9.0\bin`. If you
-installed a different 9.x point-release or a custom location, either install to the
-default or edit the `$kc`/`$kpy` variables at the top of those scripts. Keep it on
+The bundled scripts default to `C:\Program Files\KiCad\9.0\bin`. If you installed a
+different 9.x point-release or a custom location, pass `-KicadBin "<your\bin>"` to
+`route_board.ps1` / `export_production.ps1` (no need to edit anything). Keep it on
 KiCad **9** — the board files use the v9 s-expression format.
 
 ## Shop CSV
@@ -44,14 +43,21 @@ The component-shop CSV (`dtu_component_shop.csv`) is a per-person download, not 
 repo. You only need it when picking parts for a *new* schematic. Save it anywhere and
 tell Claude the path when a task needs it.
 
+## Register the laser footprint lib (for GUI editing)
+
+`pcb_build.py` finds the bundled `<skill>/lib/energy_system.pretty` by path, so routing
+works without any setup. But to pick those footprints in the KiCad GUI, add the lib
+once: Preferences → Manage Footprint Libraries → add `<skill>\lib\energy_system.pretty`
+with nickname `energy_system`.
+
 ## Sanity check
 
-From `hardware/kicad/`, route one small board end to end:
+Route any small board you have end to end:
 
 ```powershell
-.\tools\pcb_make_all.ps1 -Boards rectifier
+<skill>\scripts\route_board.ps1 -Sch <proj>\<board>.kicad_sch -Pcb <proj>\<board>.kicad_pcb
 ```
 
-If it produces `boards/rectifier/pcb/rectifier.drc.txt` with 0 errors, the toolchain is
-good. If Freerouting hangs or the DSN won't parse, go straight to `gotchas.md` — those
-two failure modes are the usual first-run snags.
+If it finishes with a `.drc.txt` showing 0 errors, the toolchain is good. If
+Freerouting hangs or the DSN won't parse, go straight to `gotchas.md` — those two
+failure modes are the usual first-run snags.

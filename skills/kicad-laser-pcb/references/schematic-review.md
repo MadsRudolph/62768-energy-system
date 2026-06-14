@@ -8,7 +8,7 @@ net membership by hand:
 ```powershell
 & "C:\Program Files\KiCad\9.0\bin\kicad-cli.exe" sch export netlist --format kicadsexpr `
     -o "$env:TEMP\b.net" boards\<b>\<b>.kicad_sch
-py -3.13 tools\pcb_netlist_json.py "$env:TEMP\b.net" "$env:TEMP\b.json"
+py -3.13 <skill>\scripts\pcb_netlist_json.py "$env:TEMP\b.net" "$env:TEMP\b.json"
 # then read the json: which refs/pins share each net?
 ```
 

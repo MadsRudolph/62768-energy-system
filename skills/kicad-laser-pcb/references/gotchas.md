@@ -11,7 +11,7 @@ Every one of these cost real time. When something misbehaves, scan here first.
 | Freerouting genuinely hangs after "Route optimization completed" | Flaky save phase — 1–3 min is normal, >5 min is hung. Kill java, re-run that board. **Never** launch java with `-WindowStyle Hidden` (kills its GUI event pump → guaranteed hang). |
 | Freerouting exits instantly, no SES | Wrong Java for the jar (2.2.x needs Java 25). Use 1.9.0 on Java 21. |
 | SES import wiped the stage-1 routing | Raw import after stage 2. Use `pcb_route.py ses` (merge-import), which re-adds the locked wires. |
-| `pcbnew` `ZONE.Remove()` / track removal access-violates (exit code -1073741819) in-process | KiCad 9.0.6 SWIG bug. Don't remove zones/tracks in a loaded board via python — strip textually with sexpdata (`tools/strip_routing.py`). |
+| `pcbnew` `ZONE.Remove()` / track removal access-violates (exit code -1073741819) in-process | KiCad 9.0.6 SWIG bug. Don't remove zones/tracks in a loaded board via python — strip textually with sexpdata (`scripts/strip_routing.py`, or `route_board.ps1 -KeepPlacement`). |
 | `shorting_items` / clearance errors right after a route | Often a transient SES merge artifact. **Re-run the board once** — it usually clears (seen on rectifier, mppt). If it persists, the placement is too tight; open the crowded row. |
 | MOSFET/transistor pads end up `<no net>` (and DRC stays silent!) | Letter pin numbers (G/D/S) vs numeric pads (1/2/3). `pcb_build.py` maps Q_NMOS and fails hard if a whole component gets no nets; new letter-pin symbols need the same mapping. |
 | `power_pin_not_driven` ERC errors | Add `power:PWR_FLAG` symbols on connector-fed supply nets. (Copy the lib-symbol from a board that has one — e.g. mppt — and write fresh instances.) |
