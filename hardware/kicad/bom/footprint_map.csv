@@ -118,3 +118,9 @@ buck_v2,SW1,DIP-switch,DIP-Switch,shop,Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.
 buck_v2,U1,LM7805,LM7805,shop,energy_system:TO-220-3_Vertical_LaserPads,SUBSTITUTION: LF50 ikke i shoppen - 7805 samme pinout (IN/GND/OUT)
 buck_v2,U3,4N25,4N25,shop,Package_DIP:DIP-6_W7.62mm_LongPads,DIP6-sokkel. Symbolben omnummereret til DIP-6 (E=4 C=5; pad 3/6 ubrugt)
 buck_v2,U2,NE555,NE555,shop,Package_DIP:DIP-8_W7.62mm_LongPads,DIP8-sokkel
+mosfet_test,Q1,IRLZ44N,IRLZ44N,kit,energy_system:TO-220-3_Vertical_LaserPads,TESTBOARD: logic-level N-MOS TO-220 (pinout G-D-S); IKKE krydstjekket mod shop-CSV (ligger paa Windows-PC) - enhver logic-level N-MOS i TO-220 duer
+mosfet_test,D1,1N4007,1N4006,shop,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal,flyback over lasten; 1N4006 i shoppen rigeligt ved 20V (jf. rectifier)
+mosfet_test,R1,10R,10R,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie-gateresistor
+mosfet_test,R2,10k,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gate pulldown
+mosfet_test,J1,header 1x02,PinHeader 2.54mm 1x02,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,gate-drive ind (signal-header)
+mosfet_test,M1,skrueterminal 3P,MaiXu MX126-5.0-03P,shop,TerminalBlock:TerminalBlock_MaiXu_MX126-5.0-03P_1x03_P5.00mm,SUBSTITUTION: bornier-serien findes ikke i Ubuntu-kicad-footprints - MaiXu MX126 (5.0mm) brugt; bornier-3 (5.08mm) kan bruges paa Windows
