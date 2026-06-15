@@ -24,4 +24,4 @@ New-Item -ItemType Directory -Force "$OutDir\gerbers" | Out-Null
 & $kc pcb export dxf --mode-single -l "F.Silkscreen,Edge.Cuts" --ou mm --drill-shape-opt 0 -o "$OutDir\${b}_silk_top.dxf" $Pcb | Out-Null
 & $kc pcb export gerbers -l "F.Cu,B.Cu,Edge.Cuts,B.Mask,F.Mask,F.Silkscreen,F.Fab" -o "$OutDir\gerbers\" $Pcb | Out-Null
 & $kc pcb export drill --format excellon -o "$OutDir\gerbers\" $Pcb | Out-Null
-Write-Output "$b: DXF + Gerbers i $OutDir (skaer emnet 109x109; spejlvend KUN $b.dxf i xTool)"
+Write-Output "${b}: DXF + Gerbers i $OutDir (skaer emnet 109x109; spejlvend KUN $b.dxf i xTool)"

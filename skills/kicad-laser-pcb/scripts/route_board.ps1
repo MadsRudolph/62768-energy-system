@@ -58,4 +58,4 @@ else { & $kpy "$here\pcb_route.py" ses $Pcb "-" }   # finish (zones+text) with n
 $drc = [System.IO.Path]::ChangeExtension($Pcb, ".drc.txt")
 & $kc pcb drc -o $drc $Pcb | Out-Null
 Select-String -Path $drc -Pattern "Found" | ForEach-Object { $_.Line }
-Write-Output "$b: routing faerdig. DRC-rapport: $drc"
+Write-Output "${b}: routing faerdig. DRC-rapport: $drc"
