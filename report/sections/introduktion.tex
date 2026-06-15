@@ -5,7 +5,33 @@
 % Kort: formålet med projektet (62768), hvad systemet skal kunne, og rapportens opbygning.
 % Henvis til kravspecifikationen og det overordnede blokdiagram i afsnit~\ref{sec:systemoverblik}.
 
-I dette projekt designes og bygges et komplet elektrisk energisystem i henhold til
-kursets kravspecifikation. % TODO: skriv færdig.
+\noindent
+Modern electrical energy systems often consist of several connected parts, such as energy sources, converters, storage units, control systems, and loads. The purpose of these systems is to deliver electrical energy in a stable and controlled way, even when the input source or the load changes. This is especially important when renewable energy sources, such as solar panels, are used, because their output depends on external conditions such as light intensity and temperature.
+
+\vspace{0.4cm}
+
+\noindent
+In this project, a small-scale electrical energy system is designed and tested. The system includes an AC generator, a three-phase transformer, a rectifier, a PV module, MPPT control, buck and boost converters, and a load. The goal is to investigate how these components work together to produce, convert, regulate, and deliver electrical energy.
+
+\vspace{0.4cm}
+
+\noindent
+A central part of the project is the use of power electronics. The rectifier converts AC voltage into DC voltage, while the buck and boost converters are used to regulate the voltage to the required levels. This is necessary because the voltage produced by the generator and the solar panel is not always directly suitable for the load.
+
+\vspace{0.4cm}
+
+\noindent
+The system must fulfil several requirements. The rectified voltage from the AC-generator system must be regulated to approximately (15~\text{V}), and the system must be able to supply current to the buck converter. The final output voltage must also stay within the required limits during load changes. In addition, the system uses control and measurement circuits, where an Arduino can be used for voltage measurement, current measurement, PWM control, and MPPT implementation.
+
+\vspace{0.4cm}
+
+\noindent
+The work in this project includes both theoretical analysis and practical measurements. First, the individual components are studied and tested separately. This includes measurements of the generator and rectifier output, measurements of the PV module I-V and P-V curves, and analysis of the maximum power point. Afterwards, the different parts of the system are combined and tested as a complete small-scale electrical energy system.
+
+\vspace{0.4cm}
+
+\noindent
+The purpose of the report is to document the design, calculations, measurements, and testing of the electrical energy system. The report first presents the system overview and the main requirements. Afterwards, the different subsystems are explained, including the generator, transformer, rectifier, PV module, MPPT control, and power converters. Finally, the measured results are discussed and compared with the expected behaviour of the system.
+ % TODO: skriv færdig.
 
 \ifdefined\mainfile\else\end{document}\fi
