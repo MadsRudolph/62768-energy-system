@@ -6,4 +6,161 @@
 
 % TODO: design, beregninger, simulering, implementering og måleresultater.
 
+\subsection*{PV Module Measurements and Maximum Power Point}
+
+\noindent
+To understand how the solar panel behaves, we measured both the I-V curve and the P-V curve. The I-V curve shows the relationship between the voltage and current from the PV module, while the P-V curve shows how much power the module can deliver at different voltages. The main purpose of these measurements was to find the maximum power point, also called MPP.
+
+\vspace{0.4cm}
+
+\noindent
+The measurements were made by connecting different resistors to the PV module. For each resistor value, the voltage and current were measured. The power was then calculated using:
+
+\[
+P = V \cdot I
+\]
+
+\noindent
+where \(P\) is the power, \(V\) is the measured voltage, and \(I\) is the measured current. The measured values are shown in Table~\ref{tab:pv_measurements}.
+
+\vspace{0.3cm}
+
+\begin{table}[H]
+\centering
+\caption{Measured PV voltage, current and power for different load resistances.}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Resistance (\(\Omega\))} & \textbf{Voltage (V)} & \textbf{Current (A)} & \textbf{Power (W)} \\ \hline
+5   & 3.05  & 0.59 & 1.7995 \\ \hline
+10  & 6.08  & 0.60 & 3.648  \\ \hline
+15  & 8.99  & 0.60 & 5.394  \\ \hline
+20  & 11.90 & 0.60 & 7.140  \\ \hline
+30  & 17.60 & 0.57 & 10.032 \\ \hline
+40  & 18.90 & 0.46 & 8.694  \\ \hline
+50  & 19.55 & 0.37 & 7.2335 \\ \hline
+60  & 19.70 & 0.31 & 6.107  \\ \hline
+70  & 19.90 & 0.26 & 5.174  \\ \hline
+80  & 19.90 & 0.24 & 4.776  \\ \hline
+90  & 20.00 & 0.21 & 4.200  \\ \hline
+100 & 20.00 & 0.19 & 3.800  \\ \hline
+150 & 20.20 & 0.12 & 2.424  \\ \hline
+300 & 20.30 & 0.05 & 1.015  \\ \hline
+\end{tabular}
+\label{tab:pv_measurements}
+\end{table}
+
+\vspace{0.5cm}
+
+\noindent
+From the measured values in Table~\ref{tab:pv_measurements}, it can be seen that the voltage increases when the load resistance is increased. At low resistance values, the current is high and stays close to \(0.60~\text{A}\). When the resistance becomes larger, the voltage increases, but the current starts to decrease. This is expected for a PV module, because the operating point moves along the I-V curve depending on the connected load.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.80\textwidth]{report/images/Solarpanel/IV_PV characteristic with PV module.png}
+    \caption{Measured I-V and P-V characteristics of the PV module.}
+    \label{fig:iv_pv_characteristic}
+\end{figure}
+
+\vspace{0.5cm}
+
+\noindent
+Figure~\ref{fig:iv_pv_characteristic} shows the measured I-V and P-V characteristics of the PV module. The blue curve shows the current as a function of the voltage, while the orange curve shows the output power as a function of the voltage. From the I-V curve, it can be seen that the current is almost constant at the beginning. When the voltage increases from \(3.05~\text{V}\) to about \(11.90~\text{V}\), the current stays close to \(0.60~\text{A}\). This shows that the PV module behaves almost like a current source in this area.
+
+\vspace{0.5cm}
+
+\noindent
+After this point, the current begins to decrease more quickly. This happens when the voltage gets close to the open-circuit voltage of the PV module. The highest measured voltage was approximately:
+
+\[
+V_{OC} \approx 20.3~\text{V}
+\]
+
+\noindent
+This value can be used as an estimate of the open-circuit voltage. The highest measured current was approximately:
+
+\[
+I_{SC} \approx 0.60~\text{A}
+\]
+
+\noindent
+This can be used as an estimate of the short-circuit current, because the current is almost constant in the low-voltage area.
+
+\vspace{0.5cm}
+
+\noindent
+The P-V curve shows that the power increases as the voltage increases, until it reaches a maximum point. After this point, the power decreases again because the current drops faster than the voltage increases. From the measurements, the maximum power point was found at:
+
+\[
+V_{MPP} = 17.6~\text{V}
+\]
+
+\[
+I_{MPP} = 0.57~\text{A}
+\]
+
+\[
+P_{MPP} = 10.032~\text{W}
+\]
+
+\noindent
+This means that the PV module delivers the highest power when it operates at approximately \(17.6~\text{V}\) and \(0.57~\text{A}\).
+
+\vspace{0.5cm}
+
+\noindent
+The maximum power point is important because the highest voltage or the highest current alone does not give the highest power. At low voltage, the current is high, but the voltage is too low. At high voltage, the voltage is high, but the current becomes too low. Therefore, the maximum power point is found between these two areas, where both voltage and current have suitable values.
+
+\vspace{0.5cm}
+
+\noindent
+The fill factor can also be estimated from the measured values. The fill factor describes how well the PV module is able to deliver power compared to an ideal module. It is calculated as:
+
+\[
+FF = \frac{P_{MPP}}{V_{OC} \cdot I_{SC}}
+\]
+
+\noindent
+Using the measured values gives:
+
+\[
+FF = \frac{10.032}{20.3 \cdot 0.60}
+\]
+
+\[
+FF \approx 0.824
+\]
+
+\noindent
+This gives a fill factor of approximately:
+
+\[
+FF \approx 82.4\%
+\]
+
+\vspace{0.5cm}
+
+\noindent
+These measurements also show why maximum power point tracking is needed. The maximum power point is not fixed at the highest voltage or the highest current. Instead, it depends on both voltage and current. Therefore, the system must continuously measure the PV voltage and current and calculate the power.
+
+\vspace{0.5cm}
+
+\noindent
+In the final system, an Arduino together with an INA219 current and voltage sensor can be used to measure the PV voltage and current. The Arduino can calculate the PV power using:
+
+\[
+P_{PV} = V_{PV} \cdot I_{PV}
+\]
+
+\noindent
+By using an MPPT algorithm, such as Perturb and Observe, the Arduino can adjust the duty cycle of the buck converter. This changes the operating point of the PV module, so the system can try to stay close to the maximum power point.
+
+\vspace{0.5cm}
+
+\noindent
+Overall, the measurements show that the PV module has a clear maximum power point at approximately \(17.6~\text{V}\), \(0.57~\text{A}\), and \(10.03~\text{W}\). This value is important because it can be used as a reference for the MPPT system. The goal of the MPPT control is to make the PV module operate as close as possible to this point, so the maximum available power can be transferred to the buck converter and the load.
+
+
+
 \ifdefined\mainfile\else\end{document}\fi
