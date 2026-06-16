@@ -6,12 +6,15 @@ Samme mønster som exp3a/build_drive.py (sexpdata, net-labels, 2.54 mm grid),
 men pin-koordinaterne læses automatisk ud af KiCads symbolbiblioteker i stedet
 for håndskrevne tabeller, og Footprint-property sættes ved genereringen.
 """
-import copy, uuid as _uuid
+import copy, os, uuid as _uuid
 from pathlib import Path
 import sexpdata
 from sexpdata import Symbol as S
 
-LIBDIR = Path(r"C:\Program Files\KiCad\9.0\share\kicad\symbols")
+# Windows (teamets PC'er) som standard; Linux/proot via $KICAD_SYMBOL_DIR-override.
+LIBDIR = Path(os.environ.get("KICAD_SYMBOL_DIR")
+              or (r"C:\Program Files\KiCad\9.0\share\kicad\symbols" if os.name == "nt"
+                  else "/usr/share/kicad/symbols"))
 
 def uid(): return str(_uuid.uuid4())
 

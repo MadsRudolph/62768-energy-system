@@ -15,13 +15,16 @@ import pcbnew
 from pcbnew import VECTOR2I, FromMM
 
 import os
-FPLIB = r"C:\Program Files\KiCad\9.0\share\kicad\footprints"
+# Windows (teamets PC'er) som standard; Linux/proot via $KICAD_FOOTPRINT_DIR-override.
+FPLIB = os.environ.get("KICAD_FOOTPRINT_DIR") or (
+    r"C:\Program Files\KiCad\9.0\share\kicad\footprints" if os.name == "nt"
+    else "/usr/share/kicad/footprints")
 PRJLIB = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib")
 
 def load_fp(fpid):
     lib, name = fpid.split(":")
     base = PRJLIB if lib == "energy_system" else FPLIB
-    fp = pcbnew.FootprintLoad(rf"{base}\{lib}.pretty", name)
+    fp = pcbnew.FootprintLoad(os.path.join(base, f"{lib}.pretty"), name)
     if fp is None:
         raise SystemExit(f"footprint ikke fundet: {fpid}")
     return fp

@@ -59,6 +59,7 @@ ad edge cuts. drive_circuit er håndplaceret (GUI) og derefter to-trins-routet.
 | Rectifier | `boards/rectifier/rectifier.kicad_pro` | 7 (60 mm) |
 | MPPT/PV | `boards/mppt/mppt.kicad_pro` | 15 (77 mm) |
 | Current sense | `boards/current_sense/current_sense.kicad_pro` | 8 (68 mm) |
+| MOSFET-test | `boards/mosfet_test/mosfet_test.kicad_pro` | **0 — helt enkeltsidet** |
 
 Ingen vias på nogen boards (kvadrat-formatet + kompakt placering routede
 bedre end de gamle aflange boards).
