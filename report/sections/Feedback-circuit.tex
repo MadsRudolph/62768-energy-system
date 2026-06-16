@@ -1,0 +1,92 @@
+\ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
+
+\subsection{Feedback circuit}
+\label{sec:Feedback-circuit}
+
+\subsection*{Optically Isolated Feedback Circuit}
+
+\noindent
+In this project, a feedback circuit is used to measure voltages from the power side of the system and transfer the measurement safely to the low-voltage control side. The control system uses a microcontroller to measure voltages and currents and to adjust the PWM duty cycle for the converters. Since the power circuit can contain higher voltages and switching noise, it is important to protect the microcontroller input and avoid a direct electrical connection between the power side and the control side.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{report/images/Feedback-circuit/Feedback circuit.png}
+    \caption{KiCad schematic of the optically isolated feedback circuit.}
+    \label{fig:feedback_circuit_schematic}
+\end{figure}
+
+\vspace{0.5cm}
+
+\noindent
+For this reason, an optically isolated linear feedback circuit is used. The circuit is based on the IL300 linear optocoupler. The purpose of the IL300 is to transfer an analog voltage signal across a galvanic isolation barrier. This means that the measurement signal can be transferred from the power electronics circuit to the controller circuit without the two sides sharing the same electrical connection.
+
+\vspace{0.4cm}
+
+\noindent
+The IL300 contains one LED and two matched photodiodes. On the input side, an operational amplifier drives the LED inside the optocoupler. One of the photodiodes is used as feedback to the input-side op-amp. This feedback makes the LED current more proportional to the measured input voltage and helps reduce the non-linear behaviour of the LED. This is important because the signal must remain as linear as possible for the controller to use it correctly.
+
+\vspace{0.4cm}
+
+\noindent
+The second photodiode is placed on the isolated output side. This photodiode receives the optical signal from the LED and produces a small current. This current is then converted back into a voltage using another operational amplifier. The resulting voltage is a scaled version of the measured input voltage and can be connected to the ADC input of the microcontroller.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{report/images/Feedback-circuit/Feedback circuit hulprint.png}
+    \caption{Practical implementation of the feedback circuit on perfboard.}
+    \label{fig:feedback_circuit_hulprint}
+\end{figure}
+
+\vspace{0.5cm}
+
+\noindent
+The feedback circuit is designed so that the measured voltage is scaled down to a safe level for the controller. For example, if the power circuit voltage is around \(20~\text{V}\), the isolated output signal should be reduced to approximately \(3.3~\text{V}\). This makes the signal suitable for a microcontroller ADC input. The scaling can be adjusted using resistor values in the input divider and the op-amp feedback network.
+
+\vspace{0.4cm}
+
+\noindent
+A voltage divider is used to reduce the measured voltage before it enters the feedback circuit. The reference voltage can be calculated as:
+
+\[
+V_{\text{ref}} = V_{\text{in}} \cdot \frac{R_2}{R_1 + R_2}
+\]
+
+\noindent
+Using \(R_1 = 10~\text{k}\Omega\), \(R_2 = 2~\text{k}\Omega\), and \(V_{\text{in}} = 20~\text{V}\), the scaled voltage becomes:
+
+\[
+V_{\text{ref}} = 20 \cdot \frac{2}{10+2}
+\]
+
+\[
+V_{\text{ref}} \approx 3.33~\text{V}
+\]
+
+\noindent
+This value is suitable for a \(3.3~\text{V}\) ADC input. It is important to note that this value is not the original power circuit voltage, but a scaled measurement signal that represents the higher voltage in a safe range.
+
+\vspace{0.4cm}
+
+\noindent
+The feedback signal can be used by the controller to monitor the voltage in the system. For example, it can be used to measure the generator output voltage, the rectified DC voltage, or the converter output voltage. Based on this measurement, the controller can adjust the PWM duty cycle to regulate the voltage. In this way, the feedback circuit becomes an important part of the closed-loop control system.
+
+\vspace{0.4cm}
+
+\noindent
+The oscilloscope measurement shows that the isolated output signal is stable and close to the expected ADC voltage level. The measured output is approximately \(3.3~\text{V}\), which confirms that the feedback circuit scales the measured voltage correctly. Only small variations are visible in the signal, which are most likely caused by noise and switching activity in the power electronics circuit.
+
+\vspace{0.4cm}
+
+\noindent
+Overall, the optically isolated feedback circuit is used to make voltage measurements safer and more reliable. It protects the microcontroller from higher voltages, reduces the risk of ground loops, and separates the noisy power electronics from the low-voltage control circuit. This makes the circuit suitable for use in the energy system, where measured voltage signals are needed for regulation, monitoring, and PWM control.
+
+\vspace{0.4cm}
+
+\noindent
+It should be noted that this feedback circuit is inspired by an earlier project, \textit{62783 Project 3. sem, Winter 2026}, where a similar optically isolated feedback circuit was designed and tested. The circuit has therefore been reused and adapted for this project, since it provides a suitable method for transferring voltage measurements safely from the power electronics side to the low-voltage controller side.
+
+\ifdefined\mainfile\else\end{document}\fi
