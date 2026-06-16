@@ -3,6 +3,7 @@
 
 #define INA219_ADDR 0x40
 
+#define REG_SHUNT_VOLTAGE 0x01
 #define REG_BUS_VOLTAGE 0x02
 #define REG_CURRENT     0x04
 
@@ -52,4 +53,18 @@ float INA219_getVoltage(void) {
 float INA219_getCurrent(void) {
     int16_t raw = INA219_read(REG_CURRENT);
     return raw * 0.001; // afhænger af kalibrering!
+}
+
+
+// === bus voltage in mV (integer, no calibration needed) ===
+uint16_t INA219_getBus_mV(void) {
+    uint16_t raw = INA219_read(REG_BUS_VOLTAGE);
+    raw >>= 3;
+    return raw * 4; // 4 mV per bit
+}
+
+// === shunt voltage in uV (integer, no calibration needed) ===
+int16_t INA219_getShunt_uV(void) {
+    int16_t raw = INA219_read(REG_SHUNT_VOLTAGE);
+    return raw * 10; // 10 uV per bit (PGA /8 range)
 }
