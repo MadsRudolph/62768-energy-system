@@ -1,7 +1,28 @@
 \ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
 
-\subsection{Styring og software (Arduino)}
+\subsection{Styring og software (Arduino) MPPT}
 \label{sec:styring}
+The Maximum Power Point Tracker (MPPT) is implemented on an Arduino Nano. The control loop follows the flow shown in Figure \ref{fig:MPPTflow}.\\
+The purpose of the MPPT algorithm is to make sure that the PV panel always operates as close as possible to its maximum power point, even when conditions such as light and temperature change.\\
+In each iteration of the loop, the controller measures the panel voltage $v(k)$ and current $i(k)$ using an INA219 current sensor. Based on this, the power is calculated as
+
+\[
+p(k) = v(k)i(k)
+\]
+The algorithm then compares the current measurements with the previous ones by calculating
+
+\[
+\Delta p(k) = p(k) - p(k-1), \quad \Delta v(k) = v(k) - v(k-1)
+\]
+These differences are used to decide whether the operating point should be adjusted up or down. If a small increase in voltage leads to an increase in power, the system continues in that direction. If the power instead decreases, the direction is reversed.\\
+In practice, this adjustment is done by changing the duty cycle of a PWM signal that controls the DC-DC converter. By continuously repeating this process, the system “tracks” the point where the PV panel delivers the most power.\\
+The algorithm runs continuously in the main loop, allowing the system to respond to changes in the environment.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{MPPT_flowchart.png}
+    \caption{MPPT flowchart}
+    \label{fig:MPPTflow}
+\end{figure}
 % PID-regulering af motor via PWM-driver. Arduino ADC, timer-interrupts og PWM (krav 15, 18). PC-baseret overvågning, 1\,s opdatering (krav 13, 14).
 
 % TODO: design, beregninger, simulering, implementering og måleresultater.
