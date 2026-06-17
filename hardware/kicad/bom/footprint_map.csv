@@ -105,7 +105,6 @@ buck_v2,D1,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,duty-st
 buck_v2,D2,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,duty-styringsdiode (555)
 buck_v2,D3,1N5817,1N5817,shop,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal,friloebsdiode
 buck_v2,J2,MCP PWM,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,ekstern PWM ind (pin 2 = GND)
-buck_v2,J1,9V batteri,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,OBS: batteriet FLYDER paa SW-knuden (gate-forsyning)
 buck_v2,J3,5V ud,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
 buck_v2,L1,121u,toroid (egen-vikling),egen-vikling,energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads,121uH = maalt paa den viklede toroid
 buck_v2,Q1,IRF530,IRF530,shop,energy_system:TO-220-3_Vertical_LaserPads,
@@ -118,3 +117,29 @@ buck_v2,SW1,DIP-switch,DIP-Switch,shop,Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.
 buck_v2,U1,LM7805,LM7805,shop,energy_system:TO-220-3_Vertical_LaserPads,SUBSTITUTION: LF50 ikke i shoppen - 7805 samme pinout (IN/GND/OUT)
 buck_v2,U3,4N25,4N25,shop,Package_DIP:DIP-6_W7.62mm_LongPads,DIP6-sokkel. Symbolben omnummereret til DIP-6 (E=4 C=5; pad 3/6 ubrugt)
 buck_v2,U2,NE555,NE555,shop,Package_DIP:DIP-8_W7.62mm_LongPads,DIP8-sokkel
+buck_v2,U4,IR2110,IR2110,kit,Package_DIP:DIP-14_W7.62mm_LongPads,KIT-DEL - ikke i shoppen. DIP14-sokkel. Gate-driver HIGH-SIDE (HO/pin7; VS->SW; bootstrap)
+buck_v2,D4,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,bootstrap-diode +15V(VCC)->VB
+buck_v2,C7,1u,1uF keramik/film,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,bootstrap-kondensator VB->VS(SW). Verificer fysisk pitch (film kan vaere 7.5mm)
+buck_v2,R5,10,10R0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gate-seriemodstand (HO->gate)
+buck_v2,D5,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,anti-parallel over R5 (K=HO; A=GATE) -> hurtig sluk
+buck_v2,R6,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,HIN pulldown (opto-emitter -> GND)
+buck_v2,C8,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,+15V bulk-afkobling (driver)
+buck_v2,C9,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,+15V HF-afkobling (driver)
+buck_v2,J5,drive +15V,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,jordrefereret driver-forsyning (erstatter det flydende 9V-batteri)
+boost_v2,J1,lager ind (5V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,5V fra lager-kondensatoren
+boost_v2,L1,470u,toroid (egen-vikling),egen-vikling,energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads,maalt toroid (som boost v1)
+boost_v2,M1,IRF530,IRF530,shop,energy_system:TO-220-3_Vertical_LaserPads,lavside-switch (kilde = GND)
+boost_v2,D1,1N5819,1N5817,shop,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal,SUBSTITUTION: 1N5819->1N5817 (Schottky 1A/20V); boost-udgang ~10V OK
+boost_v2,C1,47u,47uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,udgangskondensator V2
+boost_v2,J2,V2 ud (10V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,
+boost_v2,J3,PWM (isoleret),Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,PWM + GND_MCU (isoleret jord - maa IKKE forbindes til effekt-GND)
+boost_v2,R1,200,200R,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,opto-LED formodstand
+boost_v2,U1,CNY17,CNY17,shop,Package_DIP:DIP-6_W7.62mm_LongPads,DIP6-sokkel. Bruger 4N25-symbol (samme 6-bens pinout). Shop: CNY17/MCT5211
+boost_v2,R2,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,LIN pulldown (opto-emitter -> GND)
+boost_v2,U2,IR2110,IR2110,kit,Package_DIP:DIP-14_W7.62mm_LongPads,KIT-DEL - ikke i shoppen. DIP14-sokkel. Gate-driver lavside (LO/pin1)
+boost_v2,R3,10,10R0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gate-seriemodstand
+boost_v2,D2,1N4007,1N4006,shop,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal,SUBSTITUTION: 1N4007->1N4006 (800V rigeligt). Anti-parallel over R3 -> hurtig sluk
+boost_v2,R4,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gate pulldown
+boost_v2,C2,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,+15V bulk-afkobling
+boost_v2,C3,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,+15V HF-afkobling
+boost_v2,J4,drive +15V,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,gate-driver forsyning (jordrefereret - lavside OK)

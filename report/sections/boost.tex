@@ -4,6 +4,18 @@
 \label{sec:boost}
 % Selvbygget boost-konverter til pulserende 10\,V last (krav 4--6, 8, 12). Dimensionering, regulering og last-respons.
 
-% TODO: design, beregninger, simulering, implementering og måleresultater.
+% TODO: design, beregninger, simulering, implementering.
+
+\subsection*{Measurement results}
+
+\noindent
+The boost converter was tested with a 5\,V input from the energy store and an external PWM gate drive switching at 10\,kHz. Figure~\ref{fig:boost_drain_output} shows the MOSFET drain voltage (the switching node) together with the converter output voltage at a duty cycle of 40\,\%. The output settles at 9.77\,V, close to the 10\,V target for the V2 rail, with a peak-to-peak ripple of only about 142\,mV --- roughly 1.5\,\% of the output voltage. The drain waveform confirms clean, well-defined switching at 10\,kHz, and since the output level is set by the PWM duty cycle, the controller can regulate V2 to the desired value.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{report/images/Boost/boost_drain_output_10kHz.png}
+    \caption{Boost converter at 10\,kHz and 40\,\% duty cycle: MOSFET drain voltage (switching node, yellow) and output voltage (blue). The output holds 9.77\,V with approximately 142\,mVpp ripple.}
+    \label{fig:boost_drain_output}
+\end{figure}
 
 \ifdefined\mainfile\else\end{document}\fi

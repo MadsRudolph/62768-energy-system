@@ -54,6 +54,7 @@ ad edge cuts. drive_circuit er håndplaceret (GUI) og derefter to-trins-routet.
 |---|---|---|
 | Buck | `boards/buck/buck.kicad_pro` | **0 — helt enkeltsidet** |
 | Boost | `boards/boost/boost.kicad_pro` | 2 (35 mm) |
+| **Boost v2 (IR2110)** | `boards/boost/boost_v2/boost_v2.kicad_pro` | 17 (255 mm) |
 | Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 20 (135 mm) |
 | Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 15 (73 mm) |
 | Rectifier | `boards/rectifier/rectifier.kicad_pro` | 7 (60 mm) |
@@ -95,6 +96,16 @@ Brug DIP-sokler fra shoppen til alle IC'er.
 - **Buck J4 (+12V_SW) er refereret til SW-knuden**, ikke GND — high-side switch
   kræver flydende/bootstrap gate-forsyning. Sådan er teamets opto-gate-drive tegnet;
   overvej IR2110-løsningen fra drive-kredsen, jf. `docs/system-architecture.md`.
+- **Boost v2 = boost med rigtig IR2110 gate-driver** (`boards/boost/boost_v2/`).
+  Den gamle boost drev MOSFET-gaten direkte fra en 4N25-opto; optoens ~20 µs
+  sluk-tid strakte dutyen voldsomt (20 % → 65 % @ 10 kHz), så boardet kun duede ved
+  1–2 kHz med stor ripple. v2 indsætter kæden **opto (CNY17) → IR2110 LO → R3‖D2 →
+  gate** (lavside, ingen bootstrap), så gaten slås hårdt høj *og* lav på ns — duelig
+  ved 20–50 kHz med ren duty. Effekttrinet (L1/M1/D1/C1) er uændret. Separat **+15 V**
+  drive-forsyning (J4), isoleret PWM-jord (GND_MCU) bevaret. ERC 0 fejl, netliste
+  verificeret pin-for-pin, DRC 0 fejl/0 uroutede (1 benign track_dangling-stump).
+  Genereres med `tools/generators/build_boost_v2.py` (schbuild). Production-DXF +
+  Gerbers i `production/boost_v2/`.
 - **MPPT: BD139 afsætter op til ~7 W** ved fuld PV-strøm (lineær 17→5 V) —
   **køleplade påkrævet**, eller erstat med buck (Krav 17 tillader det).
 - Current-sense er **lavside**: grenens returledning ind på J*k* pin 1, system-GND
