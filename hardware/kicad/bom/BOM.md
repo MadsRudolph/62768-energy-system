@@ -6,40 +6,42 @@
 
 | Antal | Del | Pakke | Kilde |
 |---|---|---|---|
-| 15 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
-| 11 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 9 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 18 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
+| 13 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 10 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
 | 9 | 1N4006 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
-| 8 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
+| 9 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
 | 6 | 10k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 6 | 1N4148 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
+| 6 | 22uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 6 | 4700uF 50V | `CP_Radial_D18.0mm_P7.50mm` | shop |
+| 6 | 47uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 5 | 1N5817 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
 | 5 | 1R00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 5 | 22uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
-| 5 | 47uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
-| 4 | 1N4148 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
-| 4 | 200R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 5 | 200R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 5 | IRF530 | `TO-220-3_Vertical_LaserPads` | shop |
+| 5 | toroid (egen-vikling) | `L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | egen-vikling |
+| 4 | 10R0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 4 | 9k09 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 4 | IRF530 | `TO-220-3_Vertical_LaserPads` | shop |
-| 4 | toroid (egen-vikling) | `L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | egen-vikling |
-| 3 | 10R0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 4 | IR2110 | `DIP-14_W7.62mm_LongPads` | kit |
 | 3 | 4N25 | `DIP-6_W7.62mm_LongPads` | shop |
-| 3 | IR2110 | `DIP-14_W7.62mm_LongPads` | kit |
 | 3 | LM358 | `DIP-8_W7.62mm_LongPads` | shop |
+| 2 | 1uF keramik/film | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
 | 2 | 3 pol skrueterminal | `TerminalBlock_bornier-3_P5.08mm` | shop |
 | 2 | 332R (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 2 | 33k2 (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 2 | CNY17 | `DIP-6_W7.62mm_LongPads` | shop |
 | 2 | Header Male | `PinHeader_1x03_P2.54mm_Vertical` | shop |
 | 2 | MCP601 | `DIP-8_W7.62mm_LongPads` | kit |
 | 1 | 100k | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 1 | 1uF keramik/film | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 1 | 1N5822 (BESTIL) | `D_DO-201AD_P15.24mm_Horizontal` | bestil |
 | 1 | 20K trimmer | `Potentiometer_Bourns_3296W_Vertical` | shop |
 | 1 | 22k6 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 2k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 1 | 470uF 25V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 1 | 4k75 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 1 | 8n2 keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 1 | 8n2 film (box) | `C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4` | shop |
 | 1 | BZX55C5V1 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
-| 1 | CNY17 | `DIP-6_W7.62mm_LongPads` | shop |
 | 1 | DIP-Switch | `SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm` | shop |
 | 1 | Header Male | `PinHeader_1x05_P2.54mm_Vertical` | shop |
 | 1 | IL300 | `DIP-8_W7.62mm_LongPads` | kit |
@@ -188,7 +190,7 @@
 | C1 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | LM7805 indgangskondensator (fra V1/Rectifier) |
 | C2 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | 5V-skinnens udgangskondensator |
 | C3 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | paa 555-udgangen (teamets valg) |
-| C6 | 8n2 | 8n2 keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | 555 timing |
+| C6 | 8n2 | 8n2 film (box) | shop | `Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4` | 555 timing; box film ~9.3mm pitch (maalt) |
 | C4 | 47u | 47uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | udgangskondensator (var 100n - rettet) |
 | C5 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | 555 CONT |
 | D1 | 1N4148 | 1N4148 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | duty-styringsdiode (555) |
@@ -238,4 +240,29 @@
 | C2 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | +15V bulk-afkobling |
 | C3 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | +15V HF-afkobling |
 | J4 | drive +15V | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | gate-driver forsyning (jordrefereret - lavside OK) |
+
+## mppt_buck (`mppt_buck`)
+
+| Ref | Værdi | Del (indkøb) | Kilde | Footprint | Noter |
+|---|---|---|---|---|---|
+| J1 | PV ind | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | PV-panel ind (Voc 20.3V) |
+| C1 | 470u/25V | 470uF 25V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | PV-bulk >=25V (Voc 20.3V). MAAL fysisk diameter/pitch foer bestilling |
+| Q1 | IRF530 | IRF530 | shop | `energy_system:TO-220-3_Vertical_LaserPads` | high-side switch (100V/14A rigeligt ved 20V/2A) |
+| D1 | 1N5822 | 1N5822 (BESTIL) | bestil | `Diode_THT:D_DO-201AD_P15.24mm_Horizontal` | >=3A Schottky friloeb ved ~2A. Shoppen har INGEN >=3A Schottky (kun 1N5817 1A). Bestil 1N5822/SB540 (40V/3A). DO-201AD passer |
+| L1 | 150u | toroid (egen-vikling) | egen-vikling | `energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | L=Vout(Vin-Vout)/(dIL*f*Vin); 150u~31kHz. Vikles til faktisk PWM-frekvens. Kerne skal taale >=2.5A peak uden maetning |
+| C2 | 47u | 47uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | lokal udgangskondensator (1F-lageret er bulk) |
+| J2 | lager ud (5V) | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | til 1F energilager |
+| J3 | PWM (Arduino) | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical` | PWM + GND_MCU (P&O duty fra Arduino - D5/Timer3 hvis Arduino-side) |
+| R1 | 200 | 200R | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | opto-LED formodstand |
+| U1 | CNY17 | CNY17 | shop | `Package_DIP:DIP-6_W7.62mm_LongPads` | DIP6-sokkel. 4N25-symbol (samme 6-bens pinout). Shop: CNY17/MCT5211 |
+| R2 | 1k | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | HIN pulldown (opto-emitter -> GND) |
+| U2 | IR2110 | IR2110 | kit | `Package_DIP:DIP-14_W7.62mm_LongPads` | KIT-DEL - ikke i shoppen. DIP14-sokkel. Gate-driver HIGH-SIDE (HO/pin7; VS->SW; bootstrap) |
+| R3 | 10 | 10R0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | serie gate-modstand (HO->gate) |
+| D3 | 1N4148 | 1N4148 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | anti-parallel over R3 (K=HO; A=GATE) -> hurtig sluk |
+| R4 | 1k | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | gate pulldown -> SW (high-side ref) |
+| D2 | 1N4148 | 1N4148 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | bootstrap-diode +15V(VCC)->VB (K=VB; A=+15V) |
+| C3 | 1u | 1uF keramik/film | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | bootstrap-kondensator VB->VS(SW). MAAL fysisk pitch (film kan vaere 7.5mm) |
+| C4 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | +15V bulk-afkobling (driver) |
+| C5 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | +15V HF-afkobling (driver) |
+| J4 | drive +15V | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | jordrefereret driver-forsyning |
 

@@ -53,12 +53,14 @@ ad edge cuts. drive_circuit er håndplaceret (GUI) og derefter to-trins-routet.
 | Board | Projekt | Top-baner (trådbroer/side 2) |
 |---|---|---|
 | Buck | `boards/buck/buck.kicad_pro` | **0 — helt enkeltsidet** |
+| **Buck v2 (IR2110 high-side)** | `boards/buck/buck_v2/buck_v2.kicad_pro` | 21 (116 mm) |
 | Boost | `boards/boost/boost.kicad_pro` | 2 (35 mm) |
 | **Boost v2 (IR2110)** | `boards/boost/boost_v2/boost_v2.kicad_pro` | 17 (255 mm) |
 | Motor-drive | `boards/drive_circuit/drive_circuit.kicad_pro` | 20 (135 mm) |
 | Feedback | `boards/feedback_circuit/feedback_circuit.kicad_pro` | 15 (73 mm) |
 | Rectifier | `boards/rectifier/rectifier.kicad_pro` | 7 (60 mm) |
-| MPPT/PV | `boards/mppt/mppt.kicad_pro` | 15 (77 mm) |
+| MPPT/PV (lineær) | `boards/mppt/mppt.kicad_pro` | 15 (77 mm) |
+| **MPPT buck (IR2110 high-side)** | `boards/mppt_buck/mppt_buck.kicad_pro` | 8 (65 mm) |
 | Current sense | `boards/current_sense/current_sense.kicad_pro` | 8 (68 mm) |
 
 Ingen vias på nogen boards (kvadrat-formatet + kompakt placering routede
@@ -106,6 +108,33 @@ Brug DIP-sokler fra shoppen til alle IC'er.
   verificeret pin-for-pin, DRC 0 fejl/0 uroutede (1 benign track_dangling-stump).
   Genereres med `tools/generators/build_boost_v2.py` (schbuild). Production-DXF +
   Gerbers i `production/boost_v2/`.
+- **Buck v2 = buck med IR2110 HIGH-SIDE driver** (`boards/buck/buck_v2/`). Den gamle
+  high-side-drive var en 4N25-opto med et 9V-batteri flydende paa SW-knuden — langsom og
+  klodset. v2 beholder hele front-enden (LM7805 -> NE555 + RV1/trimmer timing, SW1 valg
+  555/ekstern PWM, opto-LED) og effekttrinet, men erstatter selve gate-driveren:
+  opto (5V PWM, level-shiftet til ~15V) -> **IR2110 HIN** ; **HO -> R5(10)||D5 -> gate** ;
+  **VS -> SW** ; bootstrap **D4(+15V->VB) + C7(VB->VS)** ; LIN/SD til GND. 9V-batteriet er
+  fjernet, +15V driver-forsyning via J5 (jordrefereret). R4 = gate->SW pulldown.
+  Skemaet er **GUI-lavet** (source of truth) og redigeret kirurgisk med
+  `tools/generators/patch_buck_v2_ir2110.py` (sexpdata) — front-enden er uroert.
+  ERC 0 fejl, netliste verificeret pin-for-pin, DRC 0 fejl/0 uroutede (4 benigne
+  track_dangling-stumper). 31 dele, haandplaceret (toroiden L1 fylder ~35x35 mm =
+  egen kvadrant). Production-DXF + Gerbers i `production/buck_v2/`.
+- **MPPT buck = switching buck der erstatter den lineaere MPPT** (`boards/mppt_buck/`).
+  Den gamle MPPT var lineaer (TIP41A pass-transistor + LM358-servo) og braendte op til
+  ~7 W af; rapporten (`solcelle-mppt.tex`) beskriver i forvejen en **buck styret af
+  Arduino P&O**. Dette board er den buck: PV (MPP 17.6 V / 0.57 A / ~10 W) → high-side
+  IRF530 → friloeb → L → 5 V-lager (1 F). **Samme IR2110 high-side driver som buck_v2,
+  men UDEN 555** — dutyen kommer 100 % fra Arduinoens PWM gennem opto → IR2110 HIN.
+  Strøm/spaendingsmaaling er **eksternt** (INA219). **Effekt dimensioneret til ~2 A**
+  (Vout 5 V): friloebsdioden er opgraderet fra 1N5819 (1 A) til en **≥3 A Schottky**
+  (1N5822 paa DO-201AD — **shoppen har ingen ≥3 A Schottky, bestil 1N5822/SB540**), og
+  L1 = 150 µH ≈ 31 kHz (vikles til den faktiske PWM-frekvens; kerne skal taale ≥2.5 A
+  peak). ERC 0 fejl, netliste verificeret mod high-side-acceptkriterierne, DRC 0 fejl/
+  0 uroutede/**0 vias** (2 benigne track_dangling), 8 traadbroer/65 mm. Genereres med
+  `tools/generators/build_mppt_buck.py`. Production-DXF + Gerbers i `production/mppt_buck/`.
+  **Verificer foer aetsning:** PWM-frekvens (saetter L), de fysiske kondensator-pitch
+  (PV-bulk, boot-cap), og toroidens strømrating — se `AUDIT_buck_boost_ir2110.md` §8.
 - **MPPT: BD139 afsætter op til ~7 W** ved fuld PV-strøm (lineær 17→5 V) —
   **køleplade påkrævet**, eller erstat med buck (Krav 17 tillader det).
 - Current-sense er **lavside**: grenens returledning ind på J*k* pin 1, system-GND

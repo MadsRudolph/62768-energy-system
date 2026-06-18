@@ -98,7 +98,7 @@ current_sense,J4,Arduino,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1
 buck_v2,C1,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,LM7805 indgangskondensator (fra V1/Rectifier)
 buck_v2,C2,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,5V-skinnens udgangskondensator
 buck_v2,C3,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,paa 555-udgangen (teamets valg)
-buck_v2,C6,8n2,8n2 keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,555 timing
+buck_v2,C6,8n2,8n2 film (box),shop,Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4,555 timing; box film ~9.3mm pitch (maalt)
 buck_v2,C4,47u,47uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,udgangskondensator (var 100n - rettet)
 buck_v2,C5,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,555 CONT
 buck_v2,D1,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,duty-styringsdiode (555)
@@ -143,3 +143,23 @@ boost_v2,R4,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Hori
 boost_v2,C2,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,+15V bulk-afkobling
 boost_v2,C3,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,+15V HF-afkobling
 boost_v2,J4,drive +15V,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,gate-driver forsyning (jordrefereret - lavside OK)
+mppt_buck,J1,PV ind,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,PV-panel ind (Voc 20.3V)
+mppt_buck,C1,470u/25V,470uF 25V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,PV-bulk >=25V (Voc 20.3V). MAAL fysisk diameter/pitch foer bestilling
+mppt_buck,Q1,IRF530,IRF530,shop,energy_system:TO-220-3_Vertical_LaserPads,high-side switch (100V/14A rigeligt ved 20V/2A)
+mppt_buck,D1,1N5822,1N5822 (BESTIL),bestil,Diode_THT:D_DO-201AD_P15.24mm_Horizontal,>=3A Schottky friloeb ved ~2A. Shoppen har INGEN >=3A Schottky (kun 1N5817 1A). Bestil 1N5822/SB540 (40V/3A). DO-201AD passer
+mppt_buck,L1,150u,toroid (egen-vikling),egen-vikling,energy_system:L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads,L=Vout(Vin-Vout)/(dIL*f*Vin); 150u~31kHz. Vikles til faktisk PWM-frekvens. Kerne skal taale >=2.5A peak uden maetning
+mppt_buck,C2,47u,47uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,lokal udgangskondensator (1F-lageret er bulk)
+mppt_buck,J2,lager ud (5V),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,til 1F energilager
+mppt_buck,J3,PWM (Arduino),Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,PWM + GND_MCU (P&O duty fra Arduino - D5/Timer3 hvis Arduino-side)
+mppt_buck,R1,200,200R,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,opto-LED formodstand
+mppt_buck,U1,CNY17,CNY17,shop,Package_DIP:DIP-6_W7.62mm_LongPads,DIP6-sokkel. 4N25-symbol (samme 6-bens pinout). Shop: CNY17/MCT5211
+mppt_buck,R2,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,HIN pulldown (opto-emitter -> GND)
+mppt_buck,U2,IR2110,IR2110,kit,Package_DIP:DIP-14_W7.62mm_LongPads,KIT-DEL - ikke i shoppen. DIP14-sokkel. Gate-driver HIGH-SIDE (HO/pin7; VS->SW; bootstrap)
+mppt_buck,R3,10,10R0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie gate-modstand (HO->gate)
+mppt_buck,D3,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,anti-parallel over R3 (K=HO; A=GATE) -> hurtig sluk
+mppt_buck,R4,1k,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gate pulldown -> SW (high-side ref)
+mppt_buck,D2,1N4148,1N4148,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,bootstrap-diode +15V(VCC)->VB (K=VB; A=+15V)
+mppt_buck,C3,1u,1uF keramik/film,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,bootstrap-kondensator VB->VS(SW). MAAL fysisk pitch (film kan vaere 7.5mm)
+mppt_buck,C4,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,+15V bulk-afkobling (driver)
+mppt_buck,C5,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,+15V HF-afkobling (driver)
+mppt_buck,J4,drive +15V,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,jordrefereret driver-forsyning

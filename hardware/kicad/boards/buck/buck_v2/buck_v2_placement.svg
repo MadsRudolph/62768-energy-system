@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 128" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="192" height="128" fill="#ffffff"/>
+<text x="6" y="9" font-size="4.4" font-weight="700" fill="#111">buck_v2 &#8212; as-routed placement (matches the board, 0 unconnected)</text>
+<rect x="6" y="15" width="104.1" height="104.1" rx="1.5" fill="#fcfcfc" stroke="#222" stroke-width="0.8"/>
+<rect x="28.5" y="48.4" width="10.0" height="9.2" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="33.5" y="52.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">U2</text>
+<text x="33.5" y="55.1" font-size="1.7" text-anchor="middle" fill="#555">NE555</text>
+<circle cx="53.6" cy="24.0" r="2.5" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="53.6" y="24.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C2</text>
+<rect x="62.3" y="35.8" width="6.5" height="2.5" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="65.5" y="37.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">RV1</text>
+<rect x="57.2" y="51.8" width="6.6" height="2.5" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="60.5" y="53.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C3</text>
+<rect x="28.3" y="33.4" width="2.5" height="9.2" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="29.6" y="37.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R1</text>
+<text x="29.6" y="40.1" font-size="1.7" text-anchor="middle" fill="#555">10k</text>
+<rect x="44.3" y="33.4" width="2.5" height="9.2" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="45.5" y="37.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">D1</text>
+<text x="45.5" y="40.1" font-size="1.7" text-anchor="middle" fill="#555">1N4148</text>
+<rect x="60.5" y="83.6" width="10.0" height="16.8" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="65.5" y="91.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">U4</text>
+<text x="65.5" y="94.1" font-size="1.7" text-anchor="middle" fill="#555">IR2110</text>
+<circle cx="65.6" cy="24.0" r="2.5" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="65.6" y="24.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C8</text>
+<rect x="72.2" y="22.8" width="6.6" height="2.5" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="75.5" y="24.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C9</text>
+<rect x="29.0" y="66.0" width="9.2" height="4.1" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="33.6" y="68.0" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">SW1</text>
+<text x="33.6" y="70.1" font-size="1.7" text-anchor="middle" fill="#555">Switch</text>
+<rect x="41.5" y="51.8" width="12.0" height="2.5" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="47.5" y="52.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">C6</text>
+<text x="47.5" y="55.1" font-size="1.7" text-anchor="middle" fill="#555">8n2</text>
+<circle cx="86.6" cy="100.0" r="2.5" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="86.6" y="100.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C4</text>
+<rect x="44.3" y="62.4" width="2.5" height="9.2" rx="0.7" fill="#f3edf9" stroke="#8e5fb5" stroke-width="0.4"/>
+<text x="45.5" y="66.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R3</text>
+<text x="45.5" y="69.1" font-size="1.7" text-anchor="middle" fill="#555">200R</text>
+<rect x="86.3" y="82.4" width="2.5" height="9.2" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="87.5" y="86.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R5</text>
+<text x="87.5" y="89.1" font-size="1.7" text-anchor="middle" fill="#555">10</text>
+<rect x="80.3" y="62.4" width="2.5" height="9.2" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="81.5" y="66.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R4</text>
+<text x="81.5" y="69.1" font-size="1.7" text-anchor="middle" fill="#555">1k</text>
+<rect x="73.9" y="82.8" width="9.2" height="2.5" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="78.5" y="83.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">D4</text>
+<text x="78.5" y="86.1" font-size="1.7" text-anchor="middle" fill="#555">1N4148</text>
+<rect x="52.5" y="64.7" width="10.0" height="6.7" rx="0.7" fill="#f3edf9" stroke="#8e5fb5" stroke-width="0.4"/>
+<text x="57.5" y="67.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">U3</text>
+<text x="57.5" y="70.1" font-size="1.7" text-anchor="middle" fill="#555">4N25</text>
+<circle cx="33.5" cy="97.0" r="16.1" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="33.5" y="96.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">L1</text>
+<text x="33.5" y="99.1" font-size="1.7" text-anchor="middle" fill="#555">121u</text>
+<rect x="88.4" y="51.8" width="12.4" height="2.5" rx="0.7" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="94.5" y="52.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">D3</text>
+<text x="94.5" y="55.1" font-size="1.7" text-anchor="middle" fill="#555">1N5817</text>
+<rect x="91.2" y="37.7" width="6.8" height="2.5" rx="0.7" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="94.5" y="39.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">Q1</text>
+<rect x="28.2" y="23.7" width="6.8" height="2.5" rx="0.7" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="31.6" y="25.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">U1</text>
+<rect x="52.3" y="33.4" width="2.5" height="9.2" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="53.5" y="37.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">D2</text>
+<text x="53.5" y="40.1" font-size="1.7" text-anchor="middle" fill="#555">1N4148</text>
+<rect x="68.3" y="62.4" width="2.5" height="9.2" rx="0.7" fill="#f3edf9" stroke="#8e5fb5" stroke-width="0.4"/>
+<text x="69.5" y="66.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R6</text>
+<text x="69.5" y="69.1" font-size="1.7" text-anchor="middle" fill="#555">1k</text>
+<circle cx="43.6" cy="24.0" r="2.6" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="43.6" y="24.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C1</text>
+<rect x="16.3" y="35.9" width="2.5" height="4.2" rx="0.7" fill="#edeff1" stroke="#6c7a89" stroke-width="0.4"/>
+<text x="17.6" y="38.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">J2</text>
+<rect x="13.5" y="52.5" width="8.1" height="3.0" rx="0.7" fill="#edeff1" stroke="#6c7a89" stroke-width="0.4"/>
+<text x="17.6" y="53.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">J5</text>
+<text x="17.6" y="56.1" font-size="1.7" text-anchor="middle" fill="#555">drive +15V</text>
+<rect x="36.3" y="33.4" width="2.5" height="9.2" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="37.5" y="37.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">R2</text>
+<text x="37.5" y="40.1" font-size="1.7" text-anchor="middle" fill="#555">10k</text>
+<rect x="68.2" y="51.8" width="6.6" height="2.5" rx="0.7" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="71.5" y="53.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C5</text>
+<rect x="93.3" y="82.4" width="2.5" height="9.2" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="94.5" y="86.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">D5</text>
+<text x="94.5" y="89.1" font-size="1.7" text-anchor="middle" fill="#555">1N4148</text>
+<rect x="94.5" y="98.5" width="8.1" height="3.0" rx="0.7" fill="#edeff1" stroke="#6c7a89" stroke-width="0.4"/>
+<text x="98.5" y="99.9" font-size="2.4" font-weight="700" text-anchor="middle" fill="#1a1a1a">J3</text>
+<text x="98.5" y="102.1" font-size="1.7" text-anchor="middle" fill="#555">Conn_01x02_Socket</text>
+<rect x="73.2" y="94.8" width="6.6" height="2.5" rx="0.7" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="76.5" y="96.7" font-size="1.9" font-weight="700" text-anchor="middle" fill="#1a1a1a">C7</text>
+<text x="109.1" y="123.6" font-size="2.0" text-anchor="end" fill="#999">edge cuts 104 x 104 mm</text>
+<text x="118.1" y="20" font-size="3.0" font-weight="700" fill="#111">Function</text>
+<rect x="118.1" y="22.2" width="3.6" height="3.6" rx="0.6" fill="#fbeceb" stroke="#d9534f" stroke-width="0.4"/>
+<text x="123.6" y="25.0" font-size="2.5" fill="#222">Power stage</text>
+<rect x="118.1" y="27.2" width="3.6" height="3.6" rx="0.6" fill="#e9f6ee" stroke="#2e8b57" stroke-width="0.4"/>
+<text x="123.6" y="30.0" font-size="2.5" fill="#222">Gate driver</text>
+<rect x="118.1" y="32.2" width="3.6" height="3.6" rx="0.6" fill="#f3edf9" stroke="#8e5fb5" stroke-width="0.4"/>
+<text x="123.6" y="35.0" font-size="2.5" fill="#222">Opto (isolation)</text>
+<rect x="118.1" y="37.2" width="3.6" height="3.6" rx="0.6" fill="#eaf1f9" stroke="#3a78b5" stroke-width="0.4"/>
+<text x="123.6" y="40.0" font-size="2.5" fill="#222">Control / 555</text>
+<rect x="118.1" y="42.2" width="3.6" height="3.6" rx="0.6" fill="#edeff1" stroke="#6c7a89" stroke-width="0.4"/>
+<text x="123.6" y="45.0" font-size="2.5" fill="#222">Connector</text>
+<line x1="118.1" y1="53" x2="186" y2="53" stroke="#ddd" stroke-width="0.4"/>
+<text x="118.1" y="58.0" font-size="2.3" font-weight="700" fill="#333">This is the actual routed board:</text>
+<text x="118.1" y="61.6" font-size="2.3" font-weight="400" fill="#333">* 0 unconnected, 0 vias, 0 shorts.</text>
+<text x="118.1" y="65.2" font-size="2.3" font-weight="400" fill="#333">* 8 top-side jumper wires (F.Cu) -</text>
+<text x="118.1" y="68.8" font-size="2.3" font-weight="400" fill="#333">   see buck_v2_top_cu.dxf.</text>
+<text x="118.1" y="72.4" font-size="2.3" font-weight="400" fill="#333">* L1 (35 mm toroid) gets its own</text>
+<text x="118.1" y="76.0" font-size="2.3" font-weight="400" fill="#333">   quadrant; power switch Q1/D3 to</text>
+<text x="118.1" y="79.6" font-size="2.3" font-weight="400" fill="#333">   its right; 555 control up top.</text>
+<text x="118.1" y="83.2" font-size="2.3" font-weight="400" fill="#333"></text>
+<text x="118.1" y="86.8" font-size="2.3" font-weight="700" fill="#333">To build:</text>
+<text x="118.1" y="90.4" font-size="2.3" font-weight="400" fill="#333">* Etch buck_v2.dxf (MIRROR).</text>
+<text x="118.1" y="94.0" font-size="2.3" font-weight="400" fill="#333">* Drill buck_v2_holes.dxf (89).</text>
+<text x="118.1" y="97.6" font-size="2.3" font-weight="400" fill="#333">* Solder the 8 jumpers on top.</text>
+<text x="118.1" y="101.2" font-size="2.3" font-weight="400" fill="#333"></text>
+<text x="118.1" y="104.8" font-size="2.3" font-weight="400" fill="#c0392b">Open: no V1 input terminal -</text>
+<text x="118.1" y="108.4" font-size="2.3" font-weight="400" fill="#333">wire V1 to C1 / Q1 drain, or add</text>
+<text x="118.1" y="112.0" font-size="2.3" font-weight="400" fill="#333">a 2-pin terminal there.</text>
+</svg>
