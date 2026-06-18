@@ -1,45 +1,51 @@
 # BOM — 62768 energy system
 
-> Genereret fra [`footprint_map.csv`](footprint_map.csv) med `bom_to_md.py` — **redigér CSV'en, ikke denne fil.** Alle substitutioner er flagget i note-kolonnen.
+> Genereret fra [`footprint_map.csv`](footprint_map.csv) med `tools/bom_to_md.py` — **redigér CSV'en, ikke denne fil.** Alle substitutioner er flagget i note-kolonnen.
 
 ## Samlet indkøbsliste
 
 | Antal | Del | Pakke | Kilde |
 |---|---|---|---|
-| 18 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
-| 13 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 10 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 25 | 2 pol skrueterminal | `TerminalBlock_bornier-2_P5.08mm` | shop |
+| 22 | 1k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 13 | 100n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 11 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
+| 9 | 10k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 9 | 1N4006 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
-| 9 | Header Male | `PinHeader_1x02_P2.54mm_Vertical` | shop |
-| 6 | 10k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 8 | 1R00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 6 | 1N4148 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
 | 6 | 22uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 6 | 4700uF 50V | `CP_Radial_D18.0mm_P7.50mm` | shop |
 | 6 | 47uF 50V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 5 | 1N5817 | `D_DO-41_SOD81_P10.16mm_Horizontal` | shop |
-| 5 | 1R00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 5 | 200R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 5 | 9k09 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 5 | IRF530 | `TO-220-3_Vertical_LaserPads` | shop |
+| 5 | MCP601 | `DIP-8_W7.62mm_LongPads` | kit |
 | 5 | toroid (egen-vikling) | `L_Toroid_Vertical_L34.5mm_W15.0mm_P28.20mm_LaserPads` | egen-vikling |
 | 4 | 10R0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 4 | 9k09 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 4 | Header Male | `PinHeader_1x03_P2.54mm_Vertical` | shop |
 | 4 | IR2110 | `DIP-14_W7.62mm_LongPads` | kit |
+| 3 | 10n keramisk | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 3 | 1uF keramik/film | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
+| 3 | 2k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 3 | 4N25 | `DIP-6_W7.62mm_LongPads` | shop |
+| 3 | BZX55C3V0 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
 | 3 | LM358 | `DIP-8_W7.62mm_LongPads` | shop |
-| 2 | 1uF keramik/film | `C_Disc_D5.0mm_W2.5mm_P5.00mm` | shop |
 | 2 | 3 pol skrueterminal | `TerminalBlock_bornier-3_P5.08mm` | shop |
 | 2 | 332R (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 2 | 33k2 (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 2 | 49k9 (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 2 | CNY17 | `DIP-6_W7.62mm_LongPads` | shop |
-| 2 | Header Male | `PinHeader_1x03_P2.54mm_Vertical` | shop |
-| 2 | MCP601 | `DIP-8_W7.62mm_LongPads` | kit |
 | 1 | 100k | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 1 | 12k0 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 1N5822 (BESTIL) | `D_DO-201AD_P15.24mm_Horizontal` | bestil |
 | 1 | 20K trimmer | `Potentiometer_Bourns_3296W_Vertical` | shop |
+| 1 | 220R | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 22k6 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
-| 1 | 2k00 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 470uF 25V | `CP_Radial_D8.0mm_P3.50mm` | shop |
 | 1 | 4k75 | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
+| 1 | 6k49 (E96) | `R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | shop |
 | 1 | 8n2 film (box) | `C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4` | shop |
 | 1 | BZX55C5V1 | `D_DO-35_SOD27_P7.62mm_Horizontal` | shop |
 | 1 | DIP-Switch | `SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm` | shop |
@@ -265,4 +271,56 @@
 | C4 | 22u | 22uF 50V | shop | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | +15V bulk-afkobling (driver) |
 | C5 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | +15V HF-afkobling (driver) |
 | J4 | drive +15V | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | jordrefereret driver-forsyning |
+
+## C2000 feedback/sensor (TI-port, 3.3 V) (`c2000_feedback`)
+
+| Ref | Værdi | Del (indkøb) | Kilde | Footprint | Noter |
+|---|---|---|---|---|---|
+| J1 | V1 in | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | V1-rail (rectifier-bus 15V) ind paa pin1 - GND pin2 |
+| RV11 | 10k0 | 10k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V1-deler hoej-ben (/11 med RV12): 15V->1.36V ved ADC |
+| RV12 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V1-deler lav-ben |
+| RV13 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | serie-R til ADC (med zener+10n = klemme/filter) |
+| DV1 | BZX55C3V0 | BZX55C3V0 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | 3.0V zener-klemme paa ADC-ben (C2000 abs-max 3.3V). Brug evt 3.3V (BZX55C3V3) |
+| CV1 | 10n | 10n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | S/H-stabilisering paa ADC-ben |
+| J3 | V2 in | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | V2-rail (last ~10V) ind |
+| RV21 | 12k0 | 12k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V2-deler hoej-ben (/7): 10V->1.43V |
+| RV22 | 2k00 | 2k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V2-deler lav-ben |
+| RV23 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | serie-R til ADC |
+| DV2 | BZX55C3V0 | BZX55C3V0 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | 3.0V zener-klemme |
+| CV2 | 10n | 10n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` |  |
+| J5 | V3 in | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | V3-rail (lager 5V) ind |
+| RV31 | 2k00 | 2k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V3-deler hoej-ben (/3): 5V->1.65V |
+| RV32 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | V3-deler lav-ben |
+| RV33 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | serie-R til ADC |
+| DV3 | BZX55C3V0 | BZX55C3V0 | shop | `Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal` | 3.0V zener-klemme |
+| CV3 | 10n | 10n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` |  |
+| J7 | I1 retur | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | generator-grenens retur gennem shunt (lavside) |
+| RSH1 | 1R00 | 1R00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | lavside-shunt I1 (400mA -> 0.4V -> 160mW i 1/4W OK) |
+| U1 | MCP601 | MCP601 | kit | `Package_DIP:DIP-8_W7.62mm_LongPads` | ikke-inv. forstaerker gain 7.5. Forsynet +3V3 (rail-to-rail ud -> ADC-sikker). 3x MCP601 ialt - TJEK kit-antal |
+| RG1 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | gain-ben til GND |
+| RF1 | 6k49 | 6k49 (E96) | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | feedback: gain 1+6.49=7.49 -> 400mA -> 3.0V |
+| CD1 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | afkobling +3V3 |
+| J9 | I2 retur | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | last-grenens retur |
+| RSH2 | 1R00 | 1R00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | lavside-shunt I2 |
+| U2 | MCP601 | MCP601 | kit | `Package_DIP:DIP-8_W7.62mm_LongPads` | ikke-inv. gain 10 |
+| RG2 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | gain-ben |
+| RF2 | 9k09 | 9k09 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | feedback: gain 10.09 -> 300mA -> 3.03V |
+| CD2 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | afkobling +3V3 |
+| J11 | I3 retur (bidir) | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | lager-grenens retur (lader+aflader -> bidirektionel) |
+| RSH3 | 1R00 | 1R00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | lavside-shunt I3 |
+| U3 | MCP601 | MCP601 | kit | `Package_DIP:DIP-8_W7.62mm_LongPads` | differensforstaerker gain 5 refereret til 1.65V midt-skala |
+| R31 | 10k0 | 10k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | diff-amp indgangs-R (RET3->IN-) |
+| R32 | 49k9 | 49k9 (E96) | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | diff-amp feedback (gain R32/R31=5) |
+| R33 | 10k0 | 10k0 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | diff-amp indgangs-R (GND->IN+) - match R31 |
+| R34 | 49k9 | 49k9 (E96) | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | diff-amp ref-R (IN+->VBIAS) - match R32 |
+| RB1 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | 1.65V bias-deler top (+3V3->VBIAS) |
+| RB2 | 1k00 | 1k00 | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | 1.65V bias-deler bund (VBIAS->GND) |
+| CB | 1u | 1uF keramik/film | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | VBIAS afkobling |
+| CD3 | 100n | 100n keramisk | shop | `Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm` | afkobling +3V3 |
+| RPWM | 220R | 220R | shop | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal` | serie-R: C2000 EPWM1A (3.3V) -> CNY17-opto i drivkredsen (~10mA) |
+| J10 | til drivkreds | 2 pol skrueterminal | shop | `TerminalBlock:TerminalBlock_bornier-2_P5.08mm` | PWM ud (efter RPWM) + GND -> drivkredsens opto |
+| J2 | +3V3/GND | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical` | forsyning fra LaunchPad: +3V3 (J1-1) / GND (J2-1) |
+| J4 | V1/V2/V3 -> ADC | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical` | til ADCINA1(J5-5)/A0(J5-6)/A3(J5-4) |
+| J6 | I1/I2/I3 -> ADC | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical` | til ADCINA4(J1-6)/A6(J1-2)/A7(J5-3) |
+| J8 | EPWM1A in + GND | Header Male | shop | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical` | PWM fra C2000 EPWM1A (J6-1) + GND |
 

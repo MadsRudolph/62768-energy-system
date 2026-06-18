@@ -163,3 +163,50 @@ mppt_buck,C3,1u,1uF keramik/film,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
 mppt_buck,C4,22u,22uF 50V,shop,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,+15V bulk-afkobling (driver)
 mppt_buck,C5,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,+15V HF-afkobling (driver)
 mppt_buck,J4,drive +15V,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,jordrefereret driver-forsyning
+c2000_feedback,J1,V1 in,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,V1-rail (rectifier-bus 15V) ind paa pin1 - GND pin2
+c2000_feedback,RV11,10k0,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V1-deler hoej-ben (/11 med RV12): 15V->1.36V ved ADC
+c2000_feedback,RV12,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V1-deler lav-ben
+c2000_feedback,RV13,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie-R til ADC (med zener+10n = klemme/filter)
+c2000_feedback,DV1,BZX55C3V0,BZX55C3V0,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,3.0V zener-klemme paa ADC-ben (C2000 abs-max 3.3V). Brug evt 3.3V (BZX55C3V3)
+c2000_feedback,CV1,10n,10n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,S/H-stabilisering paa ADC-ben
+c2000_feedback,J3,V2 in,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,V2-rail (last ~10V) ind
+c2000_feedback,RV21,12k0,12k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V2-deler hoej-ben (/7): 10V->1.43V
+c2000_feedback,RV22,2k00,2k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V2-deler lav-ben
+c2000_feedback,RV23,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie-R til ADC
+c2000_feedback,DV2,BZX55C3V0,BZX55C3V0,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,3.0V zener-klemme
+c2000_feedback,CV2,10n,10n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,
+c2000_feedback,J5,V3 in,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,V3-rail (lager 5V) ind
+c2000_feedback,RV31,2k00,2k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V3-deler hoej-ben (/3): 5V->1.65V
+c2000_feedback,RV32,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,V3-deler lav-ben
+c2000_feedback,RV33,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie-R til ADC
+c2000_feedback,DV3,BZX55C3V0,BZX55C3V0,shop,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,3.0V zener-klemme
+c2000_feedback,CV3,10n,10n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,
+c2000_feedback,J7,I1 retur,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,generator-grenens retur gennem shunt (lavside)
+c2000_feedback,RSH1,1R00,1R00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,lavside-shunt I1 (400mA -> 0.4V -> 160mW i 1/4W OK)
+c2000_feedback,U1,MCP601,MCP601,kit,Package_DIP:DIP-8_W7.62mm_LongPads,ikke-inv. forstaerker gain 7.5. Forsynet +3V3 (rail-to-rail ud -> ADC-sikker). 3x MCP601 ialt - TJEK kit-antal
+c2000_feedback,RG1,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gain-ben til GND
+c2000_feedback,RF1,6k49,6k49 (E96),shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,feedback: gain 1+6.49=7.49 -> 400mA -> 3.0V
+c2000_feedback,CD1,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,afkobling +3V3
+c2000_feedback,J9,I2 retur,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,last-grenens retur
+c2000_feedback,RSH2,1R00,1R00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,lavside-shunt I2
+c2000_feedback,U2,MCP601,MCP601,kit,Package_DIP:DIP-8_W7.62mm_LongPads,ikke-inv. gain 10
+c2000_feedback,RG2,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,gain-ben
+c2000_feedback,RF2,9k09,9k09,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,feedback: gain 10.09 -> 300mA -> 3.03V
+c2000_feedback,CD2,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,afkobling +3V3
+c2000_feedback,J11,I3 retur (bidir),2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,lager-grenens retur (lader+aflader -> bidirektionel)
+c2000_feedback,RSH3,1R00,1R00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,lavside-shunt I3
+c2000_feedback,U3,MCP601,MCP601,kit,Package_DIP:DIP-8_W7.62mm_LongPads,differensforstaerker gain 5 refereret til 1.65V midt-skala
+c2000_feedback,R31,10k0,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,diff-amp indgangs-R (RET3->IN-)
+c2000_feedback,R32,49k9,49k9 (E96),shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,diff-amp feedback (gain R32/R31=5)
+c2000_feedback,R33,10k0,10k0,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,diff-amp indgangs-R (GND->IN+) - match R31
+c2000_feedback,R34,49k9,49k9 (E96),shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,diff-amp ref-R (IN+->VBIAS) - match R32
+c2000_feedback,RB1,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,1.65V bias-deler top (+3V3->VBIAS)
+c2000_feedback,RB2,1k00,1k00,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,1.65V bias-deler bund (VBIAS->GND)
+c2000_feedback,CB,1u,1uF keramik/film,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,VBIAS afkobling
+c2000_feedback,CD3,100n,100n keramisk,shop,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,afkobling +3V3
+c2000_feedback,RPWM,220R,220R,shop,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,serie-R: C2000 EPWM1A (3.3V) -> CNY17-opto i drivkredsen (~10mA)
+c2000_feedback,J10,til drivkreds,2 pol skrueterminal,shop,TerminalBlock:TerminalBlock_bornier-2_P5.08mm,PWM ud (efter RPWM) + GND -> drivkredsens opto
+c2000_feedback,J2,+3V3/GND,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,forsyning fra LaunchPad: +3V3 (J1-1) / GND (J2-1)
+c2000_feedback,J4,V1/V2/V3 -> ADC,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,til ADCINA1(J5-5)/A0(J5-6)/A3(J5-4)
+c2000_feedback,J6,I1/I2/I3 -> ADC,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,til ADCINA4(J1-6)/A6(J1-2)/A7(J5-3)
+c2000_feedback,J8,EPWM1A in + GND,Header Male,shop,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,PWM fra C2000 EPWM1A (J6-1) + GND

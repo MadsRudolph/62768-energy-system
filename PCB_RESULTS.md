@@ -62,6 +62,7 @@ ad edge cuts. drive_circuit er håndplaceret (GUI) og derefter to-trins-routet.
 | MPPT/PV (lineær) | `boards/mppt/mppt.kicad_pro` | 15 (77 mm) |
 | **MPPT buck (IR2110 high-side)** | `boards/mppt_buck/mppt_buck.kicad_pro` | 8 (65 mm) |
 | Current sense | `boards/current_sense/current_sense.kicad_pro` | 8 (68 mm) |
+| **C2000 feedback (TI-port, 3.3 V)** | `boards/c2000_feedback/c2000_feedback.kicad_pro` | 12 trådbroer |
 
 Ingen vias på nogen boards (kvadrat-formatet + kompakt placering routede
 bedre end de gamle aflange boards).
@@ -135,6 +136,22 @@ Brug DIP-sokler fra shoppen til alle IC'er.
   `tools/generators/build_mppt_buck.py`. Production-DXF + Gerbers i `production/mppt_buck/`.
   **Verificer foer aetsning:** PWM-frekvens (saetter L), de fysiske kondensator-pitch
   (PV-bulk, boot-cap), og toroidens strømrating — se `AUDIT_buck_boost_ir2110.md` §8.
+- **C2000 feedback/sensorprint (TI-port)** (`boards/c2000_feedback/`). Front-end mellem
+  effektsystemet og LAUNCHXL-F28027 — **alt skaleret til 0–3.3 V** (C2000 ADC abs-max 3.3 V,
+  modsat de 5 V-skalerede current_sense/feedback-print). 6 kanaler + PWM-pass:
+  V1/V2/V3-delere (÷11 / ÷7 / ÷3) med 1k serie + **3.0 V zener-klemme** + 10n;
+  I1/I2 lavside 1R-shunt + **MCP601 ikke-inv.** (gain 7.5 / 10), I3 bidir 1R-shunt +
+  MCP601 **differensforstærker** (gain 5, 1.65 V midt-skala); EPWM1A → 220R → drivkreds-opto.
+  **MCP601 valgt frem for LM358:** ved 3V3-forsyning når LM358 kun ~1.8 V ud, MCP601 ~3.3 V.
+  Skrueterminaler (effekt/retur) på venstre kant, korte 1×2/1×3-headers til LaunchPad på
+  højre. Genereres med `tools/generators/build_c2000_feedback.py`. ERC 0 fejl, netliste
+  verificeret pin-for-pin mod `docs/c2000-pinmap.md`, **DRC 0 fejl / 0 uroutede / 0 vias**,
+  **12 trådbroer**. NB: boardet er for tæt til auto-placeringen (autoroutede 1–5 uroutede,
+  ikke-deterministisk) — det bruger en **håndlavet signalflow-placering** i `PLACE`-dicten
+  i `tools/pcb_build.py` (og skill-kopien), så routingen er stabil. Production-DXF + Gerbers i
+  `production/c2000_feedback/`.
+  **Verificér før ætsning:** delere/gains mod de faktiske rails, og at EPWM1A/ADC-ben matcher
+  `c2000-pinmap.md` (header-rækkefølgen J2/J4/J6/J8 = +3V3·GND / V1·V2·V3 / I1·I2·I3 / PWM).
 - **MPPT: BD139 afsætter op til ~7 W** ved fuld PV-strøm (lineær 17→5 V) —
   **køleplade påkrævet**, eller erstat med buck (Krav 17 tillader det).
 - Current-sense er **lavside**: grenens returledning ind på J*k* pin 1, system-GND

@@ -18,6 +18,7 @@ BOARD_TITLES = {
     "rectifier": "Rectifier (3-faset bro)",
     "mppt": "MPPT / PV",
     "current_sense": "Current sense (3 kanaler)",
+    "c2000_feedback": "C2000 feedback/sensor (TI-port, 3.3 V)",
 }
 
 rows = list(csv.DictReader(SRC.open(encoding="utf-8")))
