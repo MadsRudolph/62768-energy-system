@@ -1,0 +1,79 @@
+\ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
+
+\subsection{Drive Circuit}
+\label{sec:DriveCircuit}
+
+
+\noindent
+The driver circuit is used to control the DC motor that drives the three-phase generator in the energy system. The motor speed is controlled by applying a PWM signal to the driver circuit. By changing the PWM duty cycle, the average voltage applied to the motor changes, which makes it possible to regulate the generator speed and therefore the generated voltage.
+
+\vspace{0.4cm}
+
+\noindent
+In this project, the driver circuit consists of a CNY17 optocoupler, an IR2110 gate driver, and an IRF540N MOSFET. The circuit is designed to allow a low-voltage microcontroller signal to control a higher-power motor circuit. The microcontroller generates the PWM signal, while the MOSFET switches the motor current on and off.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.90\textwidth]{report/images/DriveCircuit/Drivecircuit-KiCad.png}
+\caption{KiCad schematic of the motor driver circuit used in the project.}
+\label{fig:driver_circuit_KiCad}
+\end{figure}
+
+\vspace{0.5cm}
+
+\noindent
+The PWM signal from the microcontroller is first sent through the CNY17 optocoupler. The purpose of the optocoupler is to provide galvanic isolation between the low-voltage control side and the motor power side. This is important because the motor and generator can create electrical noise, voltage spikes, and ground potential differences. The optocoupler helps protect the microcontroller from these disturbances.
+
+\vspace{0.4cm}
+
+\noindent
+The input side of the CNY17 contains an internal LED. A series resistor is used to limit the current through this LED and prevent damage. When the microcontroller sends a PWM signal, the LED inside the optocoupler turns on and off. On the output side of the optocoupler, this signal is transferred optically and used as the input signal for the IR2110 gate driver.
+
+\vspace{0.4cm}
+
+\noindent
+The IR2110 is used as a MOSFET gate driver. A microcontroller output pin cannot normally supply enough current to charge and discharge the MOSFET gate quickly. Therefore, the IR2110 is used to amplify the control signal and provide a stronger gate drive signal to the MOSFET. This allows the MOSFET to switch faster and more reliably.
+
+\vspace{0.4cm}
+
+\noindent
+In this circuit, the IR2110 is mainly used to drive the low-side MOSFET. The MOSFET used is an IRF540N N-channel MOSFET. The motor is connected between the positive supply and the drain of the MOSFET, while the source of the MOSFET is connected to ground. When the PWM signal turns the MOSFET on, current flows through the motor and the MOSFET to ground. When the MOSFET turns off, the motor current is interrupted.
+
+\vspace{0.4cm}
+
+\noindent
+A flyback diode is placed across the motor. This diode is important because the motor is an inductive load. When the MOSFET turns off, the motor inductance tries to keep the current flowing, which can create a large voltage spike. The flyback diode gives this current a safe path and helps protect the MOSFET from overvoltage.
+
+\vspace{0.4cm}
+
+\noindent
+The circuit also includes resistors around the MOSFET gate. These resistors help control the switching behaviour of the MOSFET. A gate resistor limits the peak gate current and reduces ringing during switching. A gate-to-source resistor is also used to make sure the MOSFET stays off when no valid gate signal is present. This prevents unintended switching of the motor.
+
+\vspace{0.4cm}
+
+\noindent
+Decoupling capacitors are placed close to the IR2110 supply pins. These capacitors help stabilize the driver supply voltage and reduce the effect of switching noise. This is important because the MOSFET gate driver needs a stable supply voltage to operate reliably.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.70\textwidth]{report/images/DriveCircuit/DriveCircuit-Hulprint.jpg}
+\caption{Physical implementation of the motor driver circuit on perfboard.}
+\label{fig:driver_circuit_physical}
+\end{figure}
+
+\vspace{0.5cm}
+
+\noindent
+The driver circuit is used as part of the generator control system. By changing the PWM duty cycle, the controller can adjust the speed of the DC motor. A higher duty cycle gives a higher average motor voltage, which increases the motor speed and generator output voltage. A lower duty cycle reduces the motor voltage, which lowers the generator speed and output voltage.
+
+\vspace{0.4cm}
+
+\noindent
+Overall, the driver circuit provides a safe and reliable interface between the microcontroller and the DC motor. The CNY17 optocoupler provides galvanic isolation, the IR2110 provides sufficient gate drive current, and the IRF540N MOSFET switches the motor current. This makes the circuit suitable for controlling the motor-generator part of the electrical energy system using PWM.
+
+
+\ifdefined\mainfile\else\end{document}\fi
