@@ -142,6 +142,16 @@ We use a three-phase diode rectifier consisting of six Schottky diodes. Three di
 
 \vspace{0.4cm}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{report/images/Rectifier/Rectifier_ML.png}
+    \caption{KiCad schematic of the three-phase rectifier circuit.}
+    \label{fig:rectifier_kicad}
+\end{figure}
+
+
+\vspace{0.4cm}
+
 \noindent
 At any instant, the phase with the highest voltage conducts through its corresponding top diode, while the phase with the lowest voltage provides the return path through one of the bottom diodes. In this way, the rectifier converts the three-phase AC input into a pulsating DC output. According to the lecture slides, two diodes conduct at the same time in a three-phase bridge rectifier, and each diode conducts for \(120^\circ\). The conducting diode pair is the pair connected between the two supply lines with the highest instantaneous line-to-line voltage.
 
