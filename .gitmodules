@@ -1,0 +1,3 @@
+[submodule "tools/srm-cam"]
+	path = tools/srm-cam
+	url = https://github.com/MadsRudolph/gerber2rml.git
