@@ -142,6 +142,16 @@ We use a three-phase diode rectifier consisting of six Schottky diodes. Three di
 
 \vspace{0.4cm}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{report/images/Rectifier/Rectifier_ML.png}
+    \caption{KiCad schematic of the three-phase rectifier circuit.}
+    \label{fig:rectifier_kicad}
+\end{figure}
+
+
+\vspace{0.4cm}
+
 \noindent
 At any instant, the phase with the highest voltage conducts through its corresponding top diode, while the phase with the lowest voltage provides the return path through one of the bottom diodes. In this way, the rectifier converts the three-phase AC input into a pulsating DC output. According to the lecture slides, two diodes conduct at the same time in a three-phase bridge rectifier, and each diode conducts for \(120^\circ\). The conducting diode pair is the pair connected between the two supply lines with the highest instantaneous line-to-line voltage.
 
@@ -299,4 +309,49 @@ The measured output voltage reaches the desired rectifier output range of approx
 \noindent
 Overall, the measurements confirm that the rectifier output voltage depends strongly on the speed of the generator, which is controlled by the motor input voltage. The graphs show a clear relationship between motor input voltage, rectifier output voltage, and input current. This supports the expected behaviour of the system, where a higher motor voltage gives a higher generator speed, a higher rectified DC voltage, and a higher current drawn by the motor.
 
+
+\subsection{Rectifier Simulation and Output Ripple}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Rectifier_simulink_diagram.png}
+    \caption{Rectitifer Simulink system}
+    \label{fig:Rectifier_simulink_diagram}
+\end{figure}
+In the Simulink model, a reference node (ground) is introduced for each voltage source. 
+This is necessary because each voltage source in the simulation requires a return path in order to define a complete electrical circuit.
+\vspace{0.5cm}
+In a real three-phase system, the generator is typically connected in a way where the phase voltages are defined relative to each other, and a separate return path is not explicitly required in the same way. 
+However, in the simulation environment, each source must be referenced to a common node to ensure correct numerical behavior and convergence.
+\vspace{0.5cm}
+As a result, a neutral reference is added in the model, even though this does not fully represent the physical implementation. 
+This simplification allows the three-phase rectifier to be modeled correctly using individual voltage sources connected to the diode bridge.
+\vspace{0.5cm}
+Therefore, the simulation model includes a return path for each phase, which is a modeling requirement rather than a physical necessity in the real system. The KiCad model earlier shows the system more effectively in reality.
+
+\vspace{0.5cm}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{Rectifier_simulation.png}
+    \caption{Rectifier simulation}
+    \label{fig:Rectifier_sim}
+\end{figure}
+The figure shows the simulated output voltage of the rectifier during startup. 
+Initially, the voltage increases rapidly as the output capacitor charges. 
+After a short transient period, the voltage stabilizes around 24 V, with a voltage of 25 volt pr phase after the transformer, a 15000 uF capacitor to smooth the signal, and a power resistor with 150 ohms and 5 W is used, simulating the load and the rest of the power system. 
+This behavior is expected, since the capacitor stores energy and smooths the rectified voltage.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Rectifier_Ripple.png}
+    \caption{Rectifer Ripple}
+    \label{fig:Rectifier_sim_ripple}
+\end{figure}
+The second figure shows a zoomed view of the steady-state output voltage, where a small ripple is visible. 
+The ripple is caused by the rectification of the AC input and the charging and discharging of the filter capacitor.
+
+The capacitor reduces the ripple by storing energy during voltage peaks and supplying energy during voltage drops. 
+However, since the capacitor is not infinite, a small periodic variation in the voltage remains.
+
+The ripple amplitude is relatively small compared to the DC level, which indicates that the filtering is effective. 
+This results in a stable DC voltage suitable for the following stages in the system.
 \ifdefined\mainfile\else\end{document}\fi
