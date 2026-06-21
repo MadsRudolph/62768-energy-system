@@ -39,6 +39,10 @@ fp-info-cache
 *.000
 *.net~
 
+# --- Tool logs (Freerouting, etc.) ---
+logs/
+*.log
+
 # --- OS / editor junk ---
 .DS_Store
 Thumbs.db
