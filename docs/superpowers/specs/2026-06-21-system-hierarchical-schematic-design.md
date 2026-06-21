@@ -17,6 +17,8 @@ version that points at the old per-block boards.
    So **V1** and **Store** are two independent buses (no buck→store link).
 3. **Fidelity:** fully connected hierarchy (ERC-clean across sheets), not just a block
    diagram.
+4. **Boost board = `boost_v2`** (routed/laser-prepped/measured), not the superseded plain
+   `boost/`. Boost gate supply rail is **+15V** → top-level label `+15V_GATE`.
 
 ## Target structure — 5 sheets (was 7)
 | Sheet name | Sub-sheet file |
@@ -24,7 +26,7 @@ version that points at the old per-block boards.
 | Motor Power | `../boards/motor_power/motor_power.kicad_sch` |
 | Motor Feedback | `../boards/motor_feedback/motor_feedback.kicad_sch` |
 | MPPT + PV | `../boards/mppt/mppt.kicad_sch` |
-| Boost | `../boards/boost/boost.kicad_sch` |
+| Boost | `../boards/boost/boost_v2/boost_v2.kicad_sch` |
 | Current Sense | `../boards/current_sense/current_sense.kicad_sch` |
 
 ## Interface contract — hierarchical labels per board
@@ -60,14 +62,17 @@ It becomes a **sheet pin** in the top sheet. Names are the contract — keep the
 | `PV_V`/`PV_I` (J3) | `PV_V` / `PV_I` | output |
 | `GND` | `GND` | power |
 
-### boost (J1=store in, J2=load, J3=PWM, J4=gate supply)
-| Net | Hierarchical label | Dir |
+### boost — **boost_v2** (J1=store in, J2=load, J3=PWM, J4=gate supply)
+Canonical board = `boost/boost_v2/` (routed, laser-prepped, measured). Plain `boost/` is
+superseded. Nets below are the existing **global labels** on boost_v2 — add a hierarchical
+label of the contract name on each.
+| Net (global label on boost_v2) | Hierarchical label | Dir |
 |---|---|---|
 | `VIN_5V` (J1.1) | `STORE` | input |
 | `VOUT_V2` (J2.1) | `LOAD` | output |
 | `PWM` (J3.1) | `PWM_BOOST` | input |
 | `GND_MCU` (J3.2) | `GND_MCU` | power |
-| `+12V` (J4.1) | `+12V_GATE` | input |
+| `+15V` (J4.1) | `+15V_GATE` | input |
 | `GND` | `GND` | power |
 
 ### current_sense (J1/J2/J3=channel returns, J4=Arduino)
@@ -84,7 +89,7 @@ It becomes a **sheet pin** in the top sheet. Names are the contract — keep the
 - **Arduino hub** (one multi-pin connector symbol at top level, e.g. `J_ARD`): collects
   `PWM_MOTOR`, `PWM_BOOST`, `MCU_V1`, `PV_V`, `PV_I`, `I_SENSE1/2/3`, `GND_MCU`, `+5V_MCU`, `+5V_PWR`.
 - **External terminals** at top level: `PV_PLUS`/`PV_RET` (panel), `MOTOR_A`/`MOTOR_B`,
-  `3PH_U/V/W` (generator), `LOAD`.
+  `3PH_U/V/W` (generator), `LOAD`, `+15V_GATE` (boost gate supply — external/local bench supply).
 - **Two ground domains:** power `GND` (motor_power/mppt/boost/current_sense) and Arduino
   `GND_MCU` (motor_feedback MCU side + boost PWM opto). Keep them distinct at top level;
   tie at a single star point only if the real build does.
