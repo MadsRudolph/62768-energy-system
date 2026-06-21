@@ -5447,22 +5447,9 @@
 		)
 		(uuid "36eb5fb6-904e-4ccc-939c-fb47097f9f7d")
 	)
-	(text "Feedback Circuit  (Exp 3A: isolated linear amp - MCP601 -> IL300 servo -> MCP601)"
-		(exclude_from_sim no)
-		(at 401.32 180.34 0)
-		(effects
-			(font
-				(size 2 2)
-				(thickness 0.4)
-				(bold yes)
-			)
-			(justify right)
-		)
-		(uuid "8683ff48-6d6d-45d5-b1f8-ea9284da470c")
-	)
 	(text "Måler spænding til MCU\n"
 		(exclude_from_sim no)
-		(at 246.38 137.16 0)
+		(at 245.11 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5492,7 +5479,7 @@
 			(justify left)
 		)
 		(uuid "cc431b8f-460e-47ba-b0d3-ea7b2166f4ae")
-	)
+	)
 	(text "<-- +5V  ~1.1kHz PWM"
 		(exclude_from_sim no)
 		(at 149.86 208.28 0)
@@ -5574,7 +5561,7 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2eceee43-e349-4fe7-a561-c4a0780466fd")
-	)
+	)
 	(junction
 		(at 152.4 114.3)
 		(diameter 0)
@@ -5586,7 +5573,7 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3b0f7d44-b3d0-4ff1-a7e0-fc46c3e5a292")
-	)
+	)
 	(junction
 		(at 302.26 215.9)
 		(diameter 0)
@@ -5718,13 +5705,13 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "87562476-f883-4b6f-ab47-8096c916b864")
-	)
+	)
 	(junction
 		(at 43.18 213.36)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8c18545f-a954-4e39-ae32-b09e2cd21d09")
-	)
+	)
 	(junction
 		(at 172.72 114.3)
 		(diameter 0)
@@ -5820,7 +5807,7 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cbb973bf-8d10-42af-bbf6-72018e7ab8eb")
-	)
+	)
 	(junction
 		(at 58.42 205.74)
 		(diameter 0)
@@ -5898,7 +5885,7 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f7505827-9078-432a-bc81-a70176607cad")
-	)
+	)
 	(junction
 		(at 137.16 226.06)
 		(diameter 0)
@@ -5922,14 +5909,6 @@
 	(no_connect
 		(at 218.44 195.58)
 		(uuid "4e28db48-b2b3-42e5-b0c3-7690aaa74864")
-	)
-	(no_connect
-		(at 340.36 149.86)
-		(uuid "598a49a8-ba50-404f-b9df-956ba7aa7d05")
-	)
-	(no_connect
-		(at 340.36 147.32)
-		(uuid "a51805b7-0ddd-4ab5-a561-48711d07e78d")
 	)
 	(no_connect
 		(at 137.16 101.6)
@@ -5998,16 +5977,6 @@
 			(type default)
 		)
 		(uuid "042c93de-1893-4029-bac9-d5dfa875fa8e")
-	)
-	(wire
-		(pts
-			(xy 297.18 129.54) (xy 297.18 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b06cc4d-fb05-4df3-b516-4ad4097862d4")
 	)
 	(wire
 		(pts
@@ -6088,7 +6057,7 @@
 			(type default)
 		)
 		(uuid "1235e5a7-f05f-4ac3-aa7d-8dc2118bf5b8")
-	)
+	)
 	(wire
 		(pts
 			(xy 233.68 132.08) (xy 236.22 129.54)
@@ -6218,7 +6187,7 @@
 			(type default)
 		)
 		(uuid "1e20a1b4-3250-4b36-8d2b-0401efb26d20")
-	)
+	)
 	(wire
 		(pts
 			(xy 320.04 223.52) (xy 320.04 218.44)
@@ -6248,7 +6217,7 @@
 			(type default)
 		)
 		(uuid "1f85c507-f11f-4d32-ace8-b00ab1b1930b")
-	)
+	)
 	(wire
 		(pts
 			(xy 243.84 205.74) (xy 248.92 205.74)
@@ -6301,16 +6270,6 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 139.7) (xy 256.54 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "273aa995-d25f-4c62-bdc4-14485ce3c0a0")
-	)
-	(wire
-		(pts
 			(xy 266.7 101.6) (xy 266.7 104.14)
 		)
 		(stroke
@@ -6318,7 +6277,7 @@
 			(type default)
 		)
 		(uuid "2b4dbfd3-d21a-410e-bdfe-48889c63540f")
-	)
+	)
 	(wire
 		(pts
 			(xy 58.42 187.96) (xy 60.96 187.96)
@@ -6328,7 +6287,7 @@
 			(type default)
 		)
 		(uuid "2eb4d62b-0cf8-4152-bb07-71927679e2e1")
-	)
+	)
 	(wire
 		(pts
 			(xy 73.66 144.78) (xy 73.66 180.34)
@@ -6468,7 +6427,7 @@
 			(type default)
 		)
 		(uuid "3f631999-634d-4980-8549-13a4cb0fc23a")
-	)
+	)
 	(wire
 		(pts
 			(xy 58.42 93.98) (xy 58.42 96.52)
@@ -6528,7 +6487,7 @@
 			(type default)
 		)
 		(uuid "46477a1e-52b2-48f4-8bc6-b7d287473380")
-	)
+	)
 	(wire
 		(pts
 			(xy 60.96 187.96) (xy 73.66 187.96)
@@ -6571,16 +6530,6 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 170.18) (xy 358.14 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4d90288b-b254-4155-8ff4-99e07637cdd5")
-	)
-	(wire
-		(pts
 			(xy 68.58 104.14) (xy 73.66 104.14)
 		)
 		(stroke
@@ -6598,16 +6547,6 @@
 			(type default)
 		)
 		(uuid "4efaba49-ba86-4211-aebc-890dc6c95b78")
-	)
-	(wire
-		(pts
-			(xy 266.7 139.7) (xy 256.54 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "52201ffd-090f-4262-85ff-2b7e910ee7ac")
 	)
 	(wire
 		(pts
@@ -6758,7 +6697,7 @@
 			(type default)
 		)
 		(uuid "632260be-6102-4702-ae8c-8edc65edc689")
-	)
+	)
 	(wire
 		(pts
 			(xy 208.28 218.44) (xy 223.52 218.44)
@@ -7068,7 +7007,7 @@
 			(type default)
 		)
 		(uuid "7cafc86b-96fe-4a24-a2ad-b78efa77b5f7")
-	)
+	)
 	(wire
 		(pts
 			(xy 299.72 223.52) (xy 266.7 223.52)
@@ -7078,16 +7017,6 @@
 			(type default)
 		)
 		(uuid "7dbe1145-48f7-4f92-a844-b3da3cf36572")
-	)
-	(wire
-		(pts
-			(xy 342.9 162.56) (xy 342.9 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7e86bcf6-5749-4fef-96d2-509eb352968d")
 	)
 	(wire
 		(pts
@@ -7138,7 +7067,7 @@
 			(type default)
 		)
 		(uuid "83766cc3-c877-4222-bfe0-5f3bc6bc108f")
-	)
+	)
 	(wire
 		(pts
 			(xy 48.26 106.68) (xy 48.26 116.84)
@@ -7148,7 +7077,7 @@
 			(type default)
 		)
 		(uuid "856324a0-03f7-4438-91b6-c62a75160ca6")
-	)
+	)
 	(wire
 		(pts
 			(xy 172.72 114.3) (xy 177.8 114.3)
@@ -7398,7 +7327,7 @@
 			(type default)
 		)
 		(uuid "ac44cfac-6381-4c9b-87e2-6bff38a3890e")
-	)
+	)
 	(wire
 		(pts
 			(xy 248.92 210.82) (xy 248.92 213.36)
@@ -7408,6 +7337,16 @@
 			(type default)
 		)
 		(uuid "acd2d8fb-4bcb-4a7e-90bc-f1f116bbea46")
+	)
+	(wire
+		(pts
+			(xy 304.8 153.67) (xy 306.07 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad7b5446-32e7-443c-ab0e-b32d20daf624")
 	)
 	(wire
 		(pts
@@ -7448,7 +7387,7 @@
 			(type default)
 		)
 		(uuid "b0978c6d-edc5-4c61-a137-e4740086042b")
-	)
+	)
 	(wire
 		(pts
 			(xy 71.12 210.82) (xy 71.12 226.06)
@@ -7548,7 +7487,7 @@
 			(type default)
 		)
 		(uuid "b8d117f0-9d26-4841-a90e-cb9955d1cc3e")
-	)
+	)
 	(wire
 		(pts
 			(xy 104.14 83.82) (xy 104.14 88.9)
@@ -7578,7 +7517,7 @@
 			(type default)
 		)
 		(uuid "bb06c843-350a-4b67-94e9-e9e6d7a79294")
-	)
+	)
 	(wire
 		(pts
 			(xy 58.42 187.96) (xy 58.42 198.12)
@@ -7648,7 +7587,7 @@
 			(type default)
 		)
 		(uuid "c1410197-1c43-49dc-9d7c-2d00e2dc165f")
-	)
+	)
 	(wire
 		(pts
 			(xy 144.78 187.96) (xy 144.78 200.66)
@@ -7951,16 +7890,6 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 193.04) (xy 312.42 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df4ac05e-7ce2-4c8f-971d-00895a6946cc")
-	)
-	(wire
-		(pts
 			(xy 88.9 76.2) (xy 88.9 73.66)
 		)
 		(stroke
@@ -8111,16 +8040,6 @@
 	)
 	(wire
 		(pts
-			(xy 358.14 165.1) (xy 358.14 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ede82373-9a45-41fe-bb6d-54312c086ddc")
-	)
-	(wire
-		(pts
 			(xy 76.2 210.82) (xy 76.2 213.36)
 		)
 		(stroke
@@ -8218,7 +8137,7 @@
 			(type default)
 		)
 		(uuid "f896f8cb-6300-4e99-ab8c-8fdb203e6f08")
-	)
+	)
 	(wire
 		(pts
 			(xy 35.56 187.96) (xy 35.56 193.04)
@@ -8278,7 +8197,7 @@
 			(justify left bottom)
 		)
 		(uuid "bab6e811-2a38-45e8-8f7a-25a85a730a6f")
-	)
+	)
 	(global_label "+15V2"
 		(shape input)
 		(at 195.58 142.24 90)
@@ -8313,6 +8232,28 @@
 		(uuid "30743c1c-c506-432c-9df4-02c7e95dda76")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 226.06 256.54 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "+5v"
+		(shape input)
+		(at 306.07 158.75 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "33c76c05-0ac0-43c8-8067-396cbeb1ca09")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 417.83 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8389,6 +8330,28 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape input)
+		(at 306.07 156.21 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3c057581-9236-4443-958e-4eb1918044ad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 405.13 278.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(global_label "+15V1"
 		(shape input)
 		(at 185.42 68.58 90)
@@ -8455,18 +8418,18 @@
 			)
 		)
 	)
-	(global_label "+5v"
+	(global_label "V1"
 		(shape input)
-		(at 297.18 129.54 90)
+		(at 312.42 193.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
-		(uuid "57048bb9-2217-4ca6-b95a-3673cbde04b4")
+		(uuid "5c34e952-8ad2-4f2c-a7c6-59d37cbbd669")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 370.84 241.3 90)
+			(at 424.18 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8586,7 +8549,7 @@
 				)
 			)
 		)
-	)
+	)
 	(global_label "GND"
 		(shape input)
 		(at 104.14 124.46 270)
@@ -8677,6 +8640,28 @@
 			)
 		)
 	)
+	(global_label "V1"
+		(shape input)
+		(at 304.8 153.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f76770d9-e7a3-4357-9106-0fa5a0f40734")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 416.56 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:R")
 		(at 158.75 119.38 90)
@@ -8754,7 +8739,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R8")
 					(unit 1)
@@ -8834,7 +8819,7 @@
 			(uuid "2ef732ec-7b3d-47b2-9686-342cb258bd32")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R4")
 					(unit 1)
@@ -8922,7 +8907,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R13")
 					(unit 1)
@@ -9002,7 +8987,7 @@
 			(uuid "6d02fa64-df43-4986-ab3c-62052f27dc68")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "L1")
 					(unit 1)
@@ -9090,7 +9075,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C2")
 					(unit 1)
@@ -9169,7 +9154,7 @@
 			(uuid "04f3813b-63ac-4ebe-89d9-b0acc2581f72")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D6")
 					(unit 1)
@@ -9254,7 +9239,7 @@
 			(uuid "4a99da1e-2a66-47a0-9ec3-ddd62b0bf3da")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D11")
 					(unit 1)
@@ -9267,7 +9252,7 @@
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Diode:1N4006")
 		(at 266.7 97.79 270)
@@ -9339,7 +9324,7 @@
 			(uuid "e30ab46a-320e-43fe-a6b2-0bc0d4071011")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D10")
 					(unit 1)
@@ -9427,14 +9412,14 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#FLG01")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Transistor_FET:IRF540N")
 		(at 182.88 114.3 0)
@@ -9515,7 +9500,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "Q1")
 					(unit 1)
@@ -9594,7 +9579,7 @@
 			(uuid "e41b7264-4a38-4636-a8b8-cb4b78a69054")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#PWR04")
 					(unit 1)
@@ -9679,7 +9664,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C3")
 					(unit 1)
@@ -9776,7 +9761,7 @@
 			(uuid "ad7dba7c-e83d-4a3c-822c-490d86277423")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U4")
 					(unit 1)
@@ -9861,7 +9846,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R6")
 					(unit 1)
@@ -9938,7 +9923,7 @@
 			(uuid "06080586-6d19-434d-a716-e7804fda809b")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#FLG02")
 					(unit 1)
@@ -10029,14 +10014,14 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "Q2")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "power:GND")
 		(at 45.72 104.14 0)
@@ -10108,7 +10093,7 @@
 			(uuid "6347cc5e-5834-432c-a5b5-9e86839503ed")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#PWR01")
 					(unit 1)
@@ -10187,7 +10172,7 @@
 			(uuid "35d149fe-812f-4840-a7ad-758279b9f3b9")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C11")
 					(unit 1)
@@ -10275,7 +10260,7 @@
 			(uuid "d1df0e95-2157-42b7-bd91-efd53b8f8dcd")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C7")
 					(unit 1)
@@ -10360,87 +10345,9 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 358.14 170.18 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5a06175d-7e5c-4c3d-bed9-3f9536ab9d0a")
-		(property "Reference" "#PWR012"
-			(at 358.14 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 358.14 175.26 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 358.14 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 358.14 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 358.14 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b010eaad-b857-42b0-ba3d-99305f384d0e")
-		)
-		(instances
-			(project "CompleteMotorCircuit"
-				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
-					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -10523,7 +10430,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R12")
 					(unit 1)
@@ -10633,7 +10540,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D2")
 					(unit 1)
@@ -10718,7 +10625,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D7")
 					(unit 1)
@@ -10803,7 +10710,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D4")
 					(unit 1)
@@ -10888,7 +10795,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R11")
 					(unit 1)
@@ -10974,7 +10881,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R1")
 					(unit 1)
@@ -11095,7 +11002,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U5")
 					(unit 1)
@@ -11180,9 +11087,94 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x03")
+		(at 311.15 156.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7bdc364c-5de0-4b53-80ed-1d5eeab1ccb3")
+		(property "Reference" "J7"
+			(at 313.69 154.9399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x03"
+			(at 313.69 157.4799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-3_P5.08mm"
+			(at 311.15 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 311.15 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 311.15 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "cc6686a5-99e7-47b7-9f2f-2e87dce26193")
+		)
+		(pin "1"
+			(uuid "1780bf15-04ae-4e63-b833-70e33ac4845e")
+		)
+		(pin "3"
+			(uuid "7fc1f464-75af-40d1-870a-b243a7882ad3")
+		)
+		(instances
+			(project "motor_power"
+				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -11268,7 +11260,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C1")
 					(unit 1)
@@ -11350,7 +11342,7 @@
 			(uuid "4d297d6e-1d03-46ea-bf34-f82ab8fb50c0")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R7")
 					(unit 1)
@@ -11430,14 +11422,14 @@
 			(uuid "1f4d8801-9b7f-4eaf-af4e-3103d143bf81")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C12")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Device:D")
 		(at 35.56 196.85 270)
@@ -11540,7 +11532,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D1")
 					(unit 1)
@@ -11634,7 +11626,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U7")
 					(unit 1)
@@ -11715,7 +11707,7 @@
 			(uuid "ed3a6b08-5a33-42f1-a41f-d7295a95d8b7")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C9")
 					(unit 1)
@@ -11797,14 +11789,14 @@
 			(uuid "fa6f571f-b9d5-4d8e-b4f6-5469c2a4a06d")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J4")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Driver_FET:IR2110")
 		(at 210.82 203.2 0)
@@ -11918,7 +11910,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U8")
 					(unit 1)
@@ -12010,7 +12002,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "SW1")
 					(unit 1)
@@ -12107,7 +12099,7 @@
 			(uuid "d4626b94-2b76-4944-a993-2d3c5be4af53")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U1")
 					(unit 1)
@@ -12186,7 +12178,7 @@
 			(uuid "90548761-4e77-451d-bc33-6008129d3398")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#PWR02")
 					(unit 1)
@@ -12271,7 +12263,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D3")
 					(unit 1)
@@ -12354,7 +12346,7 @@
 			(uuid "7835606b-254f-4ac4-b3a4-f2546efd9d07")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J5")
 					(unit 1)
@@ -12439,7 +12431,7 @@
 			(uuid "a6e5647b-db0c-411a-9c64-c2ae5997ddd1")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D9")
 					(unit 1)
@@ -12524,7 +12516,7 @@
 			(uuid "33fc1485-3a08-4f72-9bac-fcc8341f8afb")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#PWR05")
 					(unit 1)
@@ -12609,7 +12601,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C5")
 					(unit 1)
@@ -12697,7 +12689,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J2")
 					(unit 1)
@@ -12779,14 +12771,14 @@
 			(uuid "45e42b6b-a045-4f01-87ee-87445470b379")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C6")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Device:R_Potentiometer")
 		(at 43.18 205.74 270)
@@ -12868,7 +12860,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "RV1")
 					(unit 1)
@@ -12978,7 +12970,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D12")
 					(unit 1)
@@ -13059,14 +13051,14 @@
 			(uuid "379a7b2b-215a-40c7-b551-68f87b6c63ce")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R2")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Device:R")
 		(at 60.96 184.15 0)
@@ -13147,14 +13139,14 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R3")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Timer:LM555xM")
 		(at 71.12 200.66 0)
@@ -13251,7 +13243,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U2")
 					(unit 1)
@@ -13336,7 +13328,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C10")
 					(unit 1)
@@ -13420,7 +13412,7 @@
 			(uuid "4fcf44b2-bc19-4a5f-bac1-2b683760a095")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U6")
 					(unit 1)
@@ -13508,7 +13500,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "C4")
 					(unit 1)
@@ -13594,7 +13586,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R9")
 					(unit 1)
@@ -13679,7 +13671,7 @@
 			(uuid "619f88d1-835b-49cd-95d0-522b56371c2d")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "RV2")
 					(unit 1)
@@ -13782,14 +13774,14 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "U3")
 					(unit 1)
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
 		(at 327.66 218.44 0)
@@ -13862,7 +13854,7 @@
 			(uuid "e94d2666-7671-425f-b1c3-74e005a5392c")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J6")
 					(unit 1)
@@ -13875,7 +13867,7 @@
 				)
 			)
 		)
-	)
+	)
 	(symbol
 		(lib_id "Diode:1N4006")
 		(at 236.22 97.79 270)
@@ -13947,7 +13939,7 @@
 			(uuid "ad0487a1-1bc5-4538-9c0a-90d1dd0a4292")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D5")
 					(unit 1)
@@ -14032,7 +14024,7 @@
 			(uuid "30191a7c-9c33-4d8a-90b4-d22027a95e3e")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J3")
 					(unit 1)
@@ -14117,7 +14109,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "R5")
 					(unit 1)
@@ -14201,7 +14193,7 @@
 					(unit 1)
 				)
 			)
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "#PWR06")
 					(unit 1)
@@ -14280,7 +14272,7 @@
 			(uuid "fe016437-c71f-46a2-87eb-21f9ecadc278")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "D8")
 					(unit 1)
@@ -14366,7 +14358,7 @@
 			(uuid "fdcaffe1-fce1-4b9b-b7d9-10530de345a7")
 		)
 		(instances
-			(project "CompleteMotorCircuit"
+			(project "motor_power"
 				(path "/b6b31426-5ebe-44be-94a7-40ff693790eb"
 					(reference "J1")
 					(unit 1)
