@@ -4701,7 +4701,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "energy_system:TO-220-3_Vertical_LaserPads"
+		(property "Footprint" "energy_system:TO-220-3_Vertical_LaserPads_GDS"
 			(at 179.07 83.82 0)
 			(effects
 				(font
