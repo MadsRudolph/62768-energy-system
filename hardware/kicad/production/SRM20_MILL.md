@@ -19,6 +19,15 @@ gerbers/ (findes allerede)  →  PNG (1000 dpi)  →  mods CE  →  .rml  →  V
   Læser PNG, genererer toolpath, eksporterer `.rml` til Downloads.
 - **VPanel for SRM-20** (på maskinens PC): sæt XY/Z-origin, `Cut → Add → Output`.
 
+> **Nyere alternativ — `gerber2rml`** (`tools/srm-cam`): genererer `.rml` ELLER
+> `.nc` (G-kode) **direkte** fra gerberne, så PNG- og mods-trinnet springes helt
+> over. Vælg maskinen **"Roland SRM-20 (G-code)"** i GUI'en (eller `--gcode` på
+> CLI'en). VPanel kører `.nc` via `Cut → Add → Output` når maskinen står i
+> **NC-kode-mode**; koordinater bruger **G54** = bruger-origin. Validering
+> 22-06-2026: ren isolering ved **0.15 mm** med en SKARP, kort fræser — en sløv/lang
+> fræser "brænder" kobberet og skærer for lavt. Bemærk: en 0.8 mm fræser kan IKKE
+> isolere 0.8 mm clearance — brug 1/64" (0.4 mm) til baner på de rigtige boards.
+
 ## Filer pr. board — tre jobs
 
 | Job | Kilde | Spejlvendt? | Bit | mods-indstillinger |
