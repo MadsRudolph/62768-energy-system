@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "TerminalBlock")(type "KiCad")(uri "${KIPRJMOD}/../../lib/TerminalBlock.pretty")(options "")(descr "Bornier terminals (repo copy; removed from KiCad 10 stock lib)"))
+)
