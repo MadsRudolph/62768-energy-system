@@ -117,11 +117,15 @@ What it does per board — replicate exactly if scripting by hand:
    again with both layers live. Only the impossible crossings end up on F.Cu.
 4. Final import `pcb_route.py ses`: **merge-import** (Freerouting does NOT
    re-emit fixed wires in its SES, so the importer snapshots the tracks and
-   re-adds whatever the import dropped), then adds **copper refdes text on F.Cu** (top/component
-   side, not mirrored; collision-checked against F.Cu copper - if a text ends up
-   clashing after manual rerouting, run `tools/fix_text_collisions.py`) and **no-net solid laser zones** on
-   both copper layers (pad connection: none — the guide's engraving hack). The
-   step is idempotent (removes old zones/text first).
+   re-adds whatever the import dropped), then adds **refdes text on F.SilkS**
+   (silkscreen, top/component side, not mirrored — NEVER on copper, a name on F.Cu
+   would etch as top copper). The footprint's own reference is hidden so there's
+   exactly one clean label per part; placement only avoids pads (silk over copper
+   is fine), so nothing is dropped on a normal board. Also adds **no-net solid
+   laser zones** on both copper layers (pad connection: none — the guide's
+   engraving hack). The step is idempotent (materializes the old text + zone lists
+   before any Remove() — a Remove invalidates KiCad's SWIG iterators — and clears
+   old F.Cu/B.Cu copper refdes too, so pre-silk boards migrate on a re-run).
 5. DRC + renders into `boards/<b>/pcb/`.
 
 **Acceptance bar: 0 unconnected items, 0 DRC errors.** Benign leftovers:

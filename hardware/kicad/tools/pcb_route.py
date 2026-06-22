@@ -27,38 +27,22 @@ elif mode == "sesraw":
     ok = pcbnew.ImportSpecctraSES(board, sys.argv[3])
     pcbnew.SaveBoard(boardf, board)
     print("sesraw:", ok)
-def add_refdes_copper(board):
-    """Komponentnavne som kobber-tekst paa F.Cu - OVERSIDEN, komponentsiden
-    (laseren har ingen silkscreen). Navnene ligger ved siden af hver komponent,
-    ikke spejlvendt, og kommer med i <board>_top_cu.dxf: aetset i kobberet ved
-    dobbeltsidet, eller graveret i toppen sammen med traadbro-planen ved
-    enkeltsidet. Placeringen undgaar F.Cu-baner/pads/anden tekst - kobber-tekst
-    OVER en bane ville kortslutte eller skaere den. Kandidater proeves
-    over/under/venstre/hoejre; ingen plads -> tekst droppes (med log)."""
+def add_refdes_silk(board):
+    """Komponentnavne som SILKETRYK paa F.SilkS - OVERSIDEN, komponentsiden.
+    ALDRIG i kobber: et navn paa F.Cu ville blive aetset som top-kobber. Silke
+    er et separat lag, saa teksten maa gerne ligge over baner; vi undgaar kun
+    pads (saa labels forbliver laeselige) og anden silketekst. Footprintets egen
+    reference skjules, saa der staar praecis EEN label pr. komponent. Kandidater
+    proeves over/under/venstre/hoejre; ingen plads -> tekst droppes (med log)."""
     from pcbnew import VECTOR2I, FromMM, ToMM
 
     bbox_brd = board.GetBoardEdgesBoundingBox()
     margin = FromMM(1.2)
-    CLR = FromMM(0.85)                       # afstand til andet kobber
+    CLR = FromMM(0.6)                        # afstand til pads / anden silketekst
 
-    obstacles = []                           # BOX2I'er, allerede inflateret
-    for t in board.GetTracks():
-        # kun kobber paa F.Cu (+ vias) kolliderer med F.Cu-teksten
-        if t.GetClass() == "PCB_TRACK" and t.GetLayer() != pcbnew.F_Cu:
-            continue
-        # diagonale baner har kaempe bounding box -> sampl segmentet i smaa
-        # bokse, ellers kasseres tekst-positioner paa falsk grundlag
-        s, e = t.GetStart(), t.GetEnd()
-        length = max(1, int(((e.x - s.x) ** 2 + (e.y - s.y) ** 2) ** 0.5))
-        n = max(1, length // FromMM(1.5))
-        r = t.GetWidth() // 2 + CLR
-        for i in range(n + 1):
-            px = s.x + (e.x - s.x) * i // n
-            py = s.y + (e.y - s.y) * i // n
-            bb = pcbnew.BOX2I(pcbnew.VECTOR2I(px - r, py - r),
-                              pcbnew.VECTOR2I(2 * r, 2 * r))
-            obstacles.append(bb)
+    obstacles = []                          # kun pads - silke over kobber er OK
     for fp in board.GetFootprints():
+        fp.Reference().SetVisible(False)    # skjul default-ref -> ingen dublet-label
         for pad in fp.Pads():
             bb = pad.GetBoundingBox()
             bb.Inflate(CLR)
@@ -77,15 +61,15 @@ def add_refdes_copper(board):
         fbb = fp.GetBoundingBox(False)
         txt = pcbnew.PCB_TEXT(board)
         txt.SetText(ref)
-        txt.SetLayer(pcbnew.F_Cu)
+        txt.SetLayer(pcbnew.F_SilkS)
         txt.SetMirrored(False)               # laeses fra oversiden (komponentsiden)
-        txt.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5)))
-        txt.SetTextThickness(FromMM(0.3))
+        txt.SetTextSize(VECTOR2I(FromMM(1.0), FromMM(1.0)))
+        txt.SetTextThickness(FromMM(0.15))
         board.Add(txt)
         cx, cy = fbb.Centre().x, fbb.Centre().y
         half_h = fbb.GetHeight() // 2
         half_w = fbb.GetWidth() // 2
-        step = FromMM(1.7)
+        step = FromMM(1.2)
         cands = []
         for extra in (0, FromMM(1.5), FromMM(3.0), FromMM(4.5)):
             dy = half_h + step + extra
@@ -110,18 +94,25 @@ def add_refdes_copper(board):
         tb.Inflate(CLR)
         obstacles.append(tb)                 # naeste tekster skal ogsaa undgaa denne
         placed += 1
-    print(f"  refdes paa B.Cu: {placed} placeret, {skipped} droppet")
+    print(f"  refdes paa F.SilkS: {placed} placeret, {skipped} droppet")
 
 if mode == "ses":
-    # idempotent: fjern evt. tidligere kobber-refdes-tekst og laser-zoner foer
-    # de tilfoejes igen (ellers dublerer en gen-koersel dem).
-    # OBS raekkefoelge: tekst FOER zoner - ZONE.Remove() korrumperer SWIG-
-    # iterationen af GetDrawings() i KiCad 9.0.6.
-    for t in [d for d in board.GetDrawings()
-              if d.GetClass() == "PCB_TEXT"
-              and d.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu)]:
+    # idempotent: fjern evt. tidligere refdes-tekst og laser-zoner foer de
+    # tilfoejes igen (ellers dublerer en gen-koersel dem). VIGTIGT: materialiser
+    # BEGGE slettelister FOER nogen board.Remove() - et Remove() invaliderer
+    # KiCads live SWIG-iteratorer (baade GetDrawings og Zones), som derefter
+    # giver raa SwigPyObject'er (mangler GetNetCode). GetArea(i) er indeks-baseret
+    # og robust mod det. Gammel kobber-refdes (F.Cu/B.Cu) ryddes ogsaa, saa aeldre
+    # boards migrerer til silketryk.
+    old_text = [d for d in board.GetDrawings()
+                if d.GetClass() == "PCB_TEXT"
+                and d.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu,
+                                     pcbnew.F_SilkS, pcbnew.B_SilkS)]
+    old_zones = [board.GetArea(i) for i in range(board.GetAreaCount())]
+    old_zones = [z for z in old_zones if z.GetNetCode() == 0]
+    for t in old_text:
         board.Remove(t)
-    for z in [z for z in board.Zones() if z.GetNetCode() == 0]:
+    for z in old_zones:
         board.Remove(z)
     # "-" som ses-sti = spring importen over (finish-only: tekst + zoner)
     if sys.argv[3] != "-":
@@ -144,7 +135,7 @@ if mode == "ses":
             print(f"  genindsatte {readded} trin 1-baner efter SES-import")
     else:
         ok = "skip"
-    add_refdes_copper(board)
+    add_refdes_silk(board)
     # Fiberlaser-zoner jf. DTU-PCB-prototyping-guiden: solid zone UDEN net og
     # UDEN pad-forbindelse pr. kobberlag. Laseren fjerner kun isolations-
     # kanalerne omkring baner/pads i stedet for alt kobberet.
