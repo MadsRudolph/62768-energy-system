@@ -1,14 +1,14 @@
 %
 O0001
 ( gerber2rml - SRM-20 NC )
-G90 G94 G17
+( spindle 7000 rpm - set this in VPanel cut settings )
+G90 G17
 G21
 G91
 G28 Z0.
 G90
-G49
 G54
-S7000 M3
+M3
 G0 Z2.
 G0 X104.536 Y86.031
 G0 Z0.5
