@@ -3,7 +3,6 @@
 
 #define INA219_ADDR 0x40
 
-#define REG_SHUNT_VOLTAGE 0x01
 #define REG_BUS_VOLTAGE 0x02
 #define REG_CURRENT     0x04
 
@@ -38,7 +37,11 @@ uint16_t INA219_read(uint8_t reg) {
 
 // === init ===
 void INA219_init(void) {
-    // default config (kan forbedres senere)
+    // Calibration register MUST be set, otherwise the CURRENT (and POWER)
+    // register always reads 0. 4096 => 32V/2A range, 100 uA per bit, with the
+    // 0.1 ohm shunt on the module. Write it before the config register.
+    INA219_write(0x05, 4096);
+    // config: 32V range, gain /8 (320mV), 12-bit bus+shunt, continuous
     INA219_write(0x00, 0x399F);
 }
 
@@ -52,19 +55,5 @@ float INA219_getVoltage(void) {
 // === current ===
 float INA219_getCurrent(void) {
     int16_t raw = INA219_read(REG_CURRENT);
-    return raw * 0.001; // afhænger af kalibrering!
-}
-
-
-// === bus voltage in mV (integer, no calibration needed) ===
-uint16_t INA219_getBus_mV(void) {
-    uint16_t raw = INA219_read(REG_BUS_VOLTAGE);
-    raw >>= 3;
-    return raw * 4; // 4 mV per bit
-}
-
-// === shunt voltage in uV (integer, no calibration needed) ===
-int16_t INA219_getShunt_uV(void) {
-    int16_t raw = INA219_read(REG_SHUNT_VOLTAGE);
-    return raw * 10; // 10 uV per bit (PGA /8 range)
+    return raw * 0.0001; // 100 uA per bit (cal = 4096) -> amps
 }
