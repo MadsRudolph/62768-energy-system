@@ -1,0 +1,137 @@
+** Drc report for boost_v2_mill.kicad_pcb **
+** Created on 2026-06-22T15:22:49+0200 **
+
+** Found 27 DRC violations **
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(109.1800 mm, 78.0043 mm): Track [+15V] on B.Cu, length 0.0001 mm
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.8400 mm)
+    Rule: netclass 'Default'; error
+    @(43.3359 mm, 97.8810 mm): PTH pad 1 [GATE] of M1
+    @(40.7959 mm, 97.8810 mm): PTH pad 2 [/SW] of M1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.8400 mm)
+    Rule: netclass 'Default'; error
+    @(40.7959 mm, 97.8810 mm): PTH pad 2 [/SW] of M1
+    @(38.2559 mm, 97.8810 mm): PTH pad 3 [GND] of M1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.8400 mm)
+    Rule: netclass 'Default'; error
+    @(55.1834 mm, 122.3810 mm): PTH pad 1 [PWM] of J3
+    @(57.7234 mm, 122.3810 mm): PTH pad 2 [GND_MCU] of J3
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(96.4799 mm, 87.3810 mm): PTH pad 1 [/LO] of U2
+    @(99.0199 mm, 87.3810 mm): PTH pad 2 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(96.4799 mm, 87.3810 mm): PTH pad 1 [/LO] of U2
+    @(99.0199 mm, 87.3810 mm): PTH pad 2 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(99.0199 mm, 87.3810 mm): PTH pad 2 [GND] of U2
+    @(101.5599 mm, 87.3810 mm): PTH pad 3 [+15V] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(99.0199 mm, 87.3810 mm): PTH pad 2 [GND] of U2
+    @(101.5599 mm, 87.3810 mm): PTH pad 3 [+15V] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(101.5599 mm, 87.3810 mm): PTH pad 3 [+15V] of U2
+    @(104.0999 mm, 87.3810 mm): PTH pad 4 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(104.0999 mm, 87.3810 mm): PTH pad 4 [<no net>] of U2
+    @(106.6399 mm, 87.3810 mm): PTH pad 5 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(106.6399 mm, 87.3810 mm): PTH pad 5 [GND] of U2
+    @(109.1799 mm, 87.3810 mm): PTH pad 6 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(106.6399 mm, 87.3810 mm): PTH pad 5 [GND] of U2
+    @(109.1799 mm, 87.3810 mm): PTH pad 6 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(109.1799 mm, 87.3810 mm): PTH pad 6 [<no net>] of U2
+    @(111.7199 mm, 87.3810 mm): PTH pad 7 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(109.1799 mm, 87.3810 mm): PTH pad 6 [<no net>] of U2
+    @(111.7199 mm, 87.3810 mm): PTH pad 7 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(111.7199 mm, 79.7610 mm): PTH pad 8 [<no net>] of U2
+    @(109.1799 mm, 79.7610 mm): PTH pad 9 [+15V] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(109.1799 mm, 79.7610 mm): PTH pad 9 [+15V] of U2
+    @(106.6399 mm, 79.7610 mm): PTH pad 10 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(109.1799 mm, 79.7610 mm): PTH pad 9 [+15V] of U2
+    @(106.6399 mm, 79.7610 mm): PTH pad 10 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(104.0999 mm, 79.7610 mm): PTH pad 11 [GND] of U2
+    @(101.5599 mm, 79.7610 mm): PTH pad 12 [/LIN] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(101.5599 mm, 79.7610 mm): PTH pad 12 [/LIN] of U2
+    @(99.0199 mm, 79.7610 mm): PTH pad 13 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(101.5599 mm, 79.7610 mm): PTH pad 12 [/LIN] of U2
+    @(99.0199 mm, 79.7610 mm): PTH pad 13 [GND] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(99.0199 mm, 79.7610 mm): PTH pad 13 [GND] of U2
+    @(96.4799 mm, 79.7610 mm): PTH pad 14 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(99.0199 mm, 79.7610 mm): PTH pad 13 [GND] of U2
+    @(96.4799 mm, 79.7610 mm): PTH pad 14 [<no net>] of U2
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(68.8369 mm, 118.8250 mm): PTH pad 1 [/OPTO_A] of U1
+    @(68.8369 mm, 121.3650 mm): PTH pad 2 [GND_MCU] of U1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(68.8369 mm, 121.3650 mm): PTH pad 2 [GND_MCU] of U1
+    @(68.8369 mm, 123.9050 mm): PTH pad 3 [<no net>] of U1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(76.4569 mm, 123.9050 mm): PTH pad 4 [/LIN] of U1
+    @(76.4569 mm, 121.3650 mm): PTH pad 5 [+15V] of U1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(76.4569 mm, 121.3650 mm): PTH pad 5 [+15V] of U1
+    @(76.4569 mm, 118.8250 mm): PTH pad 6 [<no net>] of U1
+[clearance]: Clearance violation (netclass 'Default' clearance 1.2000 mm; actual 0.9400 mm)
+    Rule: netclass 'Default'; error
+    @(76.4569 mm, 121.3650 mm): PTH pad 5 [+15V] of U1
+    @(76.4569 mm, 118.8250 mm): PTH pad 6 [<no net>] of U1
+
+** Found 5 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(40.7959 mm, 97.8810 mm): PTH pad 2 [/SW] of M1
+    @(58.2545 mm, 97.1810 mm): PTH pad 2 [/SW] of D1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(43.3359 mm, 97.8810 mm): PTH pad 1 [GATE] of M1
+    @(47.2764 mm, 108.8215 mm): Track [GATE] on F.Cu, length 2.6029 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(38.2559 mm, 97.8810 mm): PTH pad 3 [GND] of M1
+    @(41.3039 mm, 110.4690 mm): Track [GND] on B.Cu, length 4.9328 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(57.7234 mm, 122.3810 mm): PTH pad 2 [GND_MCU] of J3
+    @(68.8369 mm, 121.3650 mm): PTH pad 2 [GND_MCU] of U1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(55.1834 mm, 122.3810 mm): PTH pad 1 [PWM] of J3
+    @(55.7375 mm, 106.2810 mm): PTH pad 1 [PWM] of R1
+
+** Found 0 Footprint errors **
+
+** End of Report **
