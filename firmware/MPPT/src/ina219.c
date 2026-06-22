@@ -37,7 +37,7 @@ uint16_t INA219_read(uint8_t reg) {
 
 // === init ===
 void INA219_init(void) {
-    // default config (kan forbedres senere)
+    // default config
     INA219_write(0x00, 0x399F);
 }
 
