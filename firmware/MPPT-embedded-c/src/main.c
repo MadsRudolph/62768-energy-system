@@ -151,10 +151,10 @@ int main(void)
         char pStr[12];
 
         dtostrf(V_new, 6, 3, vStr);
-        dtostrf(I_new, 6, 3, iStr);
+        dtostrf(I_new * 1000.0f, 7, 1, iStr); // amps -> mA (LSB = 0.1 mA, 10x the resolution of "A")
         dtostrf(P_new, 6, 3, pStr);
 
-        printf("Voltage: %s V | Current: %s A | Power: %s W\n", vStr, iStr, pStr);
+        printf("Voltage: %s V | Current: %s mA | Power: %s W\n", vStr, iStr, pStr);
         // ===============================================================
 
         float deltaP = P_new - P_old;

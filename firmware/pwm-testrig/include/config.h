@@ -36,4 +36,9 @@
 // Display-opdatering (ms mellem hver gennemloeb af main-loop)
 #define LOOP_PERIOD_MS      100
 
+// Fejlfinding: saet til 1 for at vise RAA ADC-counts (A0/A1) i stedet for
+// den normale visning. Drej hvert potmeter og se hvilken linje reagerer.
+// Saet tilbage til 0 naar potmeter-ledningerne er verificeret.
+#define DIAG_RAW_ADC        1
+
 #endif /* CONFIG_H */
