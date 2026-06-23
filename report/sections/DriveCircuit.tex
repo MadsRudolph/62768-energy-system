@@ -48,26 +48,26 @@ The driver circuit is used to control the DC motor that drives the three-phase g
 \vspace{0.4cm}
 
 \noindent
-In this project, the driver circuit consists of a CNY17-2 optocoupler, an IR2110 gate driver, and an IRF540N MOSFET. The circuit is designed to allow a low-voltage microcontroller signal to control a higher-power motor circuit. The microcontroller generates the PWM signal, while the MOSFET switches the motor current on and off.
+In this project, the driver circuit consists of a CNY17-3 optocoupler, an IR2110 gate driver, and an IRF540N MOSFET. The circuit is designed to allow a low-voltage microcontroller signal to control a higher-power motor circuit. The microcontroller generates the PWM signal, while the MOSFET switches the motor current on and off.
 
 \vspace{0.5cm}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.90\textwidth]{report/images/DriveCircuit/Drivecircuit-KiCad.png}
-\caption{KiCad schematic of the motor driver circuit used in the project.}
+\caption{KiCad schematic of the motor driver circuit used in the project. - Lecture 2, Exp 3A}
 \label{fig:driver_circuit_KiCad}
 \end{figure}
 
 \vspace{0.5cm}
 
 \noindent
-The PWM signal from the microcontroller is first sent through the CNY17-2 optocoupler. The purpose of the optocoupler is to provide galvanic isolation between the low-voltage control side and the motor power side. This is important because the motor and generator can create electrical noise, voltage spikes, and ground potential differences. The optocoupler helps protect the microcontroller from these disturbances.
+The PWM signal from the microcontroller is first sent through the CNY17-3 optocoupler. The purpose of the optocoupler is to provide galvanic isolation between the low-voltage control side and the motor power side. This is important because the motor and generator can create electrical noise, voltage spikes, and ground potential differences. The optocoupler helps protect the microcontroller from these disturbances.
 
 \vspace{0.4cm}
 
 \noindent
-The input side of the CNY17-2 contains an internal LED. A series resistor is used to limit the current through this LED and prevent damage. When the microcontroller sends a PWM signal, the LED inside the optocoupler turns on and off. On the output side of the optocoupler, this signal is transferred optically and used as the input signal for the IR2110 gate driver.
+The input side of the CNY17-3 contains an internal LED. A series resistor is used to limit the current through this LED and prevent damage. When the microcontroller sends a PWM signal, the LED inside the optocoupler turns on and off. On the output side of the optocoupler, this signal is transferred optically and used as the input signal for the IR2110 gate driver.
 
 \vspace{0.4cm}
 
@@ -93,6 +93,133 @@ The circuit also includes resistors around the MOSFET gate. These resistors help
 
 \noindent
 Decoupling capacitors are placed close to the IR2110 supply pins. These capacitors help stabilize the driver supply voltage and reduce the effect of switching noise. This is important because the MOSFET gate driver needs a stable supply voltage to operate reliably.
+
+\subsubsection*{Reasoning for choice of components}
+
+\noindent
+The following calculations justify the most important component values used in the motor driver circuit. Since the function of the optocoupler, gate driver, MOSFET, flyback diode, and decoupling capacitors has already been explained above, this section mainly focuses on the selected resistor values and switching considerations.
+
+\vspace{0.4cm}
+
+\noindent
+\textbf{Optocoupler LED series resistor}
+
+\noindent
+The input LED of the CNY17-3 optocoupler must be driven with a controlled current. To achieve reliable switching while still protecting the microcontroller output and the optocoupler LED, the LED current is chosen as:
+
+\[
+I_F = 10~\text{mA}
+\]
+
+\noindent
+The resistor value can be calculated as:
+
+\[
+R = \frac{V_{\text{MCU}} - V_F}{I_F}
+\]
+
+\noindent
+Using \(V_{\text{MCU}} = 3.3~\text{V}\), \(V_F = 1.3~\text{V}\), and \(I_F = 10~\text{mA}\), the resistor value becomes:
+
+\[
+R = \frac{3.3~\text{V} - 1.3~\text{V}}{0.01~\text{A}}
+\]
+
+\[
+R = 200~\Omega
+\]
+
+\noindent
+A \(200~\Omega\) resistor is therefore selected. This gives approximately:
+
+\[
+I_F = \frac{V_{\text{MCU}} - V_F}{R}
+\]
+
+\[
+I_F = \frac{3.3~\text{V} - 1.3~\text{V}}{200~\Omega}
+\]
+
+\[
+I_F = 10~\text{mA}
+\]
+
+\noindent
+This current is suitable for the CNY17-3 and ensures that the optocoupler can transfer the PWM signal reliably.
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Optocoupler output resistor}
+
+\noindent
+On the output side of the CNY17-3, a \(1~\text{k}\Omega\) resistor is used to make sure that the IR2110 input has a defined logic level. This prevents the gate driver input from floating when the optocoupler is not conducting. The CNY17-3 is chosen because its current transfer ratio gives better margin when transferring the PWM signal compared with lower CTR optocoupler versions.
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{MOSFET gate resistor}
+
+\noindent
+The gate resistor is selected to control how quickly the MOSFET gate is charged and discharged. The IRF540N has a total gate charge of approximately:
+
+\[
+Q_g = 71~\text{nC}
+\]
+
+\noindent
+The required gate current can be estimated as:
+
+\[
+I_g = \frac{Q_g}{t_{sw}}
+\]
+
+\noindent
+Using \(Q_g = 71~\text{nC}\) and an assumed switching time of \(t_{sw} = 200~\text{ns}\), the gate current becomes:
+
+\[
+I_g = \frac{71~\text{nC}}{200~\text{ns}}
+\]
+
+\[
+I_g \approx 0.355~\text{A}
+\]
+
+\noindent
+The theoretical gate resistance can then be estimated as:
+
+\[
+R_g = \frac{V_{GS}}{I_g}
+\]
+
+\noindent
+Using \(V_{GS} = 15~\text{V}\) and \(I_g = 0.355~\text{A}\), the gate resistance becomes:
+
+\[
+R_g = \frac{15~\text{V}}{0.355~\text{A}}
+\]
+
+\[
+R_g \approx 42~\Omega
+\]
+
+\noindent
+In the practical circuit, a smaller gate resistor is used to obtain faster switching and reduce switching losses. The resistor still helps limit the peak gate current and reduces ringing in the gate signal.
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Decoupling capacitors}
+
+\noindent
+A (100~\text{nF}) capacitor is placed close to the IR2110 supply pins to reduce high-frequency noise. A larger capacitor is also used on the supply rail to support the driver during switching. These capacitors help keep the gate-driver supply stable when the MOSFET switches the motor current.
+
+\vspace{0.5cm}
+
+\noindent
+Overall, the chosen component values allow the PWM signal to be transferred safely through the CNY17-3, while the IR2110 and IRF540N can switch the motor current reliably. The selected resistor and capacitor values help protect the circuit, reduce noise, and improve switching stability.
+
+
 
 \vspace{0.5cm}
 
