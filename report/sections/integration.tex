@@ -7,11 +7,43 @@
 
 % TODO: beskriv integrationen og verifikation af den samlede kæde.
 \subsection{Generator-Only Operation} 
-The overall system consists of a photovoltaic (PV) part and a generator part. In this section, only the generator part of the system is considered, meaning the system operating without the PV module. In generator-only operation, a DC motor provides mechanical energy to a three-phase AC generator. The generator produces three-phase voltages with a phase shift of 120 degrees between each phase. The voltage amplitude from the generator is relatively low and is therefore increased using a transformer. The transformer is connected in a wye-delta configuration, which scales the voltage according to the transformer turns ratio and a factor of $\sqrt{3}$ due to the three-phase connection. The resulting three-phase voltage is then converted to DC using a three-phase rectifier. After rectification, a capacitor of 15000~$\mu$F is used to reduce ripple and produce a smoother DC voltage.
+The overall system consists of a photovoltaic (PV) part and a generator part. 
+In this section, only the generator part of the system is considered, meaning the system operating without the PV module.
+\vspace{0.5cm}
+In generator-only operation, a DC motor provides mechanical energy to a three-phase AC generator. 
+The generator produces three-phase voltages with a phase shift of 120 degrees between each phase. 
+The voltage amplitude from the generator is relatively low and is therefore increased using a transformer.
+\vspace{0.5cm}
+The transformer is connected in a wye-delta configuration, which scales the voltage according to the transformer turns ratio and a factor of $\sqrt{3}$ due to the three-phase connection. 
+The resulting three-phase voltage is then converted to DC using a three-phase rectifier. 
+After rectification, a capacitor of 15000~$\mu$F is used to reduce ripple and produce a smoother DC voltage.
+\vspace{0.5cm}
+This DC voltage supplies the load, while the same voltage is measured in parallel by the feedback circuit. 
+The feedback circuit measures the rectified voltage (approximately 15~V) and provides a scaled version of the signal to the microcontroller. 
+An optically isolated feedback circuit is used to protect the microcontroller from higher voltages and electrical noise.
+\vspace{0.5cm}
+The output from the feedback circuit is connected to the ADC input of the microcontroller. 
+The microcontroller processes this signal and generates a PWM output, which is sent to the drive circuit. 
+The drive circuit uses this PWM signal to control the MOSFET that supplies power to the DC motor.
+\vspace{0.5cm}
+A separate supply voltage is used in the drive circuit to power the motor. 
+Depending on the duty cycle of the PWM signal, the MOSFET switches on and off, thereby controlling the average voltage applied to the motor. 
+As a result, the motor speed can be adjusted by changing the duty cycle, which directly affects the generator speed and the rectified output voltage.
+\vspace{0.5cm}
+In this operating mode, the buck converter is not actively used for regulation, as the system operates without the PV module. 
+The buck converter is primarily used in combination with the PV system, where it enables control of the operating point through adjustment of the PWM duty cycle..
 
-\vspace{0.4cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.90\textwidth]{report/images/Blokdiagram/Motor_circuit_blokdiagram.png}
+\caption{Motor/Generator Subsystem }
+\label{fig:blokdiagram_Motor_circuit}
+\end{figure}
 
-This DC voltage is then supplied to both the feedback circuit and the load. The feedback circuit measures the rectified voltage (approximately 15~V) and transfers a scaled version of the signal to the microcontroller. An optically isolated feedback circuit is used in order to protect the microcontroller from higher voltages and electrical noise. In this operating mode, the buck converter is not actively used for regulation, as the system operates without the PV module. The buck converter is primarily used in combination with the PV system, where it enables control of the operating point through adjustment of the PWM duty cycle. The output from the feedback circuit is connected to the ADC input of the microcontroller. The microcontroller processes this signal and generates a PWM output, which is sent to the drive circuit. The drive circuit uses this PWM signal to control the MOSFET that supplies power to the DC motor. A separate supply voltage (e.g. 15 V) is used in the drive circuit to power the motor. Depending on the duty cycle of the PWM signal, the MOSFET switches on and off, thereby controlling the average voltage applied to the motor. As a result, the motor speed can be adjusted by changing the duty cycle.
+\subsection{PV section}
+With the results obtained from table \ref{tab:pv_measurements}, we were able to test the PV-system by connecting the MPPT controller to the panel itself. Before doing this, we however tested that the INA219-module read both voltage and current correct, by connecting a load with a stable voltage source. This way, we could verify the voltage and current reading, by using Ohm's law to determine the theoretical current.\\
+\\
+When the entire system was connected, we where able to read the voltage and current in "real time" and verify that we where getting the maximum amount of power, for the load.
 \ifdefined\mainfile\else\end{document}\fi
 
 
