@@ -11,10 +11,10 @@ In this project, a feedback circuit is used to measure voltages from the power s
 \vspace{0.5cm}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.90\textwidth]{report/images/Feedback-circuit/Feedback circuit.png}
-    \caption{KiCad schematic of the optically isolated feedback circuit.}
-    \label{fig:feedback_circuit_schematic}
+\centering
+\includegraphics[width=0.90\textwidth]{report/images/Feedback-circuit/Feedback circuit.png}
+\caption{KiCad schematic of the optically isolated feedback circuit. - Lecture 2, Exp 3A}
+\label{fig:feedback_circuit_schematic}
 \end{figure}
 
 \vspace{0.5cm}
@@ -25,31 +25,31 @@ For this reason, an optically isolated linear feedback circuit is used. The circ
 \vspace{0.4cm}
 
 \noindent
-The IL300 contains one LED and two matched photodiodes. On the input side, an operational amplifier drives the LED inside the optocoupler. One of the photodiodes is used as feedback to the input-side op-amp. This feedback makes the LED current more proportional to the measured input voltage and helps reduce the non-linear behaviour of the LED. This is important because the signal must remain as linear as possible for the controller to use it correctly.
+The IL300 contains one LED and two matched photodiodes. On the input side, an MCP601 operational amplifier drives the LED inside the optocoupler. One of the photodiodes is used as feedback to the input-side op-amp. This feedback makes the LED current more proportional to the measured input voltage and helps reduce the non-linear behaviour of the LED. This is important because the signal must remain as linear as possible for the controller to use it correctly.
 
 \vspace{0.4cm}
 
 \noindent
-The second photodiode is placed on the isolated output side. This photodiode receives the optical signal from the LED and produces a small current. This current is then converted back into a voltage using another operational amplifier. The resulting voltage is a scaled version of the measured input voltage and can be connected to the ADC input of the microcontroller.
+The second photodiode is placed on the isolated output side. This photodiode receives the optical signal from the LED and produces a small current. This current is then converted back into a voltage using another MCP601 operational amplifier. The resulting voltage is a scaled version of the measured input voltage and can be connected to the ADC input of the microcontroller.
 
 \vspace{0.5cm}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{report/images/Feedback-circuit/Feedback circuit hulprint.png}
-    \caption{Practical implementation of the feedback circuit on perfboard.}
-    \label{fig:feedback_circuit_hulprint}
+\centering
+\includegraphics[width=0.65\textwidth]{report/images/Feedback-circuit/Feedback circuit hulprint.png}
+\caption{Practical implementation of the feedback circuit on perfboard.}
+\label{fig:feedback_circuit_hulprint}
 \end{figure}
 
 \vspace{0.5cm}
 
 \noindent
-The feedback circuit is designed so that the measured voltage is scaled down to a safe level for the controller. For example, if the power circuit voltage is around \(20~\text{V}\), the isolated output signal should be reduced to approximately \(3.3~\text{V}\). This makes the signal suitable for a microcontroller ADC input. The scaling can be adjusted using resistor values in the input divider and the op-amp feedback network.
+The feedback circuit is designed so that the measured voltage is scaled down to a safe level for the controller. The microcontroller ADC can measure voltages in the range of approximately (0-3.3~\text{V}), so the voltage from the power circuit must be reduced before it is used by the controller. In this circuit, the scaling is mainly determined by the input voltage divider and the op-amp feedback network.
 
 \vspace{0.4cm}
 
 \noindent
-A voltage divider is used to reduce the measured voltage before it enters the feedback circuit. The reference voltage can be calculated as:
+A voltage divider is used to create a reference voltage for the non-inverting input of the first MCP601 operational amplifier. The reference voltage can be calculated as:
 
 \[
 V_{\text{ref}} = V_{\text{in}} \cdot \frac{R_2}{R_1 + R_2}
@@ -66,8 +66,35 @@ V_{\text{ref}} = 20 \cdot \frac{2}{10+2}
 V_{\text{ref}} \approx 3.33~\text{V}
 \]
 
+
 \noindent
-This value is suitable for a \(3.3~\text{V}\) ADC input. It is important to note that this value is not the original power circuit voltage, but a scaled measurement signal that represents the higher voltage in a safe range.
+This means that when the measured voltage is around (20~\text{V}), the reference voltage becomes approximately (3.33~\text{V}). This value is suitable for a (3.3~\text{V}) ADC input. It is important to note that this value is not the original power circuit voltage, but a scaled measurement signal that represents the higher voltage in a safe range.
+
+\vspace{0.4cm}
+
+\noindent
+The (3.33~\text{V}) reference voltage is not directly copied to the isolated output side. Instead, it is used as a reference for the first op-amp stage. The MCP601 regulates the current through the IL300 optocoupler LED so that the inverting and non-inverting inputs of the op-amp are kept at approximately the same voltage. In this way, the op-amp controls the LED current and makes the optical signal proportional to the measured voltage.
+
+\vspace{0.4cm}
+
+\noindent
+The feedback network around the first op-amp sets the gain of this stage. Using the resistor values in the circuit, the gain is:
+
+\[
+\begin{aligned}
+A_{U3} &= -\frac{R_3}{R_2} \\
+A_{U3} &= -\frac{33~\text{k}\Omega}{2~\text{k}\Omega} \\
+A_{U3} &= -16.5
+\end{aligned}
+\]
+
+\noindent
+The negative sign shows that the stage is inverting. In practice, the op-amp output does not simply become (3.3~\text{V}). Instead, it outputs the voltage required to drive the correct LED current through the series resistor and the IL300 LED. During testing, the op-amp drive voltage was measured to be approximately (3.8~\text{V}). This is expected, because this voltage is used to control the optocoupler LED current and is not the voltage sent directly to the ADC.
+
+\vspace{0.4cm}
+
+\noindent
+On the isolated side, the second MCP601 is used as a transimpedance amplifier. This converts the photodiode current from the IL300 into a voltage signal. This voltage is the isolated measurement signal that is sent to the microcontroller ADC. The purpose of this stage is to reproduce a scaled version of the measured voltage while maintaining galvanic isolation between the power circuit and the control circuit.
 
 \vspace{0.4cm}
 
@@ -76,17 +103,27 @@ The feedback signal can be used by the controller to monitor the voltage in the 
 
 \vspace{0.4cm}
 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.65\textwidth]{report/images/Feedback-circuit/Feedback_Output.png}
+\caption{Oscilloscope measurement of the feedback output. - Project 3 report, 62783}
+\label{fig:feedback_circuit_hulprint}
+\end{figure}
+
+
 \noindent
-The oscilloscope measurement shows that the isolated output signal is stable and close to the expected ADC voltage level. The measured output is approximately \(3.3~\text{V}\), which confirms that the feedback circuit scales the measured voltage correctly. Only small variations are visible in the signal, which are most likely caused by noise and switching activity in the power electronics circuit.
+The oscilloscope measurement verifies the operation of the feedback circuit. The isolated output signal is stable and close to the expected ADC voltage level. The measured output is approximately (3.3~\text{V}), while the op-amp drive side is approximately (3.8~\text{V}). This confirms that the circuit successfully scales the measured voltage down to a safe voltage level for the microcontroller ADC. The small visible variations are mainly caused by switching noise and measurement noise, but they remain small enough that they do not significantly affect the control signal.
 
 \vspace{0.4cm}
 
 \noindent
-Overall, the optically isolated feedback circuit is used to make voltage measurements safer and more reliable. It protects the microcontroller from higher voltages, reduces the risk of ground loops, and separates the noisy power electronics from the low-voltage control circuit. This makes the circuit suitable for use in the energy system, where measured voltage signals are needed for regulation, monitoring, and PWM control.
+Overall, the optically isolated feedback circuit is used to make voltage measurements safer and more reliable. It protects the microcontroller from higher voltages, reduces the risk of ground loops, and separates the noisy power electronics from the low-voltage control circuit. The IL300 linear optocoupler transfers the measurement signal across the galvanic isolation barrier, while the op-amp stages ensure that the signal is scaled and converted to a voltage level suitable for the ADC. This makes the circuit suitable for use in the energy system, where measured voltage signals are needed for regulation, monitoring, and PWM control.
 
 \vspace{0.4cm}
 
 \noindent
 It should be noted that this feedback circuit is inspired by an earlier project, \textit{62783 Project 3. sem, Winter 2026}, where a similar optically isolated feedback circuit was designed and tested. The circuit has therefore been reused and adapted for this project, since it provides a suitable method for transferring voltage measurements safely from the power electronics side to the low-voltage controller side.
+
 
 \ifdefined\mainfile\else\end{document}\fi

@@ -27,7 +27,7 @@
 \input{sections/systemoverblik}
 
 \clearpage
-\section{Delsystemer}
+\section{Sub systems}
 \input{sections/generator-transformer}   % AC-generator, 3x transformer, ensretter -> V1
 \input{sections/buck}                     % Buck-konverter (Vout = 4.8 V)
 \input{sections/boost}                    % Boost-konverter -> pulserende last (V2 = 10 V)
@@ -40,8 +40,7 @@
 
 
 \clearpage
-\input{sections/integration}              % Systemintegration + energikilde-prioritering
-\input{sections/test}                     % Test og resultater (100 W LED-test)
+\input{sections/integration}              % Systemintegration + energikilde-prioritering           % Test og resultater (100 W LED-test)
 \input{sections/diskussion}
 \input{sections/konklusion}
 
@@ -50,9 +49,13 @@
 % ============================================================
 \clearpage
 \appendix
-\part{Appendiks}
-\input{sections/kravsporing}              % Kravsporing: 18 krav -> ansvarlig / status
+\part{Appendix}
+\input{sections/kravsporing} 
+\input{report/sections/responsibility}
+% Kravsporing: 18 krav -> ansvarlig / status
 \clearpage
-\input{sections/appendix-kildekode}       % Firmware-kildekode (\lstinputlisting)
+\input{sections/appendix-kildekode}
+% Firmware-kildekode (\lstinputlisting)
+
 
 \end{document}

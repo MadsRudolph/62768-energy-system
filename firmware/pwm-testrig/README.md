@@ -10,13 +10,13 @@ Bare-metal AVR C (ingen Arduino-framework), samme stil som resten af `firmware/`
 
 ## Specifikationer
 
-| Ting | Værdi |
-|---|---|
-| PWM-udgang | **D9** (OC1A, Timer1, 16-bit) — 0–5 V logik |
+| Ting               | Værdi                                                          |
+| ------------------ | -------------------------------------------------------------- |
+| PWM-udgang         | **D9** (OC1A, Timer1, 16-bit) — 0–5 V logik                    |
 | Frekvens (P2 → A1) | **100 Hz – 50 kHz**, pseudo-logaritmisk (tre dekade-segmenter) |
-| Duty (P1 → A0) | **0–100 %** (0 % og 100 % giver ægte konstant lav/høj) |
-| Display | SSD1306 128×64, I2C adresse **0x3C** (0x3D: ret `config.h`) |
-| Opdatering | ~10 Hz, med dødbånd så ADC-støj ikke flimrer |
+| Duty (P1 → A0)     | **0–100 %** (0 % og 100 % giver ægte konstant lav/høj)         |
+| Display            | SSD1306 128×64, I2C adresse **0x3C** (0x3D: ret `config.h`)    |
+| Opdatering         | ~10 Hz, med dødbånd så ADC-støj ikke flimrer                   |
 
 Displayet viser den **faktiske** (timer-kvantiserede) frekvens — ikke ønskeværdien.
 Riggen kører videre uden display (I2C-laget har timeout).

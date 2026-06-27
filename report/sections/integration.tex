@@ -7,11 +7,140 @@
 
 % TODO: beskriv integrationen og verifikation af den samlede kæde.
 \subsection{Generator-Only Operation} 
-The overall system consists of a photovoltaic (PV) part and a generator part. In this section, only the generator part of the system is considered, meaning the system operating without the PV module. In generator-only operation, a DC motor provides mechanical energy to a three-phase AC generator. The generator produces three-phase voltages with a phase shift of 120 degrees between each phase. The voltage amplitude from the generator is relatively low and is therefore increased using a transformer. The transformer is connected in a wye-delta configuration, which scales the voltage according to the transformer turns ratio and a factor of $\sqrt{3}$ due to the three-phase connection. The resulting three-phase voltage is then converted to DC using a three-phase rectifier. After rectification, a capacitor of 15000~$\mu$F is used to reduce ripple and produce a smoother DC voltage.
+The overall system consists of a photovoltaic (PV) part and a generator part. 
+In this section, only the generator part of the system is considered, meaning the system operating without the PV module.
 
-\vspace{0.4cm}
+\vspace{0.5cm} \noindent
+In generator-only operation, a DC motor provides mechanical energy to a three-phase AC generator. 
+The generator produces three-phase voltages with a phase shift of 120 degrees between each phase. 
+The voltage amplitude from the generator is relatively low and is therefore increased using a transformer.
 
-This DC voltage is then supplied to both the feedback circuit and the load. The feedback circuit measures the rectified voltage (approximately 15~V) and transfers a scaled version of the signal to the microcontroller. An optically isolated feedback circuit is used in order to protect the microcontroller from higher voltages and electrical noise. In this operating mode, the buck converter is not actively used for regulation, as the system operates without the PV module. The buck converter is primarily used in combination with the PV system, where it enables control of the operating point through adjustment of the PWM duty cycle. The output from the feedback circuit is connected to the ADC input of the microcontroller. The microcontroller processes this signal and generates a PWM output, which is sent to the drive circuit. The drive circuit uses this PWM signal to control the MOSFET that supplies power to the DC motor. A separate supply voltage (e.g. 15 V) is used in the drive circuit to power the motor. Depending on the duty cycle of the PWM signal, the MOSFET switches on and off, thereby controlling the average voltage applied to the motor. As a result, the motor speed can be adjusted by changing the duty cycle.
+\vspace{0.5cm} \noindent
+The transformer is connected in a wye-delta configuration, which scales the voltage according to the transformer turns ratio and a factor of $\sqrt{3}$ due to the three-phase connection. 
+The resulting three-phase voltage is then converted to DC using a three-phase rectifier. 
+After rectification, a capacitor of 15000~$\mu$F is used to reduce ripple and produce a smoother DC voltage.
+
+\vspace{0.5cm} \noindent
+This DC voltage supplies the load, while the same voltage is measured in parallel by the feedback circuit. 
+The feedback circuit measures the rectified voltage (approximately 15~V) and provides a scaled version of the signal to the microcontroller. 
+An optically isolated feedback circuit is used to protect the microcontroller from higher voltages and electrical noise.
+
+\vspace{0.5cm} \noindent
+The output from the feedback circuit is connected to the ADC input of the microcontroller. 
+The microcontroller processes this signal and generates a PWM output, which is sent to the drive circuit. 
+The drive circuit uses this PWM signal to control the MOSFET that supplies power to the DC motor.
+
+\vspace{0.5cm} \noindent
+A separate supply voltage is used in the drive circuit to power the motor. 
+Depending on the duty cycle of the PWM signal from the TI MCU which acts as a PID controller, the MOSFET switches on and off, thereby controlling the average voltage applied to the motor. 
+As a result, the motor speed is adjusted by the PID controller by changing the duty cycle, ensuring a stable rectified output voltage.
+
+\vspace{0.5cm} \noindent
+In this operating mode, the buck converter is not actively used for regulation, as the system operates without the PV module. 
+The buck converter is primarily used in combination with the PV system, where it enables control of the operating point through adjustment of the PWM duty cycle..
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.90\textwidth]{report/images/Blokdiagram/Motor_circuit_blokdiagram1.png}
+\caption{Motor/Generator Subsystem }
+\label{fig:blokdiagram_Motor_circuit}
+\end{figure}
+
+\vspace{0.5cm}
+
+\subsection{Complete system measurements}
+\noindent
+After the full system was connected, measurements were made with the solar panel turned off and turned on. This was done to see how much the solar panel affected the rest of the system.
+
+\vspace{0.5cm} \noindent
+By looking at the pictures, the measured voltage and current values can be read directly from the power supplies. These values are collected in the table below, so it is easier to compare the circuit operation with and without the solar panel active.
+
+\vspace{0.5cm} \noindent
+Afterwards, the output values of the buck converter, boost converter, and rectifier were measured directly on the physical circuit. These measurements were used to verify that each part of the system produced the expected voltage level during complete system operation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{report/images/Complete System measurements/CSM_without_Solar_panel_active.png}
+    \caption{Complete system measurement without the solar panel active.}
+    \label{fig:csm_without_solar}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{report/images/Complete System measurements/CSM_with_solar_panel_active.png}
+    \caption{Complete system measurement with the solar panel active.}
+    \label{fig:csm_with_solar}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Measured values for the complete system with and without the solar panel active.}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Operating condition} & \textbf{Boost} & \textbf{Buck} & \textbf{Rectifier} & \textbf{Motor V} & \textbf{Motor I} \\
+\hline
+Without solar panel active & 11.06 V & 4.8 V & 11.5 V & 12 V & 1.412 A \\
+\hline
+With solar panel active & 11.5 V & 5.1 V & 15.5 V & 12 V & 0.944 A \\
+\hline
+\end{tabular}
+\label{tab:complete_system_measurements}
+\end{table}
+
+\noindent
+From the measurements, it can be seen that the system works in both cases. There are some differences in the measured voltages, but the values are still close to the expected voltage levels. The boost converter output is around 11 V, and the buck converter output is around 5 V, which shows that both converters are working.
+
+\vspace{0.5cm} \noindent
+The most important result is the motor current. When the solar panel is not active, the motor uses 1.412 A. When the solar panel is active, the motor current decreases to 0.944 A. The difference is:
+
+\[
+\Delta I = 1.412 - 0.944 = 0.468~\text{A}
+\]
+\noindent
+This means that the motor current is reduced by:
+
+\[
+\frac{0.468}{1.412} \cdot 100 \approx 33.1\%
+\]
+\noindent
+So the motor current is reduced by approximately 33\%. This shows that the solar panel helps supply power to the system. Because of this, the motor-generator part does not need to deliver as much power, and the load on the motor becomes smaller.
+
+\vspace{0.5cm} \noindent
+The variations in voltage are expected because the system is made of many different parts, such as the motor, generator, rectifier, capacitors, buck converter, boost converter, and solar panel. Each part has losses, and the voltage can change slightly depending on the load. For example, when the solar panel is active, it adds energy to the system, which changes the operating point. This is why the rectifier output increases from 11.5 V to 15.5 V.
+
+\vspace{0.5cm} \noindent
+The converters also do not give a perfectly constant voltage. The output depends on the input voltage, duty cycle, component losses, switching ripple, and the load current. Therefore, a small difference between 4.8 V and 5.1 V at the buck output is normal.
+
+\vspace{0.5cm} \noindent
+The capacitors also affect the voltage. They help smooth the voltage, but they cannot remove all changes completely. Small variations can also come from measurement uncertainty, wires, contact resistance, and ripple in the circuit.
+
+\vspace{0.5cm} \noindent
+Overall, the measurements show that the complete system works. The voltage values only change slightly, and the system stays operational. The reduction in motor current clearly shows that the solar panel contributes power and reduces the load on the motor-generator system.
+
+
+
+
+
+\vspace{0.5cm}
+
+\subsection{PV section}
+With the results obtained from table \ref{tab:pv_measurements}, we were able to test the PV-system by connecting the MPPT controller to the panel itself. Before doing this, we however tested that the INA219-module read both voltage and current correct, by connecting a load with a stable voltage source. This way, we could verify the voltage and current reading, by using Ohm's law to determine the theoretical current.\\
+\\
+When the entire system was connected, we where able to read the voltage and current in "real time" and verify that we where getting the maximum amount of power, for the load.
+\vspace{0.5cm}
+The boost converter was tested in order to verify that it fulfills the requirement for the V2 output voltage.
+\vspace{0.5cm}
+The converter was supplied with an input voltage of 5 V from the energy storage and operated with a PWM switching frequency of 10 kHz. 
+At a duty cycle of 48\%, the measured output voltage was approximately 10.1 V.
+\vspace{0.5cm}
+This result matches the target voltage for the V2 rail, which is specified as 10 V $\pm$ 1 V. 
+The measured peak-to-peak ripple was approximately 56 mV, corresponding to about 0.5\% of the output voltage, indicating stable operation of the converter.
+\vspace{0.5cm}
+The measurement confirms that the boost converter is able to step up the voltage from the energy storage and regulate the output voltage to the required level.
+
 \ifdefined\mainfile\else\end{document}\fi
 
 

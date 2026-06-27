@@ -77,6 +77,23 @@ int main(void) {
     // Display er valgfrit: timeout i I2C-laget goer at riggen koerer
     // videre med PWM alene hvis modulet mangler/er forkert forbundet
     uint8_t display_ok = (ssd1306_init() == I2C_OK);
+
+#if DIAG_RAW_ADC
+    // Fejlfindings-tilstand: vis raa ADC-counts (0-1023) for begge kanaler.
+    // Drej duty-potmeteret -> kun A0 skal aendre sig; drej frekvens -> kun A1.
+    // Reagerer A0 ikke (eller foelger A1), er duty-wiren ikke forbundet til A0.
+    ssd1306_clear();
+    ssd1306_print(0, 0, "DIAG raa ADC counts");
+    while (1) {
+        char b[12];
+        snprintf(b, sizeof(b), "A0:%4u", adc_readAveraged(POT_DUTY_CHANNEL));
+        ssd1306_print2x(2, 6, b);
+        snprintf(b, sizeof(b), "A1:%4u", adc_readAveraged(POT_FREQ_CHANNEL));
+        ssd1306_print2x(5, 6, b);
+        _delay_ms(120);
+    }
+#endif
+
     if (display_ok) display_visStatisk();
 
     uint16_t pot_duty = adc_readAveraged(POT_DUTY_CHANNEL);
