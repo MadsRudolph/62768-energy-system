@@ -1,6 +1,6 @@
 \ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
 
-\subsection{AC-generator, transformer og ensretter}
+\subsection{AC-generator, transformer and rectifier}
 \label{sec:generator-transformer}
 % Beskriv generatoren, 3-fase transformeren og ensretter + kondensator (15\,mF). Krav 1--3 (V1 = 15\,V). Inkl. simulering (Simulink) og målte resultater.
 
@@ -88,6 +88,7 @@ V \approx \frac{7200}{924} \approx 7.79~\text{V}
 
 \noindent In our system, the generated three-phase AC voltage is first connected through a \(Y-\Delta\) transformer and then through a three-phase rectifier. The transformer is used to adapt the three-phase voltage before it reaches the rectifier. The rectifier then converts the three-phase AC voltage into the DC voltage \(V_1\), which is used by the rest of the circuit.
 
+
 \vspace{1.5cm}
 
 \subsection*{Transformer}
@@ -132,6 +133,39 @@ a = \frac{V_{\phi,\text{primary}}}{V_{\phi,\text{secondary}}}
 \vspace{0.5cm}
 
 \noindent The delta side can also help if the load is slightly unbalanced, because the delta connection can partly redistribute the imbalance between the phases. This makes the \(Y-\Delta\) connection more stable compared to some other transformer connections. Therefore, the \(Y-\Delta\) transformer is useful in our system because it affects the voltage level, improves stability, reduces harmonic problems, and helps provide a better three-phase AC input for the rectifier.
+\vspace{0.5cm}
+\subsection*{System Dynamics of the Motor-Generator}
+
+The dynamic behavior of the motor-generator system is governed by both mechanical and electrical effects. 
+The DC motor and the mechanical load introduce inertia and damping, which influence how the system responds to changes in input.
+\\
+The mechanical part of the system can be described by the following equation:
+
+\[
+T = J_m \frac{d\omega}{dt} + B_m \omega + J_a \frac{d\omega}{dt} + B_a \omega
+\]
+where \(J_m\) and \(J_a\) represent the inertia of the motor and the load, and \(B_m\) and \(B_a\) represent mechanical damping (friction). 
+The angular speed \(\omega\) describes the rotational speed of the motor and generator.
+\\
+This equation shows that the system does not respond instantaneously to changes in input. 
+The inertia resists rapid changes in speed, while the damping represents friction that slows down the system. 
+As a result, the system exhibits a dynamic response with a certain time delay.
+\\
+These physical properties lead to a transfer function \(H(s)\) that contains poles. 
+From the system model, the motor-generator system is characterized by a dominant pole at approximately 37 rad/s and an additional pole at 7 rad/s.
+\\
+The corresponding time constants are:
+
+\[
+\tau_1 = \frac{1}{37} \approx 0.027 \, \text{s}
+\]
+\[
+\tau_2 = \frac{1}{7} \approx 0.143 \, \text{s}
+\]
+The dominant pole indicates that the system can be approximated as a first-order system, meaning that the response is mainly governed by one dominant time constant.
+\\
+These dynamics are important, as they determine how quickly the motor-generator system reacts to changes in input and form the basis for the subsequent control design.
+
 
 \vspace{1.5cm}
 
@@ -321,11 +355,10 @@ In the Simulink model, a reference node (ground) is introduced for each voltage 
 This is necessary because each voltage source in the simulation requires a return path in order to define a complete electrical circuit.
 \vspace{0.5cm}
 In a real three-phase system, the generator is typically connected in a way where the phase voltages are defined relative to each other, and a separate return path is not explicitly required in the same way. 
-However, in the simulation environment, each source must be referenced to a common node to ensure correct numerical behavior and convergence.
-\vspace{0.5cm}
+However, in the simulation environment, each source must be referenced to a common node to ensure correct behavior of this model 
 As a result, a neutral reference is added in the model, even though this does not fully represent the physical implementation. 
 This simplification allows the three-phase rectifier to be modeled correctly using individual voltage sources connected to the diode bridge.
-\vspace{0.5cm}
+\\
 Therefore, the simulation model includes a return path for each phase, which is a modeling requirement rather than a physical necessity in the real system. The KiCad model earlier (Fig.2 on page 6) shows the system more effectively in reality.
 
 \vspace{0.5cm}
@@ -335,7 +368,7 @@ Therefore, the simulation model includes a return path for each phase, which is 
     \caption{Rectifier simulation}
     \label{fig:Rectifier_sim}
 \end{figure}
-The figure shows the simulated output voltage of the rectifier during startup. 
+\noindent The figure shows the simulated output voltage of the rectifier during startup. 
 Initially, the voltage increases rapidly as the output capacitor charges. 
 After a short transient period, the voltage stabilizes around 24 V, with a voltage of 25 volt pr phase after the transformer, a 15000 uF capacitor to smooth the signal, and a power resistor with 150 ohms and 5 W is used, simulating the load and the rest of the power system. 
 This behavior is expected, since the capacitor stores energy and smooths the rectified voltage.
@@ -346,12 +379,10 @@ This behavior is expected, since the capacitor stores energy and smooths the rec
     \caption{Rectifer Ripple}
     \label{fig:Rectifier_sim_ripple}
 \end{figure}
-The second figure shows a zoomed view of the steady-state output voltage, where a small ripple is visible. 
+\noindent The second figure shows a zoomed view of the steady-state output voltage, where a small ripple is visible. 
 The ripple is caused by the rectification of the AC input and the charging and discharging of the filter capacitor.
-
 The capacitor reduces the ripple by storing energy during voltage peaks and supplying energy during voltage drops. 
 However, since the capacitor is not infinite, a small periodic variation in the voltage remains.
-
 The ripple amplitude is relatively small compared to the DC level, which indicates that the filtering is effective. 
 This results in a stable DC voltage suitable for the following stages in the system.
 \ifdefined\mainfile\else\end{document}\fi

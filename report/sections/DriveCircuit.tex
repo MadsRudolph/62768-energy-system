@@ -236,9 +236,66 @@ Overall, the chosen component values allow the PWM signal to be transferred safe
 The driver circuit is used as part of the generator control system. By changing the PWM duty cycle, the controller can adjust the speed of the DC motor. A higher duty cycle gives a higher average motor voltage, which increases the motor speed and generator output voltage. A lower duty cycle reduces the motor voltage, which lowers the generator speed and output voltage.
 
 \vspace{0.4cm}
-
+\subsection*{PID Control of the Motor}
+A PID controller is used to regulate the output voltage of the motor-generator system. 
+The system dynamics are characterized by a dominant pole at approximately 37 rad/s and an additional pole at 7 rad/s. 
+A reference voltage \(V_{ref}\) is defined as the desired output level, and the controller adjusts the system such that the measured output voltage follows this reference.
 \noindent
-Overall, the driver circuit provides a safe and reliable interface between the microcontroller and the DC motor. The CNY17-2 optocoupler provides galvanic isolation, the IR2110 provides sufficient gate drive current, and the IRF540N MOSFET switches the motor current. This makes the circuit suitable for controlling the motor-generator part of the electrical energy system using PWM.
+The controller compares the measured output voltage with the reference voltage, and the difference between these is defined as the error:
 
+\[
+e(t) = V_{ref} - V_{out}
+\]
+\noindent
+This error signal is used as the input to the digital PID controller, which generates a control signal based on proportional, integral, and derivative actions. 
+The controller output determines the PWM duty cycle, which is sent through the drive circuit to control the DC motor.
+\noindent
+The PID parameters (\(K_p\), \(K_i\), and \(K_d\)) are selected based on the system dynamics. 
+The dominant time constant \(\tau_1 \approx 0.027\) s provides a guideline for the tuning.
+\noindent
+An initial estimate of the integral gain can be found as:
+
+\[
+K_i \approx \frac{K_p}{\tau_1}
+\]
+\noindent
+The derivative gain can be approximated as:
+
+\[
+K_d \approx K_p \cdot \tau_1
+\]
+\noindent
+In practice, however, the theoretical values obtained from these relations are rarely optimal for the real system. 
+This is because the physical system includes non-ideal effects such as friction, nonlinearities, delays, and component tolerances, which are not fully captured in the simplified model.
+\noindent
+The final PID parameters were experimentally selected as:
+
+\[
+K_p = 20, \quad K_i = 2, \quad K_d = 0.6
+\]
+\noindent
+The proportional gain \(K_p\) was chosen through iterative tuning. 
+The tuning process started with a small value of \(K_p\), which was gradually increased while observing the system response. 
+Increasing \(K_p\) improves the response speed of the system, but too high values result in oscillations. 
+The selected value \(K_p = 20\) was found to provide a fast response without causing instability.
+\noindent
+The integral gain \(K_i = 2\) was chosen to eliminate steady-state error. 
+A larger value of \(K_i\) can lead to oscillatory behaviour, so a moderate value was selected to ensure stable convergence to the reference.
+\noindent
+The derivative gain \(K_d = 0.6\) was introduced to provide damping of oscillations. 
+Since the system is already relatively fast, only a small derivative term is required. 
+The derivative action reduces overshoot and improves stability.
+\noindent
+Overall, the selected PID parameters represent a compromise between theoretical predictions and practical performance. 
+The final values were obtained through iterative tuning based on simulation and experimental testing, where they provided the most stable and efficient operation of the system.
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{report/images/Simulink/simulink_PID.png}
+\caption{Simulink code gen - From MotorControl2026 file.}
+\label{fig:feedback_circuit_hulprint}
+\end{figure}
 
 \ifdefined\mainfile\else\end{document}\fi

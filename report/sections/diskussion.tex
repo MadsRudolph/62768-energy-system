@@ -1,9 +1,49 @@
-\ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
+ \ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
 
-\section{Diskussion}
+\section{Discussion}
 \label{sec:diskussion}
 % Refleksion over resultater, afvigelser fra krav, designvalg og mulige forbedringer.
 
 % TODO.
+
+When we tested the complete system, we could see that the system worked, but the values were not exactly the same in all situations. This was expected, because the system consists of many different parts that affect each other. The motor, generator, rectifier, capacitors, buck converter, boost converter, and solar panel are all connected together, so when one part changes, the rest of the system can also change a little.
+
+\vspace{0.5cm} \noindent
+Without the solar panel active, the boost converter gave 11.06 V, the buck converter gave 4.8 V, and the rectifier output was 11.5 V. When the solar panel was active, the boost converter gave 11.5 V, the buck converter gave 5.1 V, and the rectifier output increased to 15.5 V. These values are not perfect, but they are close to what we wanted. In a real circuit, it is difficult to get exactly the same values as in theory, because there are losses in the components, voltage drops in the wires, ripple from the converters, and some uncertainty in the measurements.
+
+\vspace{0.5cm} \noindent
+The clearest result from the test was the motor current. When the solar panel was not active, the motor used 1.412 A. When the solar panel was active, the motor current dropped to 0.944 A. This is a reduction of about 33\%. This shows that the solar panel actually helped the system. Since the solar panel supplied some of the power, the motor-generator did not need to work as hard, and therefore the motor used less current.
+
+\vspace{0.5cm} \noindent
+The rectifier output was also higher when the solar panel was active. This makes sense, because the solar panel adds extra energy to the system and changes the voltage level on the DC side. Since the capacitors and converters are connected together, the voltage in one part of the system can influence the voltage in another part. Therefore, the increase from 11.5 V to 15.5 V is not necessarily a problem, but more a result of the complete system finding a new operating point.
+\newline
+Another factor that may explain this behavior is that the MOSFET on the generator side was not driven ideally. An NMOS can be used for high-side switching, but it requires the gate voltage to remain sufficiently higher than the source voltage. In the implemented circuit, both the gate and drain were supplied with approximately 12 V or 15 V. When the MOSFET turned on, the source voltage increased towards the gate voltage, thereby reducing the gate-source voltage. As a result, the MOSFET may not have been fully enhanced and may have operated partly in its active region. This would create a significant voltage drop across the MOSFET and increase the amount of energy dissipated as heat.
+\newline
+A simpler solution would be to replace the NMOS with a PMOS, such as the IRF5305, which turns on when the source voltage is higher than the gate voltage. When the source is connected to 12 V or 15 V and the gate is pulled towards 0 V, the PMOS obtains a sufficiently large source-gate voltage. The IRF5305 has a maximum $R_{\mathrm{DS(on)}}$ of $0.06,\Omega$ at $V_{\mathrm{GS}}=-10,\mathrm{V}$. Since the source remains connected to the input supply, the gate-source voltage can remain approximately constant during the ON-period. This allows the MOSFET to operate with a low $R_{\mathrm{DS(on)}}$, thereby reducing conduction losses and heat dissipation.
+By implementing the buck converter in this way, the high-side driver circuit used for the NMOS-based buck converter on the PV side could also be avoided. This would simplify the overall system and is expected to provide more reliable switching. The proposed buck-converter circuit is shown below. This circuit was not experimentally verified as part of the complete system.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{PMOS_Buck .png}
+    \caption{Proposed Improved Buck Converter}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\vspace{0.5cm} \noindent
+We also performed a load test. Here we saw that when the load was increased, the measured voltage also increased. At first this was not what we expected, because normally a higher load can cause the voltage to drop. However, our system is not just a simple voltage source with a resistor. It contains converters, capacitors, PWM control, and the motor-generator. When the load changes, the converters and the generator can also change their operating point. This can explain why the voltage increased during the test.
+
+\vspace{0.5cm} \noindent
+In the load test, the boost converter behaved almost the same with and without the solar panel active. This means that the boost converter was able to keep approximately the same output voltage even when the solar panel was connected. This is good, because it shows that the boost converter was stable. At the same time, it also means that the solar panel effect is not very visible from the boost voltage alone. The motor current is a better value to look at, because it clearly shows that the motor was less loaded when the solar panel was active.
+
+\vspace{0.5cm} \noindent
+Some of the differences in the measured values can also come from the practical setup. The converters are not ideal, and there are losses in the MOSFETs, diodes, inductors, and capacitors. The wires and connections also have some resistance. Since the circuit uses PWM switching, there will also be some ripple and noise. The capacitors reduce this, but they cannot remove it completely.
+
+\vspace{0.5cm} \noindent
+One part we could have improved is the PID tuning in the Simulink code generation part. The PID controller controls the PWM signal to the motor driver, and this affects the motor speed and the generator output voltage. We got the system working, but we could probably have achieved more stable results if we had spent more time tuning the PID values. Better PID tuning could have made the system react smoother when the load changed and could maybe reduce small oscillations in the voltage.
+
+\vspace{0.5cm} \noindent
+Overall, we think the system worked well for a practical setup. The buck and boost converters produced usable voltages, and the solar panel reduced the current drawn by the motor. The results were not perfect, but they show that the main idea of the system works. With more time, we would focus on better PID tuning, more load tests, and more measurements with different solar conditions to get a better understanding of how stable the system is.
+
+
 
 \ifdefined\mainfile\else\end{document}\fi

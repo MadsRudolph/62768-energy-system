@@ -3,19 +3,26 @@
 \subsection{Buck-converter}
 \label{sec:buck}
 The buck converter is designed to perform DC--DC conversion, with the primary purpose of stepping down the input voltage to a regulated 5 V DC level. This voltage is used by multiple components in the system, ensuring stable operation and providing protection to other electronics. For the same purpose, optocouplers are also implemented to keep the PWM source (primarily the MCU) separated from the other circuit. \\
-The circuit, shown in Figure~\ref{fig:BuckRef}, consists of a MOSFET (M), a diode (D), an inductor (L), and an output capacitor (C), forming a conventional buck converter layout. The MOSFET is driven by a PWM signal, which controls the duty cycle and thereby regulates the output voltage.\\
-When the MOSFET is turned on, the input voltage $V_{in}$ is applied across the inductor, causing the inductor current to increase while storing energy in its magnetic field. During this phase, the diode is reverse-biased. When the MOSFET is turned off, the inductor current continues to flow through the diode, which becomes forward-biased, delivering energy to the load and maintaining current continuity. The capacitor smooths the output voltage by reducing ripple, while the resistor represents the load.\\
-For the buck converter connected to the rectifier, an input voltage of approximately 15 V is expected. Under ideal conditions, the output voltage of a buck converter follows
-\[
-V_{out} = D \cdot V_{in},
-\]
-meaning that a duty cycle of approximately 33\% is required to obtain 5 V. Therefore, a fixed duty cycle of 33\% is implemented using a self designed PWM generator (see INDSÆT REFERENCE TIL PWM KREDS for the PWM counter schematic).\\
-In contrast, the buck converter associated with the MPPT system requires a variable duty cycle. In this case, the PWM signal is generated and adjusted by the microcontroller (MCU), allowing dynamic control of the output voltage in order to optimize power extraction.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Buck_Reference.png}
     \caption{Buck Converter Reference}
     \label{fig:BuckRef}
+\end{figure}
+\noindent The circuit, shown in Figure~\ref{fig:BuckRef}, consists of a MOSFET (M), a diode (D), an inductor (L), and an output capacitor (C), forming a conventional buck converter layout. The MOSFET is driven by a PWM signal, which controls the duty cycle and thereby regulates the output voltage.\\
+When the MOSFET is turned on, the input voltage $V_{in}$ is applied across the inductor, causing the inductor current to increase while storing energy in its magnetic field. During this phase, the diode is reverse-biased. When the MOSFET is turned off, the inductor current continues to flow through the diode, which becomes forward-biased, delivering energy to the load and maintaining current continuity. The capacitor smooths the output voltage by reducing ripple, while the resistor represents the load.\\
+For the buck converter connected to the rectifier, an input voltage of approximately 15 V is expected. Under ideal conditions, the output voltage of a buck converter follows
+\[
+V_{out} = D \cdot V_{in},
+\]
+meaning that a duty cycle of approximately 33\% is required to obtain 5 V. Therefore, a fixed duty cycle of 33\% is implemented using a self designed PWM generator (see \ref{PWM_Buck}).\\
+In contrast, the buck converter associated with the MPPT system requires a variable duty cycle. In this case, the PWM signal is generated and adjusted by the microcontroller (MCU), allowing dynamic control of the output voltage in order to optimize power extraction.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Buck_with_PWM.png}
+    \caption{Buck converter controlled by PWM circuit}
+    \label{fig:PWM_Buck}
 \end{figure}
 % Selvbygget buck-konverter med diskrete komponenter (krav 8, 9, 12). Vout = 4.8\,V. Dimensionering af L og C, duty cycle, ripple, MOSFET-styring (IR2110, IRF540N).
 
