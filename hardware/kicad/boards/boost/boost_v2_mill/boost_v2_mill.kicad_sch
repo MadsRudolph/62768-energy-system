@@ -2517,12 +2517,6 @@
 		(uuid "3b545cd5-f5e5-48e3-a4e2-085cd6fc01a4")
 	)
 	(junction
-		(at 165.1 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5261b797-158c-4777-b00c-762691aae77a")
-	)
-	(junction
 		(at 70.485 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2964,7 +2958,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 59.69) (xy 165.1 59.69)
+			(xy 156.21 59.69) (xy 167.64 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3191,16 +3185,6 @@
 			(type default)
 		)
 		(uuid "f49c2ba5-a3c7-4c58-b3e4-7fe87c1ac638")
-	)
-	(wire
-		(pts
-			(xy 165.1 59.69) (xy 167.64 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f63973ec-4db1-4cb8-8d0e-ad3224d1dc4e")
 	)
 	(wire
 		(pts
@@ -4263,7 +4247,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0956e007-c1f5-4aee-8eae-8b26add7752a")
-		(property "Reference" "R1"
+		(property "Reference" "R501"
 			(at 62.23 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4325,98 +4309,13 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "R1")
+					(reference "R501")
 					(unit 1)
 				)
 			)
 			(project "boost_v2_mill"
 				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
 					(reference "R1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 49.53 59.69 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0b86153a-02fd-4224-b619-3d57deed6feb")
-		(property "Reference" "J1"
-			(at 46.355 53.975 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "lager ind (5V)"
-			(at 45.72 67.31 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
-			(at 49.53 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 49.53 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 49.53 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c7f943ca-7dec-421d-ba27-519c2530c773")
-		)
-		(pin "2"
-			(uuid "2ad71333-bea5-41cc-8fe1-ed9e9b0c117f")
-		)
-		(instances
-			(project "system"
-				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "J1")
-					(unit 1)
-				)
-			)
-			(project "boost_v2_mill"
-				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
-					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -4433,7 +4332,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "320e06bb-468a-4f49-bec9-3f2a60b82af2")
-		(property "Reference" "C3"
+		(property "Reference" "C502"
 			(at 115.57 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4495,7 +4394,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "C3")
+					(reference "C502")
 					(unit 1)
 				)
 			)
@@ -4518,7 +4417,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "511c3040-f41b-4155-a332-fe696a7847b7")
-		(property "Reference" "L1"
+		(property "Reference" "L501"
 			(at 76.2 52.705 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4580,7 +4479,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "L1")
+					(reference "L501")
 					(unit 1)
 				)
 			)
@@ -4603,7 +4502,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "5ceb4c28-29a3-4f78-96cf-2a60ffedc14e")
-		(property "Reference" "R4"
+		(property "Reference" "R504"
 			(at 172.72 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4665,98 +4564,13 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "R4")
+					(reference "R504")
 					(unit 1)
 				)
 			)
 			(project "boost_v2_mill"
 				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
 					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 160.02 59.69 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "77445143-5be0-4d46-ba3b-a45648c06f6d")
-		(property "Reference" "J2"
-			(at 160.02 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "V2 ud (10V)"
-			(at 160.02 63.5 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
-			(at 160.02 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 160.02 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 160.02 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "0a6b4a8b-6293-450f-b88d-896f440debc8")
-		)
-		(pin "2"
-			(uuid "02ed928c-fa09-47eb-859b-b9c917d13d5c")
-		)
-		(instances
-			(project "system"
-				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-			(project "boost_v2_mill"
-				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
-					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -4773,7 +4587,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "848d694f-a5c6-4d37-b6fa-d5a62e58d8f4")
-		(property "Reference" "U1"
+		(property "Reference" "U501"
 			(at 87.63 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4847,7 +4661,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "U1")
+					(reference "U501")
 					(unit 1)
 				)
 			)
@@ -4870,7 +4684,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "89f1a5b3-273a-4325-962b-b938d7fe81bd")
-		(property "Reference" "M1"
+		(property "Reference" "M501"
 			(at 107.95 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4935,7 +4749,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "M1")
+					(reference "M501")
 					(unit 1)
 				)
 			)
@@ -4958,7 +4772,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9b49eef7-3f5c-4ba5-b18d-0465faf09a2b")
-		(property "Reference" "D1"
+		(property "Reference" "D501"
 			(at 120.015 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5020,98 +4834,13 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "D1")
+					(reference "D501")
 					(unit 1)
 				)
 			)
 			(project "boost_v2_mill"
 				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
 					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 39.37 90.17 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9ee7cf6f-fafa-41b7-b632-919de824ec7d")
-		(property "Reference" "J4"
-			(at 46.99 88.9 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "drive +15V"
-			(at 46.99 91.44 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm"
-			(at 39.37 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 39.37 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 39.37 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c4a312e7-722a-4e68-94e5-1f949545a0e9")
-		)
-		(pin "2"
-			(uuid "a7a3335d-ce8c-4878-934b-ec0b1e6b5557")
-		)
-		(instances
-			(project "system"
-				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-			(project "boost_v2_mill"
-				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
-					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -5128,7 +4857,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b4b7cebe-ef84-4d06-90ba-12ba9dff697e")
-		(property "Reference" "#FLG01"
+		(property "Reference" "#FLG0501"
 			(at 46.355 133.985 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5187,7 +4916,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "#FLG01")
+					(reference "#FLG0501")
 					(unit 1)
 				)
 			)
@@ -5210,7 +4939,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bb8ab797-226d-425f-8415-f427b76e28e7")
-		(property "Reference" "R3"
+		(property "Reference" "R503"
 			(at 157.48 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5272,7 +5001,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "R3")
+					(reference "R503")
 					(unit 1)
 				)
 			)
@@ -5295,7 +5024,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c1664ca3-950e-429c-88f4-38fd97df42f8")
-		(property "Reference" "C2"
+		(property "Reference" "C501"
 			(at 102.87 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5357,7 +5086,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "C2")
+					(reference "C501")
 					(unit 1)
 				)
 			)
@@ -5380,7 +5109,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c55b99f2-4761-4cc3-af52-40510dbb3fba")
-		(property "Reference" "D2"
+		(property "Reference" "D502"
 			(at 154.305 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5442,7 +5171,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "D2")
+					(reference "D502")
 					(unit 1)
 				)
 			)
@@ -5465,7 +5194,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c8321fb0-c573-4ee2-a1c5-5fe89a395c98")
-		(property "Reference" "C1"
+		(property "Reference" "C503"
 			(at 142.24 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5527,7 +5256,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "C1")
+					(reference "C503")
 					(unit 1)
 				)
 			)
@@ -5550,7 +5279,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c993ff82-26e6-4bef-b3d7-309f969b4acc")
-		(property "Reference" "#FLG02"
+		(property "Reference" "#FLG0502"
 			(at 61.595 133.985 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5609,7 +5338,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "#FLG02")
+					(reference "#FLG0502")
 					(unit 1)
 				)
 			)
@@ -5632,7 +5361,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d5434d47-dc07-46f8-920f-9d3abd64778d")
-		(property "Reference" "#FLG03"
+		(property "Reference" "#FLG0503"
 			(at 78.105 135.255 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5691,7 +5420,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "#FLG03")
+					(reference "#FLG0503")
 					(unit 1)
 				)
 			)
@@ -5714,7 +5443,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e4858105-e36f-42c3-bfae-e12829f9ca18")
-		(property "Reference" "R2"
+		(property "Reference" "R502"
 			(at 107.95 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5776,7 +5505,7 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "R2")
+					(reference "R502")
 					(unit 1)
 				)
 			)
@@ -5799,7 +5528,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f6622f42-2866-4049-b8f0-48c1824d05ef")
-		(property "Reference" "U2"
+		(property "Reference" "U502"
 			(at 132.08 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5897,98 +5626,13 @@
 		(instances
 			(project "system"
 				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "U2")
+					(reference "U502")
 					(unit 1)
 				)
 			)
 			(project "boost_v2_mill"
 				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 39.37 110.49 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fabc54ae-7448-4d1f-b36c-15f9a7a93a9b")
-		(property "Reference" "J3"
-			(at 38.735 107.315 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWM (isoleret)"
-			(at 41.275 118.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 39.37 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 39.37 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 39.37 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "985d213f-ab09-48d0-950e-abfbff9a6579")
-		)
-		(pin "2"
-			(uuid "1b9a2b42-ccc4-49c3-92d7-911546a24706")
-		)
-		(instances
-			(project "system"
-				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/cc9f2042-1556-48e4-9c6b-386a5839892c"
-					(reference "J3")
-					(unit 1)
-				)
-			)
-			(project "boost_v2_mill"
-				(path "/55cdaba3-9310-42c5-bfb2-5b0fe82ece9d"
-					(reference "J3")
 					(unit 1)
 				)
 			)

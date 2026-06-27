@@ -386,7 +386,7 @@
         0,
         1,
         0,
-        2,
+        1,
         2,
         2,
         2
@@ -496,7 +496,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 1.0,
+        "clearance": 0.9,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -507,10 +507,10 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 1.0,
+        "track_width": 0.9,
         "tuning_profile": "",
         "via_diameter": 2.4,
-        "via_drill": 1.0,
+        "via_drill": 0.8,
         "wire_width": 6
       }
     ],
@@ -538,7 +538,7 @@
   "schematic": {
     "annotate_start_num": 0,
     "annotation": {
-      "method": 0,
+      "method": 1,
       "sort_order": 0
     },
     "bom_export_filename": "${PROJECTNAME}.csv",
@@ -661,7 +661,7 @@
         "uuid": "0b782bdf-68f4-4de8-a396-d6d138d6ad44"
       }
     ],
-    "used_designators": "",
+    "used_designators": "J_STO1,J_STO101,J_MOT1,J_MOT101,J_15V1,J_15V101,DV1-3,DV601-603,J_3PH1,J_3PH101,J_5V1,J_5V101,J_ARD1,J_ARD101,J_C2K1,J_C2K101,J_INA1,J_INA101,J_LOAD1,J_LOAD101,J_PV1,J_PV101,R_STAR1,R_STAR101,R1-26,R201-213,R301-305,R401-404,R501-504,#FLG1-15,#FLG201-202,#FLG301-305,#FLG401-403,#FLG501-503,#FLG601-602,#PWR1-11,#PWR201-205,#PWR301-306,C1-20,C201-212,C401-405,C501-503,CV1-3,CV601-603,D1-17,D201-212,D401-403,D501-502,J1-22,J201-207,J301-302,J401-404,J501-504,J601-605,L1-3,L201,L401,L501,M1,M501,Q1-3,Q201-202,Q401,RV1-11,RV201-202,RV601-609,SW1,SW201,TP1-17,TP101-117,U1-15,U201-208,U301-303,U401-402,U501-502",
     "variants": []
   },
   "sheets": [
