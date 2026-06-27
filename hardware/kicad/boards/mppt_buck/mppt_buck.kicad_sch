@@ -4521,6 +4521,12 @@
 			(uuid "486d4342-3669-4561-bc62-f36e39154a9d")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "R2")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "R2")
@@ -4603,6 +4609,12 @@
 			(uuid "460cad8d-b48e-415b-b627-92d0ab119187")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "Q1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "Q1")
@@ -4682,6 +4694,12 @@
 			(uuid "2015200a-653a-47e1-92d5-b07fd9c7a008")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "R4")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "R4")
@@ -4761,6 +4779,12 @@
 			(uuid "fd8b87aa-ece4-42db-a595-e90d987e70b9")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "J1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "J1")
@@ -4840,6 +4864,12 @@
 			(uuid "1b62d24a-cc8c-461f-92ea-00fdcedac30a")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "C4")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "C4")
@@ -4919,6 +4949,12 @@
 			(uuid "b88f21f8-4908-4b2c-94c4-6ff7fbb3ba82")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "J4")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "J4")
@@ -4998,6 +5034,12 @@
 			(uuid "4d53201e-e6fe-413d-91d5-a4cb3c5e0343")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "C5")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "C5")
@@ -5077,6 +5119,12 @@
 			(uuid "214c6775-d5f4-40c0-b621-5122b12d1c48")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "D1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "D1")
@@ -5156,6 +5204,12 @@
 			(uuid "d8d2eca9-c870-43a7-acc0-d4e40621d770")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "J3")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "J3")
@@ -5235,6 +5289,12 @@
 			(uuid "912d170c-65b8-41d2-8e7d-fe720dd6c5e1")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "L1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "L1")
@@ -5326,6 +5386,12 @@
 			(uuid "ee104d4b-924c-450c-8e69-283781754212")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "U1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "U1")
@@ -5405,6 +5471,12 @@
 			(uuid "79f02723-8624-4bdd-abac-32fe8c036dbc")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "C2")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "C2")
@@ -5484,6 +5556,12 @@
 			(uuid "757d2195-3a7c-4ac4-9743-82020cf5c278")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "R1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "R1")
@@ -5563,6 +5641,12 @@
 			(uuid "4d189fd1-08ab-4017-aeaf-a96aeae79acc")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "C1")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "C1")
@@ -5642,6 +5726,12 @@
 			(uuid "2e805802-ca69-4442-8988-6e8e4c81bc6b")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "R3")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "R3")
@@ -5721,6 +5811,12 @@
 			(uuid "734d40c4-f2b2-4466-b161-8e98840e0d2a")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "C3")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "C3")
@@ -5836,6 +5932,12 @@
 			(uuid "208bc954-5db3-444c-a766-bd5882aa2547")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "U2")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "U2")
@@ -5915,6 +6017,12 @@
 			(uuid "f4b5090a-cc04-4046-bf68-8619304587a2")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "D3")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "D3")
@@ -5991,6 +6099,12 @@
 			(uuid "4854e992-3d75-47ad-8111-bcf58254ea3b")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "#FLG02")
@@ -6067,6 +6181,12 @@
 			(uuid "6bae178e-4f70-438b-a1db-d67f7f1147cd")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "#FLG01")
@@ -6146,6 +6266,12 @@
 			(uuid "b82bd17c-22ad-45ca-8e48-3c06cccf3bb3")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "D2")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "D2")
@@ -6222,6 +6348,12 @@
 			(uuid "ece2b2b1-0b12-4c80-9788-06861dbf51cc")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "#FLG03")
@@ -6301,6 +6433,12 @@
 			(uuid "e439dd39-73dc-45e7-88e2-4e60f5be23a7")
 		)
 		(instances
+			(project "system"
+				(path "/0b782bdf-68f4-4de8-a396-d6d138d6ad44/f4bfb16c-4c6c-4d77-b271-bd8c473db089"
+					(reference "J2")
+					(unit 1)
+				)
+			)
 			(project "mppt_buck"
 				(path "/7246141b-c4c0-4c0c-993d-46fa223c20bd"
 					(reference "J2")
@@ -6314,5 +6452,4 @@
 			(page "1")
 		)
 	)
-	(embedded_fonts no)
 )
