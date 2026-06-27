@@ -136,7 +136,12 @@ Brug DIP-sokler fra shoppen til alle IC'er.
   `tools/generators/build_mppt_buck.py`. Production-DXF + Gerbers i `production/mppt_buck/`.
   **Verificer foer aetsning:** PWM-frekvens (saetter L), de fysiske kondensator-pitch
   (PV-bulk, boot-cap), og toroidens strømrating — se `AUDIT_buck_boost_ir2110.md` §8.
-- **C2000 feedback/sensorprint (TI-port)** (`boards/c2000_feedback/`). Front-end mellem
+- **C2000 feedback/sensorprint (TI-port)** (`boards/c2000_feedback/`). **NB (2026-06-27):
+  revideret til det integrerede system-board** — nu KUN 3 spændingskanaler (V1/LOAD/STORE →
+  ADC); strømkanalerne I1/I2/I3 og PWM-pass er FJERNET (strøm måles af current_sense → Arduino;
+  C2000 EPWM går direkte til konverter-optoerne). ERC 0. Se
+  `docs/superpowers/specs/2026-06-27-system-integrated-pcb-interface-contract.md`.
+  Den oprindelige 6-kanals standalone-beskrivelse herunder er historik. Front-end mellem
   effektsystemet og LAUNCHXL-F28027 — **alt skaleret til 0–3.3 V** (C2000 ADC abs-max 3.3 V,
   modsat de 5 V-skalerede current_sense/feedback-print). 6 kanaler + PWM-pass:
   V1/V2/V3-delere (÷11 / ÷7 / ÷3) med 1k serie + **3.0 V zener-klemme** + 10n;
