@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
 """
-Rebuild the integrated-board placement from the floorplan (recovery after the
-unsaved-placement loss). Run with KiCad 10 python:
+Rebuild the integrated-board placement from the floorplan (recovery + repack).
+Run with KiCad 10 python:
   & "C:\\Program Files\\KiCad\\10.0\\bin\\python.exe" tools/place_system.py
 
-Edge connectors -> borders; the 5 board clusters shelf-packed into their regions
-(big parts first); test points in a row; R_STAR on the GND/GND_MCU boundary;
-Edge.Cuts outline 196 x 122 mm (<=203.2 wide for the SRM-20).
-A first-pass auto-placement — non-overlapping and regioned; fine-tune by hand after.
+Toroids placed at fixed spots; the 5 clusters shelf-packed AROUND them with a
+clearance margin so courtyards never touch; edge connectors on the borders;
+test points bottom-right; R_STAR on the GND/GND_MCU boundary; Edge.Cuts 200x130.
+Prints region overflows + a final overlap count (must be 0).
+First-pass auto-placement; hand-tune after.
 """
-import re, sys
+import re
 import pcbnew
 from pcbnew import VECTOR2I, FromMM, ToMM
 
 PCB = r"C:\Users\Mads2\DTU\4. Semester\Electrical Energy Systems\team\hardware\kicad\system\system.kicad_pcb"
-BW, BH = 200.0, 130.0   # <=203.2 wide (mill X), <=133 tall (stock)
+BW, BH = 200.0, 130.0
+CLR = 0.8   # clearance margin added around every footprint bbox (mm)
 
 board = pcbnew.LoadBoard(PCB)
 fps = {fp.GetReference(): fp for fp in board.GetFootprints()}
+
+def size_mm(fp):
+    bb = fp.GetBoundingBox(False)
+    return ToMM(bb.GetWidth()), ToMM(bb.GetHeight())
 
 def put(fp, x, y, angle=0):
     fp.SetOrientationDegrees(angle)
@@ -25,75 +31,68 @@ def put(fp, x, y, angle=0):
     c = fp.GetBoundingBox(False).Centre()
     fp.SetPosition(VECTOR2I(t.x + (t.x - c.x), t.y + (t.y - c.y)))
 
-def size_mm(fp):
-    bb = fp.GetBoundingBox(False)
-    return ToMM(bb.GetWidth()), ToMM(bb.GetHeight())
-
-def shelf(refs, x0, y0, xmax, gap=2.5, angle=0):
-    """Left-to-right, wrap at xmax, rows downward. Returns bottom y used."""
+def shelf(refs, x0, y0, xmax, ymax=None, label=""):
+    """Left-to-right, wrap at xmax, rows downward. Each cell = bbox + 2*CLR."""
     cx, cy, rowh = x0, y0, 0.0
     for r in refs:
         fp = fps.get(r)
         if fp is None:
             continue
-        fp.SetOrientationDegrees(angle)
-        w, h = size_mm(fp)
+        fp.SetOrientationDegrees(0)
+        w, h = size_mm(fp); w += 2*CLR; h += 2*CLR
         if cx + w > xmax and cx > x0:
-            cx = x0; cy += rowh + gap; rowh = 0.0
-        put(fp, cx + w/2, cy + h/2, angle)
-        cx += w + gap; rowh = max(rowh, h)
-    return cy + rowh
+            cx = x0; cy += rowh; rowh = 0.0
+        put(fp, cx + w/2, cy + h/2, 0)
+        cx += w; rowh = max(rowh, h)
+    bottom = cy + rowh
+    if ymax and bottom > ymax + 0.5:
+        print(f"  WARN {label}: overflow bottom {bottom:.1f} > {ymax}")
+    return bottom
 
-# --- classify refs ---
-EDGE = {  # ref: (x, y, angle)
-    "J_3PH101": (12, 22, 0), "J_MOT101": (12, 86, 0),
-    "J_PV101": (98, 8, 0), "J_INA101": (98, 18, 0), "J_STO101": (128, 8, 0),
-    "J_LOAD101": (120, 124, 0),
-    "J_15V101": (190, 12, 0), "J_5V101": (190, 28, 0),
-    "J_C2K101": (192, 62, 0), "J_ARD101": (192, 102, 0),
+# --- classify ---
+EDGE = {
+    "J_3PH101": (10, 24, 0), "J_MOT101": (10, 92, 0),
+    "J_PV101": (90, 8, 0), "J_INA101": (112, 16, 90), "J_STO101": (132, 8, 0),
+    "J_LOAD101": (100, 123, 0),
+    "J_15V101": (190, 12, 0), "J_5V101": (190, 27, 0),
+    "J_C2K101": (192, 66, 0), "J_ARD101": (192, 106, 0),
 }
-def first_digit(ref):
-    m = re.search(r"(\d+)$", ref)
-    return m.group(1)[0] if m else "?"
+FIXED_BIG = {"L401": (100, 46, 0), "L501": (100, 99, 0)}  # toroids (left of centre col)
+def fdig(ref):
+    m = re.search(r"(\d+)$", ref); return m.group(1)[0] if m else "?"
 
 clusters = {"2": [], "3": [], "4": [], "5": [], "6": []}
 tps = []
 for ref in fps:
-    if ref in EDGE or ref == "R_STAR101":
+    if ref in EDGE or ref in FIXED_BIG or ref == "R_STAR101":
         continue
     if ref.startswith("TP"):
         tps.append(ref); continue
-    d = first_digit(ref)
+    d = fdig(ref)
     if d in clusters:
         clusters[d].append(ref)
-
-# big parts first within each cluster (better packing + anchors land top-left)
+if "R_STAR101" in fps:
+    clusters["6"].append("R_STAR101")   # pack with c2000 (GND_MCU side)
 for d in clusters:
     clusters[d].sort(key=lambda r: -(lambda wh: wh[0]*wh[1])(size_mm(fps[r])))
 tps.sort(key=lambda r: int(re.search(r"\d+", r).group()))
 
-# --- place edge connectors ---
-for ref, (x, y, a) in EDGE.items():
+# --- fixed parts ---
+for ref, (x, y, a) in {**EDGE, **FIXED_BIG}.items():
     if ref in fps:
         put(fps[ref], x, y, a)
+# --- clusters ---
+# LEFT column: motor_power (2xx) over motor_feedback (3xx)
+shelf(clusters["2"], 18, 6, 80, ymax=102, label="motor_power")
+shelf(clusters["3"], 18, 106, 80, ymax=128, label="motor_feedback")
+# CENTRE column: toroids on the left (x 82..118), parts to their right (x 120..156)
+shelf(clusters["4"], 120, 24, 158, ymax=78, label="mppt_buck")
+shelf(clusters["5"], 120, 82, 158, ymax=128, label="boost")
+# RIGHT column: c2000 dividers + R_STAR (top), test points (bottom)
+shelf(clusters["6"], 160, 8, 186, ymax=95, label="c2000")
+shelf(tps, 160, 99, 188, ymax=128, label="testpoints")
 
-# --- place clusters in regions ---
-# LEFT: motor_power (2xx) + motor_feedback (3xx)
-b = shelf(clusters["2"], 22, 8, 92, gap=2.5)
-shelf(clusters["3"], 22, max(b + 4, 104), 90, gap=2.5)
-# CENTRE-TOP: mppt_buck (4xx)
-shelf(clusters["4"], 98, 24, 154, gap=2.2)
-# CENTRE-BOTTOM: boost (5xx)
-shelf(clusters["5"], 98, 66, 154, gap=2.2)
-# RIGHT: c2000_feedback (6xx)
-shelf(clusters["6"], 158, 12, 194, gap=2.0)
-# R_STAR on the GND/GND_MCU boundary (between centre power + right MCU)
-if "R_STAR101" in fps:
-    put(fps["R_STAR101"], 156, 108, 0)
-# test points: row along the bottom (move locally near nets when routing)
-shelf(tps, 30, 122, 192, gap=3.0)
-
-# --- Edge.Cuts outline (replace any existing) ---
+# --- Edge.Cuts ---
 for d in list(board.GetDrawings()):
     if d.GetLayer() == pcbnew.Edge_Cuts:
         board.Remove(d)
@@ -101,11 +100,17 @@ rect = pcbnew.PCB_SHAPE(board)
 rect.SetShape(pcbnew.SHAPE_T_RECT)
 rect.SetStart(VECTOR2I(FromMM(0), FromMM(0)))
 rect.SetEnd(VECTOR2I(FromMM(BW), FromMM(BH)))
-rect.SetLayer(pcbnew.Edge_Cuts)
-rect.SetWidth(FromMM(0.15))
-rect.SetFilled(False)
+rect.SetLayer(pcbnew.Edge_Cuts); rect.SetWidth(FromMM(0.15)); rect.SetFilled(False)
 board.Add(rect)
 
+# --- overlap check (courtyard-excluding bbox) ---
+boxes = [(f.GetReference(), f.GetBoundingBox(False)) for f in board.GetFootprints()]
+ov = []
+for i in range(len(boxes)):
+    for j in range(i+1, len(boxes)):
+        if boxes[i][1].Intersects(boxes[j][1]):
+            ov.append((boxes[i][0], boxes[j][0]))
+
 pcbnew.SaveBoard(PCB, board)
-print(f"placed {len(fps)} footprints; outline {BW:.0f}x{BH:.0f} mm")
-print("clusters:", {d: len(v) for d, v in clusters.items()}, "| TP:", len(tps))
+print(f"placed {len(fps)} footprints, outline {BW:.0f}x{BH:.0f} mm")
+print(f"OVERLAPS: {len(ov)}", "" if not ov else ov[:15])
