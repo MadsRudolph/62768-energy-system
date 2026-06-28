@@ -5615,7 +5615,7 @@
 		(dnp no)
 		(uuid "8a39f23d-cb6d-4b6f-81ec-db2c52ec7aa3")
 		(property "Reference" "J_C2K101"
-			(at 197.485 97.155 0)
+			(at 201.93 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

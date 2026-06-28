@@ -1,13 +1,60 @@
 ** Drc report for buck_v2.kicad_pcb **
-** Created on 2026-06-11T16:42:28+0200 **
+** Created on 2026-06-24T11:58:56 **
+** Report includes: Errors, Warnings **
 
-** Found 1 DRC violations **
-[track_dangling]: Track has unconnected end
-    Local override; warning
-    @(102.5410 mm, 94.5536 mm): Track [/GND] on B.Cu, length 1.3205 mm
+** Found 0 DRC violations **
 
-** Found 0 unconnected pads **
+** Found 10 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+    @(20.3300 mm, 19.9200 mm): Zone [/GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(55.7300 mm, 29.0100 mm): PTH pad 1 [Net-(U1-VO)] of C2
+    @(48.0400 mm, 29.9375 mm): Track [Net-(U1-VO)] on B.Cu, length 2.3017 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(46.9866 mm, 38.8466 mm): Track [Net-(D2-A)] on B.Cu, length 1.6215 mm
+    @(37.8400 mm, 37.7000 mm): PTH pad 2 [Net-(D2-A)] of R1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(45.8400 mm, 45.3200 mm): PTH pad 1 [Net-(D1-K)] of R2
+    @(53.8400 mm, 45.3200 mm): PTH pad 1 [Net-(D1-K)] of D1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(75.6900 mm, 99.5275 mm): Track [/SW] on B.Cu, length 5.2621 mm
+    @(95.0000 mm, 100.9875 mm): PTH pad 2 [/SW] of C7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(95.0000 mm, 100.9875 mm): PTH pad 2 [/SW] of C7
+    @(99.2643 mm, 64.4132 mm): Track [/SW] on B.Cu, length 5.3235 mm
 
 ** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - PTH inside courtyard
+    - NPTH inside courtyard
+    - Footprint component type doesn't match footprint pads
 
 ** End of Report **
