@@ -354,7 +354,8 @@ Overall, the measurements confirm that the rectifier output voltage depends stro
 In the Simulink model, a reference node (ground) is introduced for each voltage source. 
 This is necessary because each voltage source in the simulation requires a return path in order to define a complete electrical circuit.
 \vspace{0.5cm}
-In a real three-phase system, the generator is typically connected in a way where the phase voltages are defined relative to each other, and a separate return path is not explicitly required in the same way. 
+
+\noindent In a real three-phase system, the generator is typically connected in a way where the phase voltages are defined relative to each other, and a separate return path is not explicitly required in the same way. 
 However, in the simulation environment, each source must be referenced to a common node to ensure correct behavior of this model 
 As a result, a neutral reference is added in the model, even though this does not fully represent the physical implementation. 
 This simplification allows the three-phase rectifier to be modeled correctly using individual voltage sources connected to the diode bridge.
@@ -369,7 +370,7 @@ Therefore, the simulation model includes a return path for each phase, which is 
     \label{fig:Rectifier_sim}
 \end{figure}
 \noindent The figure shows the simulated output voltage of the rectifier during startup. 
-Initially, the voltage increases rapidly as the output capacitor charges. 
+Initially the voltage increases rapidly as the output capacitor charges. 
 After a short transient period, the voltage stabilizes around 24 V, with a voltage of 25 volt pr phase after the transformer, a 15000 uF capacitor to smooth the signal, and a power resistor with 150 ohms and 5 W is used, simulating the load and the rest of the power system. 
 This behavior is expected, since the capacitor stores energy and smooths the rectified voltage.
 
@@ -379,7 +380,7 @@ This behavior is expected, since the capacitor stores energy and smooths the rec
     \caption{Rectifer Ripple}
     \label{fig:Rectifier_sim_ripple}
 \end{figure}
-\noindent The second figure shows a zoomed view of the steady-state output voltage, where a small ripple is visible. 
+\noindent The second figure shows a zoomed view of the steady state output voltage, where a small ripple is visible. 
 The ripple is caused by the rectification of the AC input and the charging and discharging of the filter capacitor.
 The capacitor reduces the ripple by storing energy during voltage peaks and supplying energy during voltage drops. 
 However, since the capacitor is not infinite, a small periodic variation in the voltage remains.
