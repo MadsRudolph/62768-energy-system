@@ -1,37 +1,41 @@
 \ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
 
-\section{Spefications}
+\section{Specifications}
 \label{sec:kravsporing}
 % Sporing af kravspecifikationens 18 krav -> ansvarlig / delsystem / status.
 % Hold synkront med GitHub-issues.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c l c l c}
+    \begin{tabular}{c l c l l}
         \toprule
         \textbf{\#} & \textbf{Requirement} & \textbf{Pri.} & \textbf{Subsystem} & \textbf{Status} \\
         \midrule
-        1  & AC generator voltage (V1)     & 1 & Generator   & \checkmark \\
-        2  & AC generator current          & 1 & Generator   & \checkmark \\
-        3  & V1 under load                 & 1 & Generator   & \checkmark \\
-        4  & Load voltage (V2)             & 1 & Boost       & \checkmark \\
-        5  & Load current (V2)             & 1 & Boost       & \checkmark \\
-        6  & V2 under load                 & 1 & Boost       & \checkmark \\
-        7  & Energy storage current (V3)   & 1 & Solar       & \checkmark \\
-        8  & Voltage conversion            & 1 & Buck/Boost  & \checkmark \\
-        9  & Discrete components           & 1 & Buck/Boost  & \checkmark \\
-        10 & Current measurement (discrete)& 1 & Measurement & \checkmark \\
-        11 & Energy source prioritization  & 1 & Integration & \checkmark \\
-        12 & Buck and Boost implemented    & 1 & Buck/Boost  & \checkmark \\
-        13 & System monitoring             & 2 & Software    &  \\
-        14 & Monitoring every 1.0\,s       & 2 & Software    & \\
-        15 & Software design (Arduino)     & 2 & Software    &  \\
-        16 & System test (100\,W LED)      & 1 & Test        & \checkmark \\
-        17 & Linear regulator              & 2 & Solar       & \\
-        18 & Data processing platform      & 2 & Software    & \\
+        1  & AC generator voltage (V1)     & 1 & Generator   & Partial \\
+        2  & AC generator current          & 1 & Generator   & Not shown \\
+        3  & V1 under load                 & 1 & Generator   & Not shown \\
+        4  & Load voltage (V2)             & 1 & Boost       & Partial \\
+        5  & Load current (V2)             & 1 & Boost       & Met \\
+        6  & V2 under load                 & 1 & Boost       & Partial \\
+        7  & Energy storage current (V3)   & 1 & Solar       & Met \\
+        8  & Voltage conversion            & 1 & Buck/Boost  & Met \\
+        9  & Discrete components           & 1 & Buck/Boost  & Met \\
+        10 & Current measurement           & 1 & Measurement & Met \\
+        11 & Energy source prioritization  & 1 & Integration & Met \\
+        12 & Buck and Boost implemented    & 1 & Buck/Boost  & Met \\
+        13 & System monitoring             & 2 & Software    & Not done \\
+        14 & Monitoring every 1.0\,s       & 2 & Software    & Not done \\
+        15 & Software design (Arduino)     & 2 & Software    & Partial \\
+        16 & System test (100\,W LED)      & 1 & Test        & Met \\
+        17 & Linear regulator              & 2 & Solar       & Not done \\
+        18 & Data processing platform      & 2 & Software    & Met \\
         \bottomrule
     \end{tabular}
-    \caption{Speficications. Pri. 1 = must be designed and implemented; Pri. 2 = voluntarily.}
+    \caption{Requirement tracing. Pri.~1 = must be designed and implemented; Pri.~2 =
+    voluntary. Status: \emph{Met} = demonstrated within specification;
+    \emph{Partial} = implemented but not fully verified against the numeric criterion;
+    \emph{Not shown} = not characterised quantitatively; \emph{Not done} = voluntary
+    requirement not implemented.}
     \label{tab:kravsporing}
 \end{table}
 

@@ -17,7 +17,7 @@ In contrast, the simulation includes a buck converter, which acts as a controlla
 For this reason, the simulation results are not expected to match the measured voltage, current, and power values directly. The purpose of the simulation is instead to demonstrate that the control strategy works and that the system is able to converge to a stable operating point where the power is maximum
 \begin{figure} [H]
     \centering
-    \includegraphics[width=1\linewidth]{report/images/MPPT/PV simulation med simulink.png}
+    \includegraphics[width=1\linewidth]{images/MPPT/PV simulation med simulink.png}
     \caption{Simulation of PV regulation}
     \label{fig:PV_sim}
 \end{figure}
@@ -25,7 +25,7 @@ For this reason, the simulation results are not expected to match the measured v
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=1\linewidth]{report/images/MPPT/image.png}
+    \includegraphics[width=1\linewidth]{images/MPPT/image.png}
     \caption{PWM simulation}
     \label{fig:PWM_sim}
 \end{figure}
@@ -54,7 +54,7 @@ In this project, the driver circuit consists of a CNY17-3 optocoupler, an IR2110
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.90\textwidth]{report/images/DriveCircuit/Drivecircuit-KiCad.png}
+\includegraphics[width=0.90\textwidth]{images/DriveCircuit/Drivecircuit-KiCad.png}
 \caption{KiCad schematic of the motor driver circuit used in the project. - Lecture 2, Exp 3A}
 \label{fig:driver_circuit_KiCad}
 \end{figure}
@@ -225,7 +225,7 @@ Overall, the chosen component values allow the PWM signal to be transferred safe
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.70\textwidth]{report/images/DriveCircuit/DriveCircuit-Hulprint.jpg}
+\includegraphics[width=0.70\textwidth]{images/DriveCircuit/DriveCircuit-Hulprint.jpg}
 \caption{Physical implementation of the motor driver circuit on perfboard.}
 \label{fig:driver_circuit_physical}
 \end{figure}
@@ -293,9 +293,9 @@ The final values were obtained through iterative tuning based on simulation and 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{report/images/Simulink/simulink_PID.png}
+\includegraphics[width=1\textwidth]{images/Simulink/simulink_PID.png}
 \caption{Simulink code gen - From MotorControl2026 file.}
-\label{fig:feedback_circuit_hulprint}
+\label{fig:simulink_pid_codegen}
 \end{figure}
 
 \ifdefined\mainfile\else\end{document}\fi

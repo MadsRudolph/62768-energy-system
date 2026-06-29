@@ -41,7 +41,7 @@ The buck converter is primarily used in combination with the PV system, where it
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.90\textwidth]{report/images/Blokdiagram/Motor_circuit_blokdiagram1.png}
+\includegraphics[width=0.90\textwidth]{images/Blokdiagram/Motor_circuit_blokdiagram1.png}
 \caption{Motor/Generator Subsystem }
 \label{fig:blokdiagram_Motor_circuit}
 \end{figure}
@@ -60,14 +60,14 @@ Afterwards, the output values of the buck converter, boost converter, and rectif
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{report/images/Complete System measurements/CSM_without_Solar_panel_active.png}
+    \includegraphics[width=0.85\textwidth]{images/Complete System measurements/CSM_without_Solar_panel_active.png}
     \caption{Complete system measurement without the solar panel active.}
     \label{fig:csm_without_solar}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{report/images/Complete System measurements/CSM_with_solar_panel_active.png}
+    \includegraphics[width=0.85\textwidth]{images/Complete System measurements/CSM_with_solar_panel_active.png}
     \caption{Complete system measurement with the solar panel active.}
     \label{fig:csm_with_solar}
 \end{figure}
@@ -123,48 +123,80 @@ Overall, the measurements show that the complete system works. The voltage value
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{image2.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/image2.png}
     \caption{Rectifier voltage (V1) without PV }
-    \label{fig:placeholder}
+    \label{fig:v1_without_pv}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{image_Boost.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/image_Boost.png}
     \caption{Voltage on Boost converter without PV. Our measured voltage on the Boost converter (V2) at 68 ohms, which satisfied the requirement of +/- 1 Volts}
     \label{V_Boost_without_PV}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{image.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/image.png}
     \caption{Buck converter output voltage (V3) without PV satisfied the requirement of +/- 0.5 Volts}
-    \label{fig:placeholder}
+    \label{fig:v3_without_pv}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{imageBoostPV.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/imageBoostPV.png}
     \caption{Boost voltage (V2) at 68 ohms with PV is a little to high V2}
-    \label{fig:placeholder}
+    \label{fig:v2_with_pv}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{image4.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/image4.png}
     \caption{Buck converter voltage (V3) with PV satisfies the requirement for voltage:}
-    \label{fig:placeholder}
+    \label{fig:v3_with_pv}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{image5.png}
+    \includegraphics[width=0.5\linewidth]{images/integration/image5.png}
     \caption{Rectifier voltage (V1) with PV satisfies requirement for voltage }
-    \label{fig:placeholder}
+    \label{fig:v1_with_pv}
 \end{figure}
 \noindent
 
+
+\vspace{0.5cm}
+
+\subsection{Requirement compliance and limitations}
+\noindent
+The measured rail voltages can be compared directly with the specification. The buck
+output $V_3$ measured $4.8~\text{V}$ without the panel and $5.1~\text{V}$ with it,
+which is inside the required $5~\text{V}\pm0.5~\text{V}$ band (Krav~7) in both cases.
+
+\vspace{0.5cm} \noindent
+The rectified bus $V_1$ is required to be $15~\text{V}\pm1~\text{V}$ (Krav~1). This was
+met with the solar panel active, where $V_1$ reached $15.5~\text{V}$, but in
+generator-only operation the bus settled at $11.5~\text{V}$, below the lower limit. The
+reason is that the PID loop on the generator side was not able to hold the bus at the
+target under this operating point, and the high-side switching of the generator-side
+MOSFET was not ideal (discussed in Section~\ref{sec:diskussion}). The current-step
+behaviour of Krav~2 and Krav~3 (delivery of $300~\text{mA}$ to the buck and recovery
+within $1.0~\text{s}$ after a $100$--$300~\text{mA}$ load change) was not characterised
+quantitatively and is therefore only partially verified.
+
+\vspace{0.5cm} \noindent
+The boost rail $V_2$ is required to stay within $10~\text{V}\pm1~\text{V}$ (Krav~4 and
+Krav~6). On the bench the boost converter reached $10.1~\text{V}$ at a $48\%$ duty cycle
+(Section~\ref{sec:boost}), comfortably inside the band, but in the integrated system the
+same rail measured $11.06~\text{V}$ without the panel and $11.5~\text{V}$ with it ---
+about $1~\text{V}$ above the upper limit. The difference comes from the boost operating
+at a fixed duty cycle while its input voltage and load differ from the bench conditions,
+so the duty cycle was no longer the value that produces exactly $10~\text{V}$. Closing a
+control loop around $V_2$, or trimming the duty cycle to the integrated operating point,
+would bring the rail back inside tolerance; this was not done in the present setup. The
+$\geq150~\text{mA}$ delivery of Krav~5 is met, since the rail supplies the $68~\Omega$
+load at roughly $11~\text{V}$, corresponding to about $160~\text{mA}$.
 
 \vspace{0.5cm}
 

@@ -11,6 +11,18 @@
 \usepackage[danish]{babel}
 \usepackage{subcaption}
 \usepackage{graphicx}              % Indsættelse af billeder
+% ------------------------------------------------------------
+%  Rod-uafhængige stier: virker både når der kompileres fra
+%  report/-mappen (lokalt) og fra repo-roden (Overleaf).
+%  Alle \input/\includegraphics bruger report-relative stier
+%  (images/..., sections/...); fallback-listerne nedenfor lader
+%  TeX også finde dem under report/.
+% ------------------------------------------------------------
+\graphicspath{{./}{report/}{../}}
+\makeatletter
+\providecommand\input@path{}
+\g@addto@macro\input@path{{./}{report/}}
+\makeatother
 \usepackage[absolute,overlay]{textpos}
 \usepackage{float}                 % H-placering
 \usepackage{amsmath}

@@ -2,8 +2,49 @@
 
 \subsection{Current measurements}
 \label{sec:stroemmaaling}
-% Strømmåling med diskrete komponenter -- op-amps tilladt, ingen øvrige IC'er (krav 10). Reference: ACS712 / INA219.
+% Strømmåling -- op-amps tilladt, ingen øvrige IC'er (krav 10). INA219 anvendt efter aftale.
 
-% TODO: design, beregninger, simulering, implementering og måleresultater.
+\noindent
+Current measurement is needed in two places in the system. First, the MPPT algorithm
+needs the panel current in order to compute the PV power $P = V \cdot I$ and track the
+maximum power point (see Section~\ref{sec:styring}). Second, the supply currents are
+used to verify the operation of the complete system, in particular to show that the
+solar panel offloads the motor--generator.
+
+\vspace{0.5cm} \noindent
+The underlying measurement principle is the same in all cases. A small \emph{shunt
+resistor} is placed in series with the current path, and the voltage drop across it is
+measured. By Ohm's law the current then follows directly as
+\[
+I = \frac{V_{\text{shunt}}}{R_{\text{shunt}}}.
+\]
+Because the shunt resistance is small, the inserted voltage drop is kept low, so the
+measurement does not noticeably disturb the circuit. The shunt resistor itself is a
+single passive component, and the differential voltage across it is what has to be
+amplified and digitised.
+
+\vspace{0.5cm} \noindent
+On the PV side this measurement is implemented with an INA219 module, which contains a
+$0.1~\Omega$ shunt resistor together with an instrumentation amplifier and a 12-bit
+analog-to-digital converter. The module is configured for a $32~\text{V}$ bus range and
+a $\pm 320~\text{mV}$ shunt range (gain $\div 8$), and its calibration register is set so
+that the current and power registers read directly in amps and watts. The Arduino reads
+the bus voltage, the shunt voltage and the resulting current from the INA219 over the
+I\textsuperscript{2}C bus (pins A4/A5). The series shunt resistor, whose differential
+voltage is amplified and converted, is the core of the measurement, and the same shunt
+could equally be read by an op-amp difference amplifier ahead of the microcontroller
+ADC.
+
+\vspace{0.5cm} \noindent
+In the MPPT control loop the INA219 returns the panel voltage and current in every
+iteration, and these are multiplied to obtain the instantaneous PV power used by the
+Perturb-and-Observe algorithm. The measured panel currents span the full operating
+range of the module, from approximately $0.60~\text{A}$ near short circuit down to about
+$0.05~\text{A}$ close to the open-circuit voltage, as listed in
+Table~\ref{tab:pv_measurements}. The supply currents for the complete-system test were
+read directly from the laboratory power supplies: the motor drew $1.412~\text{A}$ with
+the solar panel inactive and $0.944~\text{A}$ with it active, a reduction of about
+$33\%$, which confirms that the panel contributes power and reduces the load on the
+motor--generator.
 
 \ifdefined\mainfile\else\end{document}\fi
