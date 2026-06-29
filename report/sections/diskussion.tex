@@ -17,14 +17,14 @@ The clearest result from the test was the motor current. When the solar panel wa
 \vspace{0.5cm} \noindent
 The rectifier output was also higher when the solar panel was active. This makes sense, because the solar panel adds extra energy to the system and changes the voltage level on the DC side. Since the capacitors and converters are connected together, the voltage in one part of the system can influence the voltage in another part. Therefore, the increase from 11.5 V to 15.5 V is not necessarily a problem, but more a result of the complete system finding a new operating point.
 \newline
-Another factor that may explain this behavior is that the MOSFET on the generator side was not driven ideally. An NMOS can be used for high-side switching, but it requires the gate voltage to remain sufficiently higher than the source voltage. In the implemented circuit, both the gate and drain were supplied with approximately 12 V or 15 V. When the MOSFET turned on, the source voltage increased towards the gate voltage, thereby reducing the gate-source voltage. As a result, the MOSFET may not have been fully enhanced and may have operated partly in its active region. This would create a significant voltage drop across the MOSFET and increase the amount of energy dissipated as heat.
+Another factor that may explain this is that the MOSFET on the generator side was not driven ideally. An NMOS can be used for high-side switching, but it requires the gate voltage to remain sufficiently higher than the source voltage. In the implemented circuit, both the gate and drain were supplied with approximately 12 V or 15 V. When the MOSFET turned on, the source voltage increased towards the gate voltage, thereby reducing the gate-source voltage. As a result, the MOSFET may not have been fully enhanced and may have operated partly in its active region. This would create a significant voltage drop across the MOSFET and increase the amount of energy dissipated as heat.
 \newline
 A simpler solution would be to replace the NMOS with a PMOS, such as the IRF5305, which turns on when the source voltage is higher than the gate voltage. When the source is connected to 12 V or 15 V and the gate is pulled towards 0 V, the PMOS obtains a sufficiently large source-gate voltage. The IRF5305 has a maximum $R_{\mathrm{DS(on)}}$ of $0.06,\Omega$ at $V_{\mathrm{GS}}=-10,\mathrm{V}$. Since the source remains connected to the input supply, the gate-source voltage can remain approximately constant during the ON-period. This allows the MOSFET to operate with a low $R_{\mathrm{DS(on)}}$, thereby reducing conduction losses and heat dissipation.
 By implementing the buck converter in this way, the high-side driver circuit used for the NMOS-based buck converter on the PV side could also be avoided. This would simplify the overall system and is expected to provide more reliable switching. The proposed buck-converter circuit is shown below. This circuit was not experimentally verified as part of the complete system.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/Buck/PMOS_Buck.png}
-    \caption{Proposed Improved Buck Converter}
+    \caption{Proposed Improved Buck Converter, not implemented}
     \label{fig:placeholder}
 \end{figure}
 
