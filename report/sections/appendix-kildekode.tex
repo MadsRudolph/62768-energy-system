@@ -1,12 +1,29 @@
 \ifdefined\mainfile\else\documentclass{article}\input{../preamble}\begin{document}\fi
 
-\section{Source code-- Firmware}
+\section{Source code -- Firmware}
 \label{sec:appendix-kildekode}
-% Inkludér Arduino-firmware med \lstinputlisting. Læg kildefiler i ../appendix-src/firmware/.
-% Eksempel (fjern kommentar når filen findes):
 
-% \par\medskip\noindent\textbf{\ttfamily main.ino}\par\nopagebreak
-% \lstinputlisting[style=c]{appendix-src/firmware/main.ino}
-% \medskip
+\noindent
+The MPPT firmware for the Arduino Nano (ATmega328P) is listed below. It implements the
+Perturb-and-Observe algorithm described in Section~\ref{sec:styring}: the PV voltage and
+current are read from the INA219 over the I\textsuperscript{2}C bus, the power is computed
+in software, and the PWM duty cycle is adjusted to track the maximum power point. The code
+is written in embedded C and is included directly from the firmware sources in the
+repository (\texttt{firmware/MPPT-embedded-c/}).
+
+\subsection*{main.c}
+\lstinputlisting[style=c]{firmware/MPPT-embedded-c/src/main.c}
+
+\subsection*{ina219.h}
+\lstinputlisting[style=c]{firmware/MPPT-embedded-c/src/ina219.h}
+
+\subsection*{ina219.c}
+\lstinputlisting[style=c]{firmware/MPPT-embedded-c/src/ina219.c}
+
+\subsection*{twi.h}
+\lstinputlisting[style=c]{firmware/MPPT-embedded-c/src/twi.h}
+
+\subsection*{twi.c}
+\lstinputlisting[style=c]{firmware/MPPT-embedded-c/src/twi.c}
 
 \ifdefined\mainfile\else\end{document}\fi

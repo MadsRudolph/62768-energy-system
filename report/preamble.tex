@@ -21,7 +21,7 @@
 \graphicspath{{./}{report/}{../}}
 \makeatletter
 \providecommand\input@path{}
-\g@addto@macro\input@path{{./}{report/}}
+\g@addto@macro\input@path{{./}{report/}{../}}
 \makeatother
 \usepackage[absolute,overlay]{textpos}
 \usepackage{float}                 % H-placering
@@ -50,6 +50,7 @@
 % ------------------------------------------------------------
 \lstdefinestyle{c}{
     language=C,
+    extendedchars=true,
     basicstyle=\footnotesize\ttfamily,
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{green!60!black}\itshape,
@@ -60,7 +61,8 @@
     breaklines=true, breakatwhitespace=false,
     literate=%
         {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\aa}}1
-        {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\AA}}1,
+        {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\AA}}1
+        {Δ}{{$\Delta$}}1 {Ω}{{$\Omega$}}1 {≈}{{$\approx$}}1,
 }
 
 % ------------------------------------------------------------
