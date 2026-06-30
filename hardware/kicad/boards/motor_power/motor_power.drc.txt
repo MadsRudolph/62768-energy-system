@@ -1,0 +1,27 @@
+** Drc report for motor_power.kicad_pcb **
+** Created on 2026-06-21T23:26:39 **
+** Report includes: Errors, Warnings **
+
+** Found 3 DRC violations **
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(107.7320 mm, 95.9978 mm): Track [+15V2] on B.Cu, length 0.0004 mm
+[isolated_copper]: Isolated copper fill
+    Local override; warning
+    @(19.9500 mm, 19.9500 mm): Zone [<no net>] on F.Cu, priority 0
+[isolated_copper]: Isolated copper fill
+    Local override; warning
+    @(19.9500 mm, 19.9500 mm): Zone [<no net>] on B.Cu, priority 0
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

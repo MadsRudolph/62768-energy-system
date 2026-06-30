@@ -1,0 +1,6 @@
+SRM-20 run plan: board
+Order: 1) traces  2) drill  3) cutout. Re-set Z-zero after each bit change; keep XY origin.
+1. traces  — bit 0.4 mm, 2 offsets, cut 0.1 mm/pass, feed 4.0 mm/s
+2. drill   — total 1.8 mm in 0.6 mm pecks, feed 4.0 mm/s
+3. cutout  — bit 0.8 mm, 4 tabs x 1.5 mm, total 1.8 mm
+Board mirrored for bottom-up milling: True.

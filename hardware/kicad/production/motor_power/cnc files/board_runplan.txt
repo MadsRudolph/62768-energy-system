@@ -1,0 +1,7 @@
+DOUBLE-SIDED run plan: board
+0. Set XY zero ONCE (e.g. the stock lower-left corner) and do NOT re-zero between jobs - registration comes from the pins, not from re-zeroing.
+1. board_align: drills the two 3.0 mm holes 6.0 mm deep (through the 1.6 mm board AND into the sacrificial bed); seat dowel pins.
+2. Drill board holes: change bit between files - board_bottom_drill_0.8mm.rml, board_bottom_drill_1.0mm.rml, board_bottom_drill_1.1mm.rml, board_bottom_drill_1.2mm.rml, board_bottom_drill_1.52mm.rml. Then board_bottom_traces (B.Cu).
+3. FLIP the board LEFT-TO-RIGHT about the vertical pin line; drop onto the pins.
+4. board_top_traces (plain F.Cu - not mirrored).
+5. board_cutout last.

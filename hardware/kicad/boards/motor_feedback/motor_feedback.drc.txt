@@ -1,0 +1,24 @@
+** Drc report for motor_feedback.kicad_pcb **
+** Created on 2026-06-21T22:34:29 **
+** Report includes: Errors, Warnings **
+
+** Found 2 DRC violations **
+[isolated_copper]: Isolated copper fill
+    Local override; warning
+    @(19.9500 mm, 19.9500 mm): Zone [<no net>] on F.Cu, priority 0
+[isolated_copper]: Isolated copper fill
+    Local override; warning
+    @(19.9500 mm, 19.9500 mm): Zone [<no net>] on B.Cu, priority 0
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
