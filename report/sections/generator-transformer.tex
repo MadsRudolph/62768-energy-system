@@ -148,11 +148,11 @@ where \(J_m\) and \(J_a\) represent the inertia of the motor and the load, and \
 The angular speed \(\omega\) describes the rotational speed of the motor and generator.
 \\
 This equation shows that the system does not respond instantaneously to changes in input. 
-The inertia resists rapid changes in speed, while the damping represents friction that slows down the system. 
-As a result, the system exhibits a dynamic response with a certain time delay.
+The inertia resists fast changes in speed, while the damping represents friction that slows down the system. 
+As a result, the system has a dynamic response with a certain time delay.
 \\
 These physical properties lead to a transfer function \(H(s)\) that contains poles. 
-From the system model, the motor-generator system is characterized by a dominant pole at approximately 37 rad/s and an additional pole at 7 rad/s.
+From the system model, the motor generator system is characterized by a dominant pole at approximately 37 rad/s and an additional pole at 7 rad/s.
 \\
 The corresponding time constants are:
 
@@ -164,7 +164,7 @@ The corresponding time constants are:
 \]
 The dominant pole indicates that the system can be approximated as a first-order system, meaning that the response is mainly governed by one dominant time constant.
 \\
-These dynamics are important, as they determine how quickly the motor-generator system reacts to changes in input and form the basis for the subsequent control design.
+These dynamics are important, as they determine how quickly the motor-generator system reacts to changes in input and form the basis for the subsequent control design. These time constants are used later in the PID tuning
 
 
 \vspace{1.5cm}
@@ -380,10 +380,13 @@ This behavior is expected, since the capacitor stores energy and smooths the rec
     \caption{Rectifer Ripple}
     \label{fig:Rectifier_sim_ripple}
 \end{figure}
-\noindent The second figure shows a zoomed view of the steady state output voltage, where a small ripple is visible. 
+\noindent The second figure shows a zoomed view of the steady state output voltage, where a small ripple is visible ($\Delta$V). 
 The ripple is caused by the rectification of the AC input and the charging and discharging of the filter capacitor.
 The capacitor reduces the ripple by storing energy during voltage peaks and supplying energy during voltage drops. 
-However, since the capacitor is not infinite, a small periodic variation in the voltage remains.
+However, since the capacitor is not infinite a small periodic variation in the voltage remains.
 The ripple amplitude is relatively small compared to the DC level, which indicates that the filtering is effective. 
-This results in a stable DC voltage suitable for the following stages in the system.
+This results in a stable DC voltage which can be used for the following stages in the system.
+
+\begin{figure}[H] \centering \includegraphics[width=0.70\linewidth]{Rectifier.png} \caption{The rectifier output voltage with a load of $33\,\Omega$ shows that the system satisfies the requirement of delivering at least $300\,\mathrm{mA}$ to the buck converter, i.e., $\frac{15\,\mathrm{V}}{33\,\Omega} \approx 455\,\mathrm{mA}$.} \label{fig:rectifier-output} \end{figure}
+
 \ifdefined\mainfile\else\end{document}\fi

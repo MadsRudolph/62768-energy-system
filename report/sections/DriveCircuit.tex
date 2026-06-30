@@ -2,13 +2,13 @@
 
 \subsection{Simulation and MPPT Control Behavior}
 
-The simulation does not represent a classical closed-loop control system that regulates the output to a fixed reference value. Instead, it implements a Maximum Power Point Tracking (MPPT) algorithm based on the Perturb and Observe method.\\
+The simulation does not represent a classical closed loop control system that regulates the output to a fixed reference value. Instead, it implements a Maximum Power Point Tracking (MPPT) algorithm based on the Perturb and Observe method.\\
 \\
 In this approach, the controller does not aim to track a predefined voltage or current. Instead, it continuously adjusts the PWM duty cycle in order to find the operating point that maximizes the power output of the PV module.\\
 \\
-This is fundamentally different from traditional PID control, where the objective is to minimize the error between a reference value and the measured output. In the MPPT system, the objective is to maximize the power, meaning that the system performs an optimization rather than reference tracking.\\
+This is fundamentally different from traditional PID control, where the objective is to minimize the error between a reference value and the measured output. In the MPPT system, the objective is to maximize the power, meaning that the system performs an optimization.\\
 \\
-A key component in the simulation is the buck converter. The buck converter enables control of the operating point by adjusting the effective load seen by the PV module. By changing the PWM duty cycle, the controller changes the current drawn from the PV module, which shifts the operating point along the I--V curve.\\
+A key component in the simulation is the buck converter. The buck converter makes control of the operating point possible by adjusting the efective load seen by the PV module. By changing the PWM duty cycle, the controller changes the current drawn from the PV module, which shifts the operatingpoint along the I--V curve.\\
 \\
 In the experimental setup, the PV module was connected directly to a resistive load. In this case, the operating point is fixed by the load, and no active control is possible. The measurements were therefore used to determine the I/V and P/V characteristics and to identify the maximum power point.\\
 \\
@@ -265,29 +265,29 @@ The derivative gain can be approximated as:
 K_d \approx K_p \cdot \tau_1
 \]
 \noindent
-In practice, however, the theoretical values obtained from these relations are rarely optimal for the real system. 
-This is because the physical system includes non-ideal effects such as friction, nonlinearities, delays, and component tolerances, which are not fully captured in the simplified model.
+In practice, however, the theoretical values from these relations are rarely optimal for the real system. 
+This is because the physical system includes non ideal effects such as friction, non linearities, delays, which are not fully integrated in the simplified model.
 \noindent
-The final PID parameters were experimentally selected as:
+The final PID parameters were given in a code generation document selected as:
 
 \[
 K_p = 20, \quad K_i = 2, \quad K_d = 0.6
 \]
 \noindent
-The proportional gain \(K_p\) was chosen through iterative tuning. 
-The tuning process started with a small value of \(K_p\), which was gradually increased while observing the system response. 
+The proportional gain \(K_p\) is often chosen through iterative tuning. 
+The tuning process starts with a small value of \(K_p\), which should be gradually increased while observing the system response. 
 Increasing \(K_p\) improves the response speed of the system, but too high values result in oscillations. 
 The selected value \(K_p = 20\) was found to provide a fast response without causing instability.
 \noindent
 The integral gain \(K_i = 2\) was chosen to eliminate steady-state error. 
 A larger value of \(K_i\) can lead to oscillatory behaviour, so a moderate value was selected to ensure stable convergence to the reference.
 \noindent
-The derivative gain \(K_d = 0.6\) was introduced to provide damping of oscillations. 
+The derivative gain \(K_d = 0.6\) is introduced to provide damping of oscillations. 
 Since the system is already relatively fast, only a small derivative term is required. 
 The derivative action reduces overshoot and improves stability.
 \noindent
 Overall, the selected PID parameters represent a compromise between theoretical predictions and practical performance. 
-The final values were obtained through iterative tuning based on simulation and experimental testing, where they provided the most stable and efficient operation of the system.
+The final values are obtained through iterative tuning based on simulation and experimental testing, where they provided the most stable and efficient way of operation of the system.
 
 \vspace{0.5cm}
 
