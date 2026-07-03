@@ -1,0 +1,11 @@
+(version 1)
+
+# Mill (SRM-20) custom design rules.
+# Routed copper keeps the 1.0 mm netclass clearance (margin for the 0.8 mm
+# end mill). Pad-to-pad gaps are fixed by the THT footprint pitch (2.54 mm
+# parts give 0.84-0.94 mm gaps) and cannot reach 1.0 mm -- the physical floor
+# is the bit diameter (0.8 mm). gerber2rml's narrow-gap preflight is the final
+# millability check.
+(rule "pad_to_pad_mill_floor"
+	(condition "A.Type == 'Pad' && B.Type == 'Pad'")
+	(constraint clearance (min 0.8mm)))
