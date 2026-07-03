@@ -49,6 +49,7 @@ Thumbs.db
 desktop.ini
 .vscode/
 .obsidian/
+.history/
 *.swp
 *~
 
