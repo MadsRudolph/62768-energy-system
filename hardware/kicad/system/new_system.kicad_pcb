@@ -5287,7 +5287,8 @@
 		)
 		(property "Value" "PWM_MOTOR"
 			(at -0.3887 2.63 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "9a0cf051-389d-41ac-be4f-2992d4e3e054")
 			(effects
 				(font
@@ -5497,6 +5498,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "PWM_MOTOR"
+				(at -0.3887 2.63 0)
+				(layer "F.SilkS")
+				(uuid "1ddc7670-fda7-43bf-a362-1240ba4a3c52")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Package_DIP:DIP-6_W7.62mm_LongPads"
 		(layer "F.Cu")
@@ -6386,7 +6399,8 @@
 		)
 		(property "Value" "ADC_V1"
 			(at 0.3987 -2.4231 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "5d05675b-22c8-4c80-a58b-bca6b1394621")
 			(effects
 				(font
@@ -6596,6 +6610,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "ADC_V1"
+				(at 0.3987 -2.4231 0)
+				(layer "F.SilkS")
+				(uuid "b306bf70-a78c-40f0-b3dd-feaac5eefaf7")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 		(layer "F.Cu")
@@ -14707,7 +14733,8 @@
 		)
 		(property "Value" "PV_SCL"
 			(at 0 -2.38 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "13adb15b-3283-4c8f-a251-f2e80e983b95")
 			(effects
 				(font
@@ -14917,6 +14944,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "PV_SCL"
+				(at 0 -2.38 0)
+				(layer "F.SilkS")
+				(uuid "c6391711-8f3a-45f5-be6a-25f480e17724")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -14938,7 +14977,8 @@
 		)
 		(property "Value" "+5V_PWR"
 			(at -0.252 -2.37 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "ba2be0a4-5a83-482e-b22e-4d15bf708ad6")
 			(effects
 				(font
@@ -15148,6 +15188,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "+5V_PWR"
+				(at -0.252 -2.37 0)
+				(layer "F.SilkS")
+				(uuid "cb572c16-c562-4da2-a71a-3b162683dfff")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
 		(layer "F.Cu")
@@ -25796,7 +25848,8 @@
 		)
 		(property "Value" "PWM_MPPT"
 			(at 0 -2.38 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "e061224e-ea5f-4d0f-b05e-b062b3d0e19b")
 			(effects
 				(font
@@ -26006,6 +26059,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "PWM_MPPT"
+				(at 0 -2.38 90)
+				(layer "F.SilkS")
+				(uuid "aca4c356-65ae-4148-8f87-1c65026a08d5")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 		(layer "F.Cu")
@@ -29690,7 +29755,8 @@
 		)
 		(property "Value" "PWM_BOOST"
 			(at 0 -2.38 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "3f0914f9-90ca-4b82-a1b5-df3e70f58510")
 			(effects
 				(font
@@ -29900,6 +29966,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "PWM_BOOST"
+				(at 0 -2.38 0)
+				(layer "F.SilkS")
+				(uuid "4c0cae48-6278-4be0-a5db-06988e1c5b55")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 		(layer "F.Cu")
@@ -33855,7 +33933,8 @@
 		)
 		(property "Value" "LOAD"
 			(at -0.2818 2.63 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "984beace-bae8-4265-a265-aefbe67372a5")
 			(effects
 				(font
@@ -34065,6 +34144,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "LOAD"
+				(at -0.2818 2.63 0)
+				(layer "F.SilkS")
+				(uuid "b2265fb8-ebfb-4118-979b-af76b86b384e")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
 		(layer "F.Cu")
@@ -34582,7 +34673,8 @@
 		)
 		(property "Value" "V1"
 			(at 0 2.63 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "6ecc6b34-9157-41e6-9d1d-7ecae676a7f8")
 			(effects
 				(font
@@ -34792,6 +34884,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "V1"
+				(at 0 2.63 0)
+				(layer "F.SilkS")
+				(uuid "40408336-f0cb-43ee-b509-6cf163a9099c")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
 		(layer "F.Cu")
@@ -36755,7 +36859,8 @@
 		)
 		(property "Value" "+15V_GATE"
 			(at 0 2.5769 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "3ef9f2f6-d48d-45ab-bee8-ce1522074455")
 			(effects
 				(font
@@ -36965,6 +37070,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "+15V_GATE"
+				(at 0 2.5769 0)
+				(layer "F.SilkS")
+				(uuid "0e9fe919-db86-429e-8caa-ec7860e5724a")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Package_DIP:DIP-8_W7.62mm_LongPads"
 		(layer "F.Cu")
@@ -37300,7 +37417,8 @@
 		)
 		(property "Value" "PV_SDA"
 			(at 0 -2.38 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "4d71536e-b707-436c-be64-1dfb2dcea1ce")
 			(effects
 				(font
@@ -37510,6 +37628,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "PV_SDA"
+				(at 0 -2.38 0)
+				(layer "F.SilkS")
+				(uuid "ab8169f1-18a3-4890-a64d-3b2041515c5a")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -38748,7 +38878,8 @@
 		)
 		(property "Value" "GND"
 			(at -0.3441 2.63 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "462a3162-c29f-43af-954b-5dbb6ff6a9b1")
 			(effects
 				(font
@@ -38958,6 +39089,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "GND"
+				(at -0.3441 2.63 0)
+				(layer "F.SilkS")
+				(uuid "2a1fcbef-1147-44fe-9dd4-57ef5af23a67")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Package_DIP:DIP-8_W7.62mm_LongPads"
 		(layer "F.Cu")
@@ -39809,7 +39952,8 @@
 		)
 		(property "Value" "ADC_STORE"
 			(at 1.2501 2.5769 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "c38d4472-6e4e-460e-8b39-f4500c3a73fb")
 			(effects
 				(font
@@ -40019,6 +40163,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "ADC_STORE"
+				(at 1.2501 2.5769 0)
+				(layer "F.SilkS")
+				(uuid "f03c810a-aff0-4a22-9b9d-dd4dd083d447")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 		(layer "F.Cu")
@@ -40988,7 +41144,8 @@
 		)
 		(property "Value" "MCU_V1"
 			(at 1.4231 -3.0066 90)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "0175f2d6-361e-4f71-bb17-070e8f6f90e4")
 			(effects
 				(font
@@ -41198,6 +41355,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "MCU_V1"
+				(at 1.4231 -3.0066 90)
+				(layer "F.SilkS")
+				(uuid "afc4ea52-6d76-4602-8941-76e4aa9c0792")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 		(layer "F.Cu")
@@ -41961,7 +42130,8 @@
 		)
 		(property "Value" "ADC_LOAD"
 			(at 0 -2.38 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "25ffd6f1-ef4b-42c9-ba06-9e0593bf4873")
 			(effects
 				(font
@@ -42171,6 +42341,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "ADC_LOAD"
+				(at 0 -2.38 0)
+				(layer "F.SilkS")
+				(uuid "7175e432-dffb-47cc-82a5-c0bfbd916a65")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 		(layer "F.Cu")
@@ -45363,7 +45545,8 @@
 		)
 		(property "Value" "GND_MCU"
 			(at 0.1415 2.5769 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "9045fed9-65f9-4610-9bc2-775b86fbde87")
 			(effects
 				(font
@@ -45573,6 +45756,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "GND_MCU"
+				(at 0.1415 2.5769 0)
+				(layer "F.SilkS")
+				(uuid "a4005540-3fad-4f73-b0cb-b999aba5cc40")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 		(layer "F.Cu")
@@ -46510,7 +46705,8 @@
 		)
 		(property "Value" "+3V3"
 			(at 0 2.5769 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "2e0a2d16-4273-4542-b19d-f310e0706412")
 			(effects
 				(font
@@ -46720,6 +46916,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "+3V3"
+				(at 0 2.5769 0)
+				(layer "F.SilkS")
+				(uuid "f5eaacfb-4c72-4229-8072-3ea22cbb0b4b")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Package_DIP:DIP-8_W7.62mm_LongPads"
 		(layer "F.Cu")
@@ -47044,7 +47252,8 @@
 		)
 		(property "Value" "STORE"
 			(at 0 -2.38 0)
-			(layer "F.SilkS")
+			(layer "F.Fab")
+			(hide yes)
 			(uuid "fd67ced8-1530-4f56-a88b-c1e77797d845")
 			(effects
 				(font
@@ -47254,6 +47463,18 @@
 				(xyz 0 0 0)
 			)
 		)
+	
+			(fp_text user "STORE"
+				(at 0 -2.38 0)
+				(layer "F.SilkS")
+				(uuid "e38d7132-da25-4314-8b4b-80cf22714a72")
+				(effects
+					(font
+						(size 1 1)
+						(thickness 0.15)
+					)
+				)
+			)
 	)
 	(footprint "Package_DIP:DIP-14_W7.62mm_LongPads"
 		(layer "F.Cu")
