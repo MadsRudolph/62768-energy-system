@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "gerber_dir": "C:\\Users\\s246132\\62768-energy-system\\hardware\\production\\system\\gerbers",
+  "name": "MegaPCB_0.8mm",
+  "machine": "Roland SRM-20 (G-code)",
+  "mirror": true,
+  "frame": 0,
+  "show_bed": true,
+  "place_x": -6.0,
+  "place_y": 3.4,
+  "rotation": 0,
+  "thickness": 1.6,
+  "auto_depth": true,
+  "breakthrough": 0.1,
+  "jobs": {
+    "traces": {
+      "bit_diameter": 0.8,
+      "cut_depth": 0.15,
+      "offsets": 1,
+      "stepover": 0.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0,
+      "tool_type": "flat",
+      "tip_diameter": 0.1,
+      "included_angle": 30.0,
+      "target_width": 0.2
+    },
+    "drill": {
+      "bit_diameter": 0.8,
+      "single_bit": true,
+      "cut_depth": 0.6,
+      "total_depth": 1.7,
+      "peck_retract": 0.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0
+    },
+    "cutout": {
+      "bit_diameter": 0.8,
+      "cut_depth": 0.6,
+      "total_depth": 1.7,
+      "tabs": 4,
+      "tab_width": 1.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0
+    }
+  },
+  "double_sided": true,
+  "view": 2,
+  "reg": 0,
+  "dowel_edge": 0,
+  "grid_pitch": "14.2",
+  "grid_pin": "4.0",
+  "clr_large": "0.2",
+  "clr_small": "0.15",
+  "bed_bite": 5.0,
+  "reg_method": 1,
+  "overlay_trim": [
+    0.0,
+    0.0
+  ],
+  "top_fit": [
+    -0.006292609661414846,
+    1.0,
+    1.9806882653295759,
+    -1.987338461331376
+  ],
+  "fid_measured": [],
+  "photo_overlay": {
+    "path": "C:/Users/s246132/Downloads/20260703_182334.jpg",
+    "photo_pts": [
+      [
+        189.22779527507933,
+        888.6814556346751
+      ],
+      [
+        2288.86987263029,
+        902.5595047112898
+      ],
+      [
+        2079.4150215741697,
+        45.55820680963943
+      ],
+      [
+        415.1013863599168,
+        41.687788151229775
+      ]
+    ],
+    "machine_pts": [
+      [
+        6.06492948470691,
+        11.387225967536548
+      ],
+      [
+        200.26108463487427,
+        10.165209236013496
+      ],
+      [
+        201.03507051529309,
+        133.1627740324635
+      ],
+      [
+        6.838915365125732,
+        134.38479076398653
+      ]
+    ],
+    "alpha": 1.0,
+    "trace_alpha": 0.0
+  },
+  "fid": {
+    "count": 4,
+    "place": 0,
+    "offset": 4.0,
+    "scale": false,
+    "flip": 0,
+    "points": []
+  },
+  "stock": {
+    "w": 203.2,
+    "h": 133.0,
+    "x": 0.0,
+    "y": 8.5,
+    "show": true
+  },
+  "level": {
+    "nx": 3,
+    "ny": 3,
+    "apply": true,
+    "rows": [
+      [
+        "9.071",
+        "11.953",
+        "0.0000"
+      ],
+      [
+        "103.550",
+        "11.953",
+        "0.2500"
+      ],
+      [
+        "198.529",
+        "11.953",
+        "0.2500"
+      ],
+      [
+        "9.071",
+        "72.416",
+        "0.0200"
+      ],
+      [
+        "103.550",
+        "72.416",
+        "0.0200"
+      ],
+      [
+        "198.529",
+        "72.416",
+        "-0.0300"
+      ],
+      [
+        "9.071",
+        "131.378",
+        "0.0500"
+      ],
+      [
+        "103.550",
+        "131.378",
+        "0.2200"
+      ],
+      [
+        "198.529",
+        "131.378",
+        "0.1700"
+      ]
+    ]
+  }
+}

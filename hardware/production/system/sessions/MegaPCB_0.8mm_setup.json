@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "gerber_dir": "C:\\Users\\s246132\\62768-energy-system\\hardware\\production\\system\\gerbers",
+  "name": "MegaPCB_0.8mm",
+  "machine": "Roland SRM-20 (G-code)",
+  "mirror": true,
+  "frame": 0,
+  "show_bed": true,
+  "place_x": -6.0,
+  "place_y": 3.4,
+  "rotation": 0,
+  "thickness": 1.6,
+  "auto_depth": true,
+  "breakthrough": 0.1,
+  "jobs": {
+    "traces": {
+      "bit_diameter": 0.8,
+      "cut_depth": 0.15,
+      "offsets": 1,
+      "stepover": 0.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0,
+      "tool_type": "flat",
+      "tip_diameter": 0.1,
+      "included_angle": 30.0,
+      "target_width": 0.2
+    },
+    "drill": {
+      "bit_diameter": 0.8,
+      "single_bit": true,
+      "cut_depth": 0.6,
+      "total_depth": 1.7,
+      "peck_retract": 0.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0
+    },
+    "cutout": {
+      "bit_diameter": 0.8,
+      "cut_depth": 0.6,
+      "total_depth": 1.7,
+      "tabs": 4,
+      "tab_width": 1.5,
+      "xy_feed": 4.0,
+      "plunge_feed": 1.0,
+      "travel_z": 2.0
+    }
+  },
+  "double_sided": true,
+  "view": 1,
+  "reg": 0,
+  "dowel_edge": 0,
+  "grid_pitch": "14.2",
+  "grid_pin": "4.0",
+  "clr_large": "0.2",
+  "clr_small": "0.15",
+  "bed_bite": 5.0,
+  "reg_method": 1,
+  "overlay_trim": [
+    0.0,
+    0.0
+  ],
+  "fid": {
+    "count": 4,
+    "place": 0,
+    "offset": 4.0,
+    "scale": false,
+    "points": []
+  },
+  "stock": {
+    "w": 203.2,
+    "h": 133.0,
+    "x": 0.0,
+    "y": 8.5,
+    "show": true
+  },
+  "level": {
+    "nx": 4,
+    "ny": 4,
+    "apply": true,
+    "rows": [
+      [
+        "2.000",
+        "11.400",
+        "0.0000"
+      ],
+      [
+        "68.067",
+        "11.400",
+        "-0.1300"
+      ],
+      [
+        "134.133",
+        "11.400",
+        "-0.0800"
+      ],
+      [
+        "200.200",
+        "11.400",
+        "-0.1300"
+      ],
+      [
+        "2.000",
+        "53.733",
+        "-0.0300"
+      ],
+      [
+        "68.067",
+        "53.733",
+        "-0.1300"
+      ],
+      [
+        "134.133",
+        "53.733",
+        "-0.0800"
+      ],
+      [
+        "200.200",
+        "53.733",
+        "-0.1300"
+      ],
+      [
+        "2.000",
+        "96.067",
+        "-0.1300"
+      ],
+      [
+        "68.067",
+        "96.067",
+        "-0.1800"
+      ],
+      [
+        "134.133",
+        "96.067",
+        "-0.1500"
+      ],
+      [
+        "200.200",
+        "96.067",
+        "-0.1800"
+      ],
+      [
+        "2.000",
+        "138.400",
+        "-0.2500"
+      ],
+      [
+        "68.067",
+        "138.400",
+        "-0.2500"
+      ],
+      [
+        "134.133",
+        "138.400",
+        "-0.1800"
+      ],
+      [
+        "200.200",
+        "138.400",
+        "-0.2000"
+      ]
+    ]
+  }
+}
